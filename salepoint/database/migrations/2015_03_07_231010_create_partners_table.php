@@ -1,0 +1,59 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreatePartnersTable extends Migration {
+
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('partners', function(Blueprint $table)
+		{
+            $table->increments('id');
+            $table->string('name',60);
+            $table->string('lastName',60)->nullable();
+            $table->string('street',40);
+            $table->integer('noExt')->nullable();
+            $table->integer('noInt')->nullable();
+            $table->string('colony',60);
+            $table->string('zip',6)->nullable();
+            $table->string('locality',60);
+            $table->string('rfc',20)->nullable();
+            $table->string('phone',15)->nullable();
+            $table->string('mobile',15)->nullable();
+            $table->string('fax',15)->nullable();
+            $table->string('email',20)->nullable();
+            $table->string('customer',30)->nullable();
+            $table->string('supplier',60)->nullable();
+            $table->binary('image')->nullable();
+            $table->date('birthday')->nullable();
+            $table->boolean('active')->default(true);
+            $table->integer('city_id')->unsigned();
+            $table->integer('state_id')->unsigned();
+            $table->integer('country_id')->unsigned();
+            $table->timestamps();
+            $table->foreign('city_id')->references('id')
+                ->on('citys')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('state_id')->references('id')
+                ->on('states')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('country_id')->references('id')
+                ->on('countrys')->onDelete('cascade')->onUpdate('cascade');
+		});
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::drop('partners');
+	}
+
+}
