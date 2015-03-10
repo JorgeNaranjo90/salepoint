@@ -35,7 +35,6 @@ class CreatePartnersTable extends Migration {
             $table->integer('city_id')->unsigned();
             $table->integer('state_id')->unsigned();
             $table->integer('country_id')->unsigned();
-            //$table->boolean('active')->default(true);
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('city_id')->references('id')
