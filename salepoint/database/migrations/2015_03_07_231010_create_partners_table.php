@@ -28,15 +28,16 @@ class CreatePartnersTable extends Migration {
             $table->string('mobile',15)->nullable();
             $table->string('fax',15)->nullable();
             $table->string('email',20)->nullable();
-            $table->string('customer',30)->nullable();
-            $table->string('supplier',60)->nullable();
+            $table->boolean('customer')->nullable();
+            $table->boolean('supplier')->nullable();
             $table->binary('image')->nullable();
-            $table->date('birthday')->nullable();
-            $table->boolean('active')->default(true);
+            $table->date('birthdate')->nullable();
+            $table->softDeletes();
             $table->integer('city_id')->unsigned();
             $table->integer('state_id')->unsigned();
             $table->integer('country_id')->unsigned();
             $table->timestamps();
+            //$table->boolean('active')->default(true);
             $table->foreign('city_id')->references('id')
                 ->on('citys')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('state_id')->references('id')
