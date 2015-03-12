@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\User;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller {
 
@@ -42,7 +43,22 @@ class UsersController extends Controller {
 	 */
 	public function store()
 	{
-        $user = User::create(Request::all());
+        $data = Request::all();
+
+        $rules = array(
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'image'
+        );
+
+        $val = Validator::make($data, $rules);
+        if($val->fails()){
+            return redirect()->back()
+                ->withErrors($val->errors())
+                ->withInput(Request::except('password'));
+        }
+        $user = User::create($data);
         return \Redirect::route('settings.users.index');
 
 	}

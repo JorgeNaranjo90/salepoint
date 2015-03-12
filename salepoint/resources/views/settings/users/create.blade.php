@@ -7,9 +7,10 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">New User</div>
 				<div class="panel-body">
+                    @include('generalPartials.errors')
                     {!! Form::open(['route'=>'settings.users.store','method'=>'POST']) !!}
                         @include('settings.users.partials.inputs')
-                        <button type="submit" class="btn btn-default">Save</button>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> Save</button>
                     {!! Form::close() !!}
                 </div>
 			</div>
