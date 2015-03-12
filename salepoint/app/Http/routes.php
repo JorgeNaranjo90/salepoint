@@ -19,3 +19,7 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users'], function(){
+    Route::resource('users', 'UsersController');
+});
