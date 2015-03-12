@@ -19,3 +19,8 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('partners', ['as' => 'partner.index', 'uses' => 'Partners\PartnersController@index']);
+Route::get('partners/create', ['as' => 'partner.create', 'uses' => 'Partners\PartnersController@create']);
+Route::post('partners', ['as' => 'partner.store', 'uses' => 'Partners\PartnersController@store']);
+
