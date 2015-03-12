@@ -14,9 +14,8 @@ class AddUsersPartnersRelTable extends Migration {
 	{
 		Schema::table('users', function(Blueprint $table)
 		{
-            $table->integer('partner_id')->unsigned();
-            $table->foreign('partner_id')->references('id')
-                ->on('partners')->onDelete('cascade')->onUpdate('cascade');
+            //$table->integer('partner_id')->unsigned()->nullable();
+            //$table->foreign('partner_id')->references('id')->on('partners')->onDelete('cascade')->onUpdate('cascade');
 		});
 	}
 
@@ -29,8 +28,7 @@ class AddUsersPartnersRelTable extends Migration {
 	{
 		Schema::table('users', function(Blueprint $table)
 		{
-			//
-            $table->integer('partner_id')->unsigned();
+			//$table->integer('partner_id')->unsigned()->nullable();
 		});
 	}
 
