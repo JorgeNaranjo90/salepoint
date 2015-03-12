@@ -49,7 +49,6 @@ class UsersController extends Controller {
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'image'
         );
 
         $val = Validator::make($data, $rules);
