@@ -4,9 +4,10 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\User;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
+use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\EditUserRequest;
 use Illuminate\Support\Facades\Validator;
-
 class UsersController extends Controller {
 
     protected  $request;
@@ -41,23 +42,10 @@ class UsersController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CreateUserRequest $request)
 	{
-        $data = Request::all();
 
-        $rules = array(
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-        );
-
-        $val = Validator::make($data, $rules);
-        if($val->fails()){
-            return redirect()->back()
-                ->withErrors($val->errors())
-                ->withInput(Request::except('password'));
-        }
-        $user = User::create($data);
+        $user = User::create($request->all());
         return \Redirect::route('settings.users.index');
 
 	}
@@ -91,10 +79,10 @@ class UsersController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(EditUserRequest $request, $id)
 	{
         $user = User::findOrFail($id);
-        $user->fill(Request::all());
+        $user->fill($request->getall());
         $user->save();
         return \Redirect::back();
 
