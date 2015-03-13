@@ -23,11 +23,7 @@ class PartnersController extends Controller {
                      'citys.name as city_name',
                      'states.name as state_name'
                 )->paginate();
-        //dd($partners);
         return view('partners.index',compact('partners'));
-
-
-
 	}
 
 	/**
@@ -47,7 +43,7 @@ class PartnersController extends Controller {
 	 */
 	public function store()
 	{
-        return "hola";
+
 	}
 
 	/**
