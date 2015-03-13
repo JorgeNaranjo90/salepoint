@@ -14,7 +14,10 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
-		$this->call('PartnersSeeder'); //Esta línea nos permite mandar a llamar los demás seeders
+		// $this->call('UserTableSeeder');
+        $this->call('AdminTableSeeder');
+        $this->call('UserTableSeeder');
+        $this->call('PartnersSeeder');
 	}
 
 }

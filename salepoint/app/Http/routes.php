@@ -20,6 +20,10 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users'], function(){
+    Route::resource('users', 'UsersController');
+});
+
 Route::get('partners', ['as' => 'partner.index', 'uses' => 'Partners\PartnersController@index']);
 Route::get('partners/create', ['as' => 'partner.create', 'uses' => 'Partners\PartnersController@create']);
 Route::post('partners', ['as' => 'partner.store', 'uses' => 'Partners\PartnersController@store']);
