@@ -13,7 +13,8 @@
                         <button type="submit" class="btn btn-info"><i class="fa fa-floppy-o"></i> Save</button>
                     {!! Form::close() !!}
                 </div>
-			</div>
+                @include('settings.users.partials.delete')
+            </div>
 		</div>
 	</div>
 </div>

@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\EditUserRequest;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 class UsersController extends Controller {
 
@@ -96,7 +97,11 @@ class UsersController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        $user = User::findOrFail($id);
+        $user->delete();
+        Session::flash('message', $user->full_name.' was delete !');
+        return \Redirect::route('settings.users.index');
+
 	}
 
 }

@@ -14,6 +14,8 @@ class UserTableSeeder extends Seeder{
 				'name'      => $faker->firstName,
 				'email'    	=> $faker->unique()->email,
 				'password' 	=> \Hash::make('123456'),
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime
 	 		));
 		}
 	}
