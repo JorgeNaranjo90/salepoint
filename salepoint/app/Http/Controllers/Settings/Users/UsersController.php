@@ -99,7 +99,7 @@ class UsersController extends Controller {
 	{
         $user = User::findOrFail($id);
         $user->delete();
-        Session::flash('message', $user->full_name.' fue eliminado');
+        Session::flash('message', $user->full_name.' was delete !');
         return \Redirect::route('settings.users.index');
 
 	}
