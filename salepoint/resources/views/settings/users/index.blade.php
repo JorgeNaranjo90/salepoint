@@ -8,7 +8,7 @@
 				<div class="panel-heading">Users</div>
 
                 @if (Session::has('message'))
-                    <p class="alert-success">
+                    <p class="alert alert-success">
                         {{ Session::get('message') }}
                     </p>
                 @endif
