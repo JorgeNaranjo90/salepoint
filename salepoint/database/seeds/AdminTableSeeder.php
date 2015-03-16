@@ -8,8 +8,10 @@ class AdminTableSeeder extends Seeder{
 
 		\DB::table('users')->insert(array(
 			'name'     => 'Admin',
-			'email'    => 'admin',
+			'email'    => 'admin@abarrotestauro.com',
 			'password' => \Hash::make('admin'),
+            'created_at' => new DateTime,
+            'updated_at' => new DateTime
  		));
 
 	}
