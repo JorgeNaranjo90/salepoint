@@ -20,7 +20,13 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users'], function(){
+
+Route::get('/settings', ['middleware' => 'auth',function()
+{
+    return view('settings.index');
+}]);
+
+Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users', 'middleware' => 'auth'], function(){
     Route::resource('users', 'UsersController');
 });
 
