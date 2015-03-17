@@ -1,5 +1,5 @@
+@include('settings.verticalnav')
 @extends('app')
-
 @section('content')
 <div class="container">
 	<div class="row">
