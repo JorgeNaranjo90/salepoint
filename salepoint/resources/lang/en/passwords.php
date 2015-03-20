@@ -19,4 +19,6 @@ return [
 	"sent" => "We have e-mailed your password reset link!",
 	"reset" => "Your password has been reset!",
 
+    "invalid_credentials" => "These credentials do not match our records."
+
 ];
