@@ -102,6 +102,17 @@ return [
 	|
 	*/
 
-	'attributes' => [],
+    'attributes' => array(
+        'email' => 'E-Mail Address',
+        'password' => 'Password',
+        'remember_me' => 'Remember Me',
+        'login' => 'Login',
+        'forgot_your_password' => 'Forgot Your Password?',
+        'problems_with_access' => 'There were some problems with your input !',
+        'confirm_password' => 'Confirm Password',
+        'reset_password' => 'Reset Password',
+        'language' => 'Language'
+    ),
+
 
 ];

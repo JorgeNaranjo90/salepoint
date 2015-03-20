@@ -34,3 +34,10 @@ Route::get('partners', ['as' => 'partner.index', 'uses' => 'Partners\PartnersCon
 Route::get('partners/create', ['as' => 'partner.create', 'uses' => 'Partners\PartnersController@create']);
 Route::post('partners', ['as' => 'partner.store', 'uses' => 'Partners\PartnersController@store']);
 
+
+//Language
+
+Route::get('languageEn', ['as' => 'languageen', 'uses' => 'GeneralController@setLangEn']);
+Route::get('languageEs', ['as' => 'languagees', 'uses' => 'GeneralController@setLangEs']);
+
+
