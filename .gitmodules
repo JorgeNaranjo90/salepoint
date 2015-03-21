@@ -1,0 +1,3 @@
+[submodule "salepoint/public/bootswatch"]
+	path = salepoint/public/bootswatch
+	url = git@github.com:thomaspark/bootswatch.git
