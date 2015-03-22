@@ -21,9 +21,9 @@ class UsersController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Request $request)
 	{
-        $users = User::paginate();
+        $users = User::filterAndPaginate($request->get('name'));
         return view('settings.users.index', compact('users'));
 	}
 

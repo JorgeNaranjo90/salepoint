@@ -55,4 +55,26 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             $this->attributes['image'] =$value;
         }
     }
+
+    //Scope for search
+
+    /*
+     * This function search Users by Name
+     * @query query that you create in index
+     * @name is the string name that you search
+     * */
+
+    public static function filterAndPaginate($name)
+    {
+        return User::name($name)
+            ->orderBy('name','ASC')
+            ->paginate();
+
+    }
+
+    public function scopeName($query, $name){
+        if(trim($name) != ""){
+            $query->where("name", "LIKE", "%$name%");
+        }
+    }
 }

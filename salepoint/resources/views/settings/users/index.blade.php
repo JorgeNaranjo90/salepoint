@@ -13,14 +13,16 @@
                     </p>
                 @endif
 				<div class="panel-body">
+
                     <div class="pull-left">
                         <a class="btn btn-success" href="{{route('settings.users.create')}}"><i class="fa fa-user-plus"></i> Create</a>
                     </div>
-                    <div class="pull-right">
+                    @include('settings.users.partials.filters')
+                    <!--<div class="pull-right">
                         <p>{!! $users->total() !!} Users</p>
-                    </div>
+                    </div>-->
                     @include('settings.users.partials.table_index')
-					{!! $users->render() !!}
+					{!! $users->appends(Request::only(['name']))->render() !!}
 				</div>
 			</div>
 		</div>
