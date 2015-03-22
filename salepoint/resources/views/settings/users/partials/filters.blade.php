@@ -1,12 +1,15 @@
-{!! Form::model(Request::only(['name']),['route'  => 'settings.users.index',
-'method' => 'GET',
-'class'  => 'navbar-form navbar-left pull-right',
-'role'   => 'search',
-])!!}
+<div class="col-lg-6 pull-right">
+    {!! Form::model(Request::only(['name']),['route'  => 'settings.users.index',
+    'method' => 'GET',
+    'class'  => 'navbar-left pull-right',
+    'role'   => 'search',
+    ])!!}
+        <div class="input-group">
+            {!! Form::text('name', null, ['class' => 'form-control input-sm', 'placeholder' => 'Search']) !!}
+            <span class="input-group-btn">
+                <button class="btn btn-default btn-sm" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+        </div><!-- /input-group -->
+    {!! Form::close() !!}
 
-    <div class="form-group">
-        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Search']) !!}
-    </div>
-    <button type="submit" class="btn btn-default">Buscar</button>
-
-{!! Form::close() !!}
+</div>
