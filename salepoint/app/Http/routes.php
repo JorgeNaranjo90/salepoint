@@ -23,3 +23,17 @@ Route::controllers([
 Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users'], function(){
     Route::resource('users', 'UsersController');
 });
+
+Route::group(['prefix'=>'settings','namespace'=>'Settings\Companys'],function(){
+    Route::resource('company','CompanysController');
+});
+
+Route::group(['prefix'=>'settings','namespace'=>'Settings\Currencys'],function(){
+    Route::resource('currency','CurrencysController');
+});
+
+Route::group(['prefix'=>'settings','namespace'=>'Settings\FiscalRegimens'],function(){
+    Route::resource('fiscalRegimen','FiscalRegimensController');
+});
+
+

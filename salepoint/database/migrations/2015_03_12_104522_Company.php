@@ -19,6 +19,7 @@ class Company extends Migration {
             $table->integer('partner_id')->unsigned();
             $table->integer('currency_id')->unsigned();
             $table->integer('fiscalRegimen_id')->unsigned();
+            $table->binary('image')->nullable();
             $table->foreign('partner_id')->references('id')->on('partners');
             $table->foreign('currency_id')->references('id')->on('currencys')->onUpdate('cascade');
             $table->foreign('fiscalRegimen_id')-> references('id')->on('fiscalRegimens')->onUpdate('cascade');

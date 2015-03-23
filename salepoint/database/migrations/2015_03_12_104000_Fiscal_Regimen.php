@@ -16,8 +16,18 @@ class FiscalRegimen extends Migration {
         {
             $table->increments('id');
             $table->string('name',60);
+            $table->text('description');
+            $table->softDeletes();
             $table->timestamps();
         });
+         \DB::table('fiscalRegimens')->insert([
+                 [ 'name'      => 'Personas morales del régimen general',
+                   'description' => ''],
+                 [ 'name'      => 'Personas morales con fines no lucrativos'],
+                 [ 'name'      => 'Asociaciones Religiosas'],
+                 [ 'name'      => 'Personas morales del régimen simplificad'],
+                 [ 'exit'      => 'Persona física con actividad empresarial']
+             ]);
 	}
 
 	/**

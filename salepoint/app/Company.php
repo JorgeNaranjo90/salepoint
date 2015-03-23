@@ -10,6 +10,9 @@ class Company extends Model {
 
     protected $dates = ['deleted_at'];
 
+    protected $table='companys';
+
+
 
 
 }

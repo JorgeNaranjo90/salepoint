@@ -1,9 +1,10 @@
-<?php namespace App\Http\Controllers\Company;
+<?php namespace App\Http\Controllers\Settings\Companys;
 
 use App\Company;
+use App\FiscalRegimen;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Partner;
 use Illuminate\Http\Request;
 
 class CompanysController extends Controller {
@@ -15,10 +16,8 @@ class CompanysController extends Controller {
 	 */
 	public function index()
 	{
-		$company =Company::paginate();
-
-        return view('company.index',compact('company'));
-
+		$company=Company::paginate();
+        return view('settings.companys.index', compact('company'));
 	}
 
 	/**
@@ -28,8 +27,12 @@ class CompanysController extends Controller {
 	 */
 	public function create()
 	{
-		//
-	}
+        $currency = \DB::table('currencys')->orderBy('name','ASC')->lists('name','id');
+
+        return view('settings.companys.create',compact('company','partners','currency','fiscal'));
+
+
+    }
 
 	/**
 	 * Store a newly created resource in storage.
@@ -60,7 +63,7 @@ class CompanysController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+
 	}
 
 	/**

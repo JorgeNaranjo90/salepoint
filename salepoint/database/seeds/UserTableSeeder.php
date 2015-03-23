@@ -16,5 +16,11 @@ class UserTableSeeder extends Seeder{
 				'password' 	=> \Hash::make('123456'),
 	 		));
 		}
+      //  for($i=0;$i<30;$i++)
+     //   {
+     //       \DB::table('currencys')->insertGetId(array(
+     //           'name'=> $faker->currencycode
+     //       ));
+     //   }
 	}
 }
