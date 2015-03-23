@@ -9,7 +9,7 @@
                     <div class="panel-body">
                         @include('settings.fiscalRegimens.partials.error')
                         {!! Form::model($fiscal,['route'=>['settings.fiscalRegimen.update',$fiscal->id],'method'=>'PUT']) !!}
-                        @include('settings.fiscalRegimens.partials.fields2')
+                        @include('settings.fiscalRegimens.partials.fields')
                         <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i>Update</button>
                         {!! Form::close() !!}
                     </div>

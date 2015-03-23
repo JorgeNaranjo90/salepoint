@@ -9,7 +9,7 @@
             <td>{{$currency->id}}</td>
             <td>{{$currency->name}}</td>
             <td>
-                <a href ={{route('settings.currency.edit',$currency) }}>Editar</a>
+                <a href ={{route('settings.currency.edit',$currency) }}>Update</a>
             </td>
         </tr>
     @endforeach

@@ -28,10 +28,9 @@ class CompanysController extends Controller {
 	public function create()
 	{
         $currency = \DB::table('currencys')->orderBy('name','ASC')->lists('name','id');
-
+        $fiscal = \DB::table('fiscalRegimens')->orderBy('name','ASC')->lists('name','id');
+        $partners = \DB::table('partners')->orderBy('name','ASC')->lists('name','id');
         return view('settings.companys.create',compact('company','partners','currency','fiscal'));
-
-
     }
 
 	/**

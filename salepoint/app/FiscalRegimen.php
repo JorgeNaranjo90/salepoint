@@ -9,7 +9,7 @@ class FiscalRegimen extends Model
 
     protected $table='fiscalRegimens';
 
-    protected $fillable=['name'];
+    protected $fillable=['name','description'];
 
     public function scopeNameF($query,$name)
     {

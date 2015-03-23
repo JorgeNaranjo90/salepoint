@@ -9,7 +9,7 @@
                     <div class="panel-body">
                         @include('generalPartials.errors')
                         {!! Form::model($currency,['route'=>['settings.currency.update',$currency->id],'method'=>'PUT']) !!}
-                        @include('settings.currencys.partials.fields2')
+                        @include('settings.currencys.partials.fields')
                         <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i>Update</button>
                         {!! Form::close() !!}
                     </div>
