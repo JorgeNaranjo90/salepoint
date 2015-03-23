@@ -1,21 +1,25 @@
 @include('settings.verticalnav')
-@extends('app')
-@section('content')
-<div class="container">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-default">
-				<div class="panel-heading">Edit User: <b>{{ $user->name }}</b></div>
-				<div class="panel-body">
-                    @include('generalPartials.errors')
-                    {!! Form::model($user, ['route'=>['settings.users.update',$user->id],'method'=>'PUT']) !!}
-                        @include('settings.users.partials.inputs')
-                        <button type="submit" class="btn btn-info"><i class="fa fa-floppy-o"></i> Save</button>
-                    {!! Form::close() !!}
-                </div>
-                @include('settings.users.partials.delete')
-            </div>
-		</div>
-	</div>
-</div>
+@extends('generalPartials.general_view')
+
+@section('title')
+    Edit User: <b>{{ $user->name }}</b>
+@endsection
+
+@section('buttons')
+
+    @section('button_delete')
+            @include('settings.users.partials.delete')
+    @endsection
+    {!! Form::model($user, ['route'=>['settings.users.update',$user->id],'method'=>'PUT','files'=>true]) !!}
+        <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i> Save</button>
+        <a class="btn btn-danger btn-sm" href="{{route('settings.users.index')}}"><i class="fa fa-times"></i>Cancel</a>
+        <a class="btn btn-success btn-sm" href="{{route('settings.users.create')}}"><i class="fa fa-user-plus"></i> Create</a>
+@endsection
+
+@section('filters')
+@endsection
+
+@section('body_page')
+    @include('settings.users.partials.inputs')
+    {!! Form::close() !!}
 @endsection
