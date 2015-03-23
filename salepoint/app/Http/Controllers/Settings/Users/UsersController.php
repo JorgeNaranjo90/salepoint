@@ -9,6 +9,7 @@ use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\EditUserRequest;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+
 class UsersController extends Controller {
 
     protected  $request;
@@ -21,9 +22,9 @@ class UsersController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Request $request)
 	{
-        $users = User::paginate();
+        $users = User::filterAndPaginate($request->get('name'));
         return view('settings.users.index', compact('users'));
 	}
 
@@ -59,7 +60,8 @@ class UsersController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+        $user = User::findOrFail($id);
+        return view('settings.users.profile', compact('user'));
 	}
 
 	/**
