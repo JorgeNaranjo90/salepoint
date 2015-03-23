@@ -16,13 +16,13 @@ class Partner extends Model {
      */
     protected $table = 'partners';
 
-    protected $tableCity ='citys';
+    //protected $tableCity ='citys';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['id','name', 'lastName', 'street','noExt','noInt','colony','zip','locality','rfc','phone','mobile','fax','email','customer','supplier','image','birthdate','city_id','state_id','country_id'];
+    protected $fillable = ['name', 'lastName', 'street','noExt','noInt','colony','zip','locality','rfc','phone','mobile','fax','email','customer','supplier','image','birthdate','city_id','state_id','country_id'];
 
 }

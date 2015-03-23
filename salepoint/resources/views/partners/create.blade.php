@@ -6,19 +6,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading">New Partners</div>
                 <div class="panel-body">
-                    {!! Form::open(['route' => 'partner.store', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
-                    <fieldset>
-                        <div class="form-group">
-                            {!! Form::label('name', 'Name:') !!}
-                            {!! Form::text('name',null,['class' => 'form-control','placeholder' => 'Int Name']) !!}
-                         </div>
-                        <div class="form-group">
 
-                        </div>
-                        <button type="submit" class="btn btn-info">Submit</button>
-                    </fieldset>
+                    @include('partners.partials.messages_errors')
+
+
+                    {!! Form::open(['route' => 'partners.store', 'method' => 'POST']) !!}
+                        @include('partners.partials.fields')
+                        <button type="submit"  class="btn btn-success">Save </button>
                     {!! Form::close() !!}
-
                 </div>
             </div>
         </div>
