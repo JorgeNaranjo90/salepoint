@@ -1,13 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
-/**
- * Created by PhpStorm.
- * User: mauricio
- * Date: 22/03/15
- * Time: 11:30 PM
- */
+use Faker\Factory as Faker;
+
+
 
 class CurrencyTableSeeder extends Seeder
 {

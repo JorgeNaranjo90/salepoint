@@ -14,6 +14,7 @@
         <td>1</td>
         <td>1</td>
         <td>1</td>
+        <td>Null</td>
         <td>
             <a href ="">Update</a>
 

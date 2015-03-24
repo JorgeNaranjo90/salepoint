@@ -4,7 +4,10 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\User;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
+use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\EditUserRequest;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller {
@@ -19,9 +22,9 @@ class UsersController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Request $request)
 	{
-        $users = User::paginate();
+        $users = User::filterAndPaginate($request->get('name'));
         return view('settings.users.index', compact('users'));
 	}
 
@@ -41,23 +44,10 @@ class UsersController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CreateUserRequest $request)
 	{
-        $data = Request::all();
 
-        $rules = array(
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-        );
-
-        $val = Validator::make($data, $rules);
-        if($val->fails()){
-            return redirect()->back()
-                ->withErrors($val->errors())
-                ->withInput(Request::except('password'));
-        }
-        $user = User::create($data);
+        $user = User::create($request->all());
         return \Redirect::route('settings.users.index');
 
 	}
@@ -70,7 +60,8 @@ class UsersController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+        $user = User::findOrFail($id);
+        return view('settings.users.profile', compact('user'));
 	}
 
 	/**
@@ -91,10 +82,10 @@ class UsersController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(EditUserRequest $request, $id)
 	{
         $user = User::findOrFail($id);
-        $user->fill(Request::all());
+        $user->fill($request->getall());
         $user->save();
         return \Redirect::back();
 
@@ -108,7 +99,11 @@ class UsersController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        $user = User::findOrFail($id);
+        $user->delete();
+        Session::flash('message', $user->full_name.' was delete !');
+        return \Redirect::route('settings.users.index');
+
 	}
 
 }

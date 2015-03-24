@@ -20,7 +20,13 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users'], function(){
+
+Route::get('/settings', ['middleware' => 'auth',function()
+{
+    return view('settings.index');
+}]);
+
+Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users', 'middleware' => 'auth'], function(){
     Route::resource('users', 'UsersController');
 });
 
@@ -35,5 +41,13 @@ Route::group(['prefix'=>'settings','namespace'=>'Settings\Currencys'],function()
 Route::group(['prefix'=>'settings','namespace'=>'Settings\FiscalRegimens'],function(){
     Route::resource('fiscalRegimen','FiscalRegimensController');
 });
+Route::get('partners', ['as' => 'partner.index', 'uses' => 'Partners\PartnersController@index']);
+Route::get('partners/create', ['as' => 'partner.create', 'uses' => 'Partners\PartnersController@create']);
+Route::post('partners', ['as' => 'partner.store', 'uses' => 'Partners\PartnersController@store']);
+
+//Language
+
+Route::get('languageEn', ['as' => 'languageen', 'uses' => 'GeneralController@setLangEn']);
+Route::get('languageEs', ['as' => 'languagees', 'uses' => 'GeneralController@setLangEs']);
 
 
