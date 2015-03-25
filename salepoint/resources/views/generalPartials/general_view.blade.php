@@ -9,11 +9,11 @@
                 <div class="row" style="margin-left: 3px">
                     <div class="col-lg-6 pull-left">
                         <div class="row">
-                            <div class="pull-left">
-                                @yield('buttons')
-                            </div>
                             <div class="pull-right">
                                 @yield('button_delete')
+                            </div>
+                            <div class="pull-left">
+                                @yield('buttons')
                             </div>
                         </div>
                     </div>
