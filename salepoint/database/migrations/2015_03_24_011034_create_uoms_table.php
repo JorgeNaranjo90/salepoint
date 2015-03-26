@@ -20,6 +20,27 @@ class CreateUomsTable extends Migration {
             $table->softDeletes();
             $table->timestamps();
 		});
+
+        \DB::table('uoms')->insert(array(
+            'name'          => 'KGS',
+            'description'   => 'KILOGRAMOS'
+        ));
+        \DB::table('uoms')->insert(array(
+            'name'          => 'GRS',
+            'description'   => 'GRAMOS'
+        ));
+        \DB::table('uoms')->insert(array(
+            'name'          => 'PZA',
+            'description'   => 'PIEZAS'
+        ));
+        \DB::table('uoms')->insert(array(
+            'name'          => 'LT',
+            'description'   => 'LITROS'
+        ));
+        \DB::table('uoms')->insert(array(
+            'name'          => 'MLL',
+            'description'   => 'MILLAR'
+        ));
 	}
 
 	/**
