@@ -2,7 +2,7 @@
 @extends('generalPartials.general_view')
 
 @section('title')
-    Edit Partner: <b>{{ $partner->id }}</b>
+    Edit Partner: <b>{{ $partner->name }}</b>
 @endsection
 
 @section('buttons')

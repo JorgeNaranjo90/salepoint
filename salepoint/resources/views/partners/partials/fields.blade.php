@@ -2,7 +2,6 @@
     <div class="form-group col-lg-6">
         {!! Form::label('name', 'Name:') !!}
         {!! Form::text('name',null,['class' => 'form-control requiered_field','placeholder' => 'Partner name' ]) !!}
-
     </div>
     <div class="form-group col-lg-6">
         {!! Form::label('lastName', 'Last Name:') !!}
@@ -25,20 +24,6 @@
     </div>
 </div>
 <div class="row">
-    <div class="form-group col-lg-4">
-        {!! Form::label('name', 'Country Name:') !!}
-        {!! Form::select('country_id',[''=>'Selected Country ..','1' =>'México'],null,['class' => 'form-control requiered_field']) !!}
-    </div>
-    <div class="form-group col-lg-4">
-        {!! Form::label('name', 'State Name:') !!}
-        {!! Form::select('state_id',[''=>'Selected State ..','1' =>'Guanajuato'],null,['class' => 'form-control requiered_field']) !!}
-    </div>
-    <div class="form-group col-lg-4">
-        {!! Form::label('name', 'City Name:') !!}
-        {!! Form::select('city_id',[''=>'Selected City ..','1' =>'León'],null,['class' => 'form-control requiered_field']) !!}
-    </div>
-</div>
-<div class="row">
     <div class="form-group col-lg-5">
         {!! Form::label('colony', 'Colony:') !!}
         {!! Form::text('colony',null,['class' => 'form-control','placeholder' => 'Colony']) !!}
@@ -50,6 +35,20 @@
     <div class="form-group col-lg-4">
         {!! Form::label('locality', 'Locality:') !!}
         {!! Form::text('locality',null,['class' => 'form-control','placeholder' => 'Locality']) !!}
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-lg-4">
+        {!! Form::label('name', 'Country Name:') !!}
+        {!! Form::select('country_id',$countrys,null,['class' => 'form-control requiered_field']) !!}
+    </div>
+    <div class="form-group col-lg-4">
+        {!! Form::label('name', 'State Name:') !!}
+        {!! Form::select('state_id',$states,null,['class' => 'form-control requiered_field']) !!}
+    </div>
+    <div class="form-group col-lg-4">
+        {!! Form::label('name', 'City Name:') !!}
+        {!! Form::select('city_id',$citys,null,['class' => 'form-control requiered_field']) !!}
     </div>
 </div>
 <div class="row">

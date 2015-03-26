@@ -6,20 +6,19 @@ use App\Http\Requests\CreatePartnerRequest;
 use App\Http\Requests\EditPartnerRequest;
 use  Illuminate\Support\Facades;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
 class PartnersController extends Controller {
 
+    protected  $request;
 
-    public function duplicate()
-    {
-
-        $country_idd = Facades\Input::get('country_id');
-        $states = \DB::table('states')->where('country_id','=',$country_idd)->get();
-        return \Response::make($states);
+    public function __construct(Request $request){
+        $this->request = $request;
     }
 
-    public function index()
+    public function index(Request $request)
     {
+
         $partners = Partner::
         join('countrys','partners.country_id','=','countrys.id')
             ->join('citys','partners.city_id','=','citys.id')
@@ -29,14 +28,26 @@ class PartnersController extends Controller {
                 'citys.name as city_name',
                 'states.name as state_name')->paginate();
 
+        //$partners = Partner::filterAndPaginate($request->get('partners.name'));
+
+        /*$partners = Partner::filterAndPaginate($request->get('name'))->
+        join('countrys','partners.country_id','=','countrys.id')
+            ->join('citys','partners.city_id','=','citys.id')
+            ->join('states','partners.state_id','=','states.id')
+            ->select('partners.*',
+                'countrys.name as country_name',
+                'citys.name as city_name',
+                'states.name as state_name')->paginate();*/
+
         return view('partners.index',compact('partners'));
     }
 
     public function create()
     {
-
-        $countrys = \DB::table('countrys')->get();
-        return view('partners.create',compact('countrys'));
+        $countrys = \DB::table('countrys')->orderBy('name','ASC')->lists('name','id');
+        $states = \DB::table('states')->orderBy('name','ASC')->lists('name','id');
+        $citys = \DB::table('citys')->orderBy('name','ASC')->lists('name','id');
+        return view('partners.create',compact('countrys','states','citys'));
 
 
 
@@ -56,7 +67,16 @@ class PartnersController extends Controller {
      */
     public function show($id)
     {
-        $partner = Partner::findOrFail($id);
+        // $partner = Partner::findOrFail($id);
+
+        $partner = Partner::
+        join('countrys','partners.country_id','=','countrys.id')
+            ->join('citys','partners.city_id','=','citys.id')
+            ->join('states','partners.state_id','=','states.id')
+            ->select('partners.*',
+                'countrys.name as country_name',
+                'citys.name as city_name',
+                'states.name as state_name')->firstOrFail();
         return view('partners.profile',compact('partner'));
     }
 
@@ -69,7 +89,9 @@ class PartnersController extends Controller {
     public function edit($id)
     {
         $partner = Partner::findOrFail($id);
+        //$country = Country::findOrFail($id);
         return view('partners.edit',compact('partner'));
+        //return view('partners.edit',compact('partner','country'));
     }
 
     /**
@@ -100,6 +122,12 @@ class PartnersController extends Controller {
         Session::flash('message', $partner->name.' was delete !');
         //Session::flash(' was delete !');
         return \Redirect::route('partners.index');
+    }
+
+    public function count($id)
+    {
+        $partner = \DB::table('partners')->count($id);
+        return view('partners.index',compact('partner'));
     }
 
 }

@@ -71,6 +71,7 @@ class UsersController extends Controller {
 	 */
 	public function edit($id)
 	{
+
         $user = User::findOrFail($id);
 		return view('settings.users.edit', compact('user'));
 	}

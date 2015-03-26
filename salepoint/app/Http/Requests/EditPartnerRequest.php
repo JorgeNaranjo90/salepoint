@@ -1,6 +1,6 @@
-<?php namespace App\Http\Requests\Partners;
+<?php namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
+
 
 class EditPartnerRequest extends Request {
 

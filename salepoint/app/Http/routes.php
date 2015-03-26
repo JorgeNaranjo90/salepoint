@@ -30,9 +30,11 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users', 'middleware' 
     Route::resource('users', 'UsersController');
 });
 
-Route::resource('partners','Partners\PartnersController');
+/*Route::group(['prefix'=>'partners', 'namespace'=>'\Partners', 'middleware' => 'auth'], function() {
+    Route::resource('partners', 'PartnersController');
+});*/
 
-
+Route::resource('partners', 'Partners\PartnersController');
 //Language
 
 Route::get('languageEn', ['as' => 'languageen', 'uses' => 'GeneralController@setLangEn']);
