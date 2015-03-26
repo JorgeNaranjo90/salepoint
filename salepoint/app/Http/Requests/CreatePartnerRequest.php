@@ -23,10 +23,10 @@ class CreatePartnerRequest extends Request {
 		return [
             'name' => 'required|max:60',
             'lastName' => 'max:60',
-            'street' => 'required|max:40',
-            'noExt' => 'required | max:7',
+            'street' => 'max:40',
+            'noExt' => 'max:7',
             'noInt' => 'max:5',
-            'colony' => 'required | max:60',
+            'colony' => 'max:60',
             'zip' => 'max:6',
             'locality' => 'max:60',
             'rfc' => 'max:20',

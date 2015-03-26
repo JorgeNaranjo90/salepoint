@@ -27,7 +27,7 @@
             <td> {{ $partner->country_name }}</td>
             <td>
                 <a href="{{route('partners.edit', $partner->id)}}"> Update</a>
-                <a href=""> Delete </a>
+                <a href="{{route('partners.edit', $partner->id)}}"> Delete </a>
             </td>
         </tr>
     @endforeach

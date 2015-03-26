@@ -1,21 +1,20 @@
-@extends('app')
+@include('settings.verticalnav')
+@extends('generalPartials.general_view')
 
-@section('content')
-    <div class="container">
-        <div class="row">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Partners</div>
+@section('title')
+   Partners
+@endsection
 
-                    <div class="panel-body">
-                        <p>
-                            <a class="btn btn-success" href="{{route('partners.create')}}" role="button">
-                                New User
-                            </a>
-                        </p>
-                        @include('partners.partials.table');
-                        {!! $partners->render() !!}
-                    </div>
-            </div>
-        </div>
-    </div>
+@section('buttons')
+    <a class="btn btn-success btn-sm" href="{{route('partners.create')}}"><i class="fa fa-user-plus"></i> Create</a>
+@endsection
+
+@section('filters')
+    {{--@include('partners.partials.filters')--}}
+@endsection
+
+
+@section('body_page')
+    @include('partners.partials.table')
+    {!! $partners->appends(Request::only(['name']))->render() !!}
 @endsection

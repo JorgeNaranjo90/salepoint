@@ -11,7 +11,7 @@ class EditPartnerRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return false;
+		return true;
 	}
 
 	/**
@@ -24,10 +24,10 @@ class EditPartnerRequest extends Request {
         return [
             'name' => 'required|max:60',
             'lastName' => 'max:60',
-            'street' => 'required|max:40',
-            'noExt' => 'required | max:7',
+            'street' => 'max:40',
+            'noExt' => 'max:7',
             'noInt' => 'max:5',
-            'colony' => 'required | max:60',
+            'colony' => 'max:60',
             'zip' => 'max:6',
             'locality' => 'max:60',
             'rfc' => 'max:20',
@@ -36,9 +36,9 @@ class EditPartnerRequest extends Request {
             'mobile' => 'max:15',
             'fax' => 'max:15',
             'email' => 'max:20',
-            'country_id' => 'required|max:3',
-            'state_id' => 'required|max:4',
-            'city_id' => 'required|max:5'
+            'country_id' => 'required',
+            'state_id' => 'required',
+            'city_id' => 'required'
 
         ];
 	}

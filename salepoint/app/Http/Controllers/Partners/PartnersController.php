@@ -1,19 +1,14 @@
 <?php namespace App\Http\Controllers\Partners;
 
-
+use App\Partner;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePartnerRequest;
 use App\Http\Requests\EditPartnerRequest;
-use App\Partner;
 use  Illuminate\Support\Facades;
+use Illuminate\Support\Facades\Session;
 
 class PartnersController extends Controller {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
 
     public function duplicate()
     {
@@ -32,42 +27,25 @@ class PartnersController extends Controller {
             ->select('partners.*',
                 'countrys.name as country_name',
                 'citys.name as city_name',
-                'states.name as state_name'
-            )->paginate();
+                'states.name as state_name')->paginate();
+
         return view('partners.index',compact('partners'));
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
     public function create()
     {
 
         $countrys = \DB::table('countrys')->get();
-
-
         return view('partners.create',compact('countrys'));
 
 
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
     public function store(CreatePartnerRequest $request)
     {
         $partner = Partner::create($request->all());
         return redirect()->route('partners.index');
-
-        //$partner->save();
-        //$image = Image::make(Facades\Input::file('files')->getRealPath());
-        //$partner =  new Partner($request->all());
     }
 
     /**
@@ -78,7 +56,8 @@ class PartnersController extends Controller {
      */
     public function show($id)
     {
-
+        $partner = Partner::findOrFail($id);
+        return view('partners.profile',compact('partner'));
     }
 
     /**
@@ -102,12 +81,10 @@ class PartnersController extends Controller {
     public function update(EditPartnerRequest $request,$id)
     {
 
-
         $partner = Partner::findOrFail($id);
-
         $partner->fill($request->all());;
         $partner->save();
-        return \Redirector::back();
+        return redirect()->back();
     }
 
     /**
@@ -118,10 +95,11 @@ class PartnersController extends Controller {
      */
     public function destroy($id)
     {
-        /*$partner = Partner::findOrFail($id);
+        $partner = Partner::findOrFail($id);
         $partner->delete();
-        Session::flash('message', $partner->full_name.' was delete !');
-        return \Redirect::route('partner.index');*/
+        Session::flash('message', $partner->name.' was delete !');
+        //Session::flash(' was delete !');
+        return \Redirect::route('partners.index');
     }
 
 }

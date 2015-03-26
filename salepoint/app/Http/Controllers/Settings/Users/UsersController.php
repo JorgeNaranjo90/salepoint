@@ -2,13 +2,11 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\EditUserRequest;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller {
 
@@ -24,6 +22,7 @@ class UsersController extends Controller {
 	 */
 	public function index(Request $request)
 	{
+
         $users = User::filterAndPaginate($request->get('name'));
         return view('settings.users.index', compact('users'));
 	}
