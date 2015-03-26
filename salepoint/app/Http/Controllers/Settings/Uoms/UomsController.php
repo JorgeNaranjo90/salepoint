@@ -88,12 +88,13 @@ class UomsController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
         $uom = Uom::findOrFail($id);
-        $uom->fill($this->getall());
+        $uom->fill($request->all());
         $uom->save();
         return \Redirect::back();
+
 
     }
 
