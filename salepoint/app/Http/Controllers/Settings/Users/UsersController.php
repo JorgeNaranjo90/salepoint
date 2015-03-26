@@ -84,7 +84,7 @@ class UsersController extends Controller {
 	public function update(EditUserRequest $request, $id)
 	{
         $user = User::findOrFail($id);
-        $user->fill($request->getall());
+        $user->fill($request->all());
         $user->save();
         return \Redirect::back();
 
