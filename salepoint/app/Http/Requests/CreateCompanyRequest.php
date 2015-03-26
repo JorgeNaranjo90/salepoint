@@ -22,7 +22,7 @@ class CreateCompanyRequest extends Request {
 	public function rules()
 	{
 		return [
-			//
+			'name' =>'required|unique:companys,name'
 		];
 	}
 
