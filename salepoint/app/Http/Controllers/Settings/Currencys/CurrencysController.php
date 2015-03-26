@@ -54,7 +54,9 @@ class CurrencysController extends Controller {
 	 */
 	public function show($id)
 	{
+        $currency = Currency::findOrFail($id);
 
+        return view('settings.currencys.show',compact('currency'));
 	}
 
 	/**
@@ -79,7 +81,7 @@ class CurrencysController extends Controller {
 	public function update(Requests\EditFiscalRegimenRequest $request,$id)
 	{
         $currency=Currency::findOrFail($id);
-        $currency->fill(Request::all());
+        $currency->fill($request->all());
         $currency->save();
         return redirect()->route('settings.currency.index');
 	}

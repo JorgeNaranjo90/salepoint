@@ -13,4 +13,5 @@
 @endsection
 @section('body_page')
     @include('settings.companys.partials.table')
+    {!! $company->appends(Request::only(['company']))->render() !!}
 @endsection

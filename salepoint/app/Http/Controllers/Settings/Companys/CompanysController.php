@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Settings\Companys;
 
 use App\Company;
+use App\Currency;
 use App\FiscalRegimen;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -40,7 +41,8 @@ class CompanysController extends Controller {
 	 */
 	public function store()
 	{
-		//
+        Company::create(\Illuminate\Support\Facades\Request::all());
+        return redirect()->route('settings.company.index');
 	}
 
 	/**
@@ -51,7 +53,9 @@ class CompanysController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+        $company = Company::findOrFail($id);
+
+        return view('settings.companys.show',compact('company'));
 	}
 
 	/**
@@ -62,7 +66,11 @@ class CompanysController extends Controller {
 	 */
 	public function edit($id)
 	{
-
+        $currency = \DB::table('currencys')->orderBy('name','ASC')->lists('name','id');
+        $fiscal = \DB::table('fiscalRegimens')->orderBy('name','ASC')->lists('name','id');
+        $partners = \DB::table('partners')->orderBy('name','ASC')->lists('name','id');
+        $company=Company::findOrFail($id);
+        return view('settings.companys.edit', compact('company','partners','currency','fiscal'));
 	}
 
 	/**
@@ -71,9 +79,12 @@ class CompanysController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Requests\EditCompanyRequest  $request,$id)
 	{
-		//
+        $company=Company::findOrFail($id);
+        $company->fill($request->all());
+        $company->save();
+        return redirect()->route('settings.companys.index');
 	}
 
 	/**
@@ -84,7 +95,10 @@ class CompanysController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        $company=Company::findOrFail($id);
+        $company->delete();
+//        Session::flash('message','El registro fue eliminado');
+        return redirect()->route('settings.company.index');
 	}
 
 }

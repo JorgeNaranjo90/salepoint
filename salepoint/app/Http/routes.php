@@ -30,15 +30,15 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users', 'middleware' 
     Route::resource('users', 'UsersController');
 });
 
-Route::group(['prefix'=>'settings','namespace'=>'Settings\Companys'],function(){
+Route::group(['prefix'=>'settings','namespace'=>'Settings\Companys', 'middleware'=>'auth'],function(){
     Route::resource('company','CompanysController');
 });
 
-Route::group(['prefix'=>'settings','namespace'=>'Settings\Currencys'],function(){
+Route::group(['prefix'=>'settings','namespace'=>'Settings\Currencys','middleware'=>'auth'],function(){
     Route::resource('currency','CurrencysController');
 });
 
-Route::group(['prefix'=>'settings','namespace'=>'Settings\FiscalRegimens'],function(){
+Route::group(['prefix'=>'settings','namespace'=>'Settings\FiscalRegimens','middleware'=>'auth'],function(){
     Route::resource('fiscalRegimen','FiscalRegimensController');
 });
 Route::get('partners', ['as' => 'partner.index', 'uses' => 'Partners\PartnersController@index']);

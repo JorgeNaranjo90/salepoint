@@ -52,7 +52,9 @@ class FiscalRegimensController extends Controller {
 	 */
 	public function show($id)
 	{
+        $fiscal = FiscalRegimen::findOrFail($id);
 
+        return view('settings.fiscalRegimens.show',compact('fiscal'));
 	}
 
 	/**
@@ -76,7 +78,7 @@ class FiscalRegimensController extends Controller {
 	public function update(Requests\EditFiscalRegimenRequest $request,$id)
 	{
 		$fiscal=FiscalRegimen::findOrFail($id);
-        $fiscal->fill(Request::all());
+        $fiscal->fill($request->all());
         $fiscal->save();
         return redirect()->route('settings.fiscalRegimen.index');
 	}

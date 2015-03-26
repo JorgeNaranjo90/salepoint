@@ -1,32 +1,23 @@
-@extends('app')
-@section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Currency</div>
-                    @if (\Illuminate\Support\Facades\Session::has('message'))
-                        <p class="alert alert-success">{{\Illuminate\Support\Facades\Session::get('message')}}</p>
-                    @endif
-                    <div class="panel-body">
-                        <a class="btn btn-success" href="{{route('settings.currency.create')}}"> <i class="fa fa-user-plus"></i> Create</a>
-                            {!! Form::open(['route'=>'settings.currency.index','method'=> 'GET', 'class'=> 'navbar-form navbar-left pull-right','role'=>'search'])!!}
-                            <div class="form-group">
-                                {!!Form::text('name', null,['class'=>'form-control','placeholder'=>'Name of Currency'])  !!}
-                            </div>
-                            <button type="submit" clas="btn btn-default">Search</button>
-                           {!! Form::close()!!}
-                            <p>{!! $currency->total() !!} Currency</p>
-                            @include('settings.currencys.partials.table')
-                            {!! $currency->appends(Request::only(['name']))->render() !!}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Esta linea hay que cambiarla por la de su respectivo menu-->
+@include('settings.verticalnav')
+
+<!-- Esta linea va de cajon -->
+@extends('generalPartials.general_view')
+
+@section('title')
+    Currency
+@endsection
+@section('buttons')
+    <a class="btn btn-success btn-sm" href="{{route('settings.currency.create')}}"><i class="fa fa-user-plus"></i> Create</a>
+@endsection
+
+@section('filters')
+    @include('settings.currencys.partials.filters')
 @endsection
 
 
-
+@section('body_page')
+    @include('settings.currencys.partials.table')
+    {!! $currency->appends(Request::only(['currency']))->render() !!}
+@endsection
 

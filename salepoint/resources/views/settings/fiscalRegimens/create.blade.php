@@ -1,20 +1,20 @@
-@extends('app')
+@include('settings.verticalnav')
+@extends('generalPartials.general_view')
 
-@section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading">New Fiscal Regimen</div>
-                    <div class="panel-body">
-                        @include('settings.fiscalRegimens.partials.error')
-                        {!! Form::open(['route'=>'settings.fiscalRegimen.store','method'=>'POST']) !!}
-                        @include('settings.fiscalRegimens.partials.fields')
-                        <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> Save</button>
-                        {!! Form::close() !!}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+@section('title')
+    Create Fiscal Regimen
 @endsection
+
+@section('buttons')
+    {!! Form::open(['route'=>'settings.fiscalRegimen.store','method'=>'POST','files'=>true]) !!}
+    <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i> Save</button>
+    <a class="btn btn-danger btn-sm" href="{{route('settings.fiscalRegimen.index')}}">Cancell</a>
+@endsection
+@section('filters')
+@endsection
+@section('body_page')
+    @include('settings.fiscalRegimens.partials.fields')
+    {!! Form::close() !!}
+@endsection
+
+

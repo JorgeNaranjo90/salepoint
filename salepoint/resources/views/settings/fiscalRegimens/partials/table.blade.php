@@ -1,13 +1,11 @@
 <table  class="table table-striped">
     <tr>
-        <th>#</th>
         <th>name</th>
         <th>Description</th>
         <th>Actions</th>
     </tr>
     @foreach($fiscal as $fiscal)
-        <tr>
-            <td>{{$fiscal->id}}</td>
+        <tr onclick="window.document.location='{{ route('settings.fiscalRegimen.show', $fiscal->id) }}';">
             <td>{{$fiscal->name}}</td>
             <td>{{$fiscal->description}}</td>
             <td>
@@ -16,6 +14,3 @@
         </tr>
     @endforeach
 </table>
-
-
-
