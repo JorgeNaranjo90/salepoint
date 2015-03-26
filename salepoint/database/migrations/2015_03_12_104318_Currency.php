@@ -19,6 +19,12 @@ class Currency extends Migration {
             $table->softDeletes();
             $table->timestamps();
         });
+
+        \DB::table('currencys')->insert([
+            [ 'name' => 'MXN'],
+            [ 'name' => 'USD'],
+            [ 'name' => 'EUR']
+        ]);
 	}
 
 	/**
