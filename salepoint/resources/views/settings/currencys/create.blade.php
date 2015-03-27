@@ -8,7 +8,7 @@
 
 @section('buttons')
 
-    {!! Form::open(['route'=>'settings.fiscalRegimen.store','method'=>'POST','files'=>true]) !!}
+    {!! Form::open(['route'=>'settings.currency.store','method'=>'POST','files'=>true]) !!}
     <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i> Save</button>
     <a class="btn btn-danger btn-sm" href="{{route('settings.currency.index')}}">Cancel</a>
 @endsection
