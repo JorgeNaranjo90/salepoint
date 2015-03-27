@@ -13,6 +13,7 @@ class TaxsController extends Controller {
     protected  $request;
 
     public function __construct(Request $request){
+        $this->middleware('auth');
         $this->request = $request;
     }
 

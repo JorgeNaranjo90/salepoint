@@ -31,8 +31,8 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users', 'middleware' 
 });
 
 
-Route::resource('partners', 'Partners\PartnersController');
-Route::resource('taxs', 'Taxs\TaxsController');
+Route::resource('partners', 'Partners\PartnersController', ['middleware' => 'auth']);
+Route::resource('taxs', 'Taxs\TaxsController',['middleware' => 'auth']);
 //Language
 
 Route::get('languageEn', ['as' => 'languageen', 'uses' => 'GeneralController@setLangEn']);
