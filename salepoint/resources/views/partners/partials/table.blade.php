@@ -10,9 +10,7 @@
         <th>Name State</th>
         <th>Name Country</th>
     </tr>
-
     @foreach($partners as $partner)
-
         <tr onclick="window.document.location='{{ route('partners.show', $partner->id) }}';">
 
             <td> <img src="data:image/png;base64,{{ $partner->image }}" width="50px" height="50px"/></td>

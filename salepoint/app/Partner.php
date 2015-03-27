@@ -37,10 +37,12 @@ class Partner extends Model {
         }
     }
 
+
+
     public static function filterAndPaginate($name)
     {
-        return Partner::name($name)->
-        join('countrys','partners.country_id','=','countrys.id')
+        return Partner::name($name)
+            ->join('countrys','partners.country_id','=','countrys.id')
             ->join('citys','partners.city_id','=','citys.id')
             ->join('states','partners.state_id','=','states.id')
             ->select('partners.*',
@@ -55,7 +57,7 @@ class Partner extends Model {
     public function scopeName($query, $name)
     {
         if (trim($name) != "") {
-            $query->where("name", "LIKE", "%$name%");
+            $query->where("partners.name", "LIKE", "%$name%");
         }
     }
 

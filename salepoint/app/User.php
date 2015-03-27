@@ -59,13 +59,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
     }
 
-    //Scope for search
-
-    /*
-     * This function search Users by Name
-     * @query query that you create in index
-     * @name is the string name that you search
-     * */
 
     public static function filterAndPaginate($name)
     {
