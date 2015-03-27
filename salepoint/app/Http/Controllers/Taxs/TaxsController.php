@@ -45,7 +45,9 @@ class TaxsController extends Controller {
 	public function store(CreateTaxsRequest $request)
 	{
         $tax = Tax::create($request->all());
+        Session::flash('message', $tax->name .' was registred !');
         return redirect()->route('taxs.index');
+
 	}
 
 	/**
@@ -83,6 +85,7 @@ class TaxsController extends Controller {
         $tax = Tax::findOrFail($id);
         $tax->fill($request->all());
         $tax->save();
+        Session::flash('message', $tax->name .' was updated !');
         return \Redirect::back();
 	}
 

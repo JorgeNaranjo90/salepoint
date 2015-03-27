@@ -7,7 +7,7 @@
 
 @section('buttons')
     {!! Form::open(['route'=>'taxs.store','method'=>'POST','files'=>true]) !!}
-    <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i> Save</button>
+    <button type="submit" class="btn btn-info btn-sm" onclick="return confirm('Are you sure created this tax?')" ><i class="fa fa-floppy-o"></i> Save</button>
     <a class="btn btn-danger btn-sm" href="{{route('taxs.index')}}">Cancell</a>
 @endsection
 

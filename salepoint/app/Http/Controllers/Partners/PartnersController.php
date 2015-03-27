@@ -38,6 +38,7 @@ class PartnersController extends Controller {
     public function store(CreatePartnerRequest $request)
     {
         $partner = Partner::create($request->all());
+        Session::flash('message', $partner->name .' was registred !');
         return redirect()->route('partners.index');
     }
 
@@ -82,6 +83,7 @@ class PartnersController extends Controller {
         $partner->supplier = Input::has('supplier');
         $partner->fill($request->all());
         $partner->save();
+        Session::flash('message', $partner->name .' was updated !');
         return redirect()->back();
     }
 
