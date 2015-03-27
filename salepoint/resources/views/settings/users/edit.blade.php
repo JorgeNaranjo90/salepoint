@@ -11,7 +11,7 @@
 @endsection
 
 @section('buttons')
-    {!! Form::model($user, ['route'=>['settings.users.update',$user->id],'method'=>'PUT','files'=>true, 'name'=>'save_edit']) !!}
+    {!! Form::model($user,$country,$state,$citys ['route'=>['settings.users.update',$user->id],'method'=>'PUT','files'=>true, 'name'=>'save_edit']) !!}
         <button type="submit" onclick="save_edit()" name="save" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i> Save</button>
         <a class="btn btn-danger btn-sm" href="{{route('settings.users.index')}}"><i class="fa fa-times"></i>Cancel</a>
         <a class="btn btn-success btn-sm" href="{{route('settings.users.create')}}"><i class="fa fa-user-plus"></i> Create</a>

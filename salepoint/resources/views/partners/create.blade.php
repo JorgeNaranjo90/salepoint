@@ -1,27 +1,21 @@
-@extends('app')
+@include('settings.verticalnav')
+@extends('generalPartials.general_view')
 
-@section('content')
-    <div class="container">
-        <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">New Partners</div>
-                <div class="panel-body">
-                    {!! Form::open(['route' => 'partner.store', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
-                    <fieldset>
-                        <div class="form-group">
-                            {!! Form::label('name', 'Name:') !!}
-                            {!! Form::text('name',null,['class' => 'form-control','placeholder' => 'Int Name']) !!}
-                         </div>
-                        <div class="form-group">
+@section('title')
+    Create Partner
+@endsection
 
-                        </div>
-                        <button type="submit" class="btn btn-info">Submit</button>
-                    </fieldset>
-                    {!! Form::close() !!}
+@section('buttons')
+    {!! Form::open(['route'=>'partners.store','method'=>'POST','files'=>true]) !!}
+    <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i> Save</button>
+    <a class="btn btn-danger btn-sm" href="{{route('partners.index')}}">Cancell</a>
+@endsection
 
-                </div>
-            </div>
-        </div>
-    </div>
+@section('filters')
+@endsection
 
+@section('body_page')
+
+@include('partners.partials.fields')
+{!! Form::close() !!}
 @endsection

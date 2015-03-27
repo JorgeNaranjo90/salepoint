@@ -28,10 +28,6 @@
             background: #ECE0F8;
         }
     </style>
-
-
-
-
 </head>
 <body>
     @include('generalPartials.navtop')

@@ -6,7 +6,7 @@
 		<div class="col-md-8 col-md-offset-2">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
-							<strong>Whoops!</strong> {{ trans('validation.attributes.problems_with_access') }} <br><br>
+							<strong> Whoops!</strong> {{ trans('validation.attributes.problems_with_access') }} <br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
 									<li>{{ $error }}</li>
