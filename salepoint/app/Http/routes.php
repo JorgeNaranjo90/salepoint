@@ -37,6 +37,10 @@ Route::post('partners', ['as' => 'partner.store', 'uses' => 'Partners\PartnersCo
 Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Uoms', 'middleware' => 'auth'], function(){
     Route::resource('uoms', 'UomsController');
 });
+
+Route::group(['namespace'=>'Products','middleware' => 'auth'], function() {
+    Route::resource('products', 'ProductsController');
+});
 //Language
 
 Route::get('languageEn', ['as' => 'languageen', 'uses' => 'GeneralController@setLangEn']);
