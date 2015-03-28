@@ -54,12 +54,20 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Uoms', 'middleware' =
     Route::resource('uoms', 'UomsController');
 });
 
+
 Route::resource('partners', 'Partners\PartnersController', ['middleware' => 'auth']);
 Route::resource('taxs', 'Taxs\TaxsController',['middleware' => 'auth']);
 
+
 Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Certificatesats', 'middleware' => 'auth'], function(){
     Route::resource('certificatesats', 'CertificatesatsController');
+
 });
+
+Route::group(['namespace'=>'Products','middleware' => 'auth'], function() {
+    Route::resource('products', 'ProductsController');
+});
+
 
 //Language
 
