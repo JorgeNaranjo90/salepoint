@@ -30,16 +30,6 @@ class Uom extends Model implements AuthenticatableContract
     protected $fillable = ['name', 'description'];
 
 
-//    public function getFullNameAttribute()
-//    {
-//        return $this->name;
-//    }
-//
-////    public function setDescriptionAttribute()
-////    {
-////        $this->attributes['description'] = $this->description;
-////    }
-
     //Scope for search
 
     /*
