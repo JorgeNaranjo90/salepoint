@@ -14,13 +14,25 @@ class PartnersController extends Controller {
     protected  $request;
 
     public function __construct(Request $request){
+        $this->middleware('auth');
         $this->request = $request;
     }
 
     public function index(Request $request)
     {
-
         $partners = Partner::filterAndPaginate($request->get('name'));
+        return view('partners.index',compact('partners'));
+    }
+
+    public function customer(Request $request)
+    {
+        $partners = Partner::filterAndPaginateCustomer($request->get('name'));
+        return view('partners.index',compact('partners'));
+    }
+
+    public function supplier(Request $request)
+    {
+        $partners = Partner::filterAndPaginateSupplier($request->get('name'));
         return view('partners.index',compact('partners'));
     }
 
@@ -38,6 +50,7 @@ class PartnersController extends Controller {
     public function store(CreatePartnerRequest $request)
     {
         $partner = Partner::create($request->all());
+        Session::flash('message', $partner->name .' was registred !');
         return redirect()->route('partners.index');
     }
 
@@ -82,6 +95,7 @@ class PartnersController extends Controller {
         $partner->supplier = Input::has('supplier');
         $partner->fill($request->all());
         $partner->save();
+        Session::flash('message', $partner->name .' was updated !');
         return redirect()->back();
     }
 
@@ -95,7 +109,7 @@ class PartnersController extends Controller {
     {
         $partner = Partner::findOrFail($id);
         $partner->delete();
-        Session::flash('message', $partner->name.' was delete !');
+        Session::flash('message', $partner->name.' was deleted !');
         return \Redirect::route('partners.index');
     }
 

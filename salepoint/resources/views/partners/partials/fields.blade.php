@@ -82,7 +82,7 @@
     </div>
     <div class="form-group col-lg-4">
         {!! Form::label('customer', 'Customer:') !!}
-        {!! Form::checkbox('customer') !!}
+        {!! Form::checkbox('customer','checked') !!}
     </div>
     <div class="form-group col-lg-4">
         {!! Form::label('supplier', 'Supplier:') !!}
