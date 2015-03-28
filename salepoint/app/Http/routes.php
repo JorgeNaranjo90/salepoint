@@ -30,6 +30,7 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users', 'middleware' 
     Route::resource('users', 'UsersController');
 });
 
+
 Route::group(['prefix'=>'settings','namespace'=>'Settings\Companys', 'middleware'=>'auth'],function(){
     Route::resource('company','CompanysController');
 });
@@ -48,6 +49,8 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Uoms', 'middleware' =
 });
 
 Route::resource('partners', 'Partners\PartnersController');
+
+Route::resource('taxs', 'Taxs\TaxsController');
 
 
 //Language

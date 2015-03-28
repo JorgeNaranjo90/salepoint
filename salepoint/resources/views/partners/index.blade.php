@@ -2,7 +2,7 @@
 @extends('generalPartials.general_view')
 
 @section('title')
-   Partners
+   <b>Partners</b>
 @endsection
 
 @section('buttons')
