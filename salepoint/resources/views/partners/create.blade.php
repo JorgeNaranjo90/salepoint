@@ -7,7 +7,7 @@
 
 @section('buttons')
     {!! Form::open(['route'=>'partners.store','method'=>'POST','files'=>true]) !!}
-    <button type="submit" class="btn btn-info btn-sm"  onclick="return confirm('Are you sure created  this partner?')"><i class="fa fa-floppy-o"></i> Save</button>
+    <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i> Save</button>
     <a class="btn btn-danger btn-sm" href="{{route('partners.index')}}">Cancell</a>
 @endsection
 
