@@ -17,7 +17,7 @@
             <td>{{$certificatesat->certificateWeyPemTitle}}</td>
             <td>{{$certificatesat->noSerie}}</td>
             <td>{{$certificatesat->startDate}}</td>
-            <td>{{$certificatesat->noSerie}}</td>
+            <td>{{$certificatesat->endDate}}</td>
         </tr>
     @endforeach
 </table>
