@@ -1,93 +1,104 @@
 <?php namespace App\Http\Controllers\Partners;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Partner;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CreatePartnerRequest;
+use App\Http\Requests\EditPartnerRequest;
+use  Illuminate\Support\Facades;
+use  Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
 class PartnersController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-        $partners = Partner::
-            join('countrys','partners.country_id','=','countrys.id')
-            ->join('citys','partners.city_id','=','citys.id')
-            ->join('states','partners.state_id','=','states.id')
-            ->select('partners.*',
-                     'countrys.name as country_name',
-                     'citys.name as city_name',
-                     'states.name as state_name'
-                )->paginate();
+    protected  $request;
+
+    public function __construct(Request $request){
+        $this->request = $request;
+    }
+
+    public function index(Request $request)
+    {
+
+        $partners = Partner::filterAndPaginate($request->get('name'));
         return view('partners.index',compact('partners'));
-	}
+    }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		return view('partners.create');
-	}
+    public function create()
+    {
+        $countrys = \DB::table('countrys')->orderBy('name','ASC')->lists('name','id');
+        $states = \DB::table('states')->orderBy('name','ASC')->lists('name','id');
+        $citys = \DB::table('citys')->orderBy('name','ASC')->lists('name','id');
+        return view('partners.create',compact('countrys','states','citys'));
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
 
-	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
+    }
 
-	}
+    public function store(CreatePartnerRequest $request)
+    {
+        $partner = Partner::create($request->all());
+        return redirect()->route('partners.index');
+    }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-        return view('partners.edit');
-	}
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $partner= Partner::findOrFail($id);
+        return view('partners.profile', compact('partner'));
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		return view('partners.update');
-	}
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $partner = Partner::findOrFail($id);
+        $countrys = \DB::table('countrys')->orderBy('name','ASC')->lists('name','id');
+        $states = \DB::table('states')->orderBy('name','ASC')->lists('name','id');
+        $citys = \DB::table('citys')->orderBy('name','ASC')->lists('name','id');
+        return view('partners.edit',compact('partner','countrys','states','citys'));
+    }
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update(EditPartnerRequest $request,$id)
+    {
+
+        $partner = Partner::findOrFail($id);
+        $partner->customer = Input::has('customer');
+        $partner->supplier = Input::has('supplier');
+        $partner->fill($request->all());
+        $partner->save();
+        return redirect()->back();
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $partner = Partner::findOrFail($id);
+        $partner->delete();
+        Session::flash('message', $partner->name.' was delete !');
+        return \Redirect::route('partners.index');
+    }
+
+
 
 }
