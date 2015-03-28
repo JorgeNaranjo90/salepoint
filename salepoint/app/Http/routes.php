@@ -58,7 +58,7 @@ Route::resource('partners', 'Partners\PartnersController', ['middleware' => 'aut
 Route::resource('taxs', 'Taxs\TaxsController',['middleware' => 'auth']);
 
 Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Certificatesats', 'middleware' => 'auth'], function(){
-    Route::resource('certificatesat', 'CertificatesatsController');
+    Route::resource('certificatesats', 'CertificatesatsController');
 });
 
 //Language
