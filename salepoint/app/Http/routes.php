@@ -37,12 +37,29 @@ Route::group(['namespace'=>'Partners', 'middleware' => 'auth'], function() {
     Route::resource('partners', 'PartnersController');
 });
 
+
+Route::group(['prefix'=>'settings','namespace'=>'Settings\Companys', 'middleware'=>'auth'],function(){
+    Route::resource('company','CompanysController');
+});
+
+Route::group(['prefix'=>'settings','namespace'=>'Settings\Currencys','middleware'=>'auth'],function(){
+    Route::resource('currency','CurrencysController');
+});
+
+Route::group(['prefix'=>'settings','namespace'=>'Settings\FiscalRegimens','middleware'=>'auth'],function(){
+    Route::resource('fiscalRegimen','FiscalRegimensController');
+});
+
+Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Uoms', 'middleware' => 'auth'], function(){
+    Route::resource('uoms', 'UomsController');
+});
+
+Route::resource('partners', 'Partners\PartnersController', ['middleware' => 'auth']);
 Route::resource('taxs', 'Taxs\TaxsController',['middleware' => 'auth']);
 
 Route::group(['prefix'=>'settings', 'namespace'=>'Settings\CertificateSats', 'middleware' => 'auth'], function(){
-    Route::resource('certificatesats', 'CertificatesatsController');
+    Route::resource('certificatesat', 'CertificatesatsController');
 });
-
 
 //Language
 

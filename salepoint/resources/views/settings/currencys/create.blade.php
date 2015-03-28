@@ -1,14 +1,16 @@
+
 @include('settings.verticalnav')
 @extends('generalPartials.general_view')
 
 @section('title')
-    Create CertificateSAT
+    Create Currency
 @endsection
 
 @section('buttons')
-    {!! Form::open(['route'=>'settings.certificatesats.store','method'=>'POST','files'=>true]) !!}
+
+    {!! Form::open(['route'=>'settings.currency.store','method'=>'POST','files'=>true]) !!}
     <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i> Save</button>
-    <a class="btn btn-danger btn-sm" href="{{route('settings.certificatesats.index')}}">Cancell</a>
+    <a class="btn btn-danger btn-sm" href="{{route('settings.currency.index')}}">Cancel</a>
 @endsection
 
 @section('filters')
@@ -16,6 +18,6 @@
 
 @section('body_page')
 
-@include('settings.certificatesats.partials.fields')
+@include('settings.currencys.partials.fields')
 {!! Form::close() !!}
 @endsection

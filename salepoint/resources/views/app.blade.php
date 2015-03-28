@@ -24,7 +24,7 @@
 	<![endif]-->
 
     <style>
-        .requiered_field {
+        .requiered_field{
             background: #ECE0F8;
         }
     </style>
