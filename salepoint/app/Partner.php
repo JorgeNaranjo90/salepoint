@@ -52,6 +52,39 @@ class Partner extends Model {
 
     }
 
+    public static function filterAndPaginateCustomer($name)
+    {
+        return Partner::name($name)
+            ->join('countrys','partners.country_id','=','countrys.id')
+            ->join('citys','partners.city_id','=','citys.id')
+            ->join('states','partners.state_id','=','states.id')
+            ->select('partners.*',
+                'countrys.name as country_name',
+                'citys.name as city_name',
+                'states.name as state_name')
+            ->where('customer','=',1)
+            ->orderBy('partners.name','ASC')
+            ->paginate();
+
+    }
+
+    public static function filterAndPaginateSupplier($name)
+    {
+        return Partner::name($name)
+            ->join('countrys','partners.country_id','=','countrys.id')
+            ->join('citys','partners.city_id','=','citys.id')
+            ->join('states','partners.state_id','=','states.id')
+            ->select('partners.*',
+                'countrys.name as country_name',
+                'citys.name as city_name',
+                'states.name as state_name')
+            ->where('supplier','=',1)
+            ->orderBy('partners.name','ASC')
+            ->paginate();
+
+    }
+
+
     public function scopeName($query, $name)
     {
         if (trim($name) != "") {

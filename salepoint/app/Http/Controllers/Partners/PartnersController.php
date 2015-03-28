@@ -20,8 +20,19 @@ class PartnersController extends Controller {
 
     public function index(Request $request)
     {
-
         $partners = Partner::filterAndPaginate($request->get('name'));
+        return view('partners.index',compact('partners'));
+    }
+
+    public function customer(Request $request)
+    {
+        $partners = Partner::filterAndPaginateCustomer($request->get('name'));
+        return view('partners.index',compact('partners'));
+    }
+
+    public function supplier(Request $request)
+    {
+        $partners = Partner::filterAndPaginateSupplier($request->get('name'));
         return view('partners.index',compact('partners'));
     }
 

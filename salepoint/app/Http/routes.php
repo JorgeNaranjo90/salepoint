@@ -30,8 +30,13 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users', 'middleware' 
     Route::resource('users', 'UsersController');
 });
 
+Route::group(['namespace'=>'Partners', 'middleware' => 'auth'], function() {
+    Route::pattern('partners', '[0-9]+');
+    Route::get('partners/customer', 'PartnersController@customer');
+    Route::get('partners/supplier', 'PartnersController@supplier');
+    Route::resource('partners', 'PartnersController');
+});
 
-Route::resource('partners', 'Partners\PartnersController', ['middleware' => 'auth']);
 Route::resource('taxs', 'Taxs\TaxsController',['middleware' => 'auth']);
 
 Route::group(['prefix'=>'settings', 'namespace'=>'Settings\CertificateSats', 'middleware' => 'auth'], function(){
