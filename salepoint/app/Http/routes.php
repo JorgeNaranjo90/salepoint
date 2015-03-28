@@ -31,8 +31,28 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users', 'middleware' 
 });
 
 
+Route::group(['prefix'=>'settings','namespace'=>'Settings\Companys', 'middleware'=>'auth'],function(){
+    Route::resource('company','CompanysController');
+});
+
+Route::group(['prefix'=>'settings','namespace'=>'Settings\Currencys','middleware'=>'auth'],function(){
+    Route::resource('currency','CurrencysController');
+});
+
+Route::group(['prefix'=>'settings','namespace'=>'Settings\FiscalRegimens','middleware'=>'auth'],function(){
+    Route::resource('fiscalRegimen','FiscalRegimensController');
+});
+
+
+Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Uoms', 'middleware' => 'auth'], function(){
+    Route::resource('uoms', 'UomsController');
+});
+
 Route::resource('partners', 'Partners\PartnersController');
+
 Route::resource('taxs', 'Taxs\TaxsController');
+
+
 //Language
 
 Route::get('languageEn', ['as' => 'languageen', 'uses' => 'GeneralController@setLangEn']);
