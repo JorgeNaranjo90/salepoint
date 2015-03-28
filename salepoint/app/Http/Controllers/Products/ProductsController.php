@@ -2,7 +2,8 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\CreateProductRequest;
+use App\Http\Requests\EditProductRequest;
 use App\Product;
 use App\User;
 use Illuminate\Http\Request;
@@ -27,11 +28,22 @@ class ProductsController extends Controller {
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        $uom = \DB::table('uoms')->orderBy('name','ASC')->lists('name','id');
+        return view('products.create',compact('uom'));
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateProductRequestRequest $request)
     {
         $product = Product::create($request->all());
         return \Redirect::route('products.index');
@@ -50,15 +62,7 @@ class ProductsController extends Controller {
         return view('products.profile', compact('product'));
     }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-        return view('products.create');
-	}
+
 
 
 
@@ -73,7 +77,8 @@ class ProductsController extends Controller {
 	public function edit($id)
 	{
         $product = Product::findOrFail($id);
-        return view('products.edit', compact('product'));
+        $uom = \DB::table('uoms')->orderBy('name','ASC')->lists('name','id');
+        return view('products.edit', compact('product','uom'));
 	}
 
 	/**
@@ -82,7 +87,7 @@ class ProductsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-    public function update(Request $request, $id)
+    public function update(EditProductRequest $request, $id)
     {
         $product = Product::findOrFail($id);
         $product->fill($request->all());

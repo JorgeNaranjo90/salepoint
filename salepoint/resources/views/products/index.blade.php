@@ -1,5 +1,5 @@
 <!-- Esta linea hay que cambiarla por la de su respectivo menu-->
-{{--@include('products.verticalnav')--}}
+@include('settings.verticalnav')
 
 <!-- Esta linea va de cajon -->
 @extends('generalPartials.general_view')

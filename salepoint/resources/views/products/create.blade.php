@@ -1,4 +1,4 @@
-{{--@include('settings.verticalnav')--}}
+@include('settings.verticalnav')
 @extends('generalPartials.general_view')
 
 @section('title')
