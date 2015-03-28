@@ -11,9 +11,9 @@
 @endsection
 
 {!! Form::model($partner, ['route'=>['partners.update',$partner->id],'method'=>'PUT','files'=>true]) !!}
-<button type="submit" class="btn btn-info btn-sm"  onclick="return confirm('Are you sure updated this partner?')"> <i class="fa fa-floppy-o" ></i> Save</button>
+<button type="submit" class="btn btn-info btn-sm" > <i class="fa fa-floppy-o" ></i> Save</button>
 <a class="btn btn-danger btn-sm" href="{{route('partners.index')}}"><i class="fa fa-times"></i>Cancel</a>
-<a class="btn btn-success btn-sm" onclick="return confirm('Are you sure created this partner?')"  href="{{route('partners.create')}}"><i class="fa fa-user-plus"></i> Create</a>
+<a class="btn btn-success btn-sm" href="{{route('partners.create')}}"><i class="fa fa-user-plus"></i> Create</a>
 @endsection
 
 @section('filters')
