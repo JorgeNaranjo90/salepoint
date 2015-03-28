@@ -30,6 +30,13 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users', 'middleware' 
     Route::resource('users', 'UsersController');
 });
 
+Route::group(['namespace'=>'Partners', 'middleware' => 'auth'], function() {
+    Route::pattern('partners', '[0-9]+');
+    Route::get('partners/customer', 'PartnersController@customer');
+    Route::get('partners/supplier', 'PartnersController@supplier');
+    Route::resource('partners', 'PartnersController');
+});
+
 
 Route::group(['prefix'=>'settings','namespace'=>'Settings\Companys', 'middleware'=>'auth'],function(){
     Route::resource('company','CompanysController');
@@ -42,7 +49,6 @@ Route::group(['prefix'=>'settings','namespace'=>'Settings\Currencys','middleware
 Route::group(['prefix'=>'settings','namespace'=>'Settings\FiscalRegimens','middleware'=>'auth'],function(){
     Route::resource('fiscalRegimen','FiscalRegimensController');
 });
-
 
 Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Uoms', 'middleware' => 'auth'], function(){
     Route::resource('uoms', 'UomsController');

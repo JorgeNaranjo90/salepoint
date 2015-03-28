@@ -2,7 +2,7 @@
 @extends('generalPartials.general_view')
 
 @section('title')
-    Create Partner
+    Create CertificateSAT
 @endsection
 
 @section('buttons')

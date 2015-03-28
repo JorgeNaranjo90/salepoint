@@ -2,7 +2,7 @@
 @extends('generalPartials.general_view')
 
 @section('title')
-    Profile Tax
+    Profile Certificate
 @endsection
 
 @section('buttons')

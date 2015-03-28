@@ -9,7 +9,7 @@
     </div>
     <div class="form-group col-lg-4">
         {!! Form::label('certificatePemFile', 'Certificate File:') !!}
-        {!! Form::text('certificatePemFile',null,['class' => 'form-control','placeholder' => 'Certificate File']) !!}
+        {!! Form::file('certificatePemFile',null,['class' => 'form-control','placeholder' => 'Certificate File']) !!}
     </div>
 </div>
 <div class="row">
