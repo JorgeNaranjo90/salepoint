@@ -13,6 +13,7 @@ class TaxsController extends Controller {
     protected  $request;
 
     public function __construct(Request $request){
+        $this->middleware('auth');
         $this->request = $request;
     }
 
@@ -99,7 +100,7 @@ class TaxsController extends Controller {
 	{
         $tax = Tax::findOrFail($id);
         $tax->delete();
-        Session::flash('message', $tax->name .' was delete !');
+        Session::flash('message', $tax->name .' was deleted !');
         return \Redirect::route('taxs.index');
 	}
 

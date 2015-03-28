@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder {
         $this->call('PartnersSeeder');
         $this->call('CurrencyTableSeeder');
         $this->call('TaxsSeeder');
+        // $this->call('CertificateSatSeeder');
 	}
 }

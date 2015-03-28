@@ -3,10 +3,10 @@
         <a href="{{ route('settings.users.index') }}"> Users</a>
         <a href="{{ route('partners.index') }}">Partners</a>
         <a href="{{ route('settings.company.index') }}">Company</a>
-        <a href="{{ route('settings.users.index') }}">General Settings</a>
         <h5>General Settings</h5>
         <a href="{{ route('settings.fiscalRegimen.index') }}">Fiscal Regimens</a>
         <a href="{{ route('settings.currency.index') }}"> Currency</a>
         <a href="{{ route('taxs.index') }}">Taxs </a>
+        <a href="{{ route('settings.certificatesats.index') }}">Certificate Sat</a>
     </li>
 @endsection
