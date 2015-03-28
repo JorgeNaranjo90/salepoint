@@ -16,8 +16,6 @@ class Partner extends Model {
      */
     protected $table = 'partners';
 
-    //protected $tableCity ='citys';
-
     /**
      * The attributes that are mass assignable.
      *

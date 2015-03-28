@@ -98,7 +98,7 @@ class PartnersController extends Controller {
     {
         $partner = Partner::findOrFail($id);
         $partner->delete();
-        Session::flash('message', $partner->name.' was delete !');
+        Session::flash('message', $partner->name.' was deleted !');
         return \Redirect::route('partners.index');
     }
 

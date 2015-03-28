@@ -33,6 +33,12 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users', 'middleware' 
 
 Route::resource('partners', 'Partners\PartnersController', ['middleware' => 'auth']);
 Route::resource('taxs', 'Taxs\TaxsController',['middleware' => 'auth']);
+
+Route::group(['prefix'=>'settings', 'namespace'=>'Settings\CertificateSats', 'middleware' => 'auth'], function(){
+    Route::resource('certificatesats', 'CertificatesatsController');
+});
+
+
 //Language
 
 Route::get('languageEn', ['as' => 'languageen', 'uses' => 'GeneralController@setLangEn']);
