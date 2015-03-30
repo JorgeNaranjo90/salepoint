@@ -47,7 +47,12 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Uoms', 'middleware' =
     Route::resource('uoms', 'UomsController');
 });
 
+Route::resource('paymentMethods', 'PaymentMethods\PaymentMethodsController');
+
+Route::resource('paramPacs', 'ParamPacs\ParamPacsController');
+
 Route::resource('partners', 'Partners\PartnersController');
+
 
 
 //Language
