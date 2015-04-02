@@ -36,6 +36,12 @@ class PartnersController extends Controller {
         return view('partners.index',compact('partners'));
     }
 
+    public function delete(Request $request)
+    {
+        $partners = Partner::filterAndPaginateDelete($request->get('name'));
+        return view('partners.index',compact('partners'));
+    }
+
     public function create()
     {
         $countrys = \DB::table('countrys')->orderBy('name','ASC')->lists('name','id');

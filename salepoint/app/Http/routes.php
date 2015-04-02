@@ -34,6 +34,7 @@ Route::group(['namespace'=>'Partners', 'middleware' => 'auth'], function() {
     Route::pattern('partners', '[0-9]+');
     Route::get('partners/customer', 'PartnersController@customer');
     Route::get('partners/supplier', 'PartnersController@supplier');
+    Route::get('partners/delete', 'PartnersController@delete');
     Route::resource('partners', 'PartnersController');
 });
 
