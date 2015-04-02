@@ -43,7 +43,7 @@ class ProductsController extends Controller {
      *
      * @return Response
      */
-    public function store(CreateProductRequestRequest $request)
+    public function store(CreateProductRequest $request)
     {
         $product = Product::create($request->all());
         return \Redirect::route('products.index');
