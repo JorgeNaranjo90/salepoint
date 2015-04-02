@@ -1,52 +1,68 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\Products;
+
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\CreateProductRequest;
+use App\Http\Requests\EditProductRequest;
+use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+// Library of DOMPdf
+use App\Http\Controllers\Pdf;
 
 class ProductsController extends Controller {
 
+    protected  $request;
+
+    public function __construct(Request $request){
+        $this->request = $request;
+    }
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
-		//
-	}
+    public function index(Request $request)
+    {
+        $products = Product::filterAndPaginate($request->get('name'));
+        return view('products.index', compact('products'));
+    }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        $uom = \DB::table('uoms')->orderBy('name','ASC')->lists('name','id');
+        return view('products.create',compact('uom'));
+    }
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store(CreateProductRequest $request)
+    {
+        $product = Product::create($request->all());
+        return \Redirect::route('products.index');
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('products.profile', compact('product'));
+    }
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -56,7 +72,9 @@ class ProductsController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+        $product = Product::findOrFail($id);
+        $uom = \DB::table('uoms')->orderBy('name','ASC')->lists('name','id');
+        return view('products.edit', compact('product','uom'));
 	}
 
 	/**
@@ -65,9 +83,12 @@ class ProductsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{
-		//
+    public function update(EditProductRequest $request, $id)
+    {
+        $product = Product::findOrFail($id);
+        $product->fill($request->all());
+        $product->save();
+        return \Redirect::back();
 	}
 
 	/**
@@ -78,7 +99,22 @@ class ProductsController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+        $product = Product::findOrFail($id);
+        $product->delete();
+        Session::flash('message', $product->name.' was delete !');
+        return \Redirect::route('products.index');
 	}
+
+    public function report(Request $request,pdf $pdf,DOMPDF $dompdf)
+    {
+        $products = Product::filterAndPaginate($request->get('name'));
+        $pdf->load();
+        $dompdf = new DOMPDF();
+        $dompdf->load_html($products);
+        $dompdf->render();
+        $dompdf->stream("report.pdf");
+        return view('products.reports.report', compact('products'));
+
+    }
 
 }

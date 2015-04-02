@@ -146,7 +146,8 @@ return [
 		'App\Providers\RouteServiceProvider',
 
         /* Vendor providers*/
-        'Collective\Html\HtmlServiceProvider',
+        'Collective\Html\HtmlServiceProvider'
+
 
 	],
 

@@ -13,7 +13,10 @@
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
                 @if (empty(Auth::guest()))
-                    <li><a href="{{ route('partners.index') }}">Partners</a></li>
+                    <li><a href="/sales">Sales</a></li>
+                    <li><a href="#">Purchase</a></li>
+                    <li><a href="#">Warehouse</a></li>
+                    <li><a href="#">Reports</a></li>
                     <li><a href="/settings">Settings</a></li>
                 @endif
             </ul>
