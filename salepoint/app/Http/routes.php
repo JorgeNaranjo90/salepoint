@@ -56,6 +56,9 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Uoms', 'middleware' =
     Route::resource('uoms', 'UomsController');
 });
 
+Route::resource('paymentMethods', 'PaymentMethods\PaymentMethodsController', ['middleware' => 'auth']);
+
+Route::resource('paramPacs', 'ParamPacs\ParamPacsController', ['middleware' => 'auth']);
 
 Route::resource('partners', 'Partners\PartnersController', ['middleware' => 'auth']);
 Route::resource('taxs', 'Taxs\TaxsController',['middleware' => 'auth']);
@@ -65,13 +68,11 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Certificatesats', 'mi
     Route::resource('certificatesats', 'CertificatesatsController');
 
 });
-
 Route::group(['namespace'=>'Products','middleware' => 'auth'], function() {
     Route::pattern('products', '[0-9]+');
     Route::get('products/report', 'ProductsController@report');
     Route::resource('products', 'ProductsController');
 });
-
 
 //Language
 

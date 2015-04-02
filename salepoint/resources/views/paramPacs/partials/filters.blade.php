@@ -1,4 +1,4 @@
-{!! Form::model(Request::only(['name']),['route'  => 'settings.uoms.index',
+{!! Form::model(Request::only(['name']),['route'  => 'paramPacs.index',
 'method' => 'GET',
 'class'  => 'navbar-left pull-right',
 'role'   => 'search',
@@ -8,5 +8,5 @@
         <span class="input-group-btn">
             <button class="btn btn-default btn-sm" type="submit"><i class="fa fa-search"></i></button>
           </span>
-</div><!-- /input-group -->
+</div>
 {!! Form::close() !!}
