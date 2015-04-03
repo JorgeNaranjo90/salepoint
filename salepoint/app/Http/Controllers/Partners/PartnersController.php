@@ -11,23 +11,6 @@ use Illuminate\Http\Request;
 
 class PartnersController extends Controller {
 
-    // somewhere early in your project's loading, require the Composer autoloader
-// see: http://getcomposer.org/doc/00-intro.md
-/*require 'vendor/autoload.php';
-
-define('DOMPDF_ENABLE_AUTOLOAD', false);
-require_once '../vendor/dompdf/dompdf/dompdf_config.inc.php';
-require_once("dompdf_config.inc.php");
-
-$html =
-'<html><body>'.
-'<p> Frist Test of PDF library</p>'.
-'</body></html>';
-
-$dompdf = new DOMPDF();
-$dompdf->load_html($html);
-$dompdf->render();
-$dompdf->stream("sample.pdf");*/
 
     protected  $request;
 
@@ -137,10 +120,6 @@ $dompdf->stream("sample.pdf");*/
         return \Redirect::route('partners.index');
     }
 
-    public function report()
-    {
-        return view('partners.report');
-    }
 
 
 

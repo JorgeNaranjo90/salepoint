@@ -2,7 +2,7 @@
 @extends('generalPartials.general_view')
 
 @section('title')
-    Profile Product
+    {{trans('products.product_profile')}}
 @endsection
 
 @section('buttons')

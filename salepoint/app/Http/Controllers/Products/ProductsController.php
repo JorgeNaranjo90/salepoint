@@ -8,8 +8,7 @@ use App\Http\Requests\EditProductRequest;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-// Library of DOMPdf
-use App\Http\Controllers\Pdf;
+use App\Http\Controllers\PdfLibrary;
 
 class ProductsController extends Controller {
 
@@ -18,6 +17,19 @@ class ProductsController extends Controller {
     public function __construct(Request $request){
         $this->request = $request;
     }
+
+    public function report(Request $request,PdfLibrary $library)
+    {
+        $library->load();
+        $dompdf = new \DOMPDF();
+        $products = Product::filterAndPaginate($request->get('name'));
+        $html = view('products.report',compact('products'));
+        $dompdf->load_html($html);
+        $dompdf->get_css();
+        $dompdf->render();
+        $dompdf->stream("products.pdf");
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -104,17 +116,5 @@ class ProductsController extends Controller {
         Session::flash('message', $product->name.' was delete !');
         return \Redirect::route('products.index');
 	}
-
-    public function report(Request $request,pdf $pdf,DOMPDF $dompdf)
-    {
-        $products = Product::filterAndPaginate($request->get('name'));
-        $pdf->load();
-        $dompdf = new DOMPDF();
-        $dompdf->load_html($products);
-        $dompdf->render();
-        $dompdf->stream("report.pdf");
-        return view('products.reports.report', compact('products'));
-
-    }
 
 }
