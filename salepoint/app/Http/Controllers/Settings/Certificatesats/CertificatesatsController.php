@@ -8,7 +8,6 @@ use App\Http\Requests\CreateCertificateSatsRequest;
 use App\Http\Requests\EditCertificateSatsRequest;
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\Http\Controllers\PdfLibrary;
 
 
 class CertificatesatsController extends Controller {
@@ -19,19 +18,6 @@ class CertificatesatsController extends Controller {
         $this->middleware('auth');
         $this->request = $request;
     }
-
-    public function report(Request $request,PdfLibrary $library)
-    {
-        $library->load();
-        $dompdf = new \DOMPDF();
-        $certificatesats = CertificateSats::filterAndPaginate($request->get('name'));
-        $html = view('settings.certificatesats.report',compact('certificatesats'));
-        $dompdf->load_html($html);
-        $dompdf->get_css();
-        $dompdf->render();
-        $dompdf->stream("certificate_sat.pdf");
-    }
-
 
 	/**
 	 * Display a listing of the resource.

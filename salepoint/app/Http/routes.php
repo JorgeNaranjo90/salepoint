@@ -60,8 +60,6 @@ Route::resource('taxs', 'Taxs\TaxsController',['middleware' => 'auth']);
 
 
 Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Certificatesats', 'middleware' => 'auth'], function(){
-    Route::pattern('settings/certificatesats', '[0-9]+');
-    Route::get('settings/certificatesats/report', 'Settings\certificatesats@report');
     Route::resource('certificatesats', 'CertificatesatsController');
 
 });
