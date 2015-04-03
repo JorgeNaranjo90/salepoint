@@ -6,9 +6,7 @@
 @endsection
 
 @section('buttons')
-    <a class="btn btn-success btn-sm" href="{{route('partners.create')}}"><i class="fa fa-user-plus"></i>
-        {!! Form::label(trans('partners.Create')) !!}
-    </a>
+    <a class="btn btn-success btn-sm" href="{{route('partners.create')}}"><i class="fa fa-user-plus"></i>Create</a>
 @endsection
 @section('filters')
     @include('partners.partials.filters')

@@ -3,49 +3,49 @@
 
         <td>
             <b>
-                {!! Form::label(trans('partners.Image')) !!}
+                {!! Form::label(trans('partners.image')) !!}
             </b>
 
         </td>
         <td>
             <b>
-                {!! Form::label(trans('partners.Name')) !!}
+                {!! Form::label(trans('partners.name')) !!}
             </b>
         </td>
         <th>
             <b>
-                {!! Form::label(trans('partners.Last Name')) !!}
+                {!! Form::label(trans('partners.last_name')) !!}
             </b>
 
         </th>
         <th>
             <b>
-                {!! Form::label('RFC') !!}
+                {!! Form::label('rfc') !!}
             </b>
         </th>
         <th>
             <b>
-                {!! Form::label(trans('partners.Home Phone')) !!}
+                {!! Form::label(trans('partners.home_phone')) !!}
             </b>
         </th>
         <th>
             <b>
-                {!! Form::label(trans('partners.Email')) !!}
+                {!! Form::label(trans('partners.email')) !!}
             </b>
         </th>
         <th>
             <b>
-                {!! Form::label(trans('partners.City')) !!}
+                {!! Form::label(trans('partners.city_name')) !!}
             </b>
         </th>
         <th>
             <b>
-                {!! Form::label(trans('partners.State')) !!}
+                {!! Form::label(trans('partners.state_name')) !!}
             </b>
         </th>
         <th>
             <b>
-                {!! Form::label(trans('partners.Country')) !!}
+                {!! Form::label(trans('partners.country_name')) !!}
             </b>
         </th>
     </tr>

@@ -1,13 +1,10 @@
 <?php namespace App\Http\Controllers\Products;
 
-require_once('../vendor/dompdf/dompdf/dompdf_config.inc.php');
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Pdf;
-use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\EditProductRequest;
 use App\Product;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -21,10 +18,6 @@ class ProductsController extends Controller {
         $this->request = $request;
     }
 
-    public function report(Request $request)
-    {
-        return 'hola';
-    }
 	/**
 	 * Display a listing of the resource.
 	 *
