@@ -2,7 +2,8 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\CreateUomRequest;
+use App\Http\Requests\EditUomRequest;
 use App\Uom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -38,7 +39,7 @@ class UomsController extends Controller {
      *
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateUomRequest $request)
     {
 
         $uom = Uom::create($request->all());
@@ -88,7 +89,7 @@ class UomsController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(EditUomRequest $request, $id)
     {
         $uom = Uom::findOrFail($id);
         $uom->fill($request->all());

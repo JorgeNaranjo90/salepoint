@@ -30,6 +30,16 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users', 'middleware' 
     Route::resource('users', 'UsersController');
 });
 
+Route::group(['namespace'=>'Partners', 'middleware' => 'auth'], function() {
+    Route::pattern('partners', '[0-9]+');
+    Route::get('partners/customer', 'PartnersController@customer');
+    Route::get('partners/supplier', 'PartnersController@supplier');
+    Route::get('partners/delete', 'PartnersController@delete');
+    Route::get('partners', 'PartnersController@report');
+    Route::resource('partners', 'PartnersController');
+});
+
+
 Route::group(['prefix'=>'settings','namespace'=>'Settings\Companys', 'middleware'=>'auth'],function(){
     Route::resource('company','CompanysController');
 });
@@ -42,18 +52,27 @@ Route::group(['prefix'=>'settings','namespace'=>'Settings\FiscalRegimens','middl
     Route::resource('fiscalRegimen','FiscalRegimensController');
 });
 
-
 Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Uoms', 'middleware' => 'auth'], function(){
     Route::resource('uoms', 'UomsController');
 });
 
-Route::resource('paymentMethods', 'PaymentMethods\PaymentMethodsController');
+Route::resource('paymentMethods', 'PaymentMethods\PaymentMethodsController', ['middleware' => 'auth']);
 
-Route::resource('paramPacs', 'ParamPacs\ParamPacsController');
+Route::resource('paramPacs', 'ParamPacs\ParamPacsController', ['middleware' => 'auth']);
 
-Route::resource('partners', 'Partners\PartnersController');
+Route::resource('partners', 'Partners\PartnersController', ['middleware' => 'auth']);
+Route::resource('taxs', 'Taxs\TaxsController',['middleware' => 'auth']);
 
 
+Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Certificatesats', 'middleware' => 'auth'], function(){
+    Route::resource('certificatesats', 'CertificatesatsController');
+
+});
+Route::group(['namespace'=>'Products','middleware' => 'auth'], function() {
+    Route::pattern('products', '[0-9]+');
+    Route::get('products/report', 'ProductsController@report');
+    Route::resource('products', 'ProductsController');
+});
 
 //Language
 

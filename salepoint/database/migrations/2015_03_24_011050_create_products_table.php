@@ -25,15 +25,9 @@ class CreateProductsTable extends Migration {
             $table->string('ean13')->nullable();
             $table->binary('image')->nullable();
             $table->softDeletes();
-            $table->integer('user_id')->unsigned();
-//            $table->int('company_id')->unsigned();
             $table->integer('uom_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')
-                ->on('users')->onDelete('cascade')->onUpdate('cascade');
-//            $table->foreign('company_id')->references('id')
-//                ->on('companys')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('uom_id')->references('id')
                 ->on('uoms')->onDelete('cascade')->onUpdate('cascade');
         });

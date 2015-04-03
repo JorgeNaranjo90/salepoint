@@ -13,6 +13,7 @@
 
 <a class="btn btn-info btn-sm" href="{{ route('partners.edit', $partner->id) }}"><i class="fa fa-pencil"></i> Edit</a>
 <a class="btn btn-success btn-sm" href="{{ route('partners.create') }}"><i class="fa fa-user-plus"></i> Create</a>
+<a class="btn btn-success btn-sm" href="{{ route('partners.report') }}"><i class="fa fa-user-plus"></i> Report </a>
 @endsection
 
 @section('filters')
