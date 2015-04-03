@@ -1,0 +1,43 @@
+<?php
+
+return [
+
+    'partners' => 'Partners',
+    'name' => 'Name',
+    'Name' => 'Name',
+    'lastName' => 'Last Name',
+    'Last Name' => 'Last Name',
+    'street' => 'Street',
+    'Exterior Number' => 'Exterior Number',
+    'Interior Number' => 'Interior Number',
+    'Colony' => 'Colony',
+    'Zip' => 'Zip',
+    'Locality' => 'Locality',
+    'Country Name' => 'Country Name',
+    'State Name' => 'State Name',
+    'City Name' => 'City Name',
+    'Birthdate' => 'Birthdate',
+    'RFC' => 'RFC',
+    'Home Phone' => 'Home Phone',
+    'Cell Phone' => 'Cell Phone',
+    'Fax' => 'Fax',
+    'Email' => 'Email Address',
+    'Customer' => 'Customer',
+    'Supplier' => 'Supplier',
+    'Image 50 x 50px' => 'Image 50 x 50px',
+    'Image' => 'Image',
+    'The name field is required' => 'The name field is required',
+    'Create Partner' => 'Create Partner',
+    'Partner name' => 'Partner Name',
+    'Partner last name' => 'Partner Last Name',
+    'Street' => 'Street',
+    'Exterior number' => 'Exterior Number',
+    'Interior number' => 'Interior Number',
+    'City' => 'City',
+    'State' => 'State',
+    'Country' => 'Country',
+    'Create' => 'Create',
+    'Save' => 'Save',
+    'Cancel' => 'Cancel'
+
+];

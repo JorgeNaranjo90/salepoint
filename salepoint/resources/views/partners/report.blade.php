@@ -1,5 +1,5 @@
-
 <table class="table table-striped" border=1 cellspacing=0 cellpadding=2 bordercolor="#F0EEED">
+
     @include('partners.partials.fields_table')
     @foreach($partners as $partner)
         <tr onclick="window.document.location='{{ route('partners.show', $partner->id) }}';">
@@ -15,5 +15,3 @@
         </tr>
     @endforeach
 </table>
-
-

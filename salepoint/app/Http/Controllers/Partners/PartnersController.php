@@ -8,6 +8,7 @@ use  Illuminate\Support\Facades;
 use  Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use App\Http\Controllers\PdfLibrary;
 
 class PartnersController extends Controller {
 
@@ -18,9 +19,22 @@ class PartnersController extends Controller {
         $this->request = $request;
     }
 
+    public function report(Request $request,PdfLibrary $library)
+    {
+        $library->load();
+        $dompdf = new \DOMPDF();
+        $partners = Partner::filterAndPaginate($request->get('name'));
+        $html = view('partners.report',compact('partners'));
+        $dompdf->load_html($html);
+        $dompdf->get_css();
+        $dompdf->render();
+        $dompdf->stream("partners.pdf");
+    }
+
     public function index(Request $request)
     {
         $partners = Partner::filterAndPaginate($request->get('name'));
+        //$partners2 = DB::table('partners')->where('partners.deleted_at','is','null')->count();
         return view('partners.index',compact('partners'));
     }
 
@@ -36,14 +50,20 @@ class PartnersController extends Controller {
         return view('partners.index',compact('partners'));
     }
 
+    public function delete(Request $request)
+    {
+        $partners = Partner::filterAndPaginateDelete($request->get('name'));
+        $p = "/delete";
+        return view('partners.index'.$p,compact('partners'));
+
+    }
+
     public function create()
     {
         $countrys = \DB::table('countrys')->orderBy('name','ASC')->lists('name','id');
         $states = \DB::table('states')->orderBy('name','ASC')->lists('name','id');
         $citys = \DB::table('citys')->orderBy('name','ASC')->lists('name','id');
         return view('partners.create',compact('countrys','states','citys'));
-
-
 
     }
 
@@ -75,8 +95,10 @@ class PartnersController extends Controller {
     public function edit($id)
     {
         $partner = Partner::findOrFail($id);
-        $countrys = \DB::table('countrys')->orderBy('name','ASC')->lists('name','id');
+        $countrys = \DB::table('countrys')->get('name','id')->orderBy('name','ASC')->lists('name','id');
         $states = \DB::table('states')->orderBy('name','ASC')->lists('name','id');
+       /* $states = \DB::table('states')->join('countrys','states.country_id','=','countrys.id')->
+            get('states.id','states.name')->orderBy('states.name','ASC')->lists('states.name','id');*/
         $citys = \DB::table('citys')->orderBy('name','ASC')->lists('name','id');
         return view('partners.edit',compact('partner','countrys','states','citys'));
     }

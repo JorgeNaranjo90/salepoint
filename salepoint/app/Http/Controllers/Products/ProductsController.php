@@ -1,7 +1,9 @@
 <?php namespace App\Http\Controllers\Products;
 
+require_once('../vendor/dompdf/dompdf/dompdf_config.inc.php');
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Pdf;
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\EditProductRequest;
 use App\Product;
@@ -9,12 +11,19 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
+
 class ProductsController extends Controller {
 
     protected  $request;
+    protected  $dompdf;
 
     public function __construct(Request $request){
         $this->request = $request;
+    }
+
+    public function report(Request $request)
+    {
+        return 'hola';
     }
 	/**
 	 * Display a listing of the resource.
@@ -61,11 +70,6 @@ class ProductsController extends Controller {
         $product = Product::findOrFail($id);
         return view('products.profile', compact('product'));
     }
-
-
-
-
-
 
 
 	/**

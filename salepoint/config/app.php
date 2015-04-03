@@ -148,6 +148,9 @@ return [
         /* Vendor providers*/
         'Collective\Html\HtmlServiceProvider',
 
+        /*DOMPDF Library*/
+        //'Barryvdh\DomPDF\ServiceProvider'
+
 	],
 
 	/*
@@ -198,6 +201,9 @@ return [
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
 
-	],
+        /*DOMPDF Library*/
+        //'PDF'        => 'Barryvdh\DomPDF\Facade'
+
+    	],
 
 ];

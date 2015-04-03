@@ -34,6 +34,8 @@ Route::group(['namespace'=>'Partners', 'middleware' => 'auth'], function() {
     Route::pattern('partners', '[0-9]+');
     Route::get('partners/customer', 'PartnersController@customer');
     Route::get('partners/supplier', 'PartnersController@supplier');
+    Route::get('partners/delete', 'PartnersController@delete');
+    Route::get('partners/report', 'PartnersController@report');
     Route::resource('partners', 'PartnersController');
 });
 
@@ -55,7 +57,7 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Uoms', 'middleware' =
 });
 
 
-Route::resource('partners', 'Partners\PartnersController', ['middleware' => 'auth']);
+
 Route::resource('taxs', 'Taxs\TaxsController',['middleware' => 'auth']);
 
 
@@ -65,6 +67,8 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Certificatesats', 'mi
 });
 
 Route::group(['namespace'=>'Products','middleware' => 'auth'], function() {
+    Route::pattern('products', '[0-9]+');
+    Route::get('products/report', 'ProductsController@report');
     Route::resource('products', 'ProductsController');
 });
 

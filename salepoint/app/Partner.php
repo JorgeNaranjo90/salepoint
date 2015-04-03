@@ -1,7 +1,10 @@
 <?php namespace App;
 
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class Partner extends Model {
 
@@ -15,6 +18,8 @@ class Partner extends Model {
      * @var string
      */
     protected $table = 'partners';
+
+    protected $table2 = 'selectPartners';
 
     /**
      * The attributes that are mass assignable.
@@ -35,9 +40,7 @@ class Partner extends Model {
         }
     }
 
-
-
-    public static function filterAndPaginate($name)
+   /*public static function filterAndPaginate($name)
     {
         return Partner::name($name)
             ->join('countrys','partners.country_id','=','countrys.id')
@@ -50,9 +53,21 @@ class Partner extends Model {
             ->orderBy('partners.name','ASC')
             ->paginate();
 
-    }
+    }*/
 
-    public static function filterAndPaginateCustomer($name)
+    public static function filterAndPaginate($name)
+    {
+        return \DB::table('selectPartners')
+            ->where('name','like','%'.$name.'%')
+            ->paginate();
+
+    }
+    public static function filterAndPaginateReport($name)
+    {
+        return \DB::unprepared('CALL partnersReport()');
+
+    }
+    /*public static function filterAndPaginateCustomer($name)
     {
         return Partner::name($name)
             ->join('countrys','partners.country_id','=','countrys.id')
@@ -66,9 +81,24 @@ class Partner extends Model {
             ->orderBy('partners.name','ASC')
             ->paginate();
 
+    }*/
+    public static function filterAndPaginateCustomer($name)
+    {
+        return \DB::table('selectPartners')
+            ->where('customer','=',1,'and','name','like','%'.$name.'%')
+            ->paginate();
+
     }
 
     public static function filterAndPaginateSupplier($name)
+    {
+        return \DB::table('selectPartners')
+            ->where('supplier','=',1,'and','name','like','%'.$name.'%')
+            ->paginate();
+
+    }
+
+    /*public static function filterAndPaginateSupplier($name)
     {
         return Partner::name($name)
             ->join('countrys','partners.country_id','=','countrys.id')
@@ -82,14 +112,31 @@ class Partner extends Model {
             ->orderBy('partners.name','ASC')
             ->paginate();
 
+    }*/
+
+    public static function filterAndPaginateDelete($name)
+    {
+        return Partner::name($name)
+            ->join('countrys','partners.country_id','=','countrys.id')
+            ->join('citys','partners.city_id','=','citys.id')
+            ->join('states','partners.state_id','=','states.id')
+            ->select('partners.*',
+                'countrys.name as country_name',
+                'citys.name as city_name',
+                'states.name as state_name')
+            ->onlyTrashed()
+            ->orderBy('partners.name','ASC')
+            ->paginate();
+
     }
 
 
     public function scopeName($query, $name)
     {
         if (trim($name) != "") {
-            $query->where("partners.name", "LIKE", "%$name%");
+           $query->where("partners.name", "LIKE", "%$name%");
         }
+
     }
 
 
