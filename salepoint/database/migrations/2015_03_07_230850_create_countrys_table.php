@@ -20,6 +20,12 @@ class CreateCountrysTable extends Migration {
             $table->string('abbreviation')->nullable();
             $table->timestamps();
 		});
+
+        \DB::table('countrys')->insertGetId(array(
+            'name' => 'México',
+            'code' => 52,
+            'abbreviation' => 'MX'
+        ));
 	}
 
 	/**

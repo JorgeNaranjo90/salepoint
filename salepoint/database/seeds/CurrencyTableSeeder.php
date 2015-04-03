@@ -12,7 +12,7 @@ class CurrencyTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 0; $i < 10; $i++) {
              \DB::table('currencys')->insert(array(
                 'name' => $faker->currencycode,
             ));

@@ -22,7 +22,6 @@ class ParamPacs extends Migration {
             $table->string('userPac',40);
             $table->string('passwordPac',50);
             $table->string('certificateLink',100);
-            $table->string('active',10);
             $table->softDeletes();
             $table->timestamps();
         });
