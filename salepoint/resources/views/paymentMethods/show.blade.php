@@ -22,6 +22,6 @@
     <div class="col-lg-2">
     </div>
     <div class="col-lg-9">
-        <h1>{{ $payment->typePayment }}</h1>
+        <h1>{{ $payment->name }}</h1>
     </div>
 @endsection

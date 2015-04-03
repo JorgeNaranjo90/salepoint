@@ -20,5 +20,5 @@
 
 @section('body_page')
     @include('paymentMethods.partials.table')
-    {!! $payment->appends(Request::only(['type']))->render() !!}
+    {!! $payment->appends(Request::only(['name']))->render() !!}
 @endsection
