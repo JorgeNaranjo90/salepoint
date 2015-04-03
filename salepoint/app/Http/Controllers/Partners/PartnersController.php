@@ -8,32 +8,27 @@ use  Illuminate\Support\Facades;
 use  Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use App\Http\Controllers\PdfLibrary;
 
 class PartnersController extends Controller {
-
-    // somewhere early in your project's loading, require the Composer autoloader
-// see: http://getcomposer.org/doc/00-intro.md
-/*require 'vendor/autoload.php';
-
-define('DOMPDF_ENABLE_AUTOLOAD', false);
-require_once '../vendor/dompdf/dompdf/dompdf_config.inc.php';
-require_once("dompdf_config.inc.php");
-
-$html =
-'<html><body>'.
-'<p> Frist Test of PDF library</p>'.
-'</body></html>';
-
-$dompdf = new DOMPDF();
-$dompdf->load_html($html);
-$dompdf->render();
-$dompdf->stream("sample.pdf");*/
 
     protected  $request;
 
     public function __construct(Request $request){
         $this->middleware('auth');
         $this->request = $request;
+    }
+
+    public function report(Request $request,PdfLibrary $library)
+    {
+        $library->load();
+        $dompdf = new \DOMPDF();
+        $partners = Partner::filterAndPaginate($request->get('name'));
+        $html = view('partners.report',compact('partners'));
+        $dompdf->load_html($html);
+        $dompdf->get_css();
+        $dompdf->render();
+        $dompdf->stream("partners.pdf");
     }
 
     public function index(Request $request)
@@ -58,6 +53,7 @@ $dompdf->stream("sample.pdf");*/
     {
         $partners = Partner::filterAndPaginateDelete($request->get('name'));
         return view('partners.index',compact('partners'));
+
     }
 
     public function create()
@@ -66,8 +62,6 @@ $dompdf->stream("sample.pdf");*/
         $states = \DB::table('states')->orderBy('name','ASC')->lists('name','id');
         $citys = \DB::table('citys')->orderBy('name','ASC')->lists('name','id');
         return view('partners.create',compact('countrys','states','citys'));
-
-
 
     }
 
@@ -135,11 +129,6 @@ $dompdf->stream("sample.pdf");*/
         $partner->delete();
         Session::flash('message', $partner->name.' was deleted !');
         return \Redirect::route('partners.index');
-    }
-
-    public function report()
-    {
-        return view('partners.report');
     }
 
 

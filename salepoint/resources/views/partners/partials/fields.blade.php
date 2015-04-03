@@ -1,96 +1,96 @@
 <div class="row">
     <div class="form-group col-lg-6">
-        {!! Form::label('name', 'Name:') !!}
-        {!! Form::text('name',null,['class' => 'form-control requiered_field','placeholder' => 'Partner name' ]) !!}
+        {!! Form::label('name',trans('partners.name')) !!}
+        {!! Form::text('name',null,['class' => 'form-control requiered_field','placeholder' => trans('partners.partner_name') ]) !!}
     </div>
     <div class="form-group col-lg-6">
-        {!! Form::label('lastName', 'Last Name:') !!}
-        {!! Form::text('lastName',null,['class' => 'form-control','placeholder' => 'Partner last name']) !!}
+        {!! Form::label('lastName', trans('partners.last_name')) !!}
+        {!! Form::text('lastName',null,['class' => 'form-control','placeholder' => trans('partners.partner_last_name')]) !!}
     </div>
 </div>
 <div class="row">
     <div class="form-group col-lg-4">
 
-        {!! Form::label('street', 'Street:') !!}
-        {!! Form::text('street',null,['class' => 'form-control','placeholder' => 'Street']) !!}
+        {!! Form::label('street', trans('partners.street')) !!}
+        {!! Form::text('street',null,['class' => 'form-control','placeholder' => trans('partners.street')]) !!}
     </div>
     <div class="form-group col-lg-4">
-        {!! Form::label('noExt', 'Exterior Number:') !!}
-        {!! Form::number('noExt',null,['class' => 'form-control','placeholder' => 'Exterior number']) !!}
+        {!! Form::label('noExt', trans('partners.exterior_number')) !!}
+        {!! Form::number('noExt',null,['class' => 'form-control','placeholder' => trans('partners.exterior_number')]) !!}
     </div>
     <div class="form-group col-lg-4">
-        {!! Form::label('noInt', 'Interior Number:') !!}
-        {!! Form::number('noInt',null,['class' => 'form-control','placeholder' => 'Interior number']) !!}
+        {!! Form::label('noInt', trans('partners.interior_number')) !!}
+        {!! Form::number('noInt',null,['class' => 'form-control','placeholder' => trans('partners.interior_number')]) !!}
     </div>
 </div>
 <div class="row">
     <div class="form-group col-lg-5">
-        {!! Form::label('colony', 'Colony:') !!}
-        {!! Form::text('colony',null,['class' => 'form-control','placeholder' => 'Colony']) !!}
+        {!! Form::label('colony', trans('partners.colony')) !!}
+        {!! Form::text('colony',null,['class' => 'form-control','placeholder' => trans('partners.colony')]) !!}
     </div>
     <div class="form-group col-lg-3">
-        {!! Form::label('zip', 'Zip:') !!}
-        {!! Form::number('zip',null,['class' => 'form-control','placeholder' => 'Zip']) !!}
+        {!! Form::label('zip', trans('partners.zip')) !!}
+        {!! Form::number('zip',null,['class' => 'form-control','placeholder' => trans('partners.zip')]) !!}
     </div>
     <div class="form-group col-lg-4">
-        {!! Form::label('locality', 'Locality:') !!}
-        {!! Form::text('locality',null,['class' => 'form-control','placeholder' => 'Locality']) !!}
+        {!! Form::label('locality', trans('partners.locality')) !!}
+        {!! Form::text('locality',null,['class' => 'form-control','placeholder' => trans('partners.locality')]) !!}
     </div>
 </div>
 <div class="row">
     <div class="form-group col-lg-4">
-        {!! Form::label('name', 'Country Name:') !!}
+        {!! Form::label('name',trans('partners.country_name')) !!}
         {!! Form::select('country_id',$countrys,null,['class' => 'form-control requiered_field']) !!}
     </div>
     <div class="form-group col-lg-4">
-        {!! Form::label('name', 'State Name:') !!}
+        {!! Form::label('name', trans('partners.state_name')) !!}
         {!! Form::select('state_id',$states,null,['class' => 'form-control requiered_field']) !!}
     </div>
     <div class="form-group col-lg-4">
-        {!! Form::label('name', 'City Name:') !!}
+        {!! Form::label('name', trans('partners.city_name')) !!}
         {!! Form::select('city_id',$citys,null,['class' => 'form-control requiered_field']) !!}
     </div>
 </div>
 <div class="row">
     <div class="form-group col-lg-4">
-        {!! Form::label('birthdate', 'Birthdate:') !!}
-        {!! Form::date('birthdate',null,['class' => 'form-control','placeholder' => 'Birthdate']) !!}
+        {!! Form::label('birthdate', trans('partners.birthdate')) !!}
+        {!! Form::date('birthdate',null,['class' => 'form-control']) !!}
     </div>
     <div class="form-group col-lg-4">
-        {!! Form::label('rfc', 'RFC:') !!}
+        {!! Form::label('rfc',trans('partners.rfc')) !!}
         {!! Form::text('rfc',null,['class' => 'form-control','placeholder' => 'RFC']) !!}
     </div>
 </div>
 <div class="row">
     <div class="form-group col-lg-4">
-        {!! Form::label('phone', 'Phone:') !!}
-        {!! Form::text('phone',null,['class' => 'form-control','placeholder' => 'Home Phone']) !!}
+        {!! Form::label('phone',trans('partners.home_phone')) !!}
+        {!! Form::text('phone',null,['class' => 'form-control','placeholder' => trans('partners.home_phone')]) !!}
     </div>
     <div class="form-group col-lg-4">
-        {!! Form::label('mobile', 'Cell Phone:') !!}
-        {!! Form::text('mobile',null,['class' => 'form-control','placeholder' => 'Cell Phone']) !!}
+        {!! Form::label('mobile',trans('partners.cell_phone')) !!}
+        {!! Form::text('mobile',null,['class' => 'form-control','placeholder' => trans('partners.cell_phone')]) !!}
     </div>
     <div class="form-group col-lg-4">
-        {!! Form::label('fax', 'Fax:') !!}
-        {!! Form::text('fax',null,['class' => 'form-control','placeholder' => 'Fax']) !!}
+        {!! Form::label('fax',trans('partners.fax')) !!}
+        {!! Form::text('fax',null,['class' => 'form-control','placeholder' => trans('partners.fax')]) !!}
     </div>
 </div>
 <div class="row">
     <div class="form-group col-lg-4">
-        {!! Form::label('email', 'Email:') !!}
-        {!! Form::text('email',null,['class' => 'form-control','placeholder' => 'Email']) !!}
+        {!! Form::label('email',trans('partners.email')) !!}
+        {!! Form::email('email',null,['class' => 'form-control','placeholder' => trans('partners.email')]) !!}
     </div>
     <div class="form-group col-lg-4">
-        {!! Form::label('customer', 'Customer:') !!}
-        {!! Form::checkbox('customer','checked') !!}
+        {!! Form::label('customer',trans('partners.customer')) !!}
+        {!! Form::checkbox('customer') !!}
     </div>
     <div class="form-group col-lg-4">
-        {!! Form::label('supplier', 'Supplier:') !!}
+        {!! Form::label('supplier', trans('partners.supplier')) !!}
         {!! Form::checkbox('supplier') !!}
     </div>
 </div>
 
 <div class="form-group">
-    {!! Form::label('image', 'Image:') !!}
+    {!! Form::label('image', trans('partners.image')) !!}
     {!! Form::file('image') !!}
 </div>

@@ -35,7 +35,7 @@ Route::group(['namespace'=>'Partners', 'middleware' => 'auth'], function() {
     Route::get('partners/customer', 'PartnersController@customer');
     Route::get('partners/supplier', 'PartnersController@supplier');
     Route::get('partners/delete', 'PartnersController@delete');
-    Route::get('partners', 'PartnersController@report');
+    Route::get('partners/report', 'PartnersController@report');
     Route::resource('partners', 'PartnersController');
 });
 
@@ -60,7 +60,7 @@ Route::resource('paymentMethods', 'PaymentMethods\PaymentMethodsController', ['m
 
 Route::resource('paramPacs', 'ParamPacs\ParamPacsController', ['middleware' => 'auth']);
 
-Route::resource('partners', 'Partners\PartnersController', ['middleware' => 'auth']);
+
 Route::resource('taxs', 'Taxs\TaxsController',['middleware' => 'auth']);
 
 

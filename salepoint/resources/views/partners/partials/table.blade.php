@@ -1,18 +1,8 @@
+
 <table class="table table-striped">
-    <tr>
-        <th>Image</th>
-        <th>Name</th>
-        <th>Last Name</th>
-        <th>RFC</th>
-        <th>Phone</th>
-        <th>Email</th>
-        <th>Name City</th>
-        <th>Name State</th>
-        <th>Name Country</th>
-    </tr>
+    @include('partners.partials.fields_table')
     @foreach($partners as $partner)
         <tr onclick="window.document.location='{{ route('partners.show', $partner->id) }}';">
-
             <td>
                 @if(!empty($partner->image))
                     <img src="data:image/png;base64,{{ $partner->image }}" width="50px" height="50px"/>
@@ -31,4 +21,5 @@
         </tr>
     @endforeach
 </table>
+
 

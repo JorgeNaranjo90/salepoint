@@ -16,6 +16,8 @@ class Partner extends Model {
      */
     protected $table = 'partners';
 
+    protected $table2 = 'selectPartners';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -35,65 +37,42 @@ class Partner extends Model {
         }
     }
 
-
-
     public static function filterAndPaginate($name)
     {
-        return Partner::name($name)
-            ->join('countrys','partners.country_id','=','countrys.id')
-            ->join('citys','partners.city_id','=','citys.id')
-            ->join('states','partners.state_id','=','states.id')
-            ->select('partners.*',
-                'countrys.name as country_name',
-                'citys.name as city_name',
-                'states.name as state_name')
-            ->orderBy('partners.name','ASC')
+        return \DB::table('selectPartners')
+            ->where('name','like','%'.$name.'%')
+            ->orderBy('selectPartners.name','ASC')
             ->paginate();
+
+    }
+    public static function filterAndPaginateReport($name)
+    {
+        return \DB::unprepared('CALL partnersReport()');
 
     }
 
     public static function filterAndPaginateCustomer($name)
     {
-        return Partner::name($name)
-            ->join('countrys','partners.country_id','=','countrys.id')
-            ->join('citys','partners.city_id','=','citys.id')
-            ->join('states','partners.state_id','=','states.id')
-            ->select('partners.*',
-                'countrys.name as country_name',
-                'citys.name as city_name',
-                'states.name as state_name')
+        return \DB::table('selectPartners')
             ->where('customer','=',1)
-            ->orderBy('partners.name','ASC')
+            ->where('name','like','%'.$name.'%')
+            ->orderBy('selectPartners.name','ASC')
             ->paginate();
 
     }
 
     public static function filterAndPaginateSupplier($name)
     {
-        return Partner::name($name)
-            ->join('countrys','partners.country_id','=','countrys.id')
-            ->join('citys','partners.city_id','=','citys.id')
-            ->join('states','partners.state_id','=','states.id')
-            ->select('partners.*',
-                'countrys.name as country_name',
-                'citys.name as city_name',
-                'states.name as state_name')
+        return \DB::table('selectPartners')
             ->where('supplier','=',1)
-            ->orderBy('partners.name','ASC')
+            ->where('name','like','%'.$name.'%')
+            ->orderBy('selectPartners.name','ASC')
             ->paginate();
 
     }
 
-
-    /*
-     * Function onlyTrashed() of laravel
-     * for show records was delete
-     **/
-
-
     public static function filterAndPaginateDelete($name)
     {
-
         return Partner::name($name)
             ->join('countrys','partners.country_id','=','countrys.id')
             ->join('citys','partners.city_id','=','citys.id')
@@ -108,12 +87,12 @@ class Partner extends Model {
 
     }
 
-
     public function scopeName($query, $name)
     {
         if (trim($name) != "") {
-            $query->where("partners.name", "LIKE", "%$name%");
+           $query->where("selectPartners.name", "LIKE", "%$name%");
         }
+
     }
 
 
