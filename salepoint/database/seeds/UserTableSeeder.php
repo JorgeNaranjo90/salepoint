@@ -11,7 +11,7 @@ class UserTableSeeder extends Seeder
         $faker = Faker::create();
 
 
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $id = \DB::table('users')->insertGetId(array(
                 'name' => $faker->firstName,
                 'email' => $faker->unique()->email,

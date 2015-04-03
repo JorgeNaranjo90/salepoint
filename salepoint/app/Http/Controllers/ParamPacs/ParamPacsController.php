@@ -4,6 +4,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\ParamPac;
 use Illuminate\Support\Facades\Request;
+use App\Http\Requests\CreateParamPacsRequest;
+use App\Http\Requests\EditParamPacsRequest;
 
 class ParamPacsController extends Controller {
 
@@ -33,7 +35,7 @@ class ParamPacsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Requests\CreateParamPacsRequest $request)
+	public function store(CreateParamPacsRequest $request)
 	{
         ParamPac::create(Request::all());
         return redirect()->route('paramPacs.index');
@@ -69,7 +71,7 @@ class ParamPacsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(Requests\EditParamPacsRequest $request,$id)
+	public function update(EditParamPacsRequest $request,$id)
 	{
         $param=ParamPac::findOrFail($id);
         $param->fill($request->all());

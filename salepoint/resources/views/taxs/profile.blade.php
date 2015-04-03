@@ -19,18 +19,22 @@
 @endsection
 
 @section('body_page')
-    <div class="col-lg-10">
-        <h1>{{ $tax->name }}</h1>
-        <table cellspacing="10" width="100%">
-            <tr>
-                <td valign="top" width="20%">
-                    <p><i class="fa fa-building"></i> <b>Description</b></p>
-                </td>
-                <td width="80%">
-                    <p>{{ $tax->name .", ".$tax->code.", ".$tax->value}}</p>
-
-                </td>
-            </tr>
-        </table>
+    <div class="col-lg-1">
+        Name
+    </div>
+    <div class="col-lg-3">
+        <h2>{{ $tax->name }}</h2>
+    </div>
+    <div class="col-lg-1">
+        Code
+    </div>
+    <div class="col-lg-3">
+        <h2>{{ $tax->code}}</h2>
+    </div>
+    <div class="col-lg-1">
+        Value
+    </div>
+    <div class="col-lg-3">
+        <h2>{{ $tax->value }}</h2>
     </div>
 @endsection

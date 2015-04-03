@@ -1,14 +1,14 @@
-<table width="100%" style="border-collapse: collapse; margin-top: 0px">
-    <tr>
-        @if (empty(Auth::guest()))
-            <td width="15%" valign="top" style="display: table-cell; overflow:auto;">
-                @include('generalPartials.verticalnav')
-            </td>
-        @endif
-        <td valign="top" style="display: table-cell;">
+<div class="row">
+    @if(empty(Auth::guest()))
+        <div class="col-lg-2" style="padding-left: 0.0em; padding-right: 0.0em;">
+            @include('generalPartials.verticalnav')
+        </div>
+        <div class="col-lg-10">
+    @else
+        <div class="col-lg-12">
+    @endif
             <div id="content">
                 @yield('content')
             </div>
-        </td>
-    </tr>
-</table>
+        </div>
+</div>

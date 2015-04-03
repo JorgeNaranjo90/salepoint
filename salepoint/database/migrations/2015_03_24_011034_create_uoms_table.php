@@ -22,24 +22,24 @@ class CreateUomsTable extends Migration {
 		});
 
         \DB::table('uoms')->insert(array(
-            'name'          => 'KGS',
-            'description'   => 'KILOGRAMOS'
+            'name'          => 'kg',
+            'description'   => 'Kilogramos'
         ));
         \DB::table('uoms')->insert(array(
-            'name'          => 'GRS',
-            'description'   => 'GRAMOS'
+            'name'          => 'g',
+            'description'   => 'Gramos'
         ));
         \DB::table('uoms')->insert(array(
-            'name'          => 'PZA',
-            'description'   => 'PIEZAS'
+            'name'          => 'pz',
+            'description'   => 'Piezas'
         ));
         \DB::table('uoms')->insert(array(
-            'name'          => 'LT',
-            'description'   => 'LITROS'
+            'name'          => 'lt',
+            'description'   => 'Litros'
         ));
         \DB::table('uoms')->insert(array(
-            'name'          => 'MLL',
-            'description'   => 'MILLAR'
+            'name'          => 'doc',
+            'description'   => 'Docenas'
         ));
 	}
 

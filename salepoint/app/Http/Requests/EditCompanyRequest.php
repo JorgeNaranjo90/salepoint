@@ -1,4 +1,6 @@
-<?php
+<?php namespace App\Http\Requests;
+
+use App\Http\Requests\Request;
 /**
  * Created by PhpStorm.
  * User: mauricio
