@@ -3,6 +3,7 @@
 return [
 
     'partners' => 'Partners',
+    'profile_partner' => 'Profile Partner',
     'create_partner' => 'Create partner:',
     'edit_partner' => 'Edit partner:',
     'name' => 'Name',

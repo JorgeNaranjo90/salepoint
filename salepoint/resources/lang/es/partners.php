@@ -2,6 +2,7 @@
 
 return [
     'partners' => 'Socios',
+    'profile_partner' => 'Perfil de socio',
     'create_partner' => 'Crear socio:',
     'edit_partner' => 'Editar socio:',
     'name' => 'Nombre',
