@@ -21,21 +21,16 @@ Route::controllers([
 ]);
 
 
-Route::get('/settings', ['middleware' => 'auth',function()
-{
-    return view('settings.index');
-}]);
-
 Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users', 'middleware' => 'auth'], function(){
     Route::resource('users', 'UsersController');
 });
 
 Route::group(['namespace'=>'Partners', 'middleware' => 'auth'], function() {
     Route::pattern('partners', '[0-9]+');
-    Route::get('partners/customer', 'PartnersController@customer');
-    Route::get('partners/supplier', 'PartnersController@supplier');
-    Route::get('partners/delete', 'PartnersController@delete');
-    Route::get('partners/report', 'PartnersController@report');
+    Route::get('partners/customer',['as' => 'partners.customer', 'uses' => 'PartnersController@customer']);
+    Route::get('partners/supplier', ['as' => 'partners.supplier', 'uses' => 'PartnersController@supplier']);
+    Route::get('partners/delete', ['as' => 'partners.onlyTrashed', 'uses' => 'PartnersController@delete']);
+    Route::get('partners/report', ['as' => 'partners.reports', 'uses' => 'PartnersController@report']);
     Route::resource('partners', 'PartnersController');
 });
 
@@ -74,8 +69,35 @@ Route::group(['namespace'=>'Products','middleware' => 'auth'], function() {
     Route::resource('products', 'ProductsController');
 });
 
-//Language
+Route::group(['namespace'=>'SaleOrders', 'middleware' => 'auth'], function() {
+    Route::pattern('sales', '[0-9]+');
+    Route::resource('sales', 'SaleOrdersController');
+});
 
+Route::group(['namespace'=>'PurchaseOrders', 'middleware' => 'auth'], function() {
+    Route::pattern('purchases', '[0-9]+');
+    Route::resource('purchases', 'PurchaseOrdersController');
+});
+
+
+//Menu Top Base
+Route::get('/settings', ['middleware' => 'auth',function()
+{
+    return view('settings.index');
+}]);
+
+Route::get('/sales', ['middleware' => 'auth',function()
+{
+    return view('sales.index');
+}]);
+
+Route::get('/purchases', ['middleware' => 'auth',function()
+{
+    return view('purchases.index');
+}]);
+
+
+//Language
 Route::get('languageEn', ['as' => 'languageen', 'uses' => 'GeneralController@setLangEn']);
 Route::get('languageEs', ['as' => 'languagees', 'uses' => 'GeneralController@setLangEs']);
 

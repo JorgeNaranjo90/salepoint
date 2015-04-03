@@ -1,8 +1,6 @@
 @section('vertical_nav')
     <li class="">
         <a href="{{ route('settings.users.index') }}"> Users</a>
-        <a href="{{ route('partners.index') }}">Partners</a>
-        <a href="{{ route('products.index') }}">Products</a>
         <a href="{{ route('settings.company.index') }}">Company</a>
         <h5>General Settings</h5>
         <a href="{{ route('settings.fiscalRegimen.index') }}">Fiscal Regimens</a>

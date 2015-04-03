@@ -10,6 +10,6 @@ class paymentMethod extends Model
 
     protected $table='paymentMethods';
 
-    protected $fillable=['typePayment'];
+    protected $fillable=['name'];
 
 }

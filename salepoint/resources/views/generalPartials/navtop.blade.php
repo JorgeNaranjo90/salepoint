@@ -11,13 +11,13 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
+                <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
                 @if (empty(Auth::guest()))
-                    <li><a href="/sales">Sales</a></li>
-                    <li><a href="#">Purchase</a></li>
-                    <li><a href="#">Warehouse</a></li>
-                    <li><a href="#">Reports</a></li>
-                    <li><a href="/settings">Settings</a></li>
+                    <li><a href="{{ route('partners.index') }}"><i class="fa fa-building"></i> Partners</a></li>
+                    <li><a href="{{ route('products.index') }}"><i class="fa fa-list"></i> Products</a></li>
+                    <li><a href="/sales"><i class="fa fa-shopping-cart"></i> Sales</a></li>
+                    <li><a href="/purchases"><i class="fa fa-truck"></i> Purchase</a></li>
+                    <li><a href="/settings"><i class="fa fa-cog"></i> Settings</a></li>
                 @endif
             </ul>
 
