@@ -2,11 +2,11 @@
 @extends('generalPartials.general_view')
 
 @section('title')
-   <b>Partners</b>
+   {{ trans('partners.partners') }}
 @endsection
 
 @section('buttons')
-    <a class="btn btn-success btn-sm" href="{{route('partners.create')}}"><i class="fa fa-user-plus"></i> Create</a>
+    <a class="btn btn-success btn-sm" href="{{route('partners.create')}}"><i class="fa fa-user-plus"></i>Create</a>
 @endsection
 @section('filters')
     @include('partners.partials.filters')
