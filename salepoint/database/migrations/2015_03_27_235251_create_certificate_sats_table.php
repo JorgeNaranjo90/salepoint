@@ -16,9 +16,10 @@ class CreateCertificateSatsTable extends Migration {
 		{
 			$table->increments('id');
             $table->string('name',60);
-            $table->binary('certificateKeyTitle')->nullable();
+            $table->binary('certificateFile')->nullable();
             $table->binary('certificatePemFile')->nullable();
-            $table->binary('certificateWeyPemTitle')->nullable();
+            $table->binary('certificateKeyFile')->nullable();
+            $table->binary('certificateKeyPemTitle')->nullable();
             $table->string('noSerie',30)->nullable();
             $table->date('startDate')->nullable();
             $table->date('endDate')->nullable();

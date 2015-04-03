@@ -17,10 +17,16 @@ class CreateTaxsTable extends Migration {
 			$table->increments('id');
             $table->string('name',40);
             $table->string('code',25)->nullable();
-            $table->double('value')->nullable();
+            $table->double('value')->nullable()->default(0.0);
             $table->softDeletes();
 			$table->timestamps();
 		});
+
+        \DB::table('taxs')->insert([
+            [ 'name' => 'Iva 16%',
+                'value' => 0.16]
+        ]);
+
 	}
 
 	/**

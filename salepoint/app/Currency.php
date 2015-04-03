@@ -9,7 +9,7 @@ class Currency extends Model
 
     protected $table='currencys';
 
-    protected $fillable=['name','description'];
+    protected $fillable=['name','symbol'];
 
 
     public function scopeName($query,$name)

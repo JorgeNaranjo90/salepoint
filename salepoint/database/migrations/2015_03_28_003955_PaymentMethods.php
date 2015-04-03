@@ -15,10 +15,19 @@ class PaymentMethods extends Migration {
         Schema::create('paymentMethods', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->string('typePayment',80);
+            $table->string('name',80);
             $table->softDeletes();
             $table->timestamps();
         });
+
+        \DB::table('paymentMethods')->insert([
+           ['name' => 'Efectivo'],
+           ['name' => 'Transferencia'],
+           ['name' => 'Tarjeta de crédito'],
+           ['name' => 'Vales de despensa'],
+           ['name' => 'Monedero Eléctronico'],
+           ['name' => 'Otros']
+        ]);
 
 	}
 

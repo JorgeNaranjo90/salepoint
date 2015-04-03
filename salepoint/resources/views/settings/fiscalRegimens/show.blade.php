@@ -19,9 +19,10 @@
 @section('filters')
 @endsection
 @section('body_page')
-    <div class="col-lg-2">
-    </div>
-    <div class="col-lg-9">
+    <div class="col-lg-12 text-center">
         <h1>{{ $fiscal->name }}</h1>
+    </div>
+    <div class="col-lg-12">
+        <p>{{ $fiscal->description }}</p>
     </div>
 @endsection

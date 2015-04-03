@@ -20,8 +20,15 @@
 @endsection
 @section('body_page')
     <div class="col-lg-2">
+        {{ trans('currency.name') }}
     </div>
-    <div class="col-lg-9">
-        <h1> {!!Form::label(trans('currency.name')) !!}:  {{ $currency->name }}</h1>
+    <div class="col-lg-4">
+        <h3>{{ $currency->name }}</h3>
+    </div>
+    <div class="col-lg-2">
+        {{ trans('currency.symbol') }}
+    </div>
+    <div class="col-lg-4">
+        <h3>{{ $currency->symbol }}</h3>
     </div>
 @endsection

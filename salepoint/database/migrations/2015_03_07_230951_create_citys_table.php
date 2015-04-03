@@ -23,6 +23,13 @@ class CreateCitysTable extends Migration {
             $table->foreign('state_id')->references('id')
                 ->on('states')->onDelete('cascade')->onUpdate('cascade');
 		});
+
+        \DB::table('citys')->insert(array(
+            'name' => 'León',
+            'code' => 477,
+            'abbreviation' => 'LN',
+            'state_id' => 1
+        ));
 	}
 
 	/**

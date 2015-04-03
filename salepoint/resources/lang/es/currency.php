@@ -20,5 +20,6 @@ return [
     'delete'=> 'Eliminar',
     'cancel'=> 'Cancel',
     'save'=> 'Guardar',
+    'symbol'=> 'Simbolo',
 ];
 
