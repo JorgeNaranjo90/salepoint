@@ -1,7 +1,7 @@
 <table  class="table table-striped">
     <tr>
-        <th>name</th>
-        <th>Description</th>
+        <th>{!!Form::label(trans('fiscalRegimen.name')) !!}</th>
+        <th>{!!Form::label(trans('fiscalRegimen.description')) !!}</th>
     </tr>
     @foreach($fiscal as $fiscal)
         <tr onclick="window.document.location='{{ route('settings.fiscalRegimen.show', $fiscal->id) }}';">

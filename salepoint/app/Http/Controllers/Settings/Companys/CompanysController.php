@@ -3,10 +3,11 @@
 use App\Company;
 use App\Currency;
 use App\FiscalRegimen;
-use App\Http\Requests;
+use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\Controller;
 use App\Partner;
-use Illuminate\Http\Request;
+use  App\Http\Requests\CreateCompanyRequest ;
+use  App\Http\Requests\EditCompanyRequest;
 class CompanysController extends Controller {
 
 	/**
@@ -38,9 +39,9 @@ class CompanysController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CreateCompanyRequest $request)
 	{
-        Company::create(\Illuminate\Support\Facades\Request::all());
+        Company::create(Request::all());
         return redirect()->route('settings.company.index');
 	}
 
@@ -78,12 +79,12 @@ class CompanysController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(Requests\EditCompanyRequest  $request,$id)
+	public function update(EditCompanyRequest  $request,$id)
 	{
         $company=Company::findOrFail($id);
-        $company->fill($request->all());
+        $company->fill(Request::all());
         $company->save();
-        return redirect()->route('settings.companys.index');
+        return redirect()->route('settings.company.index');
 	}
 
 	/**
@@ -96,7 +97,6 @@ class CompanysController extends Controller {
 	{
         $company=Company::findOrFail($id);
         $company->delete();
-//        Session::flash('message','El registro fue eliminado');
         return redirect()->route('settings.company.index');
 	}
 
