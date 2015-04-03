@@ -78,7 +78,7 @@
 <div class="row">
     <div class="form-group col-lg-4">
         {!! Form::label('email',trans('partners.email')) !!}
-        {!! Form::text('email',null,['class' => 'form-control','placeholder' => trans('partners.email')]) !!}
+        {!! Form::email('email',null,['class' => 'form-control','placeholder' => trans('partners.email')]) !!}
     </div>
     <div class="form-group col-lg-4">
         {!! Form::label('customer',trans('partners.customer')) !!}
