@@ -4,6 +4,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\PaymentMethod;
 use Illuminate\Support\Facades\Request;
+use  App\Http\Requests\CreatePaymentMethodsRequest;
+use  App\Http\Requests\EditPaymentMethodsRequest;
 
 
 class PaymentMethodsController extends Controller {
@@ -35,7 +37,7 @@ class PaymentMethodsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Requests\CreatePaymentMethodsRequest $request)
+	public function store(CreatePaymentMethodsRequest $request)
 	{
         PaymentMethod::create(Request::all());
         return redirect()->route('paymentMethods.index');
@@ -71,7 +73,7 @@ class PaymentMethodsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(Requests\EditPaymentMethodsRequest $request,$id)
+	public function update(EditPaymentMethodsRequest $request,$id)
 	{
         $payment=PaymentMethod::findOrFail($id);
         $payment->fill($request->all());

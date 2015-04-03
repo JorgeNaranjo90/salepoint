@@ -15,7 +15,7 @@ return [
     'name' => 'Name',
     'description'=> 'Description',
     'search'=>'Search',
-    'fiscal_Regimen' =>' Fiscal Regimen',
+    'fiscalRegimen' =>' Fiscal Regimen',
     'create' => 'Create',
     'save'=> 'Save',
     'cancel' => 'Cancel',
