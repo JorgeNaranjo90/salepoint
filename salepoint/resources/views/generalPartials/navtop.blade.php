@@ -15,9 +15,9 @@
                 @if (empty(Auth::guest()))
                     <li><a href="{{ route('partners.index') }}"><i class="fa fa-building"></i> Partners</a></li>
                     <li><a href="{{ route('products.index') }}"><i class="fa fa-list"></i> Products</a></li>
-                    <li><a href="/sales"><i class="fa fa-shopping-cart"></i> Sales</a></li>
-                    <li><a href="/purchases"><i class="fa fa-truck"></i> Purchase</a></li>
-                    <li><a href="/settings"><i class="fa fa-cog"></i> Settings</a></li>
+                    <li><a href="{{ route('sales') }}"><i class="fa fa-shopping-cart"></i> Sales</a></li>
+                    <li><a href="{{ route('purchases') }}"><i class="fa fa-truck"></i> Purchase</a></li>
+                    <li><a href="{{ route('settings') }}"><i class="fa fa-cog"></i> Settings</a></li>
                 @endif
             </ul>
 

@@ -81,20 +81,9 @@ Route::group(['namespace'=>'PurchaseOrders', 'middleware' => 'auth'], function()
 
 
 //Menu Top Base
-Route::get('/settings', ['middleware' => 'auth',function()
-{
-    return view('settings.index');
-}]);
-
-Route::get('/sales', ['middleware' => 'auth',function()
-{
-    return view('sales.index');
-}]);
-
-Route::get('/purchases', ['middleware' => 'auth',function()
-{
-    return view('purchases.index');
-}]);
+Route::get('settings', ['as' => 'settings', 'middleware' => 'auth', 'uses' => 'GeneralController@settings']);
+Route::get('sales', ['as' => 'sales', 'middleware' => 'auth', 'uses' => 'GeneralController@sales']);
+Route::get('purchases', ['as' => 'purchases', 'middleware' => 'auth', 'uses' => 'GeneralController@purchases']);
 
 
 //Language
