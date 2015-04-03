@@ -2,7 +2,7 @@
 @extends('generalPartials.general_view')
 
 @section('title')
-    Edit Certificate: <b>{{ $certificatesat->name }}</b>
+    {{ trans('certificate_sats.edit_certificate'),$certificatesat->name }}
 @endsection
 
 @section('buttons')

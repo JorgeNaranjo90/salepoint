@@ -1,6 +1,5 @@
-<table class="table table-striped">
-
-  @include('settings.certificatesats.partials.fields_table')
+<table class="table table-striped" border=1 cellspacing=0 cellpadding=2 bordercolor="#F0EEED">
+    @include('settings.certificatesats.partials.fields_table')
     @foreach($certificatesats as $certificatesat)
         <tr onclick="window.document.location='{{ route('settings.certificatesats.show', $certificatesat->id) }}';">
 
@@ -14,4 +13,3 @@
         </tr>
     @endforeach
 </table>
-
