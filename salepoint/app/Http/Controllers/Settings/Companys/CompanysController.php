@@ -38,7 +38,7 @@ class CompanysController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Requests\CreateCompanyRequest $request)
 	{
         Company::create(\Illuminate\Support\Facades\Request::all());
         return redirect()->route('settings.company.index');
@@ -81,9 +81,9 @@ class CompanysController extends Controller {
 	public function update(Requests\EditCompanyRequest  $request,$id)
 	{
         $company=Company::findOrFail($id);
-        $company->fill($request->all());
+        $company->fill(\Illuminate\Support\Facades\Request::all());
         $company->save();
-        return redirect()->route('settings.companys.index');
+        return redirect()->route('settings.company.index');
 	}
 
 	/**

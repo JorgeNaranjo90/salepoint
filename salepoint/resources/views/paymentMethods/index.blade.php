@@ -4,11 +4,13 @@
 
 
 @section('title')
-    PaymentMethods
+    {!!Form::label(trans('paymentMethods.TypePayment'))   !!}
 @endsection
 
 @section('buttons')
-    <a class="btn btn-success btn-sm" href="{{route('paymentMethods.create')}}"><i class="fa fa-user-plus"></i> Create</a>
+    <a class="btn btn-success btn-sm" href="{{route('paymentMethods.create')}}"><i class="fa fa-user-plus"></i>
+        {!!Form::label(trans('paymentMethods.Create'))   !!}
+    </a>
 @endsection
 
 @section('filters')

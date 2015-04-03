@@ -2,15 +2,19 @@
 @extends('generalPartials.general_view')
 
 @section('title')
-    Profile Company
+    {!!Form::label(trans('company.Profile')) !!}   {!!Form::label(trans('company.Company')) !!}
 @endsection
 
 @section('buttons')
 @section('button_delete')
     @include('settings.companys.partials.delete')
 @endsection
-<a class="btn btn-info btn-sm" href="{{ route('settings.company.edit', $company->id) }}"><i class="fa fa-pencil"></i> Edit</a>
-<a class="btn btn-success btn-sm" href="{{ route('settings.company.create') }}"><i class="fa fa-user-plus"></i> Create</a>
+<a class="btn btn-info btn-sm" href="{{ route('settings.company.edit', $company->id) }}"><i class="fa fa-pencil"></i>
+    {!!Form::label(trans('company.Edit')) !!}
+</a>
+<a class="btn btn-success btn-sm" href="{{ route('settings.company.create') }}"><i class="fa fa-user-plus"></i>
+    {!!Form::label(trans('company.Create')) !!}
+</a>
 @endsection
 
 @section('filters')
@@ -25,7 +29,6 @@
         @endif
     </div>
     <div class="col-lg-9">
-        <h1>{{ $company->name }}</h1>
-
+        <h1> {!!Form::label(trans('company.Name')) !!}  {!!Form::label(trans('company.Company')) !!}:  {{ $company->name }}</h1>
     </div>
 @endsection

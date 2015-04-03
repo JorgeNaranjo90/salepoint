@@ -7,8 +7,12 @@
 
 @section('buttons')
     {!! Form::open(['route'=>'paramPacs.store','method'=>'POST','files'=>true]) !!}
-    <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i> Save</button>
-    <a class="btn btn-danger btn-sm" href="{{route('paramPacs.index')}}">Cancel</a>
+    <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i>
+        {!!Form::label(trans('paramPacs.Save'))   !!}
+    </button>
+    <a class="btn btn-danger btn-sm" href="{{route('paramPacs.index')}}">
+        {!!Form::label(trans('paramPacs.Cancel'))   !!}
+    </a>
 @endsection
 
 @section('filters')

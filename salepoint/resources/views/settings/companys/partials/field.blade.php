@@ -1,24 +1,24 @@
 {!! Form::open(['route'=>'settings.company.store','method'=>'POST','files'=>true]) !!}
 <div class="form-group">
-    {!! Form::label('name', 'Name') !!}
+    {!! Form::label('name', trans('company.Name')) !!}
     {!! Form::text('name', null, ['class' => 'form-control  requiered_field']) !!}
 </div>
 <div class="form-group">
 
-    {!! Form::label('name', 'Partner') !!}
+    {!! Form::label('partner', trans('company.Partner')) !!}
     {!! Form::select('partner_id',$partners, null, ['class' => 'form-control  requiered_field']) !!}
 </div>
 <div class="form-group">
-    {!! Form::label('name', 'Currency') !!}
+    {!! Form::label('currency', trans('company.Currency')) !!}
     {!! Form::select('currency_id',$currency, null, ['class' => 'form-control  requiered_field']) !!}
 </div>
 <div class="form-group">
-    {!! Form::label('name', 'FiscalRegimen') !!}
+    {!! Form::label('fiscal regimen', trans('company.Fiscal Regimen')) !!}
     {!! Form::select('fiscalRegimen_id',$fiscal, null, ['class' => 'form-control  requiered_field']) !!}
 
 </div>
 <div class="form-group">
-    {!! Form::label('name', 'Image') !!}
+    {!! Form::label('name', trans('company.Image')) !!}
     {!! Form::file('image') !!}
 </div>
 {!! Form::close() !!}

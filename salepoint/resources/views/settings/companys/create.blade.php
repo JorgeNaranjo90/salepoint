@@ -7,8 +7,12 @@
 
 @section('buttons')
     {!! Form::open(['route'=>'settings.company.store','method'=>'POST','files'=>true]) !!}
-    <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i> Save</button>
-    <a class="btn btn-danger btn-sm" href="{{route('settings.fiscalRegimen.index')}}">Cancel</a>
+    <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i>
+        {!!Form::label(trans('company.Save')) !!}
+    </button>
+    <a class="btn btn-danger btn-sm" href="{{route('settings.company.index')}}">
+        {!!Form::label(trans('company.Cancel')) !!}
+    </a>
 @endsection
 @section('filters')
 @endsection

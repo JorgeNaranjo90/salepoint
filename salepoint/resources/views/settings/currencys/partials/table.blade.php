@@ -1,6 +1,6 @@
 <table  class="table table-striped">
     <tr>
-        <th>name</th>
+        <th>    {!!Form::label(trans('currency.Name')) !!}</th>
     </tr>
     @foreach($currency as $currency)
         <tr onclick="window.document.location='{{ route('settings.currency.show', $currency->id) }}';">
