@@ -87,7 +87,6 @@ class Partner extends Model {
 
     }
 
-
     public function scopeName($query, $name)
     {
         if (trim($name) != "") {

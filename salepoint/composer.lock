@@ -261,7 +261,8 @@
             ],
             "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
             "homepage": "https://github.com/dompdf/dompdf",
-            "time": "2014-06-01 02:14:35"
+
+            "time": "2014-03-11 01:59:52"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -451,6 +452,7 @@
         },
         {
             "name": "laravel/framework",
+
             "version": "v5.0.25",
             "source": {
                 "type": "git",
@@ -573,7 +575,8 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-04-02 18:42:46"
+
+            "time": "2015-03-28 16:56:59"
         },
         {
             "name": "laravelcollective/html",
@@ -3003,6 +3006,8 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.3.0"
+    },
     "platform-dev": []
 }

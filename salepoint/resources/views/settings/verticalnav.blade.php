@@ -10,5 +10,6 @@
         <a href="{{ route('taxs.index') }}">Taxs </a>
         <a href="{{ route('settings.uoms.index') }}"> Uom</a>
         <a href="{{ route('settings.certificatesats.index') }}">Certificate Sat</a>
+        <a href="{{ route('paymentMethods.index') }}">Payment Methods</a>
     </li>
 @endsection

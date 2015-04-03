@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Products;
 
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Pdf;
@@ -45,7 +46,7 @@ class ProductsController extends Controller {
      *
      * @return Response
      */
-    public function store(CreateProductRequestRequest $request)
+    public function store(CreateProductRequest $request)
     {
         $product = Product::create($request->all());
         return \Redirect::route('products.index');
@@ -105,5 +106,17 @@ class ProductsController extends Controller {
         Session::flash('message', $product->name.' was delete !');
         return \Redirect::route('products.index');
 	}
+
+    public function report(Request $request,pdf $pdf,DOMPDF $dompdf)
+    {
+        $products = Product::filterAndPaginate($request->get('name'));
+        $pdf->load();
+        $dompdf = new DOMPDF();
+        $dompdf->load_html($products);
+        $dompdf->render();
+        $dompdf->stream("report.pdf");
+        return view('products.reports.report', compact('products'));
+
+    }
 
 }
