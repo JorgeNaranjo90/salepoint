@@ -12,12 +12,12 @@ return [
     |
     */
 
-    'TypeMethods' => 'TypeMethods',
-    'Create' => 'Create',
-    'Search' =>'Search',
-    'TypePayment'=>'TTypePayment',
-    'Save'=>'Save',
-    'Cancel'=>'Cancel',
-    'Edit'=> 'Edit',
-    'Delete'=>'Delete',
+    'typeMethods' => 'Type Methods',
+    'create' => 'Create',
+    'search' =>'Search',
+    'typePayment'=>'Type Payment',
+    'save'=>'Save',
+    'cancel'=>'Cancel',
+    'edit'=> 'Edit',
+    'delete'=>'Delete',
 ];

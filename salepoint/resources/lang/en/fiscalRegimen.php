@@ -12,13 +12,13 @@ return [
     |
     */
 
-    'Name' => 'Name',
-    'Description'=> 'Description',
-    'Search'=>'Search',
-    'FiscalRegimen' =>' FiscalRegimen',
-    'Create' => 'Create',
-    'Save'=> 'Save',
-    'Cancel' => 'Cancel',
-    'Edit'=> 'Edit',
-    'Delete' =>'Delete'
+    'name' => 'Name',
+    'description'=> 'Description',
+    'search'=>'Search',
+    'fiscal_Regimen' =>' Fiscal Regimen',
+    'create' => 'Create',
+    'save'=> 'Save',
+    'cancel' => 'Cancel',
+    'edit'=> 'Edit',
+    'delete' =>'Delete'
 ];

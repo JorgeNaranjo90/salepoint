@@ -12,12 +12,12 @@ return [
     |
     */
 
-    'TypeMethods' => 'Tipo de pagos',
-    'Create' => 'Crear',
-    'Search' =>'Buscar',
-    'TypePayment'=>'Tipo de pago',
-    'Save'=>'Guardar',
-    'Cancel'=>'Cancel',
-    'Edit'=> 'Editar',
-    'Delete'=>'Borrar',
+    'typeMethods' => 'Metodos de pago',
+    'create' => 'Crear',
+    'search' =>'Buscar',
+    'typePayment'=>'Tipo de pago',
+    'save'=>'Guardar',
+    'cancel'=>'Cancel',
+    'edit'=> 'Editar',
+    'delete'=>'Eliminar',
 ];

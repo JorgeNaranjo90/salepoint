@@ -1,11 +1,11 @@
 <table  class="table table-striped">
     <tr>
 
-        <th> {!!Form::label(trans('company.Name'))   !!}</th>
-        <th> {!!Form::label(trans('company.Partner'))   !!}</th>
-        <th>{!!Form::label(trans('company.Currency'))   !!}</th>
-        <th>{!!Form::label(trans('company.Fiscal Regimen'))   !!}</th>
-        <th> {!!Form::label(trans('company.Image'))   !!}</th>
+        <th> {!!Form::label(trans('company.name'))   !!}</th>
+        <th> {!!Form::label(trans('company.partner'))   !!}</th>
+        <th>{!!Form::label(trans('company.currency'))   !!}</th>
+        <th>{!!Form::label(trans('company.fiscal_Regimen'))   !!}</th>
+        <th> {!!Form::label(trans('company.image'))   !!}</th>
     </tr>
         @foreach($company as $company)
         <tr onclick="window.document.location='{{ route('settings.company.show', $company->id) }}';">

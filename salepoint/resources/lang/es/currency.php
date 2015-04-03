@@ -12,13 +12,13 @@ return [
     |
     */
 
-    'Name' => 'Nombre',
-    'Currency'=> 'Tipo de moneda',
-    'Search' => 'Buscar',
-    'Edit'=> 'Editar',
-    'Create' => 'Crear',
-    'Delete'=> 'Eliminar',
-    'Cancel'=> 'Cancel',
-    'Save'=> 'Guardar',
+    'name' => 'Nombre',
+    'currency'=> 'Tipo de moneda',
+    'search' => 'Buscar',
+    'edit'=> 'Editar',
+    'create' => 'Crear',
+    'delete'=> 'Eliminar',
+    'cancel'=> 'Cancel',
+    'save'=> 'Guardar',
 ];
 

@@ -11,15 +11,17 @@ return [
     | you want to customize your views to better match your application.
     |
     */
-    'Name' => 'Name',
-    'Partner'  => 'Partner',
-    'Currency'=> 'Currency',
-    'Fiscal Regimen'=> 'Fiscal Regimen',
-    'Image' => 'Image',
-    'Create'=> 'Create',
-    'Save'=> 'Save',
-    'Company'=> 'Company',
-    'Edit'=>'Edit',
-    'Delete'=> 'Delete',
+    'name' => 'Name',
+    'partner'  => 'Partner',
+    'currency'=> 'Currency',
+    'fiscal_Regimen'=> 'Fiscal Regimen',
+    'image' => 'Image',
+    'create'=> 'Create',
+    'save'=> 'Save',
+    'company'=> 'Company',
+    'edit'=>'Edit',
+    'delete'=> 'Delete',
+    'cancel'=>'Cancel',
+    'profile'=>'Perfil',
 
 ];

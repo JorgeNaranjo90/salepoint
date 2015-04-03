@@ -6,12 +6,12 @@
 
 
 @section('title')
-    {!!Form::label(trans('fiscalRegimen.FiscalRegimen')) !!}
+    {!!Form::label(trans('fiscalRegimen.fiscalRegimen')) !!}
 @endsection
 
 @section('buttons')
     <a class="btn btn-success btn-sm" href="{{route('settings.fiscalRegimen.create')}}"><i class="fa fa-user-plus"></i>
-        {!!Form::label(trans('fiscalRegimen.Create')) !!}
+        {!!Form::label(trans('fiscalRegimen.create')) !!}
     </a>
 @endsection
 

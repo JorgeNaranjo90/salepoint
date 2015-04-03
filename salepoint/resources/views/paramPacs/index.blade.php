@@ -9,14 +9,13 @@
 
 @section('buttons')
     <a class="btn btn-success btn-sm" href="{{route('paramPacs.create')}}"><i class="fa fa-user-plus"></i>
-        {!!Form::label(trans('paramPacs.Create'))   !!}
+        {!!Form::label(trans('paramPacs.create'))   !!}
     </a>
 @endsection
 
 @section('filters')
     @include('paramPacs.partials.filters')
 @endsection
-
 
 @section('body_page')
     @include('paramPacs.partials.table')

@@ -12,14 +12,14 @@ return [
     |
     */
 
-    'Name' => 'Nombre',
-    'Description'=> 'Descripcion',
-    'Search'=>'Buscar',
-    'FiscalRegimen' =>'Regimen Fiscal',
-    'Create' => 'Crear',
-    'Save'=> 'Guardar',
-    'Cancel' => 'Cancel',
-    'Edit'=> 'Editar',
-    'Delete' =>'Eliminar'
+    'name' => 'Nombre',
+    'description'=> 'Descripción',
+    'search'=>'Buscar',
+    'fiscalRegimen' =>'Regimen Fiscal',
+    'create' => 'Crear',
+    'save'=> 'Guardar',
+    'cancel' => 'Cancel',
+    'edit'=> 'Editar',
+    'delete' =>'Eliminar'
 
 ];

@@ -12,19 +12,19 @@ return [
     |
     */
 
-    'Name' => 'Name',
-    'MethodType'=>'MethodType',
-    'UrlWebService'=>'UrlWebService',
-    'NameSpace' => 'NameSpace',
-    'UserPac'=> 'UserPac ',
-    'PasswordPac'=> 'Contraseña pac',
-    'CertificateLink' => 'CertificateLink ',
-    'Activate'=> 'Activate',
-    'Search'=>'Search',
-    'Create'=> 'Create',
-    'Save'=> 'Save',
-    'Edit'=>'Edit',
-    'Delete'=> 'Delete',
-    'Cancel'=>'Cancel',
+    'name' => 'Name',
+    'methodType'=>'MethodType',
+    'urlWebService'=>'UrlWebService',
+    'nameSpace' => 'NameSpace',
+    'userPac'=> 'User Pac ',
+    'passwordPac'=> 'Password Pac ',
+    'certificateLink' => 'Certificate Link ',
+    'activate'=> 'Activate',
+    'search'=>'Search',
+    'create'=> 'Create',
+    'save'=> 'Save',
+    'edit'=>'Edit',
+    'delete'=> 'Delete',
+    'cancel'=>'Cancel',
 
 ];

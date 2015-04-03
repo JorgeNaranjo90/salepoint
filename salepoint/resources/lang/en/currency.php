@@ -12,12 +12,12 @@ return [
     |
     */
 
-    'Name' => 'Name',
-    'Currency'=> 'Currencya',
-    'Search' => 'Search',
-    'Edit'=> 'Edit',
-    'Create' => 'Create',
-    'Delete'=> 'Delete',
-    'Cancel'=> 'Cancel',
-    'Save'=> 'Save',
+    'name' => 'Name',
+    'currency'=> 'Currency',
+    'search' => 'Search',
+    'edit'=> 'Edit',
+    'create' => 'Create',
+    'delete'=> 'Delete',
+    'cancel'=> 'Cancel',
+    'save'=> 'Save',
 ];

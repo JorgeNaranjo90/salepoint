@@ -12,18 +12,18 @@ return [
     |
     */
 
-    'Name' => 'Nombre',
-    'Partner'  => 'Asociados',
-    'Currency'=> 'Tipo de moneda',
-    'Fiscal Regimen'=> 'Registro fiscal',
-    'Image' => 'Imagen',
-    'Create'=> 'Crear',
-    'Save'=> 'Guardar',
-    'Company'=> 'Compañia',
-    'Edit'=>'Editar',
-    'Delete'=> 'Eliminar',
-    'Cancel'=>'Cancel',
-    'Profile'=>'Perfil',
+    'name' => 'Nombre',
+    'partner'  => 'Asociados',
+    'currency'=> 'Tipo de moneda',
+    'fiscal_Regimen'=> 'Registro fiscal',
+    'image' => 'Imagen',
+    'create'=> 'Crear',
+    'save'=> 'Guardar',
+    'company'=> 'Compañia',
+    'edit'=>'Editar',
+    'delete'=> 'Eliminar',
+    'cancel'=>'Cancel',
+    'profile'=>'Perfil',
 
 ];
 

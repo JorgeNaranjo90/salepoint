@@ -8,7 +8,7 @@
 @endsection
 @section('buttons')
     <a class="btn btn-success btn-sm" href="{{route('settings.company.create')}}"><i class="fa fa-user-plus"></i>
-        {!!Form::label(trans('currency.Create')) !!}
+        {!!Form::label(trans('currency.create')) !!}
     </a>
 @endsection
 @section('filters')

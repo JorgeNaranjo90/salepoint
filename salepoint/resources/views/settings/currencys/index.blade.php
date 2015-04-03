@@ -5,11 +5,11 @@
 @extends('generalPartials.general_view')
 
 @section('title')
-    {!!Form::label(trans('currency.Currency')) !!}
+    {!!Form::label(trans('currency.currency')) !!}
 @endsection
 @section('buttons')
     <a class="btn btn-success btn-sm" href="{{route('settings.currency.create')}}"><i class="fa fa-user-plus"></i>
-        {!!Form::label(trans('currency.Create')) !!}
+        {!!Form::label(trans('currency.create')) !!}
     </a>
 @endsection
 

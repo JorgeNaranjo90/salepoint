@@ -10,10 +10,10 @@
     @include('settings.currencys.partials.delete')
 @endsection
 <a class="btn btn-info btn-sm" href="{{ route('settings.currency.edit', $currency->id) }}"><i class="fa fa-pencil"></i>
-    {!!Form::label(trans('currency.Edit')) !!}
+    {!!Form::label(trans('currency.edit')) !!}
 </a>
 <a class="btn btn-success btn-sm" href="{{ route('settings.currency.create') }}"><i class="fa fa-user-plus"></i>
-    {!!Form::label(trans('currency.Create')) !!}
+    {!!Form::label(trans('currency.create')) !!}
 </a>
 @endsection
 @section('filters')
@@ -22,6 +22,6 @@
     <div class="col-lg-2">
     </div>
     <div class="col-lg-9">
-        <h1> {!!Form::label(trans('currency.Name')) !!}:  {{ $currency->name }}</h1>
+        <h1> {!!Form::label(trans('currency.name')) !!}:  {{ $currency->name }}</h1>
     </div>
 @endsection
