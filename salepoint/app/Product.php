@@ -22,6 +22,7 @@ class Product extends Model implements AuthenticatableContract
      * @var string
      */
     protected $table = 'products';
+    protected $table2 = 'selectProducts';
 
     public function setImageAttribute($value){
         if ( !empty($value)){
@@ -49,18 +50,16 @@ class Product extends Model implements AuthenticatableContract
 
     public static function filterAndPaginate($name)
     {
-        return Product::name($name)
-            ->join('uoms','products.uom_id','=','uoms.id')
-            ->select('products.*','uoms.name as uom')
-            ->orderBy('products.name', 'ASC')
+        return \DB::table('selectProducts')
+            ->where('name','like','%'.$name.'%')
+            ->orderBy('selectProducts.name','ASC')
             ->paginate();
-
     }
 
     public function scopeName($query, $name)
     {
         if (trim($name) != "") {
-            $query->where("name", "LIKE", "%$name%");
+            $query->where("selectProducts.name", "LIKE", "%$name%");
         }
 
     }

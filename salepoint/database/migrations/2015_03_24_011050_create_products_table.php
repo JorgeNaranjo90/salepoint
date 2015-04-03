@@ -31,7 +31,23 @@ class CreateProductsTable extends Migration {
             $table->foreign('uom_id')->references('id')
                 ->on('uoms')->onDelete('cascade')->onUpdate('cascade');
         });
+
+        DB::unprepared("CREATE VIEW selectProducts AS
+           select p.*,u.name 'uom' from products p join uoms u on p.uom_id = u.id
+            order by p.name asc;
+         ");
+
+        DB::unprepared("CREATE PROCEDURE productsReport()
+            BEGIN
+            select p.*,u.name 'uom' from products p join uoms u on p.uom_id = u.id
+            order by p.name asc;
+            END;
+         ");
 	}
+
+    /*
+     *
+    */
 
 	/**
 	 * Reverse the migrations.
@@ -41,6 +57,8 @@ class CreateProductsTable extends Migration {
 	public function down()
 	{
 		Schema::drop('products');
+        DB::unprepared('DROP VIEW IF EXISTS selectProducts');
+        DB::unprepared('DROP PROCEDURE IF EXISTS productsReport');
 	}
 
 }
