@@ -1,10 +1,7 @@
 <?php namespace App;
 
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class Partner extends Model {
 
@@ -44,6 +41,7 @@ class Partner extends Model {
     {
         return \DB::table('selectPartners')
             ->where('name','like','%'.$name.'%')
+            ->orderBy('selectPartners.name','ASC')
             ->paginate();
 
     }
@@ -58,6 +56,7 @@ class Partner extends Model {
         return \DB::table('selectPartners')
             ->where('customer','=',1)
             ->where('name','like','%'.$name.'%')
+            ->orderBy('selectPartners.name','ASC')
             ->paginate();
 
     }
@@ -67,6 +66,7 @@ class Partner extends Model {
         return \DB::table('selectPartners')
             ->where('supplier','=',1)
             ->where('name','like','%'.$name.'%')
+            ->orderBy('selectPartners.name','ASC')
             ->paginate();
 
     }
