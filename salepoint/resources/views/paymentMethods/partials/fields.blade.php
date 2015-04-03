@@ -1,4 +1,4 @@
 <div class="form-group">
-    {!! Form::label('typePayment', trans('paymentMethods.typeMethods')) !!}
-    {!! Form::text('typePayment', null, ['class' => 'form-control  requiered_field']) !!}
+    {!! Form::label('name', trans('paymentMethods.typeMethods')) !!}
+    {!! Form::text('name', null, ['class' => 'form-control  requiered_field']) !!}
 </div>

@@ -1,2 +1,2 @@
 @extends('app')
-@include('settings.verticalnav')
+@include('sales.verticalnav')
