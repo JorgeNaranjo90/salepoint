@@ -21,21 +21,16 @@ Route::controllers([
 ]);
 
 
-Route::get('/settings', ['middleware' => 'auth',function()
-{
-    return view('settings.index');
-}]);
-
 Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users', 'middleware' => 'auth'], function(){
     Route::resource('users', 'UsersController');
 });
 
 Route::group(['namespace'=>'Partners', 'middleware' => 'auth'], function() {
     Route::pattern('partners', '[0-9]+');
-    Route::get('partners/customer', 'PartnersController@customer');
-    Route::get('partners/supplier', 'PartnersController@supplier');
-    Route::get('partners/delete', 'PartnersController@delete');
-    Route::get('partners', 'PartnersController@report');
+    Route::get('partners/customer',['as' => 'partners.customer', 'uses' => 'PartnersController@customer']);
+    Route::get('partners/supplier', ['as' => 'partners.supplier', 'uses' => 'PartnersController@supplier']);
+    Route::get('partners/delete', ['as' => 'partners.onlyTrashed', 'uses' => 'PartnersController@delete']);
+    Route::get('partners/report', ['as' => 'partners.reports', 'uses' => 'PartnersController@report']);
     Route::resource('partners', 'PartnersController');
 });
 
@@ -73,9 +68,8 @@ Route::resource('paymentMethods', 'PaymentMethods\PaymentMethodsController', ['m
 Route::resource('paramPacs', 'ParamPacs\ParamPacsController', ['middleware' => 'auth']);
 
 Route::resource('partners', 'Partners\PartnersController', ['middleware' => 'auth']);
-Route::resource('taxs', 'T
-axs\TaxsController',['middleware' => 'auth']);
 
+Route::resource('taxs', 'Taxs\TaxsController',['middleware' => 'auth']);
 
 Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Certificatesats', 'middleware' => 'auth'], function(){
     Route::resource('certificatesats', 'CertificatesatsController');
@@ -87,8 +81,22 @@ Route::group(['namespace'=>'Products','middleware' => 'auth'], function() {
     Route::resource('products', 'ProductsController');
 });
 
-//Language
+Route::group(['namespace'=>'SaleOrders', 'middleware' => 'auth'], function() {
+    Route::pattern('sales', '[0-9]+');
+    Route::resource('sales', 'SaleOrdersController');
+});
 
+Route::group(['namespace'=>'PurchaseOrders', 'middleware' => 'auth'], function() {
+    Route::pattern('purchases', '[0-9]+');
+    Route::resource('purchases', 'PurchaseOrdersController');
+});
+
+//Menu Top Base
+Route::get('settings', ['as' => 'settings', 'middleware' => 'auth', 'uses' => 'GeneralController@settings']);
+Route::get('sales', ['as' => 'sales', 'middleware' => 'auth', 'uses' => 'GeneralController@sales']);
+Route::get('purchases', ['as' => 'purchases', 'middleware' => 'auth', 'uses' => 'GeneralController@purchases']);
+
+//Language
 Route::get('languageEn', ['as' => 'languageen', 'uses' => 'GeneralController@setLangEn']);
 Route::get('languageEs', ['as' => 'languagees', 'uses' => 'GeneralController@setLangEs']);
 

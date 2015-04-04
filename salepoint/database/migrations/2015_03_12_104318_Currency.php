@@ -16,14 +16,18 @@ class Currency extends Migration {
         {
             $table->increments('id');
             $table->string('name',50);
+            $table->string('symbol',3);
             $table->softDeletes();
             $table->timestamps();
         });
 
         \DB::table('currencys')->insert([
-            [ 'name' => 'MXN'],
-            [ 'name' => 'USD'],
-            [ 'name' => 'EUR']
+            [ 'name' => 'MXN',
+              'symbol' => '$'],
+            [ 'name' => 'USD',
+              'symbol' => '$'],
+            [ 'name' => 'EUR',
+              'symbol' => '€']
         ]);
 	}
 

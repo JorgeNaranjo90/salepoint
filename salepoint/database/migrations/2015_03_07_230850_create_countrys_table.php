@@ -21,6 +21,12 @@ class CreateCountrysTable extends Migration {
             $table->softDeletes();
             $table->timestamps();
 		});
+
+        \DB::table('countrys')->insertGetId(array(
+            'name' => 'México',
+            'code' => 52,
+            'abbreviation' => 'MX'
+        ));
 	}
 
 	/**

@@ -3,21 +3,22 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateProductRequest;
+use App\Http\Controllers\Pdf;
 use App\Http\Requests\EditProductRequest;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-// Library of DOMPdf
-use App\Http\Controllers\Pdf;
+
 
 class ProductsController extends Controller {
 
     protected  $request;
+    protected  $dompdf;
 
     public function __construct(Request $request){
         $this->request = $request;
     }
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -63,6 +64,7 @@ class ProductsController extends Controller {
         $product = Product::findOrFail($id);
         return view('products.profile', compact('product'));
     }
+
 
 	/**
 	 * Show the form for editing the specified resource.

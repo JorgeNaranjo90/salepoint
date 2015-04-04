@@ -22,7 +22,7 @@ class CreatePaymentMethodsRequest extends Request {
 	public function rules()
 	{
 		return [
-            'typePayment' =>'required',
+            'name' =>'required',
 		];
 	}
 

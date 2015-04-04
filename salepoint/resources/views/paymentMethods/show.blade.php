@@ -9,8 +9,12 @@
 @section('button_delete')
     @include('paymentMethods.partials.delete')
 @endsection
-<a class="btn btn-info btn-sm" href="{{ route('paymentMethods.edit', $payment->id) }}"><i class="fa fa-pencil"></i> Edit</a>
-<a class="btn btn-success btn-sm" href="{{ route('paymentMethods.create') }}"><i class="fa fa-user-plus"></i> Create</a>
+<a class="btn btn-info btn-sm" href="{{ route('paymentMethods.edit', $payment->id) }}"><i class="fa fa-pencil"></i>
+    {!!Form::label(trans('paymentMethods.edit'))   !!}
+</a>
+<a class="btn btn-success btn-sm" href="{{ route('paymentMethods.create') }}"><i class="fa fa-user-plus"></i>
+    {!!Form::label(trans('paymentMethods.create'))   !!}
+</a>
 @endsection
 @section('filters')
 @endsection
@@ -18,6 +22,6 @@
     <div class="col-lg-2">
     </div>
     <div class="col-lg-9">
-        <h1>{{ $payment->typePayment }}</h1>
+        <h1>{{ $payment->name }}</h1>
     </div>
 @endsection

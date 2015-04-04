@@ -4,7 +4,7 @@
 'role'   => 'search',
 ])!!}
 <div class="input-group">
-    {!! Form::text('typePayment', null, ['class' => 'form-control input-sm', 'placeholder' => 'Search']) !!}
+    {!! Form::text('name', trans('paymentMethods.search'), ['class' => 'form-control input-sm', 'placeholder' => 'Search']) !!}
         <span class="input-group-btn">
             <button class="btn btn-default btn-sm" type="submit"><i class="fa fa-search"></i></button>
           </span>

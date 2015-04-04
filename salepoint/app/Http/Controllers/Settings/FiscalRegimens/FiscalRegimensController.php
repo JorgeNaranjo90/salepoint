@@ -9,8 +9,8 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\CreateFiscalRegimenRequest ;
 use App\Http\Requests\EditFiscalRegimenRequest;
-use  App\Http\Requests\CreateFiscalRegimenRequest;
 
 class FiscalRegimensController extends Controller {
 

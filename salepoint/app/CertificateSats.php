@@ -21,7 +21,7 @@ class CertificateSats extends Model {
      *
      * @var array
      */
-    protected $fillable = ['name','certificateKeyTitle','certificatePemFile','certificateWeyPemTitle','noSerie','startDate','endDate'];
+    protected $fillable = ['name','certificateFile','certificatePemFile','certificateKeyFile' ,'certificateKeyPemFile','noSerie','startDate','endDate'];
 
     public static function filterAndPaginate($name)
     {

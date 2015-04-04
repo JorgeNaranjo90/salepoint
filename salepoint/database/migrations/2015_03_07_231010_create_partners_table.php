@@ -12,6 +12,8 @@ class CreatePartnersTable extends Migration {
 	 */
 	public function up()
 	{
+
+
 		Schema::create('partners', function(Blueprint $table)
 		{
             $table->increments('id');
@@ -44,7 +46,29 @@ class CreatePartnersTable extends Migration {
             $table->foreign('country_id')->references('id')
                 ->on('countrys')->onDelete('cascade')->onUpdate('cascade');
 		});
+
+        DB::unprepared("CREATE VIEW selectPartners AS
+            select p.*,co.name 'country_name',ci.name 'city_name',st.name 'state_name' from partners p
+            join countrys co on p.country_id = co.id join states st on co.id = st.country_id join citys
+            ci on st.id = ci.state_id order by p.name ASC;
+         ");
+
+        DB::unprepared("CREATE PROCEDURE partnersReport()
+            BEGIN
+            select p.*,co.name 'country_name',ci.name 'city_name',st.name 'state_name' from partners p
+            join countrys co on p.country_id = co.id join states st on co.id = st.country_id join citys
+            ci on st.id = ci.state_id order by p.name ASC;
+            END;
+         ");
+
+
+
+
+
 	}
+
+
+
 
 	/**
 	 * Reverse the migrations.
@@ -54,6 +78,8 @@ class CreatePartnersTable extends Migration {
 	public function down()
 	{
 		Schema::drop('partners');
+        DB::unprepared('DROP VIEW IF EXISTS selectPartners');
+        DB::unprepared('DROP PROCEDURE IF EXISTS partnersReport');
 	}
 
 }

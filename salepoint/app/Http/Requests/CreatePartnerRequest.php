@@ -31,13 +31,13 @@ class CreatePartnerRequest extends Request {
             'locality' => 'max:60',
             'rfc' => 'max:20',
             'email' => 'max:30',
-            'phone' => 'max:15',
-            'mobile' => 'max:15',
-            'fax' => 'max:15',
+            'phone' => 'digits_between:min:7,max:15',
+            'mobile' => 'digits_between:min:7,max:15',
+            'fax' => 'digits_between:min:5,max:9',
             'email' => 'max:20',
             'country_id' => 'required|max:3|in:1',
             'state_id' => 'required|max:4|in:1',
-            'city_id' => 'required|max:5|in:1'
+            'city_id' => 'required|max:5|in:1',
 
 		];
 	}

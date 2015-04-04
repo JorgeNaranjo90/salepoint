@@ -19,4 +19,16 @@ class GeneralController extends Controller {
         return view('/auth/login');
     }
 
+    public function sales(){
+        return view('sales.index');
+    }
+
+    public function purchases(){
+        return view('purchases.index');
+    }
+
+    public function settings(){
+        return view('settings.index');
+    }
+
 }

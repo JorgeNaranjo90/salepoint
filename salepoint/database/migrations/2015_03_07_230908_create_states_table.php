@@ -24,6 +24,13 @@ class CreateStatesTable extends Migration {
             $table->foreign('country_id')->references('id')
                 ->on('countrys')->onDelete('cascade')->onUpdate('cascade');
 		});
+
+        \DB::table('states')->insertGetId(array(
+            'name' => 'Guanajuato',
+            'code' => 470,
+            'abbreviation' => 'GT',
+            'country_id' => 1
+        ));
 	}
 
 	/**

@@ -22,7 +22,7 @@ class EditPaymentMethodsRequest extends Request {
 	public function rules()
 	{
 		return [
-            'typePayment' =>'required',
+            'name' =>'required',
 		];
 	}
 
