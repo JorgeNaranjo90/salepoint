@@ -19,6 +19,7 @@ class CreateStatesTable extends Migration {
             $table->integer('code')->nullable();
             $table->string('abbreviation',10)->nullable();
             $table->integer('country_id')->unsigned();
+            $table->softDeletes();
             $table->timestamps();
             $table->foreign('country_id')->references('id')
                 ->on('countrys')->onDelete('cascade')->onUpdate('cascade');
