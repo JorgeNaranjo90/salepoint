@@ -44,6 +44,18 @@ Route::group(['prefix'=>'settings','namespace'=>'Settings\Companys', 'middleware
     Route::resource('company','CompanysController');
 });
 
+Route::group(['prefix'=>'settings','namespace'=>'Settings\Countrys', 'middleware'=>'auth'],function(){
+    Route::resource('country','CountrysController');
+});
+
+Route::group(['prefix'=>'settings','namespace'=>'Settings\States', 'middleware'=>'auth'],function(){
+    Route::resource('state','StatesController');
+});
+
+Route::group(['prefix'=>'settings','namespace'=>'Settings\Citys', 'middleware'=>'auth'],function(){
+    Route::resource('city','CitysController');
+});
+
 Route::group(['prefix'=>'settings','namespace'=>'Settings\Currencys','middleware'=>'auth'],function(){
     Route::resource('currency','CurrencysController');
 });
@@ -61,7 +73,8 @@ Route::resource('paymentMethods', 'PaymentMethods\PaymentMethodsController', ['m
 Route::resource('paramPacs', 'ParamPacs\ParamPacsController', ['middleware' => 'auth']);
 
 Route::resource('partners', 'Partners\PartnersController', ['middleware' => 'auth']);
-Route::resource('taxs', 'Taxs\TaxsController',['middleware' => 'auth']);
+Route::resource('taxs', 'T
+axs\TaxsController',['middleware' => 'auth']);
 
 
 Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Certificatesats', 'middleware' => 'auth'], function(){

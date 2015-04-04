@@ -1,9 +1,8 @@
 <?php namespace App;
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Country extends Model {
+class State extends Model {
 
     use SoftDeletes;
 
@@ -14,10 +13,8 @@ class Country extends Model {
      *
      * @var string
      */
-    protected $table = 'countrys';
+    protected $table = 'states';
 
-    protected $fillable = ['name','code','abbreviation'];
-
-
+    protected $fillable = ['name','code','abbreviation','country_id'];
 
 }

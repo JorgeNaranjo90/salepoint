@@ -8,7 +8,7 @@ class CreateCountrysTable extends Migration {
 	/**
 	 * Run the migrations.
 	 *
-	 * @return void
+	 * @return voidcd
 	 */
 	public function up()
 	{
@@ -18,12 +18,14 @@ class CreateCountrysTable extends Migration {
             $table->string('name',50);
             $table->integer('code')->nullable();
             $table->string('abbreviation')->nullable();
+            $table->softDeletes();
             $table->timestamps();
 		});
 	}
 
 	/**
 	 * Reverse the migrations.
+     * 
 	 *
 	 * @return void
 	 */

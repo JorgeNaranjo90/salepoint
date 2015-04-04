@@ -11,5 +11,8 @@
         <a href="{{ route('settings.uoms.index') }}"> Uom</a>
         <a href="{{ route('settings.certificatesats.index') }}">Certificate Sat</a>
         <a href="{{ route('paymentMethods.index') }}">Payment Methods</a>
+        <a href="{{ route('settings.country.index') }}">Country</a>
+        <a href="{{ route('settings.state.index') }}">State</a>
+        <a href="{{ route('settings.city.index') }}">City</a>
     </li>
 @endsection
