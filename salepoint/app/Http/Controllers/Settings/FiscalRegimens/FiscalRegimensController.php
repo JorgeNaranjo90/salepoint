@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\CreateFiscalRegimenRequest ;
 use App\Http\Requests\EditFiscalRegimenRequest;
+
 class FiscalRegimensController extends Controller {
 
 	/**
@@ -39,7 +40,7 @@ class FiscalRegimensController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Requests\CreateFiscalRegimenRequest $request)
+	public function store(CreateFiscalRegimenRequest $request)
 	{
         FiscalRegimen::create(Request::all());
         return redirect()->route('settings.fiscalRegimen.index');
@@ -54,7 +55,6 @@ class FiscalRegimensController extends Controller {
 	public function show($id)
 	{
         $fiscal = FiscalRegimen::findOrFail($id);
-
         return view('settings.fiscalRegimens.show',compact('fiscal'));
 	}
 
@@ -76,7 +76,7 @@ class FiscalRegimensController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(Requests\EditFiscalRegimenRequest $request,$id)
+	public function update(EditFiscalRegimenRequest $request,$id)
 	{
 		$fiscal=FiscalRegimen::findOrFail($id);
         $fiscal->fill($request->all());
@@ -97,6 +97,4 @@ class FiscalRegimensController extends Controller {
         Session::flash('message','El registro fue eliminado');
         return redirect()->route('settings.fiscalRegimen.index');
 	}
-
-
 }
