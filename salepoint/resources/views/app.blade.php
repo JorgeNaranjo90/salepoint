@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Abarrotes Tauro</title>
 
-	<link href="/bootswatch/spacelab/bootstrap.css" rel="stylesheet">
+	<link href="/bootswatch/cosmo/bootstrap.css" rel="stylesheet">
 	<link href="/bootswatch/assets/css/bootswatch.min.css" rel="stylesheet">
 
 	<!-- Fonts -->
@@ -36,6 +36,7 @@
 	<!-- Scripts -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 </body>
 </html>

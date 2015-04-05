@@ -91,6 +91,13 @@ Route::group(['namespace'=>'PurchaseOrders', 'middleware' => 'auth'], function()
     Route::resource('purchases', 'PurchaseOrdersController');
 });
 
+Route::group(['namespace'=>'POS', 'middleware' => 'auth'], function() {
+    Route::pattern('pos', '[0-9]+');
+    Route::resource('pos', 'POSController');
+});
+
+
+
 //Menu Top Base
 Route::get('settings', ['as' => 'settings', 'middleware' => 'auth', 'uses' => 'GeneralController@settings']);
 Route::get('sales', ['as' => 'sales', 'middleware' => 'auth', 'uses' => 'GeneralController@sales']);

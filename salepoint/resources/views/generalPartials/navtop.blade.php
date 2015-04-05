@@ -13,6 +13,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
                 @if (empty(Auth::guest()))
+                    <li><a href="{{ route('pos.index') }}"><i class="fa fa-barcode"></i> POS</a></li>
                     <li><a href="{{ route('partners.index') }}"><i class="fa fa-building"></i> Partners</a></li>
                     <li><a href="{{ route('products.index') }}"><i class="fa fa-list"></i> Products</a></li>
                     <li><a href="{{ route('sales') }}"><i class="fa fa-shopping-cart"></i> Sales</a></li>
