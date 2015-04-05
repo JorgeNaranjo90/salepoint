@@ -10,52 +10,54 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\PdfLibrary;
 
-class ProductsController extends Controller {
+class ProductsController extends Controller
+{
 
-    protected  $request;
-    protected  $dompdf;
+    protected $request;
+    protected $dompdf;
 
-    public function __construct(Request $request){
+    public function __construct(Request $request)
+    {
         $this->request = $request;
     }
 
-    public function report(Request $request,PdfLibrary $library)
+    public function report(Request $request, PdfLibrary $library)
     {
         $library->load();
         $dompdf = new \DOMPDF();
         $products = Product::filterAndPaginate($request->get('name'));
-        $html = view('products.report',compact('products'));
+        $html = view('products.report', compact('products'));
         $dompdf->load_html($html);
         $dompdf->get_css();
         $dompdf->render();
         $dompdf->stream("products.pdf");
     }
 
-    public function reportmax(Request $request,PdfLibrary $library)
+    public function reportmax(Request $request, PdfLibrary $library)
     {
         $library->load();
         $dompdf = new \DOMPDF();
         $products = Product::filterAndPaginateMax($request->get('name'));
-        $html = view('products.report',compact('products'));
+        $html = view('products.report', compact('products'));
         $dompdf->load_html($html);
         $dompdf->get_css();
         $dompdf->render();
         $dompdf->stream("products.pdf");
     }
 
-    public function reportmin(Request $request,PdfLibrary $library)
+    public function reportmin(Request $request, PdfLibrary $library)
     {
         $library->load();
         $dompdf = new \DOMPDF();
         $products = Product::filterAndPaginateMin($request->get('name'));
-        $html = view('products.report',compact('products'));
+        $html = view('products.report', compact('products'));
         $dompdf->load_html($html);
         $dompdf->get_css();
         $dompdf->render();
         $dompdf->stream("products.pdf");
     }
 
-	/**
+    /*
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
@@ -73,8 +75,8 @@ class ProductsController extends Controller {
      */
     public function create()
     {
-        $uom = \DB::table('uoms')->orderBy('name','ASC')->lists('name','id');
-        return view('products.create',compact('uom'));
+        $uom = \DB::table('uoms')->orderBy('name', 'ASC')->lists('name', 'id');
+        return view('products.create', compact('uom'));
     }
 
     /**
@@ -92,7 +94,7 @@ class ProductsController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function show($id)
@@ -102,47 +104,44 @@ class ProductsController extends Controller {
     }
 
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function edit($id)
+    {
         $product = Product::findOrFail($id);
-        $uom = \DB::table('uoms')->orderBy('name','ASC')->lists('name','id');
-        return view('products.edit', compact('product','uom'));
-	}
+        $uom = \DB::table('uoms')->orderBy('name', 'ASC')->lists('name', 'id');
+        return view('products.edit', compact('product', 'uom'));
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int $id
+     * @return Response
+     */
     public function update(EditProductRequest $request, $id)
     {
         $product = Product::findOrFail($id);
         $product->fill($request->all());
         $product->save();
         return \Redirect::back();
-	}
+    }
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
         $product = Product::findOrFail($id);
         $product->delete();
-        Session::flash('message', $product->name.' was delete !');
+        Session::flash('message', $product->name . ' was delete !');
         return \Redirect::route('products.index');
-	}
-
-
-
+    }
 }

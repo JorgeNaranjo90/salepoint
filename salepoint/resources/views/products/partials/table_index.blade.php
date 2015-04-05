@@ -1,18 +1,5 @@
 <table class="table table-striped table-hover">
-    <tr>
-        <th>Image</th>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Uom</th>
-        <th>PurchasePrice</th>
-        <th>SalePrice</th>
-        <th>QtyAvailable</th>
-        <th>IncomingQty</th>
-        <th>VirtualAvailable</th>
-        <th>Ean13</th>
-
-    </tr>
+ @include('products.partials.fields_table')
     @foreach ($products as $product)
         <tr onclick="window.document.location='{{ route('products.show', $product->id) }}';">
                 <td>

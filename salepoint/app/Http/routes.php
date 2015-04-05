@@ -39,6 +39,18 @@ Route::group(['prefix'=>'settings','namespace'=>'Settings\Companys', 'middleware
     Route::resource('company','CompanysController');
 });
 
+Route::group(['prefix'=>'settings','namespace'=>'Settings\Countrys', 'middleware'=>'auth'],function(){
+    Route::resource('country','CountrysController');
+});
+
+Route::group(['prefix'=>'settings','namespace'=>'Settings\States', 'middleware'=>'auth'],function(){
+    Route::resource('state','StatesController');
+});
+
+Route::group(['prefix'=>'settings','namespace'=>'Settings\Citys', 'middleware'=>'auth'],function(){
+    Route::resource('city','CitysController');
+});
+
 Route::group(['prefix'=>'settings','namespace'=>'Settings\Currencys','middleware'=>'auth'],function(){
     Route::resource('currency','CurrencysController');
 });
@@ -55,9 +67,9 @@ Route::resource('paymentMethods', 'PaymentMethods\PaymentMethodsController', ['m
 
 Route::resource('paramPacs', 'ParamPacs\ParamPacsController', ['middleware' => 'auth']);
 
+Route::resource('partners', 'Partners\PartnersController', ['middleware' => 'auth']);
 
 Route::resource('taxs', 'Taxs\TaxsController',['middleware' => 'auth']);
-
 
 Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Certificatesats', 'middleware' => 'auth'], function(){
     Route::resource('certificatesats', 'CertificatesatsController');
@@ -81,23 +93,10 @@ Route::group(['namespace'=>'PurchaseOrders', 'middleware' => 'auth'], function()
     Route::resource('purchases', 'PurchaseOrdersController');
 });
 
-
 //Menu Top Base
-Route::get('/settings', ['middleware' => 'auth',function()
-{
-    return view('settings.index');
-}]);
-
-Route::get('/sales', ['middleware' => 'auth',function()
-{
-    return view('sales.index');
-}]);
-
-Route::get('/purchases', ['middleware' => 'auth',function()
-{
-    return view('purchases.index');
-}]);
-
+Route::get('settings', ['as' => 'settings', 'middleware' => 'auth', 'uses' => 'GeneralController@settings']);
+Route::get('sales', ['as' => 'sales', 'middleware' => 'auth', 'uses' => 'GeneralController@sales']);
+Route::get('purchases', ['as' => 'purchases', 'middleware' => 'auth', 'uses' => 'GeneralController@purchases']);
 
 //Language
 Route::get('languageEn', ['as' => 'languageen', 'uses' => 'GeneralController@setLangEn']);

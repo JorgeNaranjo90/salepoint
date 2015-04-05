@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Country extends Model {
 
@@ -13,8 +14,10 @@ class Country extends Model {
      *
      * @var string
      */
-    protected $table = 'partners';
+    protected $table = 'countrys';
 
     protected $fillable = ['name','code','abbreviation'];
+
+
 
 }

@@ -46,7 +46,18 @@ class CreateProductsTable extends Migration {
             select p.*,u.name 'uom' from products p join uoms u on p.uom_id = u.id
             where p.qtyAvailable <= 50 order by p.name;
          ");
+
+        DB::unprepared("CREATE PROCEDURE productsReport()
+            BEGIN
+            select p.*,u.name 'uom' from products p join uoms u on p.uom_id = u.id
+            order by p.name asc;
+            END;
+         ");
 	}
+
+    /*
+     *
+    */
 
 	/**
 	 * Reverse the migrations.
@@ -59,6 +70,7 @@ class CreateProductsTable extends Migration {
         DB::unprepared("DROP VIEW IF EXISTS selectProducts");
         DB::unprepared("DROP VIEW IF EXISTS selectProductsMax");
         DB::unprepared("DROP VIEW IF EXISTS selectProductsMin");
+        DB::unprepared('DROP PROCEDURE IF EXISTS productsReport');
 	}
 
 }

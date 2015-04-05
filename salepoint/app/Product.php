@@ -22,7 +22,6 @@ class Product extends Model implements AuthenticatableContract
      * @var string
      */
     protected $table = 'products';
-
     protected $table2 = 'selectProducts';
 
     public function setImageAttribute($value){
@@ -73,7 +72,7 @@ class Product extends Model implements AuthenticatableContract
     public function scopeName($query, $name)
     {
         if (trim($name) != "") {
-            $query->where("name", "LIKE", "%$name%");
+            $query->where("selectProducts.name", "LIKE", "%$name%");
         }
 
     }
