@@ -2,7 +2,7 @@
 @extends('generalPartials.general_view')
 
 @section('title')
-    Create CertificateSAT
+    {{trans('certificate_sats.create_certificate')}}
 @endsection
 
 @section('buttons')
