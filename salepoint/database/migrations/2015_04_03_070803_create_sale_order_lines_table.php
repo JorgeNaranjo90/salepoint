@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCountriesTable extends Migration {
+class CreateSaleOrderLinesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateCountriesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('countries', function(Blueprint $table)
+		Schema::create('sale_order_lines', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->timestamps();
@@ -26,7 +26,7 @@ class CreateCountriesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('countries');
+		Schema::drop('sale_order_lines');
 	}
 
 }

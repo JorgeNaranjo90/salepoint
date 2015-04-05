@@ -7,7 +7,8 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-
+use App\Http\Requests\CreateCurrencyRequest ;
+use App\Http\Requests\EditFiscalRegimenRequest;
 
 class CurrencysController extends Controller {
 
@@ -41,7 +42,7 @@ class CurrencysController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Requests\CreateCurrencyRequest $request)
+	public function store(CreateCurrencyRequest $request)
 	{
         Currency::create(Request::all());
         return redirect()->route('settings.currency.index');
@@ -78,7 +79,7 @@ class CurrencysController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(Requests\EditFiscalRegimenRequest $request,$id)
+	public function update(EditFiscalRegimenRequest $request,$id)
 	{
         $currency=Currency::findOrFail($id);
         $currency->fill($request->all());

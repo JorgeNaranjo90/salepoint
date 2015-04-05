@@ -1,11 +1,12 @@
 <table class="table table-striped table-hover">
     <tr>
-        <th>TypeMethods</th>
+        {!!Form::label(trans('paymentMethods.typeMethods'))   !!}
     </tr>
     @foreach ($payment as $payment)
         <tr onclick="window.document.location='{{ route('paymentMethods.show', $payment->id) }}';">
-
-            <td>{{ $payment-> typePayment}}</td>
+            <td>
+                {{ $payment-> name}}
+            </td>
         </tr>
     @endforeach
 </table>

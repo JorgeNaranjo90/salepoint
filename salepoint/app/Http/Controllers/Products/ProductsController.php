@@ -3,16 +3,17 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\EditProductRequest;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\PdfLibrary;
 
+
 class ProductsController extends Controller {
 
     protected  $request;
+    protected  $dompdf;
 
     public function __construct(Request $request){
         $this->request = $request;
@@ -75,6 +76,7 @@ class ProductsController extends Controller {
         $product = Product::findOrFail($id);
         return view('products.profile', compact('product'));
     }
+
 
 	/**
 	 * Show the form for editing the specified resource.

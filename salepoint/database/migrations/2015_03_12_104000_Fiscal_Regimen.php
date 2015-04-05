@@ -29,8 +29,10 @@ class FiscalRegimen extends Migration {
 	- Instituciones de crédito tales como bancos y casas de bolsa,
 	- Organismos descentralizados que comercialicen bienes o servicios, entre otras.
 	'],
-                 [ 'name'      => 'Personas morales con fines no lucrativos',
-                   'description' => 'Es para las personas morales cuya finalidad no es obtener una ganancia económica o lucro, por ejemplo:
+
+
+     [ 'name'      => 'Personas morales con fines no lucrativos',
+       'description' => 'Es para las personas morales cuya finalidad no es obtener una ganancia económica o lucro, por ejemplo:
 
 	- Instituciones de asistencia o de beneficencia
 	- Asociaciones o sociedades civiles con fines políticos o deportivos
@@ -43,13 +45,15 @@ class FiscalRegimen extends Migration {
 	- Asociaciones de padres de familia
 	- Asociaciones civiles de colonos o las que administren inmuebles en condominio
 	'],
-                 [ 'name'      => 'Asociaciones Religiosas',
-                   'description' => 'Son congregaciones que tienen como fin el ejercer culto a una divinidad; para efectos fiscales, se considerarán a
-                   las iglesias y demás agrupaciones que obtengan su correspondiente registro constitutivo ante la Secretaría de
-                   Gobernación, en los términos de la Ley de Asociaciones Religiosas y Culto Público, ya que es a través de este
-                    registro como se obtiene la personalidad jurídica.'],
-                 [ 'name'      => 'Personas morales del régimen simplificad',
-                   'description' => 'Deben tributar en el régimen simplificado las siguientes personas morales:
+
+
+     [ 'name'      => 'Asociaciones Religiosas',
+       'description' => 'Son congregaciones que tienen como fin el ejercer culto a una divinidad; para efectos fiscales, se considerarán a
+       las iglesias y demás agrupaciones que obtengan su correspondiente registro constitutivo ante la Secretaría de
+       Gobernación, en los términos de la Ley de Asociaciones Religiosas y Culto Público, ya que es a través de este
+        registro como se obtiene la personalidad jurídica.'],
+     [ 'name'      => 'Personas morales del régimen simplificad',
+       'description' => 'Deben tributar en el régimen simplificado las siguientes personas morales:
 
 	- Las dedicadas exclusivamente al autotransporte terrestre de carga o de pasajeros.
 
@@ -60,8 +64,10 @@ class FiscalRegimen extends Migration {
 	4) Pesqueras
 
 	- Las constituidas como empresas integradoras.'],
-                 [ 'name'      => 'Persona física con actividad empresarial',
-                   'description' => 'Es el régimen conforme al cual pueden pagar sus impuestos todas las personas físicas que se dediquen a las siguientes actividades
+
+
+     [ 'name'      => 'Persona física con actividad empresarial',
+       'description' => 'Es el régimen conforme al cual pueden pagar sus impuestos todas las personas físicas que se dediquen a las siguientes actividades
 
 	- Comerciales.
 

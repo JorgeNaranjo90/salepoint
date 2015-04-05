@@ -8,15 +8,27 @@ use  Illuminate\Support\Facades;
 use  Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use App\Http\Controllers\PdfLibrary;
 
 class PartnersController extends Controller {
-
 
     protected  $request;
 
     public function __construct(Request $request){
         $this->middleware('auth');
         $this->request = $request;
+    }
+
+    public function report(Request $request,PdfLibrary $library)
+    {
+        $library->load();
+        $dompdf = new \DOMPDF();
+        $partners = Partner::filterAndPaginate($request->get('name'));
+        $html = view('partners.report',compact('partners'));
+        $dompdf->load_html($html);
+        $dompdf->get_css();
+        $dompdf->render();
+        $dompdf->stream("partners.pdf");
     }
 
     public function index(Request $request)
@@ -41,6 +53,7 @@ class PartnersController extends Controller {
     {
         $partners = Partner::filterAndPaginateDelete($request->get('name'));
         return view('partners.index',compact('partners'));
+
     }
 
     public function create()
@@ -49,8 +62,6 @@ class PartnersController extends Controller {
         $states = \DB::table('states')->orderBy('name','ASC')->lists('name','id');
         $citys = \DB::table('citys')->orderBy('name','ASC')->lists('name','id');
         return view('partners.create',compact('countrys','states','citys'));
-
-
 
     }
 
@@ -119,8 +130,5 @@ class PartnersController extends Controller {
         Session::flash('message', $partner->name.' was deleted !');
         return \Redirect::route('partners.index');
     }
-
-
-
 
 }

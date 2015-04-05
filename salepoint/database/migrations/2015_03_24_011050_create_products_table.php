@@ -17,12 +17,12 @@ class CreateProductsTable extends Migration {
             $table->increments('id');
             $table->string('name');
             $table->string('description')->nullable();
-            $table->double('purchasePrice')->nullable();
-            $table->double('salePrice')->nullable();
-            $table->double('qtyAvailable')->nullable();
-            $table->double('incomingQty')->nullable();
-            $table->double('virtualAvailable')->nullable();
-            $table->string('ean13')->nullable();
+            $table->double('purchasePrice')->nullable()->default(0.0);
+            $table->double('salePrice')->nullable()->default(0.0);
+            $table->double('qtyAvailable')->nullable()->default(0.0);
+            $table->double('incomingQty')->nullable()->default(0.0);
+            $table->double('virtualAvailable')->nullable()->default(0.0);
+            $table->string('ean13');
             $table->binary('image')->nullable();
             $table->softDeletes();
             $table->integer('uom_id')->unsigned();
