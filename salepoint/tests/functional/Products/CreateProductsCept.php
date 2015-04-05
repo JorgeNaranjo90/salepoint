@@ -1,4 +1,4 @@
-<?php 
+<?php
 $I = new FunctionalTester($scenario);
 $I->wantTo('create a new product');
 $I->am('a Administrator user');

@@ -34,7 +34,7 @@ class CreateProductsTable extends Migration {
 
         DB::unprepared("CREATE VIEW selectProducts AS
            select p.*,u.name 'uom' from products p join uoms u on p.uom_id = u.id
-            order by p.name asc;
+            where p.deleted_at is null order by p.name asc;
          ");
 
         DB::unprepared("CREATE PROCEDURE productsReport()
