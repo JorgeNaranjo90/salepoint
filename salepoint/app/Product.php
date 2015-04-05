@@ -23,6 +23,8 @@ class Product extends Model implements AuthenticatableContract
      */
     protected $table = 'products';
 
+    protected $table2 = 'selectProducts';
+
     public function setImageAttribute($value){
         if ( !empty($value)){
             $image_b64 = base64_encode(file_get_contents($value));
@@ -49,12 +51,25 @@ class Product extends Model implements AuthenticatableContract
 
     public static function filterAndPaginate($name)
     {
-        return Product::name($name)
-            ->join('uoms','products.uom_id','=','uoms.id')
-            ->select('products.*','uoms.name as uom')
-            ->orderBy('products.name', 'ASC')
+        return \DB::table('selectProducts')
+            ->where('name','like','%'.$name.'%')
             ->paginate();
+    }
 
+    public static function filterAndPaginateMax($name)
+    {
+        return \DB::table('selectProducts')
+            ->where('qtyAvailable','>',50)
+            ->where('name','like','%'.$name.'%')
+            ->paginate();
+    }
+
+    public static function filterAndPaginateMin($name)
+    {
+        return \DB::table('selectProducts')
+            ->where('qtyAvailable','>',10)
+            ->where('name','like','%'.$name.'%')
+            ->paginate();
     }
 
     public function scopeName($query, $name)
