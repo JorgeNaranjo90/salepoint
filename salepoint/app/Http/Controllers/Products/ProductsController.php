@@ -35,7 +35,7 @@ class ProductsController extends Controller {
     {
         $library->load();
         $dompdf = new \DOMPDF();
-        $products = Product::filterAndPaginate($request->get('name'));
+        $products = Product::filterAndPaginateMax($request->get('name'));
         $html = view('products.report',compact('products'));
         $dompdf->load_html($html);
         $dompdf->get_css();
@@ -47,7 +47,7 @@ class ProductsController extends Controller {
     {
         $library->load();
         $dompdf = new \DOMPDF();
-        $products = Product::filterAndPaginate($request->get('name'));
+        $products = Product::filterAndPaginateMin($request->get('name'));
         $html = view('products.report',compact('products'));
         $dompdf->load_html($html);
         $dompdf->get_css();

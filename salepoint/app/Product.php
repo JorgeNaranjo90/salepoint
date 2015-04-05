@@ -58,16 +58,14 @@ class Product extends Model implements AuthenticatableContract
 
     public static function filterAndPaginateMax($name)
     {
-        return \DB::table('selectProducts')
-            ->where('qtyAvailable','>',50)
+        return \DB::table('selectProductsMax')
             ->where('name','like','%'.$name.'%')
             ->paginate();
     }
 
     public static function filterAndPaginateMin($name)
     {
-        return \DB::table('selectProducts')
-            ->where('qtyAvailable','>',10)
+        return \DB::table('selectProductsMin')
             ->where('name','like','%'.$name.'%')
             ->paginate();
     }

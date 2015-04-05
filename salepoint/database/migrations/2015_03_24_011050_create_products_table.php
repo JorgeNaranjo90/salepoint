@@ -39,7 +39,12 @@ class CreateProductsTable extends Migration {
 
         DB::unprepared("CREATE VIEW selectProductsMax AS
             select p.*,u.name 'uom' from products p join uoms u on p.uom_id = u.id
-            where p.qtyAvailable > 50 order by p.name;
+            where p.qtyAvailable >= 50 order by p.name;
+         ");
+
+        DB::unprepared("CREATE VIEW selectProductsMin AS
+            select p.*,u.name 'uom' from products p join uoms u on p.uom_id = u.id
+            where p.qtyAvailable <= 50 order by p.name;
          ");
 	}
 
@@ -52,6 +57,8 @@ class CreateProductsTable extends Migration {
 	{
 		Schema::drop('products');
         DB::unprepared("DROP VIEW IF EXISTS selectProducts");
+        DB::unprepared("DROP VIEW IF EXISTS selectProductsMax");
+        DB::unprepared("DROP VIEW IF EXISTS selectProductsMin");
 	}
 
 }
