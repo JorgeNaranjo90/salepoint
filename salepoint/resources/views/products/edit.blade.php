@@ -2,7 +2,7 @@
 @extends('generalPartials.general_view')
 
 @section('title')
-    Edit Product: <b>{{ $product->name }}</b>
+     {{ trans('products.edit_product'), $product->name }}
 @endsection
 
 @section('buttons')

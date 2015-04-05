@@ -131,6 +131,4 @@ class PartnersController extends Controller {
         return \Redirect::route('partners.index');
     }
 
-
-
 }
