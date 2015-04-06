@@ -34,11 +34,6 @@ class CreateProductsTable extends Migration {
                 ->on('partners')->onDelete('cascade')->onUpdate('cascade');
         });
 
-        DB::unprepared("CREATE VIEW selectProducts AS
-            select p.*,u.name 'uom',pp.name 'supplier_name' from products p join uoms u on p.uom_id = u.id
-            join partners pp on p.partner_id = pp.id
-            where  p.deleted_at is null order by pp.name,p.name;
-         ");
 
         DB::unprepared("CREATE VIEW selectProductsReport AS
                 select p.name,p.ean13,u.name 'uom',p.qtyAvailable,p.incomingQty,
