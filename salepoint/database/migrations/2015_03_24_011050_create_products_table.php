@@ -35,6 +35,12 @@ class CreateProductsTable extends Migration {
         });
 
 
+        DB::unprepared("CREATE VIEW selectProducts AS
+                select p.*,u.name 'uom',pa.name 'supplier_name' from
+                products p join uoms u on p.uom_id = u.id join
+                partners pa on p.partner_id = pa.id order by pa.name,p.name;
+         ");
+
         DB::unprepared("CREATE VIEW selectProductsReport AS
                 select p.name,p.ean13,u.name 'uom',p.qtyAvailable,p.incomingQty,
                 p.virtualAvailable,p.purchasePrice,pa.name 'supplier_name'
@@ -77,6 +83,7 @@ class CreateProductsTable extends Migration {
 	{
 		Schema::drop('products');
         DB::unprepared("DROP VIEW IF EXISTS selectProducts");
+        DB::unprepared("DROP VIEW IF EXISTS selectProductsReport");
         DB::unprepared("DROP VIEW IF EXISTS selectProductsMax");
         DB::unprepared("DROP VIEW IF EXISTS selectProductsMin");
         DB::unprepared('DROP PROCEDURE IF EXISTS productsReport');
