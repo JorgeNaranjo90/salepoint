@@ -57,19 +57,20 @@ class Product extends Model implements AuthenticatableContract
     public static function filterAndPaginateGeneral()
     {
         return \DB::table('selectProductsReport')
-            ->paginate();
+            ->get();
     }
 
     public static function filterAndPaginateMax()
     {
         return \DB::table('selectProductsMax')
-            ->paginate();
+            ->get();
 
     }
 
     public static function filterAndPaginateMin()
     {
-        return \DB::table('selectProductsMin');
+        return \DB::table('selectProductsMin')
+            ->get();
 
     }
 
