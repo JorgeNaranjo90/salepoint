@@ -26,31 +26,45 @@ class CreateProductsTable extends Migration {
             $table->binary('image')->nullable();
             $table->softDeletes();
             $table->integer('uom_id')->unsigned();
+            $table->integer('partner_id')->unsigned();
             $table->timestamps();
-
             $table->foreign('uom_id')->references('id')
                 ->on('uoms')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('partner_id')->references('id')
+                ->on('partners')->onDelete('cascade')->onUpdate('cascade');
         });
 
         DB::unprepared("CREATE VIEW selectProducts AS
-            select p.*,u.name 'uom' from products p join uoms u on p.uom_id = u.id
-            order by p.name asc;
+            select p.*,u.name 'uom',pp.name 'supplier_name' from products p join uoms u on p.uom_id = u.id
+            join partners pp on p.partner_id = pp.id
+            where  p.deleted_at is null order by pp.name,p.name;
+         ");
+
+        DB::unprepared("CREATE VIEW selectProductsReport AS
+                select p.name,p.ean13,u.name 'uom',p.qtyAvailable,p.incomingQty,
+                p.virtualAvailable,p.purchasePrice,pa.name 'supplier_name'
+                from products p join uoms u on p.uom_id = u.id join
+                partners pa on p.partner_id = pa.id order by pa.name,p.name asc;
          ");
 
         DB::unprepared("CREATE VIEW selectProductsMax AS
             select p.*,u.name 'uom' from products p join uoms u on p.uom_id = u.id
-            where p.qtyAvailable >= 50 order by p.name;
+            join partners pp on p.partner_id = pp.id
+            where p.deleted_at is null and p.qtyAvailable >=50 order by pp.name,p.name;
          ");
 
         DB::unprepared("CREATE VIEW selectProductsMin AS
-            select p.*,u.name 'uom' from products p join uoms u on p.uom_id = u.id
-            where p.qtyAvailable <= 50 order by p.name;
+            select p.*,u.name 'uom',pp.name 'supplier_name' from products p join uoms u on p.uom_id = u.id
+            join partners pp on p.partner_id = pp.id
+            where  p.deleted_at is null and p.qtyAvailable <= 10 order by pp.name,p.name;
          ");
 
         DB::unprepared("CREATE PROCEDURE productsReport()
             BEGIN
-            select p.*,u.name 'uom' from products p join uoms u on p.uom_id = u.id
-            order by p.name asc;
+                select p.name,p.ean13,u.name 'uom',p.qtyAvailable,p.incomingQty,
+                p.virtualAvailable,p.purchasePrice,pa.name 'supplier_name'
+                from products p join uoms u on p.uom_id = u.id join
+                partners pa on p.partner_id = pa.id order by pa.name,p.name asc;
             END;
          ");
 	}

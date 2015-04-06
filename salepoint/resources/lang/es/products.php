@@ -1,5 +1,6 @@
 <?php
 return [
+    'products' => 'Productos',
     'create_product' => 'Crear producto',
     'edit_product' => 'Editar producto',
     'message_delete' => '¿Estás seguro que deseas eliminar este producto?',
@@ -10,11 +11,16 @@ return [
     'product_description' => 'Descripción del producto',
     'purchase_price' => 'Precio de compra ',
     'sale_price' => 'Precio de venta',
-    'uom' => 'Uom',
+    'uom' => 'Unidad',
     'qty_available' => 'Producto disponible',
     'incoming_qty' => 'Producto entrante',
     'virtual_available' => 'Disponible virtual',
     'product_virtual_available' => 'Producto disponible virtual',
     'ean_13' => 'Ean 13',
-    'image' => 'Imagen'
+    'image' => 'Imagen',
+    'supplier_name' => 'Proveedor',
+     /*Reports*/
+    'report_general'=> 'Reporte general de productos',
+    'report_min'=> 'Reporte mínimo de productos',
+    'report_max'=> 'Reporte máximo de productos',
 ];

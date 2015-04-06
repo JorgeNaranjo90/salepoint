@@ -1,5 +1,6 @@
 <?php
 return [
+    'products' => 'Products',
     'create_product' => 'Create product',
     'edit_product' => 'Edit product',
     'message_delete' => 'Are you sure delete this product?',
@@ -16,5 +17,10 @@ return [
     'virtual_available' => 'Virtual Available',
     'product_virtual_available' => 'Product virtual available',
     'ean_13' => 'Ean 13',
-    'image' => 'Image'
+    'image' => 'Image',
+    'supplier_name' => 'Supplier Name',
+    /*Reports*/
+    'report_general'=> 'Products report general',
+    'report_min'=> 'Products report minimum',
+    'report_max'=> 'Products report maximum',
 ];

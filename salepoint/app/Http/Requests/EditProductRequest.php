@@ -7,9 +7,17 @@
  */
 
 namespace App\Http\Requests;
+use Illuminate\Routing\Route;
 
 
 class EditProductRequest extends Request{
+
+    private $route;
+
+    public function __construct(Route $route){
+        $this->route=$route;
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -28,8 +36,8 @@ class EditProductRequest extends Request{
     public function rules()
     {
         return [
-            'name' =>'required',
-            'ean13' =>'required'
+            'name' =>'required|unique:products,name,'.$this->route->getParameter('products'),
+            'ean13' =>'required|unique:products,ean13,'.$this->route->getParameter('products')
         ];
     }
 }

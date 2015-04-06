@@ -9,6 +9,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\PdfLibrary;
+use App\Partner;
 
 class ProductsController extends Controller
 {
@@ -18,43 +19,47 @@ class ProductsController extends Controller
 
     public function __construct(Request $request)
     {
+        $this->middleware('auth');
         $this->request = $request;
     }
 
-    public function report(Request $request, PdfLibrary $library)
+    public function report(PdfLibrary $library)
     {
         $library->load();
-        $dompdf = new \DOMPDF();
-        $products = Product::filterAndPaginate($request->get('name'));
-        $html = view('products.report', compact('products'));
-        $dompdf->load_html($html);
-        $dompdf->get_css();
-        $dompdf->render();
-        $dompdf->stream("products.pdf");
+        $this->dompdf = new \DOMPDF();
+        $products = Product::filterAndPaginateGeneral();
+        $title="General report products";
+        $html = view('products.report', compact('products','title'));
+        $this->dompdf->load_html($html);
+        $this->dompdf->get_css();
+        $this->dompdf->render();
+        return $this->dompdf->stream("products.pdf");
     }
 
-    public function reportmax(Request $request, PdfLibrary $library)
+    public function reportmax(PdfLibrary $library)
     {
         $library->load();
         $dompdf = new \DOMPDF();
-        $products = Product::filterAndPaginateMax($request->get('name'));
-        $html = view('products.report', compact('products'));
+        $products = Product::filterAndPaginateMax();
+        $title='Maximum report products';
+        $html = view('products.report', compact('products','title'));
         $dompdf->load_html($html);
         $dompdf->get_css();
         $dompdf->render();
-        $dompdf->stream("products.pdf");
+        return $dompdf->stream("productsmax.pdf");
     }
 
-    public function reportmin(Request $request, PdfLibrary $library)
+    public function reportmin(PdfLibrary $library)
     {
         $library->load();
-        $dompdf = new \DOMPDF();
-        $products = Product::filterAndPaginateMin($request->get('name'));
-        $html = view('products.report', compact('products'));
-        $dompdf->load_html($html);
-        $dompdf->get_css();
-        $dompdf->render();
-        $dompdf->stream("products.pdf");
+        $this->dompdf = new \DOMPDF();
+        $products = Product::filterAndPaginateMin();
+        $title='Minimum report products';
+        $html = view('products.report', compact('products','title'));
+        $this->dompdf->load_html($html);
+        $this->dompdf->get_css();
+        $this->dompdf->render();
+        return $this->dompdf->stream("productsmin.pdf");
     }
 
     /*
@@ -76,7 +81,9 @@ class ProductsController extends Controller
     public function create()
     {
         $uom = \DB::table('uoms')->orderBy('name', 'ASC')->lists('name', 'id');
-        return view('products.create', compact('uom'));
+        //$supplier = \DB::table('partners')->orderBy('name', 'ASC')->lists('name', 'id');
+        $supplier = Partner::filterAndPaginateSupplier('')->lists('name','id');
+        return view('products.create', compact('uom','supplier'));
     }
 
     /**
@@ -87,6 +94,7 @@ class ProductsController extends Controller
     public function store(CreateProductRequest $request)
     {
         $product = Product::create($request->all());
+        Session::flash('message', $product->name .' was registred !');
         return \Redirect::route('products.index');
 
     }
@@ -114,7 +122,8 @@ class ProductsController extends Controller
     {
         $product = Product::findOrFail($id);
         $uom = \DB::table('uoms')->orderBy('name', 'ASC')->lists('name', 'id');
-        return view('products.edit', compact('product', 'uom'));
+        $supplier = Partner::filterAndPaginateSupplier('')->lists('name','id');
+        return view('products.edit', compact('product', 'uom','supplier'));
     }
 
     /**
