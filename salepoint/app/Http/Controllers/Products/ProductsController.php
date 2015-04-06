@@ -9,30 +9,60 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\PdfLibrary;
+use App\Partner;
 
+class ProductsController extends Controller
+{
 
-class ProductsController extends Controller {
+    protected $request;
+    protected $dompdf;
 
-    protected  $request;
-    protected  $dompdf;
-
-    public function __construct(Request $request){
+    public function __construct(Request $request)
+    {
+        $this->middleware('auth');
         $this->request = $request;
     }
 
-    public function report(Request $request,PdfLibrary $library)
+    public function report(PdfLibrary $library)
+    {
+        $library->load();
+        $this->dompdf = new \DOMPDF();
+        $products = Product::filterAndPaginateGeneral();
+        $title="General report products";
+        $html = view('products.report', compact('products','title'));
+        $this->dompdf->load_html($html);
+        $this->dompdf->get_css();
+        $this->dompdf->render();
+        return $this->dompdf->stream("products.pdf");
+    }
+
+    public function reportmax(PdfLibrary $library)
     {
         $library->load();
         $dompdf = new \DOMPDF();
-        $products = Product::filterAndPaginate($request->get('name'));
-        $html = view('products.report',compact('products'));
+        $products = Product::filterAndPaginateMax();
+        $title='Maximum report products';
+        $html = view('products.report', compact('products','title'));
         $dompdf->load_html($html);
         $dompdf->get_css();
         $dompdf->render();
-        $dompdf->stream("products.pdf");
+        return $dompdf->stream("productsmax.pdf");
     }
 
-	/**
+    public function reportmin(PdfLibrary $library)
+    {
+        $library->load();
+        $this->dompdf = new \DOMPDF();
+        $products = Product::filterAndPaginateMin();
+        $title='Minimum report products';
+        $html = view('products.report', compact('products','title'));
+        $this->dompdf->load_html($html);
+        $this->dompdf->get_css();
+        $this->dompdf->render();
+        return $this->dompdf->stream("productsmin.pdf");
+    }
+
+    /*
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
@@ -50,8 +80,10 @@ class ProductsController extends Controller {
      */
     public function create()
     {
-        $uom = \DB::table('uoms')->orderBy('name','ASC')->lists('name','id');
-        return view('products.create',compact('uom'));
+        $uom = \DB::table('uoms')->orderBy('name', 'ASC')->lists('name', 'id');
+        //$supplier = \DB::table('partners')->orderBy('name', 'ASC')->lists('name', 'id');
+        $supplier = Partner::filterAndPaginateSupplier('')->lists('name','id');
+        return view('products.create', compact('uom','supplier'));
     }
 
     /**
@@ -62,6 +94,7 @@ class ProductsController extends Controller {
     public function store(CreateProductRequest $request)
     {
         $product = Product::create($request->all());
+        Session::flash('message', $product->name .' was registred !');
         return \Redirect::route('products.index');
 
     }
@@ -69,7 +102,7 @@ class ProductsController extends Controller {
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function show($id)
@@ -79,45 +112,45 @@ class ProductsController extends Controller {
     }
 
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function edit($id)
+    {
         $product = Product::findOrFail($id);
-        $uom = \DB::table('uoms')->orderBy('name','ASC')->lists('name','id');
-        return view('products.edit', compact('product','uom'));
-	}
+        $uom = \DB::table('uoms')->orderBy('name', 'ASC')->lists('name', 'id');
+        $supplier = Partner::filterAndPaginateSupplier('')->lists('name','id');
+        return view('products.edit', compact('product', 'uom','supplier'));
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int $id
+     * @return Response
+     */
     public function update(EditProductRequest $request, $id)
     {
         $product = Product::findOrFail($id);
         $product->fill($request->all());
         $product->save();
         return \Redirect::back();
-	}
+    }
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
         $product = Product::findOrFail($id);
         $product->delete();
-        Session::flash('message', $product->name.' was delete !');
+        Session::flash('message', $product->name . ' was delete !');
         return \Redirect::route('products.index');
-	}
-
+    }
 }

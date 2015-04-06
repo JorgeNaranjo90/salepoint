@@ -37,7 +37,7 @@ class Product extends Model implements AuthenticatableContract
      *
      * @var array
      */
-    protected $fillable = ['name', 'description','purchasePrice','salePrice','qtyAvailable','incomingQty','virtualAvailable','ean13','image','uom_id'];
+    protected $fillable = ['name', 'description','purchasePrice','salePrice','qtyAvailable','incomingQty','virtualAvailable','ean13','image','uom_id','partner_id'];
 
     //Scope for search
 
@@ -51,8 +51,27 @@ class Product extends Model implements AuthenticatableContract
     {
         return \DB::table('selectProducts')
             ->where('name','like','%'.$name.'%')
-            ->orderBy('selectProducts.name','ASC')
             ->paginate();
+    }
+
+    public static function filterAndPaginateGeneral()
+    {
+        return \DB::table('selectProductsReport')
+            ->get();
+    }
+
+    public static function filterAndPaginateMax()
+    {
+        return \DB::table('selectProductsMax')
+            ->get();
+
+    }
+
+    public static function filterAndPaginateMin()
+    {
+        return \DB::table('selectProductsMin')
+            ->get();
+
     }
 
     public function scopeName($query, $name)
