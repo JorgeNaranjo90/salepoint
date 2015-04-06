@@ -59,9 +59,12 @@ class ProductsController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $product = Product::findOrFail($id);
+        if($request->ajax()){
+            return Product::findOrFail($id)->toJson();
+        }
         return view('products.profile', compact('product'));
     }
 
@@ -78,6 +81,20 @@ class ProductsController extends Controller {
         $uom = \DB::table('uoms')->orderBy('name','ASC')->lists('name','id');
         return view('products.edit', compact('product','uom'));
 	}
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function searchCode(Request $request, $code)
+    {
+
+        if($request->ajax()){
+            return $product = Product::where('ean13',$code);
+        }
+    }
 
 	/**
 	 * Update the specified resource in storage.

@@ -77,6 +77,7 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Certificatesats', 'mi
 });
 Route::group(['namespace'=>'Products','middleware' => 'auth'], function() {
     Route::pattern('products', '[0-9]+');
+    Route::get('products/searchCode', 'ProductsController@searchCode');
     Route::get('products/report', 'ProductsController@report');
     Route::resource('products', 'ProductsController');
 });

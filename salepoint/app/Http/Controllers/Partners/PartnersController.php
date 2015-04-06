@@ -78,9 +78,18 @@ class PartnersController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
         $partner= Partner::findOrFail($id);
+        if($request->ajax()){
+            return Partner::join('countrys','partners.country_id','=','countrys.id')
+                ->join('citys','partners.city_id','=','citys.id')
+                ->join('states','partners.state_id','=','states.id')
+                ->select('partners.*',
+                    'countrys.name as country_name',
+                    'citys.name as city_name',
+                    'states.name as state_name')->findOrFail($id)->toJson();
+        }
         return view('partners.profile', compact('partner'));
     }
 
