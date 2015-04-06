@@ -41,6 +41,10 @@ class CreateUomsTable extends Migration {
             'name'          => 'doc',
             'description'   => 'Docenas'
         ));
+        \DB::table('uoms')->insert(array(
+            'name'          => 'Ml',
+            'description'   => 'Mililitros'
+        ));
 	}
 
 	/**

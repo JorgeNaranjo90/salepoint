@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model implements AuthenticatableContract
 {
 
-
     use Authenticatable;//, CanResetPassword;
     use SoftDeletes;
 
@@ -22,6 +21,7 @@ class Product extends Model implements AuthenticatableContract
      * @var string
      */
     protected $table = 'products';
+    protected $table2 = 'selectProducts';
 
     public function setImageAttribute($value){
         if ( !empty($value)){
@@ -37,7 +37,7 @@ class Product extends Model implements AuthenticatableContract
      *
      * @var array
      */
-    protected $fillable = ['name', 'description','purchasePrice','salePrice','qtyAvailable','incomingQty','virtualAvailable','ean13','image','uom_id'];
+    protected $fillable = ['name', 'description','purchasePrice','salePrice','qtyAvailable','incomingQty','virtualAvailable','ean13','image','uom_id','partner_id'];
 
     //Scope for search
 
@@ -49,18 +49,35 @@ class Product extends Model implements AuthenticatableContract
 
     public static function filterAndPaginate($name)
     {
-        return Product::name($name)
-            ->join('uoms','products.uom_id','=','uoms.id')
-            ->select('products.*','uoms.name as uom')
-            ->orderBy('products.name', 'ASC')
+        return \DB::table('selectProducts')
+            ->where('name','like','%'.$name.'%')
             ->paginate();
+    }
+
+    public static function filterAndPaginateGeneral()
+    {
+        return \DB::table('selectProductsReport')
+            ->get();
+    }
+
+    public static function filterAndPaginateMax()
+    {
+        return \DB::table('selectProductsMax')
+            ->get();
+
+    }
+
+    public static function filterAndPaginateMin()
+    {
+        return \DB::table('selectProductsMin')
+            ->get();
 
     }
 
     public function scopeName($query, $name)
     {
         if (trim($name) != "") {
-            $query->where("name", "LIKE", "%$name%");
+            $query->where("selectProducts.name", "LIKE", "%$name%");
         }
 
     }

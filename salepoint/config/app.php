@@ -148,6 +148,7 @@ return [
         /* Vendor providers*/
 
         'Collective\Html\HtmlServiceProvider',
+
 	],
 
 	/*

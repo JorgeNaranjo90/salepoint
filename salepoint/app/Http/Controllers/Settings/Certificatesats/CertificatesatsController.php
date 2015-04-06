@@ -9,6 +9,7 @@ use App\Http\Requests\EditCertificateSatsRequest;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
+
 class CertificatesatsController extends Controller {
 
     protected  $request;

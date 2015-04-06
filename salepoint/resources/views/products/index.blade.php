@@ -6,7 +6,7 @@
 
 
 @section('title')
-    Products
+   {{trans('products.products')}}
 @endsection
 
 @section('buttons')
