@@ -11,7 +11,7 @@ return [
     'product_description' => 'Descripción del producto',
     'purchase_price' => 'Precio de compra ',
     'sale_price' => 'Precio de venta',
-    'uom' => 'Unidad',
+    'uom' => 'UDM',
     'qty_available' => 'Producto disponible',
     'incoming_qty' => 'Producto entrante',
     'virtual_available' => 'Disponible virtual',
