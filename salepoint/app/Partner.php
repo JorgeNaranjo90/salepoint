@@ -41,38 +41,58 @@ class Partner extends Model {
     {
         return \DB::table('selectPartners')
             ->where('name','like','%'.$name.'%')
-            ->orderBy('selectPartners.name','ASC')
+            ->orderBy('name','ASC')
             ->paginate();
-
-    }
-    public static function filterAndPaginateReport($name)
-    {
-        return \DB::unprepared('CALL partnersReport()');
 
     }
 
     public static function filterAndPaginateCustomer($name)
     {
-        return \DB::table('selectPartners')
-            ->where('customer','=',1)
+        return \DB::table('selectCustomers')
             ->where('name','like','%'.$name.'%')
-            ->orderBy('selectPartners.name','ASC')
+            ->orderBy('name','ASC')
             ->paginate();
 
     }
 
     public static function filterAndPaginateSupplier($name)
     {
-        return \DB::table('selectPartners')
-            ->where('supplier','=',1)
+        return \DB::table('selectSuppliers')
             ->where('name','like','%'.$name.'%')
-            ->orderBy('selectPartners.name','ASC')
+            ->orderBy('name','ASC')
             ->paginate();
+
+    }
+
+    public static function report()
+    {
+        return \DB::table('selectPartners')
+            ->get();
+
+    }
+
+    public static function reportCustomer()
+    {
+        return \DB::table('selectCustomers')
+            ->get();
+
+    }
+
+    public static function reportSupplier()
+    {
+        return \DB::table('selectSuppliers')
+            ->get();
 
     }
 
     public static function filterAndPaginateDelete($name)
     {
+        /*return \DB::table('selectPartners')
+            ->onlyTrashed()
+            ->where('name','like','%'.$name.'%')
+            ->orderBy('name','ASC')
+            ->paginate();*/
+
         return Partner::name($name)
             ->join('countrys','partners.country_id','=','countrys.id')
             ->join('citys','partners.city_id','=','citys.id')
@@ -90,7 +110,7 @@ class Partner extends Model {
     public function scopeName($query, $name)
     {
         if (trim($name) != "") {
-           $query->where("selectPartners.name", "LIKE", "%$name%");
+           $query->where("name", "LIKE", "%$name%");
         }
 
     }

@@ -20,11 +20,11 @@ class PartnersController extends Controller {
         $this->request = $request;
     }
 
-    public function report(Request $request,PdfLibrary $library)
+    public function report(PdfLibrary $library)
     {
         $library->load();
         $this->dompdf = new \DOMPDF();
-        $partners = Partner::filterAndPaginate($request->get('name'));
+        $partners = Partner::report();
         $title = 'Report general of partners';
         $html = view('partners.report',compact('partners','title'));
         $this->dompdf->load_html($html);
@@ -33,11 +33,11 @@ class PartnersController extends Controller {
         $this->dompdf->stream("partners.pdf");
     }
 
-    public function reportCustomer(Request $request,PdfLibrary $library)
+    public function reportCustomer(PdfLibrary $library)
     {
         $library->load();
         $this->dompdf = new \DOMPDF();
-        $partners = Partner::filterAndPaginateCustomer($request->get('name'));
+        $partners = Partner::reportCustomer();
         $title = 'Report of customers';
         $html = view('partners.report',compact('partners','title'));
         $this->dompdf->load_html($html);
@@ -46,11 +46,11 @@ class PartnersController extends Controller {
         $this->dompdf->stream("partners_customer.pdf");
     }
 
-    public function reportSupplier(Request $request,PdfLibrary $library)
+    public function reportSupplier(PdfLibrary $library)
     {
         $library->load();
         $this->dompdf = new \DOMPDF();
-        $partners = Partner::filterAndPaginateSupplier($request->get('name'));
+        $partners = Partner::reportSupplier();
         $title = 'Report of Suppliers';
         $html = view('partners.report',compact('partners','title'));
         $this->dompdf->load_html($html);
