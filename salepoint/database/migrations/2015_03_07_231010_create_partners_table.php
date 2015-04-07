@@ -79,7 +79,8 @@ class CreatePartnersTable extends Migration {
 	{
 		Schema::drop('partners');
         DB::unprepared('DROP VIEW IF EXISTS selectPartners');
-        DB::unprepared('DROP PROCEDURE IF EXISTS partnersReport');
+        DB::unprepared('DROP VIEW IF EXISTS selectCustomers');
+        DB::unprepared('DROP VIEW IF EXISTS selectSuppliers');
 	}
 
 }

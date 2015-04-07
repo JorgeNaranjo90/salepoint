@@ -34,8 +34,8 @@ class UsersController extends Controller {
 	 */
 	public function create()
 	{
-        return view('settings.users.create');
-
+        $type = User::getTypeUsers();
+        return view('settings.users.create',compact('type'));
     }
 
 	/**
@@ -47,7 +47,8 @@ class UsersController extends Controller {
 	{
 
         $user = User::create($request->all());
-        return \Redirect::route('settings.users.index');
+        Session::flash('message', $user->name .' was registred !');
+        return redirect()->route('settings.users.index');
 
 	}
 
@@ -73,7 +74,8 @@ class UsersController extends Controller {
 	{
 
         $user = User::findOrFail($id);
-		return view('settings.users.edit', compact('user'));
+        $type = User::getTypeUsers();
+        return view('settings.users.edit',compact('user','type'));
 	}
 
 	/**

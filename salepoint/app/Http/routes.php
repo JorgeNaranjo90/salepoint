@@ -21,7 +21,7 @@ Route::controllers([
 ]);
 
 
-Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users', 'middleware' => 'auth'], function(){
+Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users', 'middleware' => ['auth','is_admin','is_user','is_sale','is_purchase','is_report']], function(){
     Route::resource('users', 'UsersController');
 });
 

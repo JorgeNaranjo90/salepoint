@@ -26,7 +26,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'password', 'image'];
+	protected $fillable = ['name', 'email', 'password', 'image','type'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -68,9 +68,51 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     }
 
+    /*Function for loader the select on the screen create users */
+    public static function getTypeUsers()
+    {
+        $type = \DB::select( \DB::raw("SHOW COLUMNS FROM users WHERE Field = 'type'") )[0]->Type;
+        preg_match('/^enum\((.*)\)$/', $type, $matches);
+        $enum = array();
+        foreach( explode(',', $matches[1]) as $value )
+        {
+            $v = trim( $value, "'" );
+            $enum = array_add($enum, $v, $v);
+        }
+        return $enum;
+    }
+
     public function scopeName($query, $name){
         if(trim($name) != ""){
             $query->where("name", "LIKE", "%$name%");
         }
+    }
+
+    /*Types of Users*/
+
+    public function is($type)
+    {
+        return $this->type === $type;
+    }
+
+    public function isAdmin()
+    {
+        return $this->type === 'admin';
+    }
+    public function isUser()
+    {
+        return $this->type === 'user';
+    }
+    public function isSale()
+    {
+        return $this->type === 'sale';
+    }
+    public function isPurchase()
+    {
+        return $this->type === 'purchase';
+    }
+    public function isReport()
+    {
+        return $this->type === 'report';
     }
 }
