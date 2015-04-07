@@ -60,7 +60,7 @@ class Product extends Model implements AuthenticatableContract
             ->get();
     }
 
-    public static function filterAndPaginateMax()
+    public static function filterAndPaginateM()
     {
         return \DB::table('selectProductsMax')
             ->get();
