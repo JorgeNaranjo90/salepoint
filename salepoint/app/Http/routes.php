@@ -31,6 +31,8 @@ Route::group(['namespace'=>'Partners', 'middleware' => 'auth'], function() {
     Route::get('partners/supplier', ['as' => 'partners.supplier', 'uses' => 'PartnersController@supplier']);
     Route::get('partners/delete', ['as' => 'partners.onlyTrashed', 'uses' => 'PartnersController@delete']);
     Route::get('partners/report', ['as' => 'partners.reports', 'uses' => 'PartnersController@report']);
+    Route::get('partners/reportCustomer', ['as' => 'partners.reports', 'uses' => 'PartnersController@reportCustomer']);
+    Route::get('partners/reportSupplier', ['as' => 'partners.reports', 'uses' => 'PartnersController@reportSupplier']);
     Route::resource('partners', 'PartnersController');
 });
 

@@ -13,6 +13,7 @@ use App\Http\Controllers\PdfLibrary;
 class PartnersController extends Controller {
 
     protected  $request;
+    protected  $dompdf;
 
     public function __construct(Request $request){
         $this->middleware('auth');
@@ -22,13 +23,40 @@ class PartnersController extends Controller {
     public function report(Request $request,PdfLibrary $library)
     {
         $library->load();
-        $dompdf = new \DOMPDF();
+        $this->dompdf = new \DOMPDF();
         $partners = Partner::filterAndPaginate($request->get('name'));
-        $html = view('partners.report',compact('partners'));
-        $dompdf->load_html($html);
-        $dompdf->get_css();
-        $dompdf->render();
-        $dompdf->stream("partners.pdf");
+        $title = 'Report general of partners';
+        $html = view('partners.report',compact('partners','title'));
+        $this->dompdf->load_html($html);
+        $this->dompdf->get_css();
+        $this->dompdf->render();
+        $this->dompdf->stream("partners.pdf");
+    }
+
+    public function reportCustomer(Request $request,PdfLibrary $library)
+    {
+        $library->load();
+        $this->dompdf = new \DOMPDF();
+        $partners = Partner::filterAndPaginateCustomer($request->get('name'));
+        $title = 'Report of customers';
+        $html = view('partners.report',compact('partners','title'));
+        $this->dompdf->load_html($html);
+        $this->dompdf->get_css();
+        $this->dompdf->render();
+        $this->dompdf->stream("partners_customer.pdf");
+    }
+
+    public function reportSupplier(Request $request,PdfLibrary $library)
+    {
+        $library->load();
+        $this->dompdf = new \DOMPDF();
+        $partners = Partner::filterAndPaginateSupplier($request->get('name'));
+        $title = 'Report of Suppliers';
+        $html = view('partners.report',compact('partners','title'));
+        $this->dompdf->load_html($html);
+        $this->dompdf->get_css();
+        $this->dompdf->render();
+        $this->dompdf->stream("partners_supplier.pdf");
     }
 
     public function index(Request $request)
