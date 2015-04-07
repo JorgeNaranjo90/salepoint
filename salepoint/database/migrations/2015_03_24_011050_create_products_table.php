@@ -49,9 +49,9 @@ class CreateProductsTable extends Migration {
          ");
 
         DB::unprepared("CREATE VIEW selectProductsMax AS
-            select p.*,u.name 'uom' from products p join uoms u on p.uom_id = u.id
+            select p.*,u.name 'uom',pp.name 'supplier_name' from products p join uoms u on p.uom_id = u.id
             join partners pp on p.partner_id = pp.id
-            where p.deleted_at is null and p.qtyAvailable >=50 order by pp.name,p.name;
+            where  p.deleted_at is null and p.qtyAvailable >= 50 order by pp.name,p.name;
          ");
 
         DB::unprepared("CREATE VIEW selectProductsMin AS

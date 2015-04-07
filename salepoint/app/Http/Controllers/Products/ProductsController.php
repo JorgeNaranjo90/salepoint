@@ -39,14 +39,14 @@ class ProductsController extends Controller
     public function reportmax(PdfLibrary $library)
     {
         $library->load();
-        $dompdf = new \DOMPDF();
-        $products = Product::filterAndPaginateMax();
+        $this->dompdf = new \DOMPDF();
+        $products = Product::filterAndPaginateM();
         $title='Maximum report products';
         $html = view('products.report', compact('products','title'));
-        $dompdf->load_html($html);
-        $dompdf->get_css();
-        $dompdf->render();
-        return $dompdf->stream("productsmax.pdf");
+        $this->dompdf->load_html($html);
+        $this->dompdf->get_css();
+        $this->dompdf->render();
+        return $this->dompdf->stream("products_max.pdf");
     }
 
     public function reportmin(PdfLibrary $library)
@@ -59,7 +59,7 @@ class ProductsController extends Controller
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
         $this->dompdf->render();
-        return $this->dompdf->stream("productsmin.pdf");
+        return $this->dompdf->stream("products_min.pdf");
     }
 
     /*
