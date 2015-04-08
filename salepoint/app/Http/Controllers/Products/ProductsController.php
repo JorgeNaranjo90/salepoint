@@ -137,7 +137,7 @@ class ProductsController extends Controller
         $product = Product::findOrFail($id);
         $product->fill($request->all());
         $product->save();
-        return \Redirect::back();
+        return \Redirect::route('products.index');
     }
 
     /**

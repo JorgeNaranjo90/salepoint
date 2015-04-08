@@ -10,7 +10,9 @@
             <td>{{$city->name}}</td>
             <td>{{$city->code}}</td>
             <td>{{$city->abbreviation}}</td>
-            <td>{{$city->state_id}}</td>
-        </tr>
-    @endforeach
+            <td>{{$city->states->name}}</td>
+
+            @endforeach
 </table>
+
+

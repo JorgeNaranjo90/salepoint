@@ -23,6 +23,10 @@ class Product extends Model implements AuthenticatableContract
     protected $table = 'products';
     protected $table2 = 'selectProducts';
 
+    public function partner(){
+        return $this->belongsTo('App\Partner');
+    }
+
     public function setImageAttribute($value){
         if ( !empty($value)){
             $image_b64 = base64_encode(file_get_contents($value));

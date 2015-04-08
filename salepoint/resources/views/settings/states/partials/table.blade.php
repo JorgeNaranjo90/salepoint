@@ -10,7 +10,7 @@
             <td>{{$state->name}}</td>
             <td>{{$state->code}}</td>
             <td>{{$state->abbreviation}}</td>
-            <td>{{$state->country_id}}</td>
+            <td>{{$state->countrys->name}}</td>
         </tr>
     @endforeach
 </table>

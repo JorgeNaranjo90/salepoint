@@ -97,7 +97,13 @@
                            @endif
                            disabled/>
                 </td>
+                <td valing="top">
+                    @foreach($partner->products as $products)
+                        {{$products->name}}
+                    @endforeach
+                </td>
             </tr>
         </table>
     </div>
+
 @endsection
