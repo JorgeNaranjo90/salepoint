@@ -1,7 +1,7 @@
 <div class="row">
     <div class="form-group col-lg-6">
         {!! Form::label('name',trans('partners.name')) !!}
-        {!! Form::text('name',null,['class' => 'form-control requiered_field','placeholder' => trans('partners.partner_name') ]) !!}
+        {!! Form::text('name',null,['class' => 'form-control requiered_field','placeholder' => trans('partners.partner_name')]) !!}
     </div>
     <div class="form-group col-lg-6">
         {!! Form::label('lastName', trans('partners.last_name')) !!}

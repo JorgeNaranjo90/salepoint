@@ -1,8 +1,6 @@
 @section('vertical_nav')
     <li class="">
         <a href="{{ route('settings.users.index') }}"> {{trans('users.users')}}</a>
-        <a href="{{ route('partners.index') }}">{{trans('partners.partners')}}</a>
-        <a href="{{ route('products.index') }}">{{trans('products.products')}}</a>
         <a href="{{ route('settings.company.index') }}">{{trans('company.company')}}</a>
         <h5>{{trans('users.general_settings')}}</h5>
         <a href="{{ route('settings.fiscalRegimen.index') }}">{{trans('fiscalRegimen.fiscalRegimen')}}s</a>

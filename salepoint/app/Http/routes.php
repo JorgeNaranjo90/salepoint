@@ -21,13 +21,13 @@ Route::controllers([
 ]);
 
 
-Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users', 'middleware' => ['auth','is_admin','is_user','is_sale','is_purchase','is_report']], function(){
+Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Users', 'middleware' => ['auth','is_admin']], function(){
     Route::resource('users', 'UsersController');
 });
 
-Route::group(['namespace'=>'Partners', 'middleware' => 'auth'], function() {
+Route::group(['namespace'=>'Partners', 'middleware' => ['auth']], function() {
     Route::pattern('partners', '[0-9]+');
-    Route::get('partners/customer',['as' => 'partners.customer', 'uses' => 'PartnersController@customer']);
+    Route::get('partners/customer',['as' => 'partners.customer','middleware' => ['is_admin'] ,'uses' => 'PartnersController@customer']);
     Route::get('partners/supplier', ['as' => 'partners.supplier', 'uses' => 'PartnersController@supplier']);
     Route::get('partners/delete', ['as' => 'partners.onlyTrashed', 'uses' => 'PartnersController@delete']);
     Route::get('partners/report', ['as' => 'partners.reports', 'uses' => 'PartnersController@report']);
@@ -96,7 +96,7 @@ Route::group(['namespace'=>'PurchaseOrders', 'middleware' => 'auth'], function()
 });
 
 //Menu Top Base
-Route::get('settings', ['as' => 'settings', 'middleware' => 'auth', 'uses' => 'GeneralController@settings']);
+Route::get('settings', ['as' => 'settings', 'middleware' => ['auth','is_admin'], 'uses' => 'GeneralController@settings']);
 Route::get('sales', ['as' => 'sales', 'middleware' => 'auth', 'uses' => 'GeneralController@sales']);
 Route::get('purchases', ['as' => 'purchases', 'middleware' => 'auth', 'uses' => 'GeneralController@purchases']);
 

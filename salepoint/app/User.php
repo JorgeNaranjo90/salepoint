@@ -12,6 +12,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	use Authenticatable, CanResetPassword;
     use SoftDeletes;
 
+
+
+    //private $type;
+
     protected $dates = ['deleted_at'];
 
 	/**
@@ -88,31 +92,21 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
     }
 
+    public static function typeUser(){
+
+    return ['admin' => trans('users.admin') ,
+            'user' => trans('users.user'),
+            'sale' => trans('users.sale'),
+            'purchase' => trans('users.purchase'),
+            'report'  => trans('users.report')
+    ];
+    }
     /*Types of Users*/
 
     public function is($type)
     {
+
         return $this->type === $type;
     }
 
-    public function isAdmin()
-    {
-        return $this->type === 'admin';
-    }
-    public function isUser()
-    {
-        return $this->type === 'user';
-    }
-    public function isSale()
-    {
-        return $this->type === 'sale';
-    }
-    public function isPurchase()
-    {
-        return $this->type === 'purchase';
-    }
-    public function isReport()
-    {
-        return $this->type === 'report';
-    }
 }

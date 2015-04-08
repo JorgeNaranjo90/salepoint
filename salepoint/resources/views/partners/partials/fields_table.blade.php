@@ -1,17 +1,17 @@
 
     <tr>
 
-        <td>
+        <th>
             <b>
                 {{trans('partners.image')}}
             </b>
 
-        </td>
-        <td>
+        </th>
+        <th>
             <b>
                 {{trans('partners.name')}}
             </b>
-        </td>
+        </th>
         <th>
             <b>
                 {{trans('partners.last_name')}}

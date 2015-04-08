@@ -14,5 +14,11 @@ return [
     'confirm_password' => 'Confirmar contraseña',
     'user_confirm_password' => 'Confirmar contraseña de usuario',
     'type_user' => 'Tipo de usuario',
-    'general_settings' => 'Ajustes generales'
+    'general_settings' => 'Ajustes generales',
+    /*Users types*/
+    'admin' => 'Administrador',
+    'user' => 'Usuario global',
+    'purchase' => 'Usuario de compras',
+    'sale' => 'Usuario de ventas',
+    'report' => 'Usuario de reportes'
 ];

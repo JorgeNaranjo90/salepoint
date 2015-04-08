@@ -31,4 +31,5 @@
     <div class="col-lg-9">
         <h1> {!!Form::label(trans('company.name')) !!}  {!!Form::label(trans('company.company')) !!}:  {{ $company->name }}</h1>
     </div>
+    @include('partners.partials.table_profile')
 @endsection

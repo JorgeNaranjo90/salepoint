@@ -3,6 +3,7 @@
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Session\Store;
+//use Illuminate\Http\Request;
 
 abstract class IsType {
 
@@ -18,7 +19,21 @@ abstract class IsType {
 
     public function handle($request, Closure $next)
     {
-        if( !$this->auth->user()->is($this->getType()))
+
+        if(! $this->auth->user()->is($this->getType())){
+            if ($request->ajax())
+            {
+                return response('Unauthorized.', 401);
+            }
+            else{
+                return response('Unauthorized.', 401);
+            }
+        }
+        return $next($request);
+
+    }
+
+        /*if( !$this->auth->user()->is($this->getType()))
         {
 
 
@@ -26,17 +41,17 @@ abstract class IsType {
             if ($request->ajax())
             {
                 return response('Unauthorized.', 401);
-            }
-            else
-            {
+            }*/
+
+
                 /*return the address a that should redirect depends of type user*/
 
                // return redirect()->to('home');
                 //$this->session->flash('message','You can not access, because you are not an administrator');
-            }
-        }
-        return $next($request);
-    }
+
+        //}
+
+
 
 
 }
