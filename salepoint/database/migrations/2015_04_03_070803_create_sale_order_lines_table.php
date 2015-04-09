@@ -15,7 +15,17 @@ class CreateSaleOrderLinesTable extends Migration {
 		Schema::create('sale_order_lines', function(Blueprint $table)
 		{
 			$table->increments('id');
+            $table->string('name',60)->nullable();
+            $table->double('qty');
+            $table->double('unitPrice');
+            $table->double('subTotal');
+            $table->integer('sale_order_id')->unsigned();
+            $table->integer('product_id')->unsigned();
 			$table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('sale_order_id')->references('id')->on('sale_orders')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('product_id')->references('id')->on('products');
 		});
 	}
 

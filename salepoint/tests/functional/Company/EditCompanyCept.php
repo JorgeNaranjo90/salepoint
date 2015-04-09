@@ -33,13 +33,7 @@ $form = [
     'currency_id' => '2',
     'fiscalRegimen_id' => '1'
 ];
-//$I->submitForm('//form', $form, 'Save');
 
-
-/*$I->amOnPage('/settings/users/'.$id);
-$I->seeCurrentUrlEquals('/settings/users/'.$id);
-$I->see('Macrio');
-$I->see('mario@test.com');*/
 
 
 
