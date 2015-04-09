@@ -19,7 +19,7 @@ return [
     'cancel'=> 'Cancel',
     'save'=> 'Guardar',
     'state'=>'Estado',
-    'country_id'=>'Id Pais',
-    'abbreviation' =>'abreviación',
+    'state_id'=>'Estado',
+    'abbreviation' =>'Abreviación',
     'city'=>'Ciudad'
 ];

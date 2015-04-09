@@ -10,10 +10,10 @@
     @include('settings.fiscalRegimens.partials.delete')
 @endsection
 <a class="btn btn-info btn-sm" href="{{ route('settings.fiscalRegimen.edit', $fiscal->id) }}"><i class="fa fa-pencil"></i>
-    {!!Form::label(trans('fiscalRegimen.edit')) !!}
+    {{trans('botones.edit')}}
 </a>
 <a class="btn btn-success btn-sm" href="{{ route('settings.fiscalRegimen.create') }}"><i class="fa fa-user-plus"></i>
-    {!!Form::label(trans('fiscalRegimen.create')) !!}
+    {{trans('botones.create')}}
 </a>
 @endsection
 @section('filters')
