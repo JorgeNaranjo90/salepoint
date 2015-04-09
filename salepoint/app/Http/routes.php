@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Requests;
+Use App\Product;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -82,6 +83,19 @@ Route::group(['namespace'=>'Products','middleware' => ['auth','is_admin','is_use
     Route::get('products/report','ProductsController@report');
     Route::get('products/reportmax,ProductsController@reportmax');
     Route::get('products/reportmin','ProductsController@reportmin');
+    Route::get('products/searchCode/{ean13}', ['as' => 'products.searchCode', function($ean13){
+        if(Request::ajax()){
+            $producto = Product::join('uoms','products.uom_id','=','uoms.id')
+                ->where('ean13',$ean13)
+                ->select('products.*','uoms.name as umo_name')
+                ->get();
+            return $producto->toJson();
+        }
+    }]);
+
+    Route::get('products/report', 'ProductsController@report');
+    Route::get('products/reportmax', 'ProductsController@reportmax');
+    Route::get('products/reportmin', 'ProductsController@reportmin');
     Route::resource('products', 'ProductsController');
 });
 
@@ -94,6 +108,12 @@ Route::group(['namespace'=>'PurchaseOrders', 'middleware' => ['auth','is_admin',
     Route::pattern('purchases', '[0-9]+');
     Route::resource('purchases', 'PurchaseOrdersController');
 });
+
+Route::group(['namespace'=>'POS', 'middleware' => 'auth'], function() {
+    Route::pattern('pos', '[0-9]+');
+    Route::resource('pos', 'POSController');
+});
+
 
 //Menu Top Base
 Route::get('settings', ['as' => 'settings', 'middleware' => ['auth','is_admin'], 'uses' => 'GeneralController@settings']);

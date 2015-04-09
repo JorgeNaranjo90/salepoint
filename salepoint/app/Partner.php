@@ -24,7 +24,9 @@ class Partner extends Model {
      * @var array
      */
 
-
+    public function products(){
+        return $this->hasMany('App\Product', 'partner_id');
+     }
 
     protected $fillable = ['name', 'lastName', 'street','noExt','noInt','colony','zip','locality','rfc','phone','mobile','fax','email','customer','supplier','image','birthdate','city_id','state_id','country_id'];
 
@@ -61,7 +63,6 @@ class Partner extends Model {
             ->where('name','like','%'.$name.'%')
             ->orderBy('name','ASC')
             ->paginate();
-
     }
 
     public static function report()
@@ -113,6 +114,20 @@ class Partner extends Model {
            $query->where("name", "LIKE", "%$name%");
         }
 
+    }
+    public static function dontDelete($id)
+    {
+
+        return  \DB::table('partners')
+        ->join('products', 'partners.id','=','products.partner_id')
+        ->where('products.partner_id','=',$id)->get();
+
+    }
+
+
+    public function getFullNameAttribute()
+    {
+        return $this->name.' '.$this->lastName;
     }
 
 

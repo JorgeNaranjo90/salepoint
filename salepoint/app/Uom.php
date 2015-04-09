@@ -28,7 +28,9 @@ class Uom extends Model implements AuthenticatableContract
      */
     protected $fillable = ['name', 'description'];
 
-
+    public function product(){
+        return $this->belongsTo('App\Product');
+    }
     //Scope for search
 
     /*

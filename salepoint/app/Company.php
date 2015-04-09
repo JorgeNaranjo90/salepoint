@@ -12,6 +12,16 @@ class Company extends Model {
 
     protected $table='companys';
 
+    public function currencys(){
+        return $this->belongsTo('App\Currency','id');
+    }
+    public function fiscalRegimens(){
+        return $this->belongsTo('App\FiscalRegimen','id');
+    }
+    public function partners(){
+        return $this->belongsTo('App\Partner','id');
+    }
+
     protected $fillable=['name','partner_id','currency_id','fiscalRegimen_id','image'];
 
     public function setImageAttribute($value){

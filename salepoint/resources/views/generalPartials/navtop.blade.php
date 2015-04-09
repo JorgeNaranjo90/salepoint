@@ -28,6 +28,7 @@
                     @if(Auth::user()->type === 'admin' )
                         <li><a href="{{ route('settings') }}"><i class="fa fa-cog"></i>{{trans('general.settings')}}</a></li>
                     @endif
+
                 @endif
             </ul>
 
