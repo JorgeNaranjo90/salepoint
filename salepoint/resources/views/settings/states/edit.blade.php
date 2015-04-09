@@ -11,11 +11,11 @@
 @endsection
 {!! Form::model($state, ['route'=>['settings.state.update',$state->id],'method'=>'PUT','files'=>true]) !!}
 <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i>
-    {{trans('state.save')}}
+    {{trans('botones.save')}}
 </button>
 <a class="btn btn-danger btn-sm" href="{{route('settings.state.index')}}"><i class="fa fa-times"></i>Cancel</a>
 <a class="btn btn-success btn-sm" href="{{route('settings.state.create')}}"><i class="fa fa-user-plus"></i>
-    {{trans('state.create')}}
+    {{trans('botones.create')}}
 </a>
 @endsection
 @section('filters')

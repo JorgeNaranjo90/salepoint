@@ -18,9 +18,6 @@ return [
     'delete'=> 'Eliminar',
     'cancel'=> 'Cancel',
     'save'=> 'Guardar',
-    'state'=>'Estado',
-
-    'country_id'=>'Pais',
-    'abbreviation' =>'Abreviación',
-    'code'=>'Codigo'
+    'code'=> 'Codigo',
+    'value '=> 'Valor',
 ];

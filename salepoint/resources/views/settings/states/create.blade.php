@@ -8,7 +8,7 @@
 @section('buttons')
     {!! Form::open(['route'=>'settings.state.store','method'=>'POST','files'=>true]) !!}
     <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i>
-        {{trans('state.save')}}
+        {{trans('botones.save')}}
     </button>
     <a class="btn btn-danger btn-sm" href="{{route('settings.state.index')}}">Cancel</a>
 @endsection
