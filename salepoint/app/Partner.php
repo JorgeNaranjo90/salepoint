@@ -95,5 +95,10 @@ class Partner extends Model {
 
     }
 
+    public function getFullNameAttribute()
+    {
+        return $this->name.' '.$this->lastName;
+    }
+
 
 }
