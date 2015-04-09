@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Requests;
+Use App\Product;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -77,7 +78,17 @@ Route::group(['prefix'=>'settings', 'namespace'=>'Settings\Certificatesats', 'mi
 });
 Route::group(['namespace'=>'Products','middleware' => 'auth'], function() {
     Route::pattern('products', '[0-9]+');
-    Route::get('products/searchCode', 'ProductsController@searchCode');
+
+    Route::get('products/searchCode/{ean13}', ['as' => 'products.searchCode', function($ean13){
+        if(Request::ajax()){
+            $producto = Product::join('uoms','products.uom_id','=','uoms.id')
+                ->where('ean13',$ean13)
+                ->select('products.*','uoms.name as umo_name')
+                ->get();
+            return $producto->toJson();
+        }
+    }]);
+
     Route::get('products/report', 'ProductsController@report');
     Route::get('products/reportmax', 'ProductsController@reportmax');
     Route::get('products/reportmin', 'ProductsController@reportmin');
@@ -98,6 +109,7 @@ Route::group(['namespace'=>'POS', 'middleware' => 'auth'], function() {
     Route::pattern('pos', '[0-9]+');
     Route::resource('pos', 'POSController');
 });
+
 
 
 

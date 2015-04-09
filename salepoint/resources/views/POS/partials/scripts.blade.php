@@ -1,7 +1,7 @@
 {!! Form::open(['route'=>['partners.show',':USER_ID'],'method'=>'GET', 'id' => 'partner_show']) !!}
 {!! Form::close() !!}
 
-{!! Form::open(['route'=>['products.show',':PRODUCT'],'method'=>'GET', 'id' => 'product_show']) !!}
+{!! Form::open(['route'=>['products.searchCode',':PRODUCT'],'method'=>'PUT', 'id' => 'product_show']) !!}
 {!! Form::close() !!}
 <script>
 
@@ -45,9 +45,36 @@
     $(function(){
         $('#code_product').keypress(function(event) {
             if (event.which == 13 || event.keyCode == 13) {
-                $('#load_product_table').modal({
-                    show: 'false'
+                event.preventDefault();
+                document.getElementById('code_product_sol').value = null;
+                document.getElementById('price_sale_unit_sol').value = null;
+                document.getElementById('unit_product_sol').value = null;
+                document.getElementById('name_product_sol').value = null;
+                document.getElementById('id_product_sol').value = null;
+                document.getElementById('qty_product_sol').value = null;
+                document.getElementById("image_product_sol").src = null;
+                document.getElementById('qtyAvailable_sol').value = null;
+                document.getElementById("qty_product_sol").focus();
+
+                var productCode = $('#code_product').val();
+                var form = $('#product_show');
+                var url = form.attr('action').replace(':PRODUCT', productCode);
+                var data = form.serialize();
+                $.get(url, data, function(resJson){
+                    var result = JSON.parse(resJson);
+                    document.getElementById('code_product_sol').value = result[0].ean13;
+                    document.getElementById('price_sale_unit_sol').value = result[0].salePrice;
+                    document.getElementById('unit_product_sol').value = result[0].umo_name;
+                    document.getElementById('name_product_sol').value = result[0].name;
+                    document.getElementById('id_product_sol').value = result[0].id;
+                    document.getElementById('qty_product_sol').value = null;
+                    document.getElementById('qtyAvailable_sol').value = result[0].qtyAvailable;
+                    document.getElementById("image_product_sol").src = "data:image/png;base64,"+result[0].image;
+                    $('#load_product_table').modal({
+                        show: 'false'
+                    });
                 });
+
             }
             return true;
         });
@@ -59,33 +86,101 @@
     *
     * */
 
+    var count = "1";
+
     function createRow()
     {
-        var row = document.createElement('tr'); // find row to copy
-        var name = document.createElement('td'); // create column node
-        var code = document.createElement('td'); // create second column node
-        var qty = document.createElement('td'); // create second column node
-        var unitPrice = document.createElement('td'); // create second column node
-        var total = document.createElement('td'); // create second column node
-        row.appendChild(name); // append first column to row
-        row.appendChild(code); // append second column to row
-        row.appendChild(qty); // append second column to row
-        row.appendChild(unitPrice); // append second column to row
-        row.appendChild(total); // append second column to row
-        name.innerHTML = "Coca cola 600"; // put data in first column
-        code.innerHTML = "1234567"; // put data in second column
-        qty.innerHTML = 12; // put data in second column
-        unitPrice.innerHTML = 20; // put data in second column
-        total.innerHTML = 12 * 20; // put data in second column
-        var table = document.getElementById("tableToModify"); // find table to append to
-        table.appendChild(row); // add new row to end of table
+        //7502258130056
 
-        $('#load_product_table').modal('hide');
+        var error = "";
+        message_saleorder_error.innerHTML =null;
+
+        if(parseFloat($('#qty_product_sol').val()) <= 0) {
+            error = "La cantidad debe ser mayor a 0";
+            message_saleorder_error.innerHTML = error;
+            $('#lost_product').modal({
+                show: 'false'
+            });
+
+        }else if(parseFloat($('#qty_product_sol').val()) > parseFloat($('#qtyAvailable_sol').val())){
+
+            error = "Tu tienes solamente cuentas con "+ $('#qtyAvailable_sol').val() +
+                        "y requieres comprar "+ $('#qty_product_sol').val() +"selecciona menos productos";
+
+            message_saleorder_error.innerHTML = error;
+            $('#lost_product').modal({
+                show: 'false'
+            });
+        }else{
+
+            var tbody = document.getElementById('sale_order_lines').getElementsByTagName("tbody")[0];
+            // create row
+            var row = document.createElement("TR");
+            /*
+            * Name inpust       sale_order_line_name[]
+            * Name inpust       sale_order_line_qty[]
+            * Name inpust       sale_order_line_unitPrice[]
+            * Name inpust       sale_order_line_subtotal[]
+            * Name inpust       sale_order_line_product_id[]
+            *
+            *   sale_order_id   is set when this record is store in table
+            *
+            *   This function and delete only no functionality with firefox
+            * */
+            //Name of product
+            var td1 = document.createElement("TD");
+            var strHtmlname = "<INPUT TYPE=\"text\" NAME=\"sale_order_line_name[]\" min=\"1\" max=\"9999\" value=\""+$('#name_product_sol').val()+"\" readonly>" ;
+            td1.innerHTML = strHtmlname.replace(/!count!/g,count);
+
+            //Code of product
+            var td2 = document.createElement("TD");
+            var strHtmlcode = $('#code_product_sol').val()+"<INPUT TYPE=\"hidden\" NAME=\"sale_order_line_product_id[]\" value=\""+$('#id_product_sol').val()+"\">";
+            td2.innerHTML = strHtmlcode.replace(/!count!/g,count);
+
+            var td3 = document.createElement("TD");
+            var strHtmlqty = "<INPUT TYPE=\"number\" NAME=\"sale_order_line_qty[]\" min=\"1\" max=\"9999\" value=\""+$('#qty_product_sol').val()+"\" readonly>";
+            td3.innerHTML = strHtmlqty.replace(/!count!/g,count);
+
+            var td4 = document.createElement("TD");
+            var strHtmlunitPrice = "<INPUT TYPE=\"number\" NAME=\"sale_order_line_unitPrice[]\" value=\""+$('#price_sale_unit_sol').val()+"\" readonly>";
+            td4.innerHTML = strHtmlunitPrice.replace(/!count!/g,count);
+
+            var td5 = document.createElement("TD");
+            var strHtmlsubtotal = "<INPUT TYPE=\"number\" NAME=\"sale_order_line_subtotal[]\" value=\""+($('#qty_product_sol').val() * $('#price_sale_unit_sol').val())+"\" readonly>";
+            td5.innerHTML = strHtmlsubtotal.replace(/!count!/g,count);
+
+            var td6 = document.createElement("TD");
+            var strHtml5 = "<a onClick=\"delRow()\"><i class=\"fa fa-trash fa-2x\"></i></a>";
+            td6.innerHTML = strHtml5.replace(/!count!/g,count);
+
+
+            // append data to row
+            row.appendChild(td1);
+            row.appendChild(td2);
+            row.appendChild(td3);
+            row.appendChild(td4);
+            row.appendChild(td5);
+            row.appendChild(td6);
+            // add to count variable
+            count = parseInt(count) + 1;
+            // append row to table
+            tbody.appendChild(row);
+
+            var total_sol_current = $('#total').val();
+            var total_line = $('#qty_product_sol').val() * $('#price_sale_unit_sol').val();
+            document.getElementById('total').value = parseFloat(total_sol_current) + parseFloat(total_line);
+            $('#load_product_table').modal('hide');
+        }
+        document.getElementById('code_product').value = null;
+
     }
 
-    function deleteRow(btn) {
-        var row = btn.parentNode.parentNode;
-        row.parentNode.removeChild(row);
+    function delRow()
+    {
+        var current = window.event.srcElement;
+        //here we will delete the line
+        while ( (current = current.parentElement)  && current.tagName !="TR");
+        current.parentElement.removeChild(current);
     }
 
  </script>

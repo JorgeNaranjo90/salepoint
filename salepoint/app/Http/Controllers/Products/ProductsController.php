@@ -129,20 +129,6 @@ class ProductsController extends Controller
         return view('products.edit', compact('product', 'uom','supplier'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function searchCode(Request $request, $code)
-    {
-
-        if($request->ajax()){
-            return $product = Product::where('ean13',$code);
-        }
-    }
-
 	/**
 	 * Update the specified resource in storage.
 	 *
