@@ -4,8 +4,8 @@ use App\Partner;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePartnerRequest;
 use App\Http\Requests\EditPartnerRequest;
-use  Illuminate\Support\Facades;
-use  Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PdfLibrary;
@@ -49,11 +49,10 @@ class PartnersController extends Controller {
         return view('partners.index',compact('partners'));
     }
 
-    public function delete(Request $request)
+    public function delete(Request $request,$query)
     {
         $partners = Partner::filterAndPaginateDelete($request->get('name'));
-        return view('partners.index',compact('partners'));
-
+            return view('partners.index',compact('partners'));
     }
 
     public function create()
@@ -116,14 +115,13 @@ class PartnersController extends Controller {
      */
     public function update(EditPartnerRequest $request,$id)
     {
-
         $partner = Partner::findOrFail($id);
         $partner->customer = Input::has('customer');
         $partner->supplier = Input::has('supplier');
         $partner->fill($request->all());
         $partner->save();
         Session::flash('message', $partner->name .' was updated !');
-        return redirect()->back();
+        return redirect()->route('partners.index');
     }
 
     /**
@@ -134,10 +132,21 @@ class PartnersController extends Controller {
      */
     public function destroy($id)
     {
-        $partner = Partner::findOrFail($id);
-        $partner->delete();
-        Session::flash('message', $partner->name.' was deleted !');
-        return \Redirect::route('partners.index');
+        $pat = Partner::dontDelete($id);
+        if ( $pat==[]){
+            $partner = Partner::findOrFail($id);
+            $partner->delete();
+            Session::flash('message', $partner->name.' was deleted !');
+            return redirect()->route('partners.index');
+        }
+        else{
+            dd($pat);
+            Session::flash('message',' dont is possible delete  the partner is linked to any product !');
+            return redirect()->route('partners.index');
+        }
+
+
+
     }
 
 }
