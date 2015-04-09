@@ -10,9 +10,9 @@
         @foreach($company as $company)
         <tr onclick="window.document.location='{{ route('settings.company.show', $company->id) }}';">
         <td>{{$company->name}}</td>
-        <td>{{$company->partner_id}}</td>
-        <td>{{$company->currency_id}}</td>
-        <td>{{$company->fiscalRegimen_id}}</td>
+        <td>{{$company->partners->name}}</td>
+        <td>{{$company->currencys->name}}</td>
+        <td>{{$company->fiscalRegimens->name}}</td>
         <td>@if(!empty($company->image))
                 <img src="data:{! mime_content_type( base64_decode($company->image)) !};base64,{{ $company->image }}" width="50px" height="50px"/>
             @else

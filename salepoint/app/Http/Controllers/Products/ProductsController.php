@@ -105,9 +105,12 @@ class ProductsController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $product = Product::findOrFail($id);
+        if($request->ajax()){
+            return Product::findOrFail($id)->toJson();
+        }
         return view('products.profile', compact('product'));
     }
 
@@ -126,18 +129,18 @@ class ProductsController extends Controller
         return view('products.edit', compact('product', 'uom','supplier'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int $id
-     * @return Response
-     */
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
     public function update(EditProductRequest $request, $id)
     {
         $product = Product::findOrFail($id);
         $product->fill($request->all());
         $product->save();
-        return \Redirect::back();
+        return \Redirect::route('products.index');
     }
 
     /**

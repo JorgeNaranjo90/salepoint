@@ -17,10 +17,22 @@ $I->seeCurrentUrlEquals('/partners/create');
 
 //when
 $form = [
+    'birthdate'=>'1993-03-21',
+    'city_id'=>'1',
+    'country_id'=>'1',
+    'customer'=>'1',
+    'email'=>'loedf@rff.com',
+    'fax'=>'30034343',
     'name' => 'Mario',
-    'country_id' => 1,
-    'state_id' => 1,
-    'city_id' => 1,
+    'last_name' => 'Muñoz',
+    'locality' => 'Town',
+    'mobile' =>'34343',
+    'noExt' => '3433',
+    'noInt' => '3434',
+    'phone' => '343443433',
+    'rfc' => 'Tess Roberts',
+    'state_id' => '1',
+    'supplier'=>'0'
 ];
 
 //And

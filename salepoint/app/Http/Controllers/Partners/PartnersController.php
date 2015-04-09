@@ -4,8 +4,8 @@ use App\Partner;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePartnerRequest;
 use App\Http\Requests\EditPartnerRequest;
-use  Illuminate\Support\Facades;
-use  Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PdfLibrary;
@@ -49,11 +49,10 @@ class PartnersController extends Controller {
         return view('partners.index',compact('partners'));
     }
 
-    public function delete(Request $request)
+    public function delete(Request $request,$query)
     {
         $partners = Partner::filterAndPaginateDelete($request->get('name'));
-        return view('partners.index',compact('partners'));
-
+            return view('partners.index',compact('partners'));
     }
 
     public function create()
@@ -78,9 +77,18 @@ class PartnersController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
         $partner= Partner::findOrFail($id);
+        if($request->ajax()){
+            return Partner::join('countrys','partners.country_id','=','countrys.id')
+                ->join('citys','partners.city_id','=','citys.id')
+                ->join('states','partners.state_id','=','states.id')
+                ->select('partners.*',
+                    'countrys.name as country_name',
+                    'citys.name as city_name',
+                    'states.name as state_name')->findOrFail($id)->toJson();
+        }
         return view('partners.profile', compact('partner'));
     }
 
@@ -107,14 +115,13 @@ class PartnersController extends Controller {
      */
     public function update(EditPartnerRequest $request,$id)
     {
-
         $partner = Partner::findOrFail($id);
         $partner->customer = Input::has('customer');
         $partner->supplier = Input::has('supplier');
         $partner->fill($request->all());
         $partner->save();
         Session::flash('message', $partner->name .' was updated !');
-        return redirect()->back();
+        return redirect()->route('partners.index');
     }
 
     /**
@@ -138,7 +145,6 @@ class PartnersController extends Controller {
             Session::flash('message',' dont is possible delete  the partner is linked to any product !');
             return redirect()->route('partners.index');
         }
-
     }
 
 }

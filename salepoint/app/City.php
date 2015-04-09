@@ -20,6 +20,4 @@ class City extends Model {
     public  function states(){
         return $this->belongsTo('App\State','id');
     }
-
-
 }
