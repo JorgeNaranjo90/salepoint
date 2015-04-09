@@ -125,10 +125,20 @@ class PartnersController extends Controller {
      */
     public function destroy($id)
     {
-        $partner = Partner::findOrFail($id);
-        $partner->delete();
-        Session::flash('message', $partner->name.' was deleted !');
-        return \Redirect::route('partners.index');
+
+        $pat = Partner::dontDelete($id);
+        if ( $pat==[]){
+            $partner = Partner::findOrFail($id);
+            $partner->delete();
+            Session::flash('message', $partner->name.' was deleted !');
+            return redirect()->route('partners.index');
+        }
+        else{
+            dd($pat);
+            Session::flash('message',' dont is possible delete  the partner is linked to any product !');
+            return redirect()->route('partners.index');
+        }
+
     }
 
 }

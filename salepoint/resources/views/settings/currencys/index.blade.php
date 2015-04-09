@@ -9,7 +9,7 @@
 @endsection
 @section('buttons')
     <a class="btn btn-success btn-sm" href="{{route('settings.currency.create')}}"><i class="fa fa-user-plus"></i>
-      Create
+        {{trans('botones.create')}}
     </a>
 @endsection
 

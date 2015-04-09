@@ -1,5 +1,7 @@
 <?php
+
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Pagination Language Lines
@@ -10,17 +12,10 @@ return [
     | you want to customize your views to better match your application.
     |
     */
-
-    'name' => 'Nombre',
-    'search' => 'Buscar',
-    'edit'=> 'Editar',
-    'create' => 'Crear',
-    'delete'=> 'Eliminar',
+'search' => 'Search',
+    'edit'=> 'Edit',
+    'create' => 'Create',
+    'delete'=> 'Delete',
     'cancel'=> 'Cancel',
-    'save'=> 'Guardar',
-    'state'=>'Estado',
-
-    'country_id'=>'Pais',
-    'abbreviation' =>'Abreviación',
-    'code'=>'Codigo'
-];
+    'save'=> 'Save',
+  ];

@@ -9,7 +9,7 @@
 @endsection
 @section('buttons')
     <a class="btn btn-success btn-sm" href="{{route('settings.country.create')}}"><i class="fa fa-user-plus"></i>
-        {{trans('country.create')}}
+        {{trans('botones.create')}}
     </a>
 @endsection
 

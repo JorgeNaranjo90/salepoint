@@ -1,13 +1,13 @@
 <table class="table table-striped">
     <tr>
-        <th>{!!Form::label(trans('paramPacs.name'))   !!}</th>
-        <th>{!!Form::label(trans('paramPacs.methodType'))   !!}</th>
-        <th>{!!Form::label(trans('paramPacs.urlWebService'))   !!}</th>
-        <th>{!!Form::label(trans('paramPacs.nameSpace'))   !!}</th>
-        <th>{!!Form::label(trans('paramPacs.userPac'))   !!}</th>
-        <th>{!!Form::label(trans('paramPacs.passwordPac'))   !!}</th>
-        <th>{!!Form::label(trans('paramPacs.certificateLink'))   !!}</th>
-        <th>{!!Form::label(trans('paramPacs.activate'))   !!}</th>
+        <th>{{trans('paramPacs.name')   }}</th>
+        <th>{{trans('paramPacs.methodType')}}</th>
+        <th>{{trans('paramPacs.urlWebService')}}</th>
+        <th>{{trans('paramPacs.nameSpace')}}</th>
+        <th>{{trans('paramPacs.userPac')  }}</th>
+        <th>{{trans('paramPacs.passwordPac')}}</th>
+        <th>{{trans('paramPacs.certificateLink')}}</th>
+        <th>{{(trans('paramPacs.activate'))}}   </th>
     </tr>
     @foreach($param as $param)
         <tr onclick="window.document.location='{{ route('paramPacs.show', $param->id) }}';">

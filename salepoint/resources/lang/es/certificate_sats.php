@@ -12,5 +12,12 @@ return [
     'certificate_key_pem' => 'Certificado KEY PEM',
     'number_serie' => 'Número de serie',
     'start_date' => 'Fecha de inicio',
-    'end_date' => 'Fecha fin'
+    'end_date' => 'Fecha fin',
+    'description'=> 'Descripcion',
+    'search' => 'Buscar',
+    'edit'=> 'Editar',
+    'create' => 'Crear',
+    'delete'=> 'Eliminar',
+    'cancel'=> 'Cancel',
+    'save'=> 'Guardar'
 ];

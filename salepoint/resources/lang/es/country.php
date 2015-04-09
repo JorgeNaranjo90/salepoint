@@ -19,6 +19,6 @@ return [
     'cancel'=> 'Cancel',
     'save'=> 'Guardar',
     'country'=>'Pais',
-    'code'=>'codigo',
-    'abbreviation' =>'abreviación'
+    'code'=>'Codigo',
+    'abbreviation' =>'Abreviación'
 ];

@@ -17,4 +17,9 @@ class City extends Model {
 
     protected $fillable = ['name','code','abbreviation','state_id'];
 
+    public  function states(){
+        return $this->belongsTo('App\State','id');
+    }
+
+
 }

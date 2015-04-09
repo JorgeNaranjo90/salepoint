@@ -10,10 +10,10 @@
 
     {!! Form::open(['route'=>'settings.currency.store','method'=>'POST','files'=>true]) !!}
     <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i>
-        {!!Form::label(trans('currency.create')) !!}
+        {{trans('botones.create')}}
     </button>
     <a class="btn btn-danger btn-sm" href="{{route('settings.currency.index')}}">
-        {!!Form::label(trans('currency.cancel')) !!}
+        {{trans('botones.cancel')}}
     </a>
 @endsection
 

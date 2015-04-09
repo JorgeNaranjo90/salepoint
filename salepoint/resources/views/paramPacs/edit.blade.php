@@ -11,13 +11,13 @@
 @endsection
 {!! Form::model($param, ['route'=>['paramPacs.update',$param->id],'method'=>'PUT','files'=>true]) !!}
 <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i>
-    {!!Form::label(trans('paramPacs.save'))   !!}
+    {{trans('botones.save')}}
 </button>
 <a class="btn btn-danger btn-sm" href="{{route('paramPacs.index')}}"><i class="fa fa-times"></i>
-    {!!Form::label(trans('paramPacs.cancel'))   !!}
+    {{trans('botones.cancel') }}
 </a>
 <a class="btn btn-success btn-sm" href="{{route('paramPacs.create')}}"><i class="fa fa-user-plus"></i>
-    {!!Form::label(trans('paramPacs.create'))   !!}
+    {{trans('botones.create') }}
 </a>
 @endsection
 @section('filters')
