@@ -1,6 +1,6 @@
 <?php 
 $I = new FunctionalTester($scenario);
-$I->wantTo('create a company');
+$I->wantTo('create a certificate sats');
 $I->am('a Administrator user');
 
 
@@ -9,21 +9,21 @@ $I->amLoggedAs(['email' => 'admin@admin.com', 'password' => 'admin']);
 $I->seeAuthentication();
 
 //When
-$I->amOnPage('/settings/company');
+$I->amOnPage('/settings/certificatesats');
 //And
 $I->see('Create');
 $I->click('Create');
 //Then
-$I->seeCurrentUrlEquals('/settings/company/create');
+$I->seeCurrentUrlEquals('/settings/certificatesats/create');
 
 //When
 $form = [
-    'name' => 'Mau',
-    'partner_id' => 'Ramon Pouros',
-    'currency_id' => 'ALL',
-    'fiscalRegimen_id' => 'Asociaciones Religiosas',
+    'name' => 'Benny',
+    'noSerie' => '123456',
+    'startDate'=>'0000-00-00',
+    'endDate'=> '0000-00-00'
 ];
 //And
 $I->submitForm('//form', $form, 'Create');
 //Then
-$I->seeCurrentUrlEquals('/settings/company');
+$I->seeCurrentUrlEquals('/settings/certificatesats');

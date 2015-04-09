@@ -1,6 +1,6 @@
-<?php 
+<?php
 $I = new FunctionalTester($scenario);
-$I->wantTo('create a company');
+$I->wantTo('create a certificatesats without data');
 $I->am('a Administrator user');
 
 
@@ -9,21 +9,21 @@ $I->amLoggedAs(['email' => 'admin@admin.com', 'password' => 'admin']);
 $I->seeAuthentication();
 
 //When
-$I->amOnPage('/settings/company');
+$I->amOnPage('/settings/certificatesats');
 //And
 $I->see('Create');
 $I->click('Create');
 //Then
-$I->seeCurrentUrlEquals('/settings/company/create');
-
+$I->seeCurrentUrlEquals('/settings/certificatesats/create');
 //When
 $form = [
-    'name' => 'Mau',
-    'partner_id' => 'Ramon Pouros',
-    'currency_id' => 'ALL',
-    'fiscalRegimen_id' => 'Asociaciones Religiosas',
+    'name' => '',
+    'noSerie' => '',
+    'startDate'=>'',
+    'endDate'=> '0000-00-00'
 ];
 //And
 $I->submitForm('//form', $form, 'Create');
 //Then
-$I->seeCurrentUrlEquals('/settings/company');
+$I->seeFormErrorMessage('name','The name field is required.');
+
