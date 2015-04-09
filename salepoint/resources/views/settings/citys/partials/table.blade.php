@@ -3,7 +3,7 @@
         <th>  {{trans('city.name')}}</th>
         <th>  {{trans('city.code')}}</th>
         <th>  {{trans('city.abbreviation')}}</th>
-        <th>  {{trans('city.state_id')}}</th>
+        <th>  {{trans('city.state')}}</th>
     </tr>
     @foreach($city as $city)
         <tr onclick="window.document.location='{{ route('settings.city.show', $city->id) }}';">
