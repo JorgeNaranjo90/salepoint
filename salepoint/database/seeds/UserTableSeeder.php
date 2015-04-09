@@ -21,26 +21,25 @@ class UserTableSeeder extends Seeder
             [
                 'name' => 'Mario Muñoz',
                 'email' => 'mario7000@gmail.com',
-                //'password' => '12345678',
-                'password' => 'MTIzNDU2Nzg=',
+                'password' => \Hash::make('123456'),
                 'type' => 'user'
             ],
             [
                 'name' => 'Jorge Naranjo',
                 'email' => 'jorge7000@gmail.com',
-                'password' => 'MTIzNDU2Nzg=',
+                'password' => \Hash::make('123456'),
                 'type' => 'sale'
             ],
             [
                 'name' => 'Mauricio Hijonosa',
                 'email' => 'mauricio7000@gmail.com',
-                'password' => 'MTIzNDU2Nzg=',
+                'password' => \Hash::make('123456'),
                 'type' => 'purchase'
             ],
             [
                 'name' => 'Jorge Macías',
                 'email' => 'jorgem7000@gmail.com',
-                'password' => 'MTIzNDU2Nzg=',
+                'password' => \Hash::make('123456'),
                 'type' => 'report'
             ],
         ]);

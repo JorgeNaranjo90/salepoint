@@ -36,6 +36,7 @@ class EditPartnerRequest extends Request {
             'mobile' => 'between:7,15',
             'fax' => 'between:5,9',
             'email' => 'max:20',
+            'birthdate' => 'required',
             'country_id' => 'required|max:3|in:1',
             'state_id' => 'required|max:4|in:1',
             'city_id' => 'required|max:5|in:1',

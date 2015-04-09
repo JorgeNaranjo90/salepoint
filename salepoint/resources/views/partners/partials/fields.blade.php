@@ -54,7 +54,7 @@
 <div class="row">
     <div class="form-group col-lg-4">
         {!! Form::label('birthdate', trans('partners.birthdate')) !!}
-        {!! Form::date('birthdate',null,['class' => 'form-control']) !!}
+        {!! Form::date('birthdate',null,['class' => 'form-control requiered_field']) !!}
     </div>
     <div class="form-group col-lg-4">
         {!! Form::label('rfc',trans('partners.rfc')) !!}

@@ -13,12 +13,20 @@
             <ul class="nav navbar-nav">
                 <li><a href="/"><i class="fa fa-home"></i>{{trans('general.home')}}</a></li>
                 @if (empty(Auth::guest()))
-                    <li><a href="{{ route('partners.index') }}"><i class="fa fa-building"></i>{{trans('general.partners')}}</a></li>
-                    <li><a href="{{ route('products.index') }}"><i class="fa fa-list"></i> {{trans('general.products')}}</a></li>
-                    <li><a href="{{ route('sales') }}"><i class="fa fa-shopping-cart"></i>{{trans('general.sales')}}</a></li>
+                    @if(Auth::user()->type === 'admin' || Auth::user()->type === 'user' || Auth::user()->type === 'sale' || Auth::user()->type === 'purchase')
+                        <li><a href="{{ route('partners.index') }}"><i class="fa fa-building"></i>{{trans('general.partners')}}</a></li>
+                    @endif
+                    @if(Auth::user()->type === 'admin' || Auth::user()->type === 'user' || Auth::user()->type === 'sale' || Auth::user()->type === 'purchase')
+                        <li><a href="{{ route('products.index') }}"><i class="fa fa-list"></i> {{trans('general.products')}}</a></li>
+                        @endif
+                    @if(Auth::user()->type === 'admin' || Auth::user()->type === 'user' || Auth::user()->type === 'sale'  )
+                        <li><a href="{{ route('sales') }}"><i class="fa fa-shopping-cart"></i>{{trans('general.sales')}}</a></li>
+                        @endif
+                    @if(Auth::user()->type === 'admin' || Auth::user()->type === 'user' || Auth::user()->type === 'purcahse'  )
                     <li><a href="{{ route('purchases') }}"><i class="fa fa-truck"></i> {{trans('general.purchases')}}</a></li>
-                    @if(Auth::user()->type === 'admin')
-                    <li><a href="{{ route('settings') }}"><i class="fa fa-cog"></i>{{trans('general.settings')}}</a></li>
+                        @endif
+                    @if(Auth::user()->type === 'admin' )
+                        <li><a href="{{ route('settings') }}"><i class="fa fa-cog"></i>{{trans('general.settings')}}</a></li>
                     @endif
                 @endif
             </ul>
