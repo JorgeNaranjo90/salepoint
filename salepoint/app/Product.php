@@ -54,7 +54,7 @@ class Product extends Model implements AuthenticatableContract
      * @query query that you create in index
      * @name is the string name that you search
      * */
-    public  function uom(){
+    public  function uoms(){
         return $this->belongsTo('App\Uom');
     }
 

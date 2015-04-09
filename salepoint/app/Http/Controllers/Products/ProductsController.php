@@ -27,8 +27,8 @@ class ProductsController extends Controller
         $library->load();
         $this->dompdf = new \DOMPDF();
         $products = Product::filterAndPaginateGeneral();
-        $title="General report products";
-        $html = view('products.report', compact('products','title'));
+        $title= trans('products.report_general');
+        return $html = view('products.report', compact('products','title'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
         $this->dompdf->render();
@@ -40,8 +40,8 @@ class ProductsController extends Controller
         $library->load();
         $this->dompdf = new \DOMPDF();
         $products = Product::filterAndPaginateM();
-        $title='Maximum report products';
-        $html = view('products.report', compact('products','title'));
+        $title= trans('products.report_min');
+        return $html = view('products.report', compact('products','title'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
         $this->dompdf->render();
@@ -53,8 +53,8 @@ class ProductsController extends Controller
         $library->load();
         $this->dompdf = new \DOMPDF();
         $products = Product::filterAndPaginateMin();
-        $title='Minimum report products';
-        $html = view('products.report', compact('products','title'));
+        $title= trans('products.report_min');
+        return $html = view('products.report', compact('products','title'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
         $this->dompdf->render();
