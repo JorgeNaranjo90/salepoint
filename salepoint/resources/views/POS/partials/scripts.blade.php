@@ -104,8 +104,9 @@
 
         }else if(parseFloat($('#qty_product_sol').val()) > parseFloat($('#qtyAvailable_sol').val())){
 
-            error = "Tu tienes solamente cuentas con "+ $('#qtyAvailable_sol').val() +
-                        "y requieres comprar "+ $('#qty_product_sol').val() +"selecciona menos productos";
+            error = "El sistema en almacén cuneta con "+ $('#qtyAvailable_sol').val() +
+                    " productos y la cantidad que deseas comprar es "+ $('#qty_product_sol').val() +
+                    " por lo tanto no puedes vender esa cantidad";
 
             message_saleorder_error.innerHTML = error;
             $('#lost_product').modal({
