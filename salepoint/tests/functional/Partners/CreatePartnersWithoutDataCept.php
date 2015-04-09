@@ -17,10 +17,22 @@ $I->seeCurrentUrlEquals('/partners/create');
 
 //when
 $form = [
+    'birthdate'=>'',
+    'city_id'=>'',
+    'country_id'=>'',
+    'customer'=>'',
+    'email'=>'',
+    'fax'=>'',
     'name' => '',
-    'country_id' => null,
-    'state_id' => null,
-    'city_id' => null,
+    'last_name' => '',
+    'locality' => '',
+    'mobile' =>'',
+    'noExt' => '',
+    'noInt' => '',
+    'phone' => '',
+    'rfc' => ' ',
+    'state_id' => '',
+    'supplier'=>''
 ];
 
 //And
