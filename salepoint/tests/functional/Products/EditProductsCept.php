@@ -16,7 +16,8 @@ $id = $I->haveRecord('products', [
     'incomingQty' => 12,
     'virtualAvailable' => 32,
     'ean13' => 'Fresca Coca-cola company',
-    'uom_id' => 4]);
+    'uom_id' => 4,
+    'partner_id' => 2]);
 
 //And
 $I->amOnPage('/products/'.$id);
@@ -36,6 +37,7 @@ $I->seeInField('incomingQty',12);
 $I->seeInField('virtualAvailable',32);
 $I->seeInField('ean13','Fresca Coca-cola company');
 $I->seeInField('uom_id',4);
+$I->seeInField('partner_id',2);
 
 //And
 $I->amGoingTo('Change name and description of Fresca to Fanta');
@@ -48,6 +50,7 @@ $form = [
     'incomingQty' => 12,
     'virtualAvailable' => 32,
     'ean13' => 'Fresca Coca-cola company',
-    'uom_id' => 4
+    'uom_id' => 4,
+    'partner_id' => 2
 ];
 $I->submitForm('//form', $form, 'Save');

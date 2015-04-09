@@ -2,9 +2,7 @@
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-//use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model implements AuthenticatableContract
@@ -32,6 +30,7 @@ class Product extends Model implements AuthenticatableContract
         }
     }
 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -46,6 +45,10 @@ class Product extends Model implements AuthenticatableContract
      * @query query that you create in index
      * @name is the string name that you search
      * */
+    public  function uom(){
+        return $this->belongsTo('App\Uom');
+    }
+
 
     public static function filterAndPaginate($name)
     {

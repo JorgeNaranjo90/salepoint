@@ -25,7 +25,8 @@ $form = [
     'incomingQty' => 12,
     'virtualAvailable' => 32,
     'ean13' => 'Fresca Coca-cola company',
-    'uom_id' => 4
+    'uom_id' => 4,
+    'partner_id' =>2
 ];
 
 //And

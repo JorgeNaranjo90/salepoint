@@ -2,10 +2,9 @@
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
-//use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Uom extends Model implements AuthenticatableContract
 {
@@ -37,6 +36,10 @@ class Uom extends Model implements AuthenticatableContract
      * @query query that you create in index
      * @name is the string name that you search
      * */
+
+    public function umo(){
+        return $this->hasMany('App\Product', 'uom_id');
+    }
 
     public static function filterAndPaginate($name)
     {

@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers\Products;
 
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProductRequest;
@@ -81,7 +80,6 @@ class ProductsController extends Controller
     public function create()
     {
         $uom = \DB::table('uoms')->orderBy('name', 'ASC')->lists('name', 'id');
-        //$supplier = \DB::table('partners')->orderBy('name', 'ASC')->lists('name', 'id');
         $supplier = Partner::filterAndPaginateSupplier('')->lists('name','id');
         return view('products.create', compact('uom','supplier'));
     }
@@ -107,6 +105,7 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
+
         $product = Product::findOrFail($id);
         return view('products.profile', compact('product'));
     }
