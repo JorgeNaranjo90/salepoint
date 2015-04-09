@@ -1,7 +1,7 @@
 <table class="table table-striped table-hover">
     <tr>
-        <th>Name</th>
-        <th>Description</th>
+        <th> {{trans('uoms.name')}}</th>
+        <th> {{trans('uoms.description')}}</th>
     </tr>
     @foreach ($uoms as $uom)
         <tr onclick="window.document.location='{{ route('settings.uoms.show', $uom->id) }}';">

@@ -11,8 +11,8 @@
 @endsection
 
 
-<a class="btn btn-info btn-sm" href="{{ route('taxs.edit', $tax->id) }}"><i class="fa fa-pencil"></i> Edit</a>
-<a class="btn btn-success btn-sm" href="{{ route('taxs.create') }}"><i class="fa fa-user-plus"></i> Create</a>
+<a class="btn btn-info btn-sm" href="{{ route('taxs.edit', $tax->id) }}"><i class="fa fa-pencil"></i> {{trans('botones.edit')}}</a>
+<a class="btn btn-success btn-sm" href="{{ route('taxs.create') }}"><i class="fa fa-user-plus"></i> {{trans('botones.create')}}</a>
 @endsection
 
 @section('filters')
@@ -20,19 +20,19 @@
 
 @section('body_page')
     <div class="col-lg-1">
-        Name
+        {{trans('tax.name')}}
     </div>
     <div class="col-lg-3">
         <h2>{{ $tax->name }}</h2>
     </div>
     <div class="col-lg-1">
-        Code
+        {{trans('tax.code')}}
     </div>
     <div class="col-lg-3">
         <h2>{{ $tax->code}}</h2>
     </div>
     <div class="col-lg-1">
-        Value
+        {{trans('tax.value')}}
     </div>
     <div class="col-lg-3">
         <h2>{{ $tax->value }}</h2>

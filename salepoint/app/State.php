@@ -17,7 +17,6 @@ class State extends Model {
 
     protected $fillable = ['name','code','abbreviation','country_id'];
 
-
     public function citys(){
         return $this->hasMany('App\City', 'state_id');
 
@@ -26,3 +25,5 @@ class State extends Model {
         return $this->belongsTo('App\Country','id');
     }
 }
+
+

@@ -1,8 +1,8 @@
 <table class="table table-striped table-hover">
     <tr>
-        <th>Image</th>
-        <th>Name</th>
-        <th>Email</th>
+        <th>{{trans('users.image')}}</th>
+        <th>{{trans('users.name')}}</th>
+        <th>{{trans('users.email')}}</th>
     </tr>
     @foreach ($users as $user)
         <tr onclick="window.document.location='{{ route('settings.users.show', $user->id) }}';">

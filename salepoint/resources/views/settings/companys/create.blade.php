@@ -2,16 +2,16 @@
 @extends('generalPartials.general_view')
 
 @section('title')
-    {!!Form::label(trans('company.create')) !!}  {!!Form::label(trans('company.company')) !!}
+    {{trans('company.create')}}  {{trans('company.company')}}
 @endsection
 
 @section('buttons')
     {!! Form::open(['route'=>'settings.company.store','method'=>'POST','files'=>true]) !!}
     <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i>
-        {!!Form::label(trans('company.save')) !!}
+        {{trans('botones.save')}}
     </button>
     <a class="btn btn-danger btn-sm" href="{{route('settings.company.index')}}">
-        {!!Form::label(trans('company.cancel')) !!}
+        {{trans('botones.cancel')}}
     </a>
 @endsection
 @section('filters')

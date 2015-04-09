@@ -11,8 +11,8 @@
 @endsection
 
 
-<a class="btn btn-info btn-sm" href="{{ route('settings.certificatesats.edit', $certificatesat->id) }}"><i class="fa fa-pencil"></i> Edit</a>
-<a class="btn btn-success btn-sm" href="{{ route('settings.certificatesats.create') }}"><i class="fa fa-user-plus"></i> Create</a>
+<a class="btn btn-info btn-sm" href="{{ route('settings.certificatesats.edit', $certificatesat->id) }}"><i class="fa fa-pencil"></i> {{trans('botones.edit')}}</a>
+<a class="btn btn-success btn-sm" href="{{ route('settings.certificatesats.create') }}"><i class="fa fa-user-plus"></i> {{trans('botones.create')}}</a>
 @endsection
 
 @section('filters')
@@ -24,7 +24,7 @@
         <table cellspacing="10" width="100%">
             <tr>
                 <td valign="top" width="20%">
-                    <p><i class="fa fa-building"></i> <b>Description 1</b></p>
+                    <p><i class="fa fa-building"></i> <b>{{trans('certificate_sats.description')}} 1</b></p>
                 </td>
                 <td width="80%">
                     <p>{{ $certificatesat->name .", ".$certificatesat->certificateKeyTitle.", ".$certificatesat->certificatePemFile}}</p>
@@ -34,7 +34,7 @@
             <tr>
 
                 <td valign="top" width="20%">
-                    <p><i class="fa fa-building"></i> <b>Description 2</b></p>
+                    <p><i class="fa fa-building"></i> <b>{{trans('certificate_sats.description')}} 2</b></p>
                 </td>
                 <td width="80%">
                     <p>{{ $certificatesat->certificateWeyPemTitle.", ".$certificatesat->noSerie }}</p>
@@ -44,7 +44,7 @@
             <tr>
 
                 <td valign="top" width="20%">
-                    <p><i class="fa fa-building"></i> <b>Description 3</b></p>
+                    <p><i class="fa fa-building"></i> <b>{{trans('certificate_sats.description')}} 3</b></p>
                 </td>
                 <td width="80%">
                     <p>{{ $certificatesat->startDate.", ".$certificatesat->endDate }}</p>

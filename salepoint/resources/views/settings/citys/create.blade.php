@@ -8,9 +8,9 @@
 @section('buttons')
     {!! Form::open(['route'=>'settings.city.store','method'=>'POST','files'=>true]) !!}
     <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i>
-        {{trans('city.save')}}
+        {{trans('botones.save')}}
     </button>
-    <a class="btn btn-danger btn-sm" href="{{route('settings.city.index')}}">Cancel</a>
+    <a class="btn btn-danger btn-sm" href="{{route('settings.city.index')}}">  {{trans('botones.cancel')}}</a>
 @endsection
 @section('filters')
 @endsection

@@ -10,17 +10,10 @@ return [
     | you want to customize your views to better match your application.
     |
     */
-
+    'image'=>'Imagen',
     'name' => 'Nombre',
-    'search' => 'Buscar',
-    'edit'=> 'Editar',
-    'create' => 'Crear',
-    'delete'=> 'Eliminar',
-    'cancel'=> 'Cancel',
-    'save'=> 'Guardar',
-    'state'=>'Estado',
-
-    'country_id'=>'Pais',
-    'abbreviation' =>'Abreviación',
-    'code'=>'Codigo'
+    'email'=>'Email',
+    'password'=>'Contraseña',
+    'confirm'=>'Confirmar',
+    'users'=>'Usuario'
 ];

@@ -110,5 +110,12 @@ class Partner extends Model {
         return $this->name.' '.$this->lastName;
     }
 
+    public static function dontDelete($id)
+    {
+
+        return  \DB::table('partners')
+        ->join('products', 'partners.id','=','products.partner_id')
+        ->where('products.partner_id','=',$id)->get();
+    }
 
 }

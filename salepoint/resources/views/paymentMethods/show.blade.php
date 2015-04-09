@@ -10,10 +10,10 @@
     @include('paymentMethods.partials.delete')
 @endsection
 <a class="btn btn-info btn-sm" href="{{ route('paymentMethods.edit', $payment->id) }}"><i class="fa fa-pencil"></i>
-    {!!Form::label(trans('paymentMethods.edit'))   !!}
+    {{trans('botones.edit')}}
 </a>
 <a class="btn btn-success btn-sm" href="{{ route('paymentMethods.create') }}"><i class="fa fa-user-plus"></i>
-    {!!Form::label(trans('paymentMethods.create'))   !!}
+    {{trans('botones.create')}}
 </a>
 @endsection
 @section('filters')

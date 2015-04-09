@@ -11,7 +11,6 @@
             <td>{{$city->code}}</td>
             <td>{{$city->abbreviation}}</td>
             <td>{{$city->states->name}}</td>
-
             @endforeach
 </table>
 

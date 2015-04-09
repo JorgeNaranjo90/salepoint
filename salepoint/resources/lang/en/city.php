@@ -12,9 +12,9 @@ return [
     */
 
     'name' => 'Name',
+    'code'=>'Code',
     'search' => 'Search',
     'edit'=> 'Edit',
-    'code'=>'Code',
     'create' => 'Create',
     'delete'=> 'Delete',
     'cancel'=> 'Cancel',
