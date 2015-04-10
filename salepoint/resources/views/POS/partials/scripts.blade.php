@@ -104,8 +104,9 @@
 
         }else if(parseFloat($('#qty_product_sol').val()) > parseFloat($('#qtyAvailable_sol').val())){
 
-            error = "Tu tienes solamente cuentas con "+ $('#qtyAvailable_sol').val() +
-                        "y requieres comprar "+ $('#qty_product_sol').val() +"selecciona menos productos";
+            error = "El sistema en almacén cuneta con "+ $('#qtyAvailable_sol').val() +
+                    " productos y la cantidad que deseas comprar es "+ $('#qty_product_sol').val() +
+                    " por lo tanto no puedes vender esa cantidad";
 
             message_saleorder_error.innerHTML = error;
             $('#lost_product').modal({
@@ -145,20 +146,45 @@
             var strHtmlunitPrice = "<INPUT TYPE=\"number\" NAME=\"sale_order_line_unitPrice[]\" value=\""+$('#price_sale_unit_sol').val()+"\" readonly>";
             td4.innerHTML = strHtmlunitPrice.replace(/!count!/g,count);
 
+            var subtotal_sol_current = parseFloat($('#subtotal').val());
+            var descuento_sol_current = parseFloat($('#discount').val());
+            var total_sol_current = parseFloat($('#total').val());
+
+            //Agregamos la validacion si cuenta con mas de 50 productos
+            // disponibles se realizara un 10% del valor de cada producto
+            var descuento_line = 0.0;
+            if(parseFloat($('#qtyAvailable_sol').val()) > 50.0){
+                descuento_line = parseFloat($('#qty_product_sol').val()) * parseFloat($('#price_sale_unit_sol').val()) * 0.10;
+            }
+
+            var total_line = ($('#qty_product_sol').val() * $('#price_sale_unit_sol').val()) - descuento_line;
+            var total_line_withoutDiscount = ($('#qty_product_sol').val() * $('#price_sale_unit_sol').val());
+
+            var sub_sub_total = subtotal_sol_current+ total_line_withoutDiscount;
+            var des_des_total = descuento_sol_current + descuento_line;
+            document.getElementById('subtotal').value = sub_sub_total;
+            document.getElementById('discount').value = des_des_total;
+            document.getElementById('total').value = (sub_sub_total)-(des_des_total);
+
+
+            var td7 = document.createElement("TD");
+            var strHtmlDescuento = "<INPUT TYPE=\"number\" NAME=\"sale_order_line_decuento[]\" value=\""+descuento_line+"\" readonly>";
+            td7.innerHTML = strHtmlDescuento.replace(/!count!/g,count);
+
             var td5 = document.createElement("TD");
-            var strHtmlsubtotal = "<INPUT TYPE=\"number\" NAME=\"sale_order_line_subtotal[]\" value=\""+($('#qty_product_sol').val() * $('#price_sale_unit_sol').val())+"\" readonly>";
+            var strHtmlsubtotal = "<INPUT TYPE=\"number\" NAME=\"sale_order_line_subtotal[]\" value=\""+total_line_withoutDiscount+"\" readonly>";
             td5.innerHTML = strHtmlsubtotal.replace(/!count!/g,count);
 
             var td6 = document.createElement("TD");
             var strHtml5 = "<a onClick=\"delRow()\"><i class=\"fa fa-trash fa-2x\"></i></a>";
             td6.innerHTML = strHtml5.replace(/!count!/g,count);
 
-
             // append data to row
             row.appendChild(td1);
             row.appendChild(td2);
             row.appendChild(td3);
             row.appendChild(td4);
+            row.appendChild(td7);
             row.appendChild(td5);
             row.appendChild(td6);
             // add to count variable
@@ -166,9 +192,7 @@
             // append row to table
             tbody.appendChild(row);
 
-            var total_sol_current = $('#total').val();
-            var total_line = $('#qty_product_sol').val() * $('#price_sale_unit_sol').val();
-            document.getElementById('total').value = parseFloat(total_sol_current) + parseFloat(total_line);
+
             $('#load_product_table').modal('hide');
         }
         document.getElementById('code_product').value = null;
@@ -179,6 +203,7 @@
     {
         var current = window.event.srcElement;
         //here we will delete the line
+        alert(current[0].val());
         while ( (current = current.parentElement)  && current.tagName !="TR");
         current.parentElement.removeChild(current);
     }

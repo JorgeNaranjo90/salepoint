@@ -28,6 +28,20 @@ class Partner extends Model {
         return $this->hasMany('App\Product', 'partner_id');
      }
 
+    public function saleOrder(){
+        return $this->hasMany('App\SaleOrder', 'partner_id');
+    }
+
+    public function country(){
+        return $this->belongsTo('App\Country');
+    }
+    public function state(){
+        return $this->belongsTo('App\State');
+    }
+    public function city(){
+        return $this->belongsTo('App\City');
+    }
+
     protected $fillable = ['name', 'lastName', 'street','noExt','noInt','colony','zip','locality','rfc','phone','mobile','fax','email','customer','supplier','image','birthdate','city_id','state_id','country_id'];
 
     public function setImageAttribute($value){
@@ -48,21 +62,32 @@ class Partner extends Model {
 
     }
 
+    public static function getCustomer($name){
+        return \DB::table('selectPartners')
+            ->where('customer','=',1)
+            ->where('name','like','%'.$name.'%')
+            ->orderBy('selectPartners.name','ASC')->get();
+    }
+
+    public static function getSupplier($name){
+        return \DB::table('selectPartners')
+            ->where('supplier','=',1)
+            ->where('name','like','%'.$name.'%')
+            ->orderBy('selectPartners.name','ASC')->get();
+
+    }
+
     public static function filterAndPaginateCustomer($name)
     {
-        return \DB::table('selectCustomers')
-            ->where('name','like','%'.$name.'%')
-            ->orderBy('name','ASC')
-            ->paginate();
+
+            return Partner::getCustomer($name)->paginate();
 
     }
 
     public static function filterAndPaginateSupplier($name)
     {
-        return \DB::table('selectSuppliers')
-            ->where('name','like','%'.$name.'%')
-            ->orderBy('name','ASC')
-            ->paginate();
+
+            return Partner::getSupplier($name)->paginate();
     }
 
     public static function report()

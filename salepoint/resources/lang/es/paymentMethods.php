@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'typeMethods' => 'Metodos de pago',
+    'typeMethods' => 'Metodo de pago',
     'create' => 'Crear',
     'search' =>'Buscar',
     'typePayment'=>'Tipo de pago',
