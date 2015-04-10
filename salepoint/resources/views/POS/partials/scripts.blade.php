@@ -193,7 +193,7 @@
             tbody.appendChild(row);
 
 
-            //$('#load_product_table').modal('hide');
+            $('#load_product_table').modal('hide');
         }
         document.getElementById('code_product').value = null;
 
