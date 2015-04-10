@@ -18,4 +18,5 @@ return [
     'delete'=> 'Delete',
     'cancel'=> 'Cancel',
     'save'=> 'Save',
+    'back' => 'Back'
   ];

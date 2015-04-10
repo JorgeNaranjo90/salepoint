@@ -20,13 +20,6 @@ abstract class IsType {
     public function handle($request, Closure $next)
     {
         if(! $this->auth->user()->is($this->getType())){
-            if ($request->ajax())
-            {
-                return response('Unauthorized.', 401);
-            }
-            else{
-                //return response('Unauthorized.', 401);
-            }
 
         }
         /*else{
