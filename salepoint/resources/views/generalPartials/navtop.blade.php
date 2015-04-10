@@ -42,8 +42,10 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-language"></i> {{ trans('validation.attributes.language') }} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ route('languageen') }}"><img src="/icons/usa.png">EN</a></li>
-                            <li><a href="{{ route('languagees') }}"><img src="/icons/mexico.png">ES</a></li>
+                            <li><a href="{{ route('languageen')}}"><img src="/icons/usa.png">EN</a></li>
+                            <li><a href="{{ route('languagees')}}"><img src="/icons/mexico.png">ES</a></li>
+                            {{--route('languageen') --}}
+                            {{--Illuminate\Contracts\Container\App--}}
                         </ul>
                     </li>
                 @else

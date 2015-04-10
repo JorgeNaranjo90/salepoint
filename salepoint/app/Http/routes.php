@@ -100,3 +100,6 @@ Route::get('reports', ['as' => 'reports', 'middleware' => 'auth', 'uses' => 'Gen
 //Language
 Route::get('languageEn', ['as' => 'languageen', 'uses' => 'GeneralController@setLangEn']);
 Route::get('languageEs', ['as' => 'languagees', 'uses' => 'GeneralController@setLangEs']);
+
+
+
