@@ -20,7 +20,7 @@ class PartnersSeeder extends Seeder
                 'colony' => $faker->streetSuffix,
                 'zip' => $faker->postcode,
                 'locality' => $faker->citySuffix,
-                'rfc' => $faker->name,
+                'rfc' => 'XAXX010101000',
                 'phone' => $faker->phoneNumber,
                 'mobile' => $faker->phoneNumber,
                 'fax' => $faker->phoneNumber,
