@@ -1,20 +1,25 @@
 <?php
+
 return [
-    /*
-    |--------------------------------------------------------------------------
-    | Pagination Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used by the paginator library to build
-    | the simple pagination links. You are free to change them to anything
-    | you want to customize your views to better match your application.
-    |
-    */
-    'image'=>'Image',
+    'users' => 'Users',
+    'image' => 'Image',
+    'user_image'  => 'User image',
     'name' => 'Name',
-    'email'=>'Email',
-    'password'=>'Password',
-    'confirm'=>'Confirm',
-    'users'=>'Users'
+    'user_name' => 'Username',
+    'email' => 'Email address',
+    'user_email'  => 'example@example.com',
+    'create_user' => 'Create user',
+    'password' => 'Password',
+    'user_password' => 'User password',
+    'confirm_password' => 'Confirm password',
+    'user_confirm_password' => 'User confirm password',
+    'type_user' => 'Type user',
+    'general_settings' => 'General settings',
+    /*Users types*/
+    'admin' => 'Administrator',
+    'user' => 'User global',
+    'purchase' => 'User purchase',
+    'sale' => 'User sale',
+    'report' => 'User report'
 
 ];

@@ -19,6 +19,14 @@ class CreateUsersTable extends Migration {
 			$table->string('email')->unique();
 			$table->string('password', 60);
             $table->binary('image')->nullable();
+            /*
+             * admin = all privileges.
+             * user = see all, but not see settings.
+             * sale = see products,partners,sales and pos.
+             * purchase = see products, partners and purchases.
+             * report = see the reports.
+             * */
+            $table->enum('type',['admin','user','sale','purchase','report']);
             $table->softDeletes();
 			$table->rememberToken();
 			$table->timestamps();

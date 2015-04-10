@@ -31,4 +31,8 @@ class GeneralController extends Controller {
         return view('settings.index');
     }
 
+    public function reports(){
+        return view('reports.index');
+    }
+
 }

@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers\Products;
 
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateProductRequest;
@@ -28,8 +27,8 @@ class ProductsController extends Controller
         $library->load();
         $this->dompdf = new \DOMPDF();
         $products = Product::filterAndPaginateGeneral();
-        $title="General report products";
-        $html = view('products.report', compact('products','title'));
+        $title= trans('products.report_general');
+        return $html = view('products.report', compact('products','title'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
         $this->dompdf->render();
@@ -41,8 +40,8 @@ class ProductsController extends Controller
         $library->load();
         $this->dompdf = new \DOMPDF();
         $products = Product::filterAndPaginateM();
-        $title='Maximum report products';
-        $html = view('products.report', compact('products','title'));
+        $title= trans('products.report_min');
+        return $html = view('products.report', compact('products','title'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
         $this->dompdf->render();
@@ -54,8 +53,8 @@ class ProductsController extends Controller
         $library->load();
         $this->dompdf = new \DOMPDF();
         $products = Product::filterAndPaginateMin();
-        $title='Minimum report products';
-        $html = view('products.report', compact('products','title'));
+        $title= trans('products.report_min');
+        return $html = view('products.report', compact('products','title'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
         $this->dompdf->render();
@@ -81,7 +80,6 @@ class ProductsController extends Controller
     public function create()
     {
         $uom = \DB::table('uoms')->orderBy('name', 'ASC')->lists('name', 'id');
-        //$supplier = \DB::table('partners')->orderBy('name', 'ASC')->lists('name', 'id');
         $supplier = Partner::filterAndPaginateSupplier('')->lists('name','id');
         return view('products.create', compact('uom','supplier'));
     }
@@ -107,6 +105,7 @@ class ProductsController extends Controller
      */
     public function show(Request $request, $id)
     {
+
         $product = Product::findOrFail($id);
         if($request->ajax()){
             return Product::findOrFail($id)->toJson();

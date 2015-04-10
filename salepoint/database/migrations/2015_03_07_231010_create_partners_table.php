@@ -53,17 +53,17 @@ class CreatePartnersTable extends Migration {
             ci on st.id = ci.state_id order by p.name ASC;
          ");
 
-        DB::unprepared("CREATE PROCEDURE partnersReport()
-            BEGIN
+        DB::unprepared("CREATE VIEW selectCustomers AS
             select p.*,co.name 'country_name',ci.name 'city_name',st.name 'state_name' from partners p
             join countrys co on p.country_id = co.id join states st on co.id = st.country_id join citys
-            ci on st.id = ci.state_id order by p.name ASC;
-            END;
+            ci on st.id = ci.state_id where p.customer = 1 order by p.name ASC;
          ");
 
-
-
-
+        DB::unprepared("CREATE VIEW selectSuppliers AS
+            select p.*,co.name 'country_name',ci.name 'city_name',st.name 'state_name' from partners p
+            join countrys co on p.country_id = co.id join states st on co.id = st.country_id join citys
+            ci on st.id = ci.state_id where p.supplier = 1 order by p.name ASC;
+         ");
 
 	}
 
@@ -79,7 +79,8 @@ class CreatePartnersTable extends Migration {
 	{
 		Schema::drop('partners');
         DB::unprepared('DROP VIEW IF EXISTS selectPartners');
-        DB::unprepared('DROP PROCEDURE IF EXISTS partnersReport');
+        DB::unprepared('DROP VIEW IF EXISTS selectCustomers');
+        DB::unprepared('DROP VIEW IF EXISTS selectSuppliers');
 	}
 
 }
