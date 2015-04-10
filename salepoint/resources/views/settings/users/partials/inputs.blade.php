@@ -1,19 +1,34 @@
-<div class="col-md-10 col-md-offset-1">
-    <div class="form-group">
+<div class="row">
+    <div class="form-group col-lg-6">
         {!! Form::label('name', trans('users.name')) !!}
-        {!! Form::text('name', null, ['class' => 'form-control']) !!}
+        {!! Form::text('name', null, ['class' => 'form-control','placeholder'=>trans('users.user_name')]) !!}
     </div>
-    <div class="form-group">
-        {!! Form::label('email',  trans('users.email')) !!}
-        {!! Form::email('email', null, ['class' => 'form-control', 'placeholder'=>'example@example.com']) !!}
+    <div class="form-group col-lg-6">
+        {!! Form::label('email', trans('users.email')) !!}
+        {!! Form::email('email', null, ['class' => 'form-control', 'placeholder'=>trans('users.user_email')]) !!}
     </div>
-    <div class="form-group">
-        {!! Form::label('password',  trans('users.password')) !!}
-        {!! Form::password('password', ['class' => 'form-control']) !!}
+</div>
+<div class="row">
+    <div class="form-group col-lg-6">
+        {!! Form::label('password', trans('users.password')) !!}
+        {!! Form::password('password', ['class' => 'form-control','placeholder'=>trans('users.user_password')]) !!}
     </div>
     @yield('password_confirm')
-    <div class="form-group">
-        {!! Form::label('image',  trans('users.image')) !!}
+</div>
+<div class="row">
+    <div class="form-group col-lg-6">
+        {!! Form::label('type',trans('users.type_user')) !!}
+        {!! Form::select('type',$type,null,['class' => 'form-control requiered_field']) !!}
+    </div>
+    <div class="form-group col-lg-6">
+        {!! Form::label('image', trans('users.image')) !!}
         {!! Form::file('image', ['class' => 'form-control']) !!}
     </div>
 </div>
+
+
+
+
+
+
+

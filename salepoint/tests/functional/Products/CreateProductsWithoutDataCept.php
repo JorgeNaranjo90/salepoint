@@ -19,7 +19,8 @@ $I->seeCurrentUrlEquals('/products/create');
 $form = [
     'name' => '',
     'ean13' => '',
-    'uom_id' => null
+    'uom_id' => null,
+    'partner_id' => null
 ];
 
 //And

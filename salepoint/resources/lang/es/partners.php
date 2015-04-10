@@ -28,6 +28,10 @@ return [
     'create_partner' => 'Crear Socio',
     'partner_name' => 'Nombre de socio',
     'partner_last_name' => 'Apellidos de socio',
-
+    /*Reports*/
+    'general_partners' => 'Socios en general',
+    'customers' => 'Clientes',
+    'suppliers' => 'Proveedores',
+    'reports' => 'Reportes'
 
 ];

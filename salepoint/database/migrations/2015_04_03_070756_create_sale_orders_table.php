@@ -29,6 +29,7 @@ class CreateSaleOrdersTable extends Migration {
             $table->foreign('partner_id')->references('id')->on('partners');
             $table->foreign('paymentMethod_id')->references('id')->on('paymentMethods');
 		});
+
 	}
 
 	/**

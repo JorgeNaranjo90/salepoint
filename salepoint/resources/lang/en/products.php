@@ -23,4 +23,7 @@ return [
     'report_general'=> 'Products report general',
     'report_min'=> 'Products report minimum',
     'report_max'=> 'Products report maximum',
+    'report_generalr' => 'Report general',
+    'report_minr' => 'Report minimum',
+    'report_maxr' => 'Report maximum',
 ];

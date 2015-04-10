@@ -12,6 +12,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	use Authenticatable, CanResetPassword;
     use SoftDeletes;
 
+
+
+    //private $type;
+
     protected $dates = ['deleted_at'];
 
 	/**
@@ -26,7 +30,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'password', 'image'];
+	protected $fillable = ['name', 'email', 'password', 'image','type'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -68,9 +72,41 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     }
 
+    /*Function for loader the select on the screen create users */
+    public static function getTypeUsers()
+    {
+        $type = \DB::select( \DB::raw("SHOW COLUMNS FROM users WHERE Field = 'type'") )[0]->Type;
+        preg_match('/^enum\((.*)\)$/', $type, $matches);
+        $enum = array();
+        foreach( explode(',', $matches[1]) as $value )
+        {
+            $v = trim( $value, "'" );
+            $enum = array_add($enum, $v, $v);
+        }
+        return $enum;
+    }
+
     public function scopeName($query, $name){
         if(trim($name) != ""){
             $query->where("name", "LIKE", "%$name%");
         }
     }
+
+    public static function typeUser(){
+
+    return ['admin' => trans('users.admin') ,
+            'user' => trans('users.user'),
+            'sale' => trans('users.sale'),
+            'purchase' => trans('users.purchase'),
+            'report'  => trans('users.report')
+    ];
+    }
+    /*Types of Users*/
+
+    public function is($type)
+    {
+
+        return $this->type === $type;
+    }
+
 }

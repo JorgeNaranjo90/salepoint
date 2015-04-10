@@ -29,5 +29,10 @@ return [
     'create_partner' => 'Create Partner',
     'partner_name' => 'Partner Name',
     'partner_last_name' => 'Partner Last Name',
+    /*Reports*/
+    'general_partners' => 'General partners',
+    'customers' => 'Customers',
+    'suppliers' => 'Suppliers',
+    'reports' => 'Reports'
 
 ];
