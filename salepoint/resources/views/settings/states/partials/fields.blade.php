@@ -16,7 +16,7 @@
     </div>
 
     <div class="form-group col-lg-6">
-        {!! Form::label('country_id',trans('state.country_id')) !!}
+        {!! Form::label('country_id',trans('state.country')) !!}
         {!! Form::select('country_id',$country, null, ['class' => 'form-control  requiered_field','placeholder' => trans('state.country_id')]) !!}
     </div>
 </div>
