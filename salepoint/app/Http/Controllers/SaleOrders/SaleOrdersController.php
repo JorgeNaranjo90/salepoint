@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\SaleOrders;
 
+use App\Company;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\SaleOrder;
@@ -49,9 +50,9 @@ class SaleOrdersController extends Controller {
              'subTotal' => Input::get('subtotal'),
              'discount' => Input::get('discount'),
              'total' => Input::get('total'),
-             'type' => 'saleOrder',
+             'type' => Input::get('type'),
              'partner_id' => Input::get('partner_id'),
-             'paymentMethod_id' => 1,
+             'paymentMethod_id' => Input::get('paymentMethod_id'),
             ];
         $sale_order_id = SaleOrder::create($array_sale_order);
 
@@ -74,9 +75,9 @@ class SaleOrdersController extends Controller {
             ];
             SaleOrderLine::create($sale_line);
         }
-
-
-        //return \Redirect::route('settings.users.index');
+        $saleOrder = $sale_order_id;
+        $company = Company::findOrFail(1);
+        return view('POS.partials.ticket_report', compact('saleOrder','company'));
 
     }
 

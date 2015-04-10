@@ -12,4 +12,7 @@ class paymentMethod extends Model
 
     protected $fillable=['name'];
 
+    public function saleOrder(){
+        return $this->hasMany('App\SaleOrder','paymentMethod_id');
+    }
 }

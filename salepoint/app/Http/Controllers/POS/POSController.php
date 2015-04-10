@@ -15,8 +15,9 @@ class POSController extends Controller {
 	 */
 	public function index()
 	{
-        $customers = Partner::filterAndPaginateCustomer('');
-        return view('POS.index', compact('customers'));
+        $customers = Partner::getSupplier('');
+        $paymentMethod = \DB::table('paymentMethods')->orderBy('name','ASC')->lists('name','id');
+        return view('POS.index', compact('customers', 'paymentMethod'));
 	}
 
 	/**

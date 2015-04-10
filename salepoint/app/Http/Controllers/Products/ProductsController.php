@@ -28,7 +28,8 @@ class ProductsController extends Controller
         $this->dompdf = new \DOMPDF();
         $products = Product::filterAndPaginateGeneral();
         $title= trans('products.report_general');
-        return $html = view('products.report', compact('products','title'));
+        $route = route('products.index');
+        return $html = view('products.report', compact('products','title','route'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
         $this->dompdf->render();
@@ -41,7 +42,8 @@ class ProductsController extends Controller
         $this->dompdf = new \DOMPDF();
         $products = Product::filterAndPaginateM();
         $title= trans('products.report_min');
-        return $html = view('products.report', compact('products','title'));
+        $route = route('products.index');
+        return $html = view('products.report', compact('products','title','route'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
         $this->dompdf->render();
@@ -54,7 +56,8 @@ class ProductsController extends Controller
         $this->dompdf = new \DOMPDF();
         $products = Product::filterAndPaginateMin();
         $title= trans('products.report_min');
-        return $html = view('products.report', compact('products','title'));
+        $route = route('products.index');
+        return $html = view('products.report', compact('products','title','route'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
         $this->dompdf->render();
@@ -80,7 +83,7 @@ class ProductsController extends Controller
     public function create()
     {
         $uom = \DB::table('uoms')->orderBy('name', 'ASC')->lists('name', 'id');
-        $supplier = Partner::filterAndPaginateSupplier('')->lists('name','id');
+        $supplier = Partner::getSupplier('')->lists('name','id');
         return view('products.create', compact('uom','supplier'));
     }
 
@@ -124,7 +127,7 @@ class ProductsController extends Controller
     {
         $product = Product::findOrFail($id);
         $uom = \DB::table('uoms')->orderBy('name', 'ASC')->lists('name', 'id');
-        $supplier = Partner::filterAndPaginateSupplier('')->lists('name','id');
+        $supplier = \DB::table('partners')->where('supplier',1)->orderBy('name', 'ASC')->lists('name','id');
         return view('products.edit', compact('product', 'uom','supplier'));
     }
 

@@ -15,4 +15,5 @@ return [
     'code'=>'Código',
     'state_code'=>'Código del estado',
     'state_abbreviation' =>'Abreviación del estado',
+    'country' => 'País'
 ];
