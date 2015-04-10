@@ -28,7 +28,8 @@ class ProductsController extends Controller
         $this->dompdf = new \DOMPDF();
         $products = Product::filterAndPaginateGeneral();
         $title= trans('products.report_general');
-        return $html = view('products.report', compact('products','title'));
+        $route = route('products.index');
+        return $html = view('products.report', compact('products','title','route'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
         $this->dompdf->render();
@@ -41,7 +42,8 @@ class ProductsController extends Controller
         $this->dompdf = new \DOMPDF();
         $products = Product::filterAndPaginateM();
         $title= trans('products.report_min');
-        return $html = view('products.report', compact('products','title'));
+        $route = route('products.index');
+        return $html = view('products.report', compact('products','title','route'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
         $this->dompdf->render();
@@ -54,7 +56,8 @@ class ProductsController extends Controller
         $this->dompdf = new \DOMPDF();
         $products = Product::filterAndPaginateMin();
         $title= trans('products.report_min');
-        return $html = view('products.report', compact('products','title'));
+        $route = route('products.index');
+        return $html = view('products.report', compact('products','title','route'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
         $this->dompdf->render();

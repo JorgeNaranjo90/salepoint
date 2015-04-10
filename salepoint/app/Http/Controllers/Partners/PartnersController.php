@@ -26,7 +26,8 @@ class PartnersController extends Controller {
         $this->dompdf = new \DOMPDF();
         $partners = Partner::report();
         $title = trans('general.partner_report');
-        return $html = view('partners.report',compact('partners','title'));
+        $route = route('partners.index');
+        return $html = view('partners.report',compact('partners','title','route'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
         $this->dompdf->render();
@@ -39,7 +40,8 @@ class PartnersController extends Controller {
         $this->dompdf = new \DOMPDF();
         $partners = Partner::reportCustomer();
         $title = trans('general.customer_report');
-        return $html = view('partners.report',compact('partners','title'));
+        $route = route('partners.index');
+        return $html = view('partners.report',compact('partners','title','route'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
         $this->dompdf->render();
@@ -52,7 +54,8 @@ class PartnersController extends Controller {
         $this->dompdf = new \DOMPDF();
         $partners = Partner::reportSupplier();
         $title = trans('general.supplier_report');
-        return $html = view('partners.report',compact('partners','title'));
+        $route = route('partners.index');
+        return $html = view('partners.report',compact('partners','title','route'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
         $this->dompdf->render();
