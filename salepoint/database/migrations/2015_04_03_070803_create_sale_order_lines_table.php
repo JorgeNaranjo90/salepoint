@@ -27,6 +27,12 @@ class CreateSaleOrderLinesTable extends Migration {
             $table->foreign('sale_order_id')->references('id')->on('sale_orders')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('product_id')->references('id')->on('products');
 		});
+
+        DB::unprepared("CREATE TRIGGER utrg_UpdateQtyAvalible AFTER INSERT ON sale_order_lines
+                        FOR EACH ROW
+                        BEGIN
+                        UPDATE products SET qtyAvailable = qtyAvailable - NEW.qty,virtualAvailable = virtualAvailable - NEW.qty WHERE id = NEW.product_id;
+                        END;");
 	}
 
 	/**
@@ -37,6 +43,7 @@ class CreateSaleOrderLinesTable extends Migration {
 	public function down()
 	{
 		Schema::drop('sale_order_lines');
+        DB::unprepared("DROP TRIGGER IF EXISTS utrg_UpdateQtyAvalible");
 	}
 
 }
