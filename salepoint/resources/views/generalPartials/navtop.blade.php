@@ -44,8 +44,6 @@
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ route('languageen')}}"><img src="/icons/usa.png">EN</a></li>
                             <li><a href="{{ route('languagees')}}"><img src="/icons/mexico.png">ES</a></li>
-                            {{--route('languageen') --}}
-                            {{--Illuminate\Contracts\Container\App--}}
                         </ul>
                     </li>
                 @else
