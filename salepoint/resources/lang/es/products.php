@@ -23,4 +23,7 @@ return [
     'report_general'=> 'Reporte general de productos',
     'report_min'=> 'Reporte mínimo de productos',
     'report_max'=> 'Reporte máximo de productos',
+    'report_generalr' => 'Reporte general',
+    'report_minr' => 'Reporte mínimo',
+    'report_maxr' => 'Reporte maximo',
 ];

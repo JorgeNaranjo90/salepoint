@@ -17,9 +17,9 @@
 
 @section('body_page')
     @section('password_confirm')
-        <div class="form-group">
-            {!! Form::label('password_confirmation', 'Confirm Password') !!}
-            {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
+        <div class="form-group col-lg-6">
+            {!! Form::label('password_confirmation', trans('users.confirm_password')) !!}
+            {!! Form::password('password_confirmation', ['class' => 'form-control','placeholder'=> trans('users.user_confirm_password')]) !!}
         </div>
     @endsection
     @include('settings.users.partials.inputs')

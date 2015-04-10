@@ -13,22 +13,53 @@ use App\Http\Controllers\PdfLibrary;
 class PartnersController extends Controller {
 
     protected  $request;
+    protected  $dompdf;
 
     public function __construct(Request $request){
         $this->middleware('auth');
         $this->request = $request;
     }
 
-    public function report(Request $request,PdfLibrary $library)
+    public function report(PdfLibrary $library)
     {
         $library->load();
-        $dompdf = new \DOMPDF();
-        $partners = Partner::filterAndPaginate($request->get('name'));
-        $html = view('partners.report',compact('partners'));
-        $dompdf->load_html($html);
-        $dompdf->get_css();
-        $dompdf->render();
-        $dompdf->stream("partners.pdf");
+        $this->dompdf = new \DOMPDF();
+        $partners = Partner::report();
+        $title = trans('general.partner_report');
+        $route = route('partners.index');
+        return $html = view('partners.report',compact('partners','title','route'));
+        $this->dompdf->load_html($html);
+        $this->dompdf->get_css();
+        $this->dompdf->render();
+        $this->dompdf->stream("partners.pdf");
+    }
+
+    public function reportCustomer(PdfLibrary $library)
+    {
+        $library->load();
+        $this->dompdf = new \DOMPDF();
+        $partners = Partner::reportCustomer();
+        $title = trans('general.customer_report');
+        $route = route('partners.index');
+        return $html = view('partners.report',compact('partners','title','route'));
+        $this->dompdf->load_html($html);
+        $this->dompdf->get_css();
+        $this->dompdf->render();
+        $this->dompdf->stream("partners_customer.pdf");
+    }
+
+    public function reportSupplier(PdfLibrary $library)
+    {
+        $library->load();
+        $this->dompdf = new \DOMPDF();
+        $partners = Partner::reportSupplier();
+        $title = trans('general.supplier_report');
+        $route = route('partners.index');
+        return $html = view('partners.report',compact('partners','title','route'));
+        $this->dompdf->load_html($html);
+        $this->dompdf->get_css();
+        $this->dompdf->render();
+        $this->dompdf->stream("partners_supplier.pdf");
     }
 
     public function index(Request $request)

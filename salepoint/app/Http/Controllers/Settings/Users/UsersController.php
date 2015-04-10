@@ -34,8 +34,8 @@ class UsersController extends Controller {
 	 */
 	public function create()
 	{
-        return view('settings.users.create');
-
+        $type = User::typeUser();
+        return view('settings.users.create',compact('type'));
     }
 
 	/**
@@ -47,7 +47,8 @@ class UsersController extends Controller {
 	{
 
         $user = User::create($request->all());
-        return \Redirect::route('settings.users.index');
+        Session::flash('message', $user->name .' was registred !');
+        return redirect()->route('settings.users.index');
 
 	}
 
@@ -73,7 +74,8 @@ class UsersController extends Controller {
 	{
 
         $user = User::findOrFail($id);
-		return view('settings.users.edit', compact('user'));
+        $type = User::typeUser();
+        return view('settings.users.edit',compact('user','type'));
 	}
 
 	/**
@@ -87,6 +89,7 @@ class UsersController extends Controller {
         $user = User::findOrFail($id);
         $user->fill($request->all());
         $user->save();
+        Session::flash('message', $user->name .' was updated !');
         return \Redirect::back();
 
     }
@@ -101,7 +104,7 @@ class UsersController extends Controller {
 	{
         $user = User::findOrFail($id);
         $user->delete();
-        Session::flash('message', $user->full_name.' was delete !');
+        Session::flash('message', $user->full_name.' was deleted !');
         return \Redirect::route('settings.users.index');
 
 	}

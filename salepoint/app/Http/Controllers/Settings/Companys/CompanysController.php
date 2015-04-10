@@ -54,7 +54,8 @@ class CompanysController extends Controller {
 	public function show($id)
 	{
         $company = Company::findOrFail($id);
-        return view('settings.companys.show',compact('company'));
+        $partner = Partner::findOrFail($company->partner_id);
+        return view('settings.companys.show',compact('company','partner'));
 	}
 
 	/**

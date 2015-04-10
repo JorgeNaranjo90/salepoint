@@ -1,4 +1,11 @@
 <div class="row">
+    <div class="form-group col-lg-7">
+        {!! Form::label('ean13',trans('products.ean_13')) !!}
+        {!! Form::number('ean13', null, ['class' => 'form-control  requiered_field','placeholder' => trans('products.ean_13')]) !!}
+    </div>
+</div>
+
+<div class="row">
     <div class="form-group col-lg-5">
         {!! Form::label('name', trans('products.name')) !!}
         {!! Form::text('name', null, ['class' => 'form-control  requiered_field','placeholder'=>trans('products.product_name')]) !!}
@@ -44,12 +51,6 @@
     <div class="form-group col-lg-4">
         {!! Form::label('name',trans('products.supplier_name')) !!}
         {!! Form::select('partner_id',$supplier,null,['class' => 'form-control requiered_field']) !!}
-    </div>
-</div>
-<div class="row">
-    <div class="form-group col-lg-7">
-        {!! Form::label('ean13',trans('products.ean_13')) !!}
-        {!! Form::text('ean13', null, ['class' => 'form-control  requiered_field','placeholder' => trans('products.ean_13')]) !!}
     </div>
 </div>
 

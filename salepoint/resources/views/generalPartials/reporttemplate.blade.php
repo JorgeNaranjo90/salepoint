@@ -1,6 +1,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
     <style>
         .table_all_border {
@@ -292,6 +293,11 @@
             text-align: right;
             color: #444545; }
     </style>
+    <script>
+        function pdf() {
+            window.print();
+        }
+    </script>
 </head>
 
 <body>
@@ -304,9 +310,13 @@
         <td>
             <h1><b>@yield('title')</b></h1>
         </td>
+        <td>
+            <button onclick="pdf()"><i class="fa fa-print fa-2x"></i>
+            </button>
+        </td>
     </tr>
     <tr>
-        <td colspan="2">
+        <td colspan="3">
             @yield('content')
         </td>
     </tr>

@@ -2,7 +2,7 @@
 @extends('generalPartials.general_view')
 
 @section('title')
-    Users
+    {{trans('users.users')}}
 @endsection
 
 @section('buttons')

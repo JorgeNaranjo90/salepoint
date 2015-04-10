@@ -27,6 +27,12 @@ class Kernel extends HttpKernel {
 		'auth' => 'App\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
+        /*Middlewares of types users registred on the database salepoint*/
+        'is_admin' => 'App\Http\Middleware\IsAdmin',
+        'is_user' => 'App\Http\Middleware\IsUser',
+        'is_sale' => 'App\Http\Middleware\IsSale',
+        'is_purchase' => 'App\Http\Middleware\IsPurchase',
+        'is_report' => 'App\Http\Middleware\IsReport'
 	];
 
 }
