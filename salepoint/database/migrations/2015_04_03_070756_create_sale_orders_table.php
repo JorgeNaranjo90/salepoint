@@ -21,6 +21,7 @@ class CreateSaleOrdersTable extends Migration {
             $table->double('discount')->default(0.0);
             $table->double('total')->default(0.0);
             $table->enum('type', ['saleOrder','invoice']);
+            $table->enum('status', ['validate','cancel'])->default('validate');
             $table->integer('partner_id')->unsigned();
             $table->integer('paymentMethod_id')->unsigned();
 			$table->timestamps();

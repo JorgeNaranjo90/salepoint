@@ -27,4 +27,12 @@ class SaleOrder extends Model {
     public function sale_order_lines(){
         return $this->hasMany('App\SaleOrderLine','sale_order_id');
     }
+
+    public function partner(){
+        return $this->belongsTo('App\Partner');
+    }
+
+    public function paymentMethod(){
+        return $this->belongsTo('App\PaymentMethod');
+    }
 }

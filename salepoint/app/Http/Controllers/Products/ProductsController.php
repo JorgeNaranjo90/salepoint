@@ -81,8 +81,7 @@ class ProductsController extends Controller
     public function create()
     {
         $uom = \DB::table('uoms')->orderBy('name', 'ASC')->lists('name', 'id');
-        //$supplier = \DB::table('partners')->orderBy('name', 'ASC')->lists('name', 'id');
-        $supplier = Partner::filterAndPaginateSupplier('')->lists('name','id');
+        $supplier = Partner::getSupplier('')->lists('name','id');
         return view('products.create', compact('uom','supplier'));
     }
 
@@ -125,7 +124,7 @@ class ProductsController extends Controller
     {
         $product = Product::findOrFail($id);
         $uom = \DB::table('uoms')->orderBy('name', 'ASC')->lists('name', 'id');
-        $supplier = Partner::filterAndPaginateSupplier('')->lists('name','id');
+        $supplier = \DB::table('partners')->where('supplier',1)->orderBy('name', 'ASC')->lists('name','id');
         return view('products.edit', compact('product', 'uom','supplier'));
     }
 

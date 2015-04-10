@@ -24,6 +24,10 @@ class State extends Model {
     public function countrys(){
         return $this->belongsTo('App\Country','id');
     }
+
+    public function partner(){
+        return $this->hasMany('App\Partner','state_id');
+    }
 }
 
 
