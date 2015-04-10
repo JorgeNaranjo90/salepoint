@@ -21,6 +21,7 @@ class CreateSaleOrdersTable extends Migration {
             $table->double('discount')->default(0.0);
             $table->double('total')->default(0.0);
             $table->enum('type', ['saleOrder','invoice']);
+            $table->enum('status', ['validate','cancel'])->default('validate');
             $table->integer('partner_id')->unsigned();
             $table->integer('paymentMethod_id')->unsigned();
 			$table->timestamps();
@@ -29,6 +30,11 @@ class CreateSaleOrdersTable extends Migration {
             $table->foreign('paymentMethod_id')->references('id')->on('paymentMethods');
 		});
 
+//        DB::unprepared("CREATE TRIGGER utrg_UpdateQtyAvalibleMore BEFORE UPDATE ON sale_orders
+//                        FOR EACH ROW
+//                        BEGIN
+//                        UPDATE products SET qtyAvailable = qtyAvailable + NEW.qty,virtualAvailable = virtualAvailable + NEW.qty WHERE id = NEW.product_id;
+//                        END;");
 	}
 
 	/**
@@ -39,6 +45,7 @@ class CreateSaleOrdersTable extends Migration {
 	public function down()
 	{
 		Schema::drop('sale_orders');
+//        DB::unprepared("DROP TRIGGER IF EXISTS utrg_UpdateQtyAvalibleMore");
 	}
 
 }
