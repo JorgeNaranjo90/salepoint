@@ -27,7 +27,7 @@ class Product extends Model implements AuthenticatableContract
     }
 
     public function uom(){
-        return $this->hasOne('App\Uom', 'uom_id');
+        return $this->belongsTo('App\Uom', 'uom_id');
     }
 
     public function setImageAttribute($value){

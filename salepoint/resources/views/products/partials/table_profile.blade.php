@@ -1,4 +1,3 @@
-
 <div class="col-lg-10">
     <h1>{{$product->name}}</h1>
     <h2>{{$product->description}}</h2>
