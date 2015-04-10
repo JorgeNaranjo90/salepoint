@@ -15,5 +15,6 @@ return [
     'country_id'=>'Country_id',
     'abbreviation' =>'Abbreviation',
     'state_abbreviation' =>'State abbreviation',
+    'country' => 'Country'
 
 ];
