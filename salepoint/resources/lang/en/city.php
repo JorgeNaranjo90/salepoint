@@ -1,18 +1,10 @@
 <?php
 return [
-    /*
-    |--------------------------------------------------------------------------
-    | Pagination Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used by the paginator library to build
-    | the simple pagination links. You are free to change them to anything
-    | you want to customize your views to better match your application.
-    |
-    */
 
     'name' => 'Name',
+    'city_name' => 'City name',
     'code'=>'Code',
+    'city_code'=>'City code',
     'search' => 'Search',
     'edit'=> 'Edit',
     'create' => 'Create',
@@ -22,5 +14,6 @@ return [
     'state'=>'State',
     'state_id'=>'State_id',
     'abbreviation' =>'Abbreviation',
+    'city_abbreviation' =>'City abbreviation',
     'city'=>'City'
 ];

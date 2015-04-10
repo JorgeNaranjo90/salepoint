@@ -16,9 +16,6 @@
                     @if(Auth::user()->type === 'admin' || Auth::user()->type === 'user' || Auth::user()->type === 'sale' || Auth::user()->type === 'purchase')
                         <li><a href="{{ route('partners.index')}}"><i class="fa fa-building"></i>{{trans('general.partners')}}</a></li>
                     @endif
-                        @if(Auth::user()->type === 'admin')
-                            <li><a href="/partners/report"><i class="fa fa-building"></i>{{trans('general.partners')}}</a></li>
-                        @endif
                     @if(Auth::user()->type === 'admin' || Auth::user()->type === 'user' || Auth::user()->type === 'sale' || Auth::user()->type === 'purchase')
                         <li><a href="{{ route('products.index') }}"><i class="fa fa-list"></i> {{trans('general.products')}}</a></li>
                         @endif
