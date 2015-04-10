@@ -19,9 +19,6 @@
            <?php date_default_timezone_set('America/Mexico_City') ?>
            <input type="datetime" name="sale_datetime" id="sale_datetime" value="{{ date('d/m/Y H:i:s') }}" class="form-control requiered_field" required/>
        </div>
-       <div class="form-group col-lg-2">
-           <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i> Save</button>
-       </div>
    </div>
     <div class="row">
         <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
@@ -75,6 +72,11 @@
                 {!! Form::label('notes', 'Notes')!!}
                 {!! Form::textarea('notes',null,['class'=>'form-control '])  !!}
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-lg-2">
+            <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i> Save</button>
         </div>
     </div>
     {!! Form::close() !!}

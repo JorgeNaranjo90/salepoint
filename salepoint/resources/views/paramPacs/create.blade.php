@@ -8,10 +8,10 @@
 @section('buttons')
     {!! Form::open(['route'=>'paramPacs.store','method'=>'POST','files'=>true]) !!}
     <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i>
-        {!!Form::label(trans('paramPacs.save'))   !!}
+        {!!Form::label(trans('botones.save'))   !!}
     </button>
     <a class="btn btn-danger btn-sm" href="{{route('paramPacs.index')}}">
-        {!!Form::label(trans('paramPacs.cancel'))   !!}
+        {!!Form::label(trans('botones.cancel'))   !!}
     </a>
 @endsection
 

@@ -11,5 +11,13 @@
      'certificate_key_pem' => 'Certificate KEY PEM',
      'number_serie' => 'Number serie',
      'start_date' => 'Start date',
-     'end_date' => 'End date'
+     'end_date' => 'End date',
+     'search' => 'Search',
+    'edit'=> 'Edit',
+    'code'=>'Code',
+    'create' => 'Create',
+    'delete'=> 'Delete',
+    'cancel'=> 'Cancel',
+    'save'=> 'Save',
+      'description'=> 'Description'
  ];

@@ -9,7 +9,7 @@
 
 @section('buttons')
     <a class="btn btn-success btn-sm" href="{{route('paymentMethods.create')}}"><i class="fa fa-user-plus"></i>
-        {!!Form::label(trans('paymentMethods.create'))   !!}
+        {{trans('botones.create')}}
     </a>
 @endsection
 

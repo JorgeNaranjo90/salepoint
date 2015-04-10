@@ -2,7 +2,7 @@
 @extends('generalPartials.general_view')
 
 @section('title')
-    {!!Form::label(trans('company.profile')) !!}   {!!Form::label(trans('company.company')) !!}
+    {{trans('company.profile')}}   {{trans('company.company')}}
 @endsection
 
 @section('buttons')
@@ -10,10 +10,10 @@
     @include('settings.companys.partials.delete')
 @endsection
 <a class="btn btn-info btn-sm" href="{{ route('settings.company.edit', $company->id) }}"><i class="fa fa-pencil"></i>
-    {!!Form::label(trans('company.edit')) !!}
+    {{trans('botones.edit')}}
 </a>
 <a class="btn btn-success btn-sm" href="{{ route('settings.company.create') }}"><i class="fa fa-user-plus"></i>
-    {!!Form::label(trans('company.create')) !!}
+    {{trans('botones.create')}}
 </a>
 @endsection
 
@@ -29,7 +29,7 @@
         @endif
     </div>
     <div class="col-lg-9">
-        <h1> {!!Form::label(trans('company.name')) !!}  {!!Form::label(trans('company.company')) !!}:  {{ $company->name }}</h1>
+        <h1> {{trans('company.name')}}  {{trans('company.company')}}:  {{ $company->name }}</h1>
     </div>
     @include('partners.partials.table_profile')
 @endsection

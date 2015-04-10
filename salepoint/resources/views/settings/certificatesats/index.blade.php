@@ -6,7 +6,7 @@
 @endsection
 
 @section('buttons')
-    <a class="btn btn-success btn-sm" href="{{route('settings.certificatesats.create')}}"><i class="fa fa-user-plus"></i> Create</a>
+    <a class="btn btn-success btn-sm" href="{{route('settings.certificatesats.create')}}"><i class="fa fa-user-plus"></i> {{trans('botones.create')}}</a>
 @endsection
 @section('filters')
     @include('settings.certificatesats.partials.filters')

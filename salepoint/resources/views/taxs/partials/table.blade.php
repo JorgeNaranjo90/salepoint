@@ -1,8 +1,8 @@
 <table class="table table-striped">
     <tr>
-        <th>Name</th>
-        <th>Code</th>
-        <th>Value</th>
+        <th>{{trans('tax.name')}}</th>
+        <th>{{trans('tax.code')}}</th>
+        <th>{{trans('tax.value')}}</th>
     </tr>
     @foreach($taxs as $tax)
         <tr onclick="window.document.location='{{ route('taxs.show', $tax->id) }}';">

@@ -10,10 +10,10 @@
     @include('settings.countrys.partials.delete')
 @endsection
 <a class="btn btn-info btn-sm" href="{{ route('settings.country.edit', $country->id) }}"><i class="fa fa-pencil"></i>
-    {{trans('country.edit')}}
+    {{trans('botones.edit')}}
 </a>
 <a class="btn btn-success btn-sm" href="{{ route('settings.country.create') }}"><i class="fa fa-user-plus"></i>
-    {{trans('country.create')}}
+    {{trans('botones.create')}}
 </a>
 @endsection
 @section('filters')

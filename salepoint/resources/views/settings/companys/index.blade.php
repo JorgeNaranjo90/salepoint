@@ -4,11 +4,11 @@
 <!-- Esta linea va de cajon -->
 @extends('generalPartials.general_view')
 @section('title')
-    Company
+    {{trans('company.company')}}
 @endsection
 @section('buttons')
     <a class="btn btn-success btn-sm" href="{{route('settings.company.create')}}"><i class="fa fa-user-plus"></i>
-        {!!Form::label(trans('currency.create')) !!}
+        {{trans('company.create')}}
     </a>
 @endsection
 @section('filters')

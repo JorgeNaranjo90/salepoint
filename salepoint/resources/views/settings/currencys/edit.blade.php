@@ -12,13 +12,13 @@
 @endsection
 {!! Form::model($currency, ['route'=>['settings.currency.update',$currency->id],'method'=>'PUT','files'=>true]) !!}
 <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i>
-    {!!Form::label(trans('currency.save')) !!}
+    {{trans('botones.save')}}
 </button>
 <a class="btn btn-danger btn-sm" href="{{route('settings.currency.index')}}"><i class="fa fa-times"></i>
-    {!!Form::label(trans('currency.cancel')) !!}
+    {{trans('botones.cancel')}}
 </a>
 <a class="btn btn-success btn-sm" href="{{route('settings.currency.create')}}"><i class="fa fa-user-plus"></i>
-    {!!Form::label(trans('currency.create')) !!}
+    {{trans('botones.create')}}
 </a>
 @endsection
 

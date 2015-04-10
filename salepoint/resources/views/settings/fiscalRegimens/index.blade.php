@@ -6,15 +6,14 @@
 
 
 @section('title')
-    {!!Form::label(trans('fiscalRegimen.fiscalRegimen')) !!}
+    {{trans('fiscalRegimen.fiscalRegimen')}}
 @endsection
 
 @section('buttons')
     <a class="btn btn-success btn-sm" href="{{route('settings.fiscalRegimen.create')}}"><i class="fa fa-user-plus"></i>
-        {!!Form::label(trans('fiscalRegimen.create')) !!}
+        {{trans('botones.create')}}
     </a>
 @endsection
-
 @section('filters')
     @include('settings.fiscalRegimens.partials.filters')
 @endsection

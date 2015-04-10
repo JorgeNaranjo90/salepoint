@@ -9,8 +9,8 @@
     @section('button_delete')
         @include('products.partials.delete')
     @endsection
-    <a class="btn btn-info btn-sm" href="{{ route('products.edit', $product->id) }}"><i class="fa fa-pencil"></i> Edit</a>
-    <a class="btn btn-success btn-sm" href="{{ route('products.create') }}"><i class="fa fa-user-plus"></i> Create</a>
+    <a class="btn btn-info btn-sm" href="{{ route('products.edit', $product->id) }}"><i class="fa fa-pencil"></i> {{trans('botones.edit')}}</a>
+    <a class="btn btn-success btn-sm" href="{{ route('products.create') }}"><i class="fa fa-user-plus"></i> {{trans('botones.create')}}</a>
 @endsection
 
 @section('filters')

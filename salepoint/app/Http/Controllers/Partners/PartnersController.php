@@ -160,6 +160,7 @@ class PartnersController extends Controller {
      */
     public function destroy($id)
     {
+
         $pat = Partner::dontDelete($id);
         if ( $pat==[]){
             $partner = Partner::findOrFail($id);
@@ -172,9 +173,6 @@ class PartnersController extends Controller {
             Session::flash('message',' dont is possible delete  the partner is linked to any product !');
             return redirect()->route('partners.index');
         }
-
-
-
     }
 
 }
