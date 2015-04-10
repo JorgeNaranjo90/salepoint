@@ -19,6 +19,8 @@ abstract class IsType {
 
     public function handle($request, Closure $next)
     {
+
+
         if(! $this->auth->user()->is($this->getType())){
 
         }
