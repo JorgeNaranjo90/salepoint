@@ -13,6 +13,9 @@
             <ul class="nav navbar-nav">
                 <li><a href="/"><i class="fa fa-home"></i>{{trans('general.home')}}</a></li>
                 @if (empty(Auth::guest()))
+                    @if(Auth::user()->type === 'admin'|| Auth::user()->type === 'user' || Auth::user()->type === 'sale' )
+                        <li><a href="{{ route('pos.index')}}"><i class="fa fa-barcode"></i>POS</a></li>
+                    @endif
                     @if(Auth::user()->type === 'admin' || Auth::user()->type === 'user' || Auth::user()->type === 'sale' || Auth::user()->type === 'purchase')
                         <li><a href="{{ route('partners.index')}}"><i class="fa fa-building"></i>{{trans('general.partners')}}</a></li>
                     @endif
