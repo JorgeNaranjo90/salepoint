@@ -46,6 +46,13 @@ class CreatePartnersTable extends Migration {
             $table->foreign('country_id')->references('id')
                 ->on('countrys')->onDelete('cascade')->onUpdate('cascade');
 		});
+        \DB::table('partners')->insert([
+            ['id'=>'1','name' => 'Abarrotes Tauro', 'country_id'=>'1','state_id'=>'1','city_id'=>'1'],
+
+        ]);
+        \DB::table('partners')->insert([
+            ['id'=>'2','name' => 'Venta publico general','country_id'=>'1','state_id'=>'1','city_id'=>'1','rfc'=>'XAXX010101000']
+        ]);
 
         DB::unprepared("CREATE VIEW selectPartners AS
             select p.*,co.name 'country_name',ci.name 'city_name',st.name 'state_name' from partners p
@@ -58,18 +65,12 @@ class CreatePartnersTable extends Migration {
             join countrys co on p.country_id = co.id join states st on co.id = st.country_id join citys
             ci on st.id = ci.state_id where p.customer = 1 order by p.name ASC;
          ");
-
         DB::unprepared("CREATE VIEW selectSuppliers AS
             select p.*,co.name 'country_name',ci.name 'city_name',st.name 'state_name' from partners p
             join countrys co on p.country_id = co.id join states st on co.id = st.country_id join citys
             ci on st.id = ci.state_id where p.supplier = 1 order by p.name ASC;
          ");
-
 	}
-
-
-
-
 	/**
 	 * Reverse the migrations.
 	 *
