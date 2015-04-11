@@ -493,7 +493,7 @@
                         <td align="right" class="sub_total_td"> {{ $saleOrder->subTotal }}</td>
                     </tr>
                     <tr>
-                        <td class="tax_td">IVA (15.0) % </td>
+                        <td class="tax_td">IVA (16.0) % </td>
                         <td class="tax_td" align="right"> {{ $saleOrder->discount }}</td>
                     </tr>
                     <tr align="left">
