@@ -1,6 +1,8 @@
 <?php namespace App;
 
+use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -22,7 +24,8 @@ class SaleOrder extends Model {
      *
      * @var array
      */
-    protected $fillable = ['name', 'sale_order_time', 'subTotal', 'total' ,'discount', 'type', 'status' ,'partner_id', 'paymentMethod_id'];
+
+    protected $fillable = ['id','name', 'sale_order_time', 'subTotal', 'total' ,'discount', 'type','status', 'partner_id', 'paymentMethod_id', 'created_at'];
 
     public function sale_order_lines(){
         return $this->hasMany('App\SaleOrderLine','sale_order_id');
@@ -34,5 +37,21 @@ class SaleOrder extends Model {
 
     public function paymentMethod(){
         return $this->belongsTo('App\PaymentMethod');
+    }
+
+    public static function filterAndPaginate($name)
+    {
+        return \DB::table('sale_orders')
+            ->orderBy('name','ASC')
+            ->paginate();
+
+    }
+
+    public function scopeName($query, $name)
+    {
+        if (trim($name) != "") {
+            $query->where("name","LIKE", "%$name%");
+        }
+
     }
 }

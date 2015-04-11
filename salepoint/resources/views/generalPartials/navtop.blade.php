@@ -23,7 +23,7 @@
                         <li><a href="{{ route('products.index') }}"><i class="fa fa-list"></i> {{trans('general.products')}}</a></li>
                         @endif
                     @if(Auth::user()->type === 'admin' || Auth::user()->type === 'user' || Auth::user()->type === 'sale'  )
-                        <li><a href="{{ route('sales') }}"><i class="fa fa-shopping-cart"></i>{{trans('general.sales')}}</a></li>
+                        <li><a href="{{ route('sales.index') }}"><i class="fa fa-shopping-cart"></i>{{trans('general.sales')}}</a></li>
                         @endif
                     @if(Auth::user()->type === 'admin' || Auth::user()->type === 'user' || Auth::user()->type === 'purchase')
                     <li><a href="{{ route('purchases.index') }}"><i class="fa fa-truck"></i> {{trans('general.purchases')}}</a></li>
