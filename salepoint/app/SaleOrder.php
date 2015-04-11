@@ -24,6 +24,7 @@ class SaleOrder extends Model {
      *
      * @var array
      */
+
     protected $fillable = ['id','name', 'sale_order_time', 'subTotal', 'total' ,'discount', 'type','status', 'partner_id', 'paymentMethod_id', 'created_at'];
 
     public function sale_order_lines(){
