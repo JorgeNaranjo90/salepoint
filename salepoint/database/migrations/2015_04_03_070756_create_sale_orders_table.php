@@ -30,6 +30,40 @@ class CreateSaleOrdersTable extends Migration {
             $table->foreign('paymentMethod_id')->references('id')->on('paymentMethods');
 		});
 
+        DB::unprepared("CREATE TRIGGER utrg_UpdateQtyAvalibleMore AFTER UPDATE ON sale_orders
+                        FOR EACH ROW
+                        BEGIN
+
+                            DECLARE idProduct int;
+                            DECLARE qty int;
+
+                            DECLARE c1 CURSOR FOR
+                                SELECT sol.product_id, sol.qty
+                                FROM sale_orders so
+                                JOIN sale_order_lines sol ON sol.sale_order_id = so.id
+                                WHERE so.id = NEW.id;
+
+                            DECLARE CONTINUE HANDLER FOR NOT FOUND SET @hecho = TRUE;
+                            OPEN c1;
+                                loop1: LOOP
+                                FETCH c1 INTO idProduct,qty;
+
+                                IF @hecho THEN
+                                    LEAVE loop1;
+                                END IF;
+
+                                UPDATE  products SET qtyAvailable = qtyAvailable + qty,
+                                virtualAvailable = virtualAvailable + qty
+                                WHERE id = idProduct;
+
+                                END LOOP loop1;
+                            CLOSE c1;
+
+                        END;");
+
+
+
+
 	}
 
 	/**
@@ -40,6 +74,7 @@ class CreateSaleOrdersTable extends Migration {
 	public function down()
 	{
 		Schema::drop('sale_orders');
+        DB::unprepared("DROP TRIGGER IF EXISTS utrg_UpdateQtyAvalibleMore");
 	}
 
 }
