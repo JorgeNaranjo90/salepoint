@@ -32,10 +32,10 @@ $form = [
     'phone' => '343443433',
     'rfc' => 'Tess Roberts',
     'state_id' => '1',
-    'supplier'=>'0'
+    'supplier'=>'1'
 ];
 
 //And
 $I->submitForm('//form', $form, 'Save');
 
-$I->seeCurrentUrlEquals('/partners');
+$I->seeCurrentUrlEquals('/partners/create');

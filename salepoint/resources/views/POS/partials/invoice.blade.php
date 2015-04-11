@@ -434,8 +434,8 @@
                                 <font class="">Emisor</font>
                             </div>
                             <div class="data_emitter panel_bg_color panel_border_radius_bottom td_vertical_middle td_center">
-                                </br><h1><b>{{$company->name}}</b></h1>
-                                </br><b>{{$company->partners->rfc}}</b>
+                                <h1><b>{{$company->name}}</b></h1>
+                                <b>{{$company->partners->rfc}}</b>
                                 </br>{{$company->partners->street .' '.$company->partners->noExt .' '.$company->partners->noInt}}
                                 </br>{{$company->partners->colony .' '.$company->partners->zip .' '.$company->partners->locality}}
                                 </br>{{$company->partners->country->name .' '.$company->partners->state->name .' '.$company->partners->city->name }}
@@ -448,8 +448,8 @@
                                 <font class="">Cliente</font>
                             </div>
                             <div class="data_emitter panel_bg_color panel_border_radius_bottom td_vertical_middle td_center">
-                                </br><h1><b>{{$saleOrder->partner->name}}</b></h1>
-                                </br><b>{{$saleOrder->partner->rfc}}</b>
+                                <h1><b>{{$saleOrder->partner->name}}</b></h1>
+                                <b>{{$saleOrder->partner->rfc}}</b>
                                 </br>{{$saleOrder->partner->street .' '.$saleOrder->partner->noExt .' '.$saleOrder->partner->noInt}}
                                 </br>{{$saleOrder->partner->colony .' '.$saleOrder->partner->zip .' '.$saleOrder->partner->locality}}
                                 </br>{{$saleOrder->partner->country->name .' '.$saleOrder->partner->state->name .' '.$saleOrder->partner->city->name }}
@@ -518,7 +518,7 @@
                 <table width="100%" class="table_row_border">
                     <tr>
                         <td style="float:left" rowspan=4>
-                            <img src="qr.png" height="180" width="auto">
+                            <img src="/images/qr.png" height="180" width="auto">
                         </td>
                         <td width="60%">
                             <div class="data_emitter_fiscal td_vertical_middle td_center">

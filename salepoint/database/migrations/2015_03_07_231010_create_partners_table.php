@@ -53,7 +53,8 @@ class CreatePartnersTable extends Migration {
 
         ]);
         \DB::table('partners')->insert([
-            ['id'=>'2','name' => 'Venta publico general','country_id'=>'1','state_id'=>'1','city_id'=>'1','rfc'=>'XAXX010101000','birthdate'=>'1993-09-13']
+            ['id'=>'2','name' => 'Venta publico general','country_id'=>'1','state_id'=>'1','city_id'=>'1','rfc'=>'XAXX010101000','birthdate'=>'1993-09-13',
+            'supplier'=>1,'customer'=>1]
         ]);
 
         DB::unprepared("CREATE VIEW selectPartners AS
