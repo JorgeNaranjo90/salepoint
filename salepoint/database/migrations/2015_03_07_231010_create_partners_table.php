@@ -47,11 +47,14 @@ class CreatePartnersTable extends Migration {
                 ->on('countrys')->onDelete('cascade')->onUpdate('cascade');
 		});
         \DB::table('partners')->insert([
-            ['id'=>'1','name' => 'Abarrotes Tauro', 'country_id'=>'1','state_id'=>'1','city_id'=>'1','birthdate'=>'1994-03-23'],
+            ['id'=>'1','name' => 'Abarrotes Tauro', 'country_id'=>'1','state_id'=>'1','city_id'=>'1','birthdate'=>'1994-03-23',
+            'street' => 'La campeche', 'noExt'=>'225', 'colony' => 'Bellavista',
+            'zip' => '37500', 'rfc' => 'ABT902839MJ2', 'phone' => '23456789'],
 
         ]);
         \DB::table('partners')->insert([
-            ['id'=>'2','name' => 'Venta publico general','country_id'=>'1','state_id'=>'1','city_id'=>'1','rfc'=>'XAXX010101000','birthdate'=>'1993-09-13']
+            ['id'=>'2','name' => 'Venta publico general','country_id'=>'1','state_id'=>'1','city_id'=>'1','rfc'=>'XAXX010101000','birthdate'=>'1993-09-13',
+            'supplier'=>1,'customer'=>1]
         ]);
 
         DB::unprepared("CREATE VIEW selectPartners AS

@@ -24,6 +24,6 @@ $form = [
     'fiscalRegimen_id' => 'Asociaciones Religiosas',
 ];
 //And
-$I->submitForm('//form', $form, 'Create');
+$I->submitForm('//form', $form, 'Save');
 //Then
 $I->seeCurrentUrlEquals('/settings/company');

@@ -1,6 +1,6 @@
-<?php 
+<?php
 $I = new FunctionalTester($scenario);
-$I->wantTo('create a certificate sats');
+$I->wantTo('create a new certificate sats');
 $I->am('a Administrator user');
 
 
@@ -20,10 +20,13 @@ $I->seeCurrentUrlEquals('/settings/certificatesats/create');
 $form = [
     'name' => 'Benny',
     'noSerie' => '123456',
-    'startDate'=>'0000-00-00',
-    'endDate'=> '0000-00-00'
+    'startDate'=>'2014-04-04',
+    'endDate'=> '2014-04-06'
 ];
 //And
-$I->submitForm('//form', $form, 'Create');
+$I->submitForm('//form', $form, 'Save');
 //Then
-$I->seeCurrentUrlEquals('/settings/certificatesats');
+$I->seeCurrentUrlEquals('tauro.com/settings/certificatesats');
+
+
+
