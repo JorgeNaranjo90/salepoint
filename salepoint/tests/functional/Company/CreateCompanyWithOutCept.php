@@ -1,6 +1,6 @@
 <?php
 $I = new FunctionalTester($scenario);
-$I->wantTo('create a company without data');
+$I->wantTo('create a company');
 $I->am('a Administrator user');
 
 
@@ -15,12 +15,17 @@ $I->see('Create');
 $I->click('Create');
 //Then
 $I->seeCurrentUrlEquals('/settings/company/create');
+
 //When
 $form = [
-    'name' => '',
+    'name' => '3',
+    'partner_id' => 'Ramon Pouros',
+    'currency_id' => 'ALL',
+    'fiscalRegimen_id' => 'Asociaciones Religiosas',
 ];
 //And
-$I->submitForm('//form', $form, 'Create');
+$I->submitForm('//form', $form, 'Save');
 //Then
-$I->seeFormErrorMessage('name','The name field is required.');
+$I->seeCurrentUrlEquals('/settings/company');
 
+//No jala bien
