@@ -9,6 +9,7 @@
     <table>
         <tr><td>{{$saleOrder->partner->name}}</td></tr>
         <tr><td>{{$saleOrder->partner->rfc}}</td></tr>
+        <tr><td>{{'SO'.$saleOrder->id}}</td></tr>
     </table>
     <table style="text-align: center">
         <tr>

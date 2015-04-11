@@ -77,7 +77,12 @@ class SaleOrdersController extends Controller {
         }
         $saleOrder = $sale_order_id;
         $company = Company::findOrFail(1);
-        return view('POS.partials.ticket_report', compact('saleOrder','company'));
+        if(Input::get('type')==='saleOrder'){
+            return view('POS.partials.ticket_report', compact('saleOrder','company'));
+        }
+        else{
+            return view('POS.partials.invoice', compact('saleOrder','company'));
+        }
 
     }
 
