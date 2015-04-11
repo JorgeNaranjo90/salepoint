@@ -29,4 +29,8 @@ class SaleOrderLine extends Model {
         return $this->belongsTo('App\SaleOrder');
     }
 
+    public function product(){
+        return $this->belongsTo('App\Product');
+    }
+
 }

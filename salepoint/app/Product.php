@@ -30,6 +30,10 @@ class Product extends Model implements AuthenticatableContract
         return $this->belongsTo('App\Uom', 'uom_id');
     }
 
+    public function sale_order_line(){
+        return $this->hasMany('App\Product','product_id');
+    }
+
     public function setImageAttribute($value){
         if ( !empty($value)){
             $image_b64 = base64_encode(file_get_contents($value));
