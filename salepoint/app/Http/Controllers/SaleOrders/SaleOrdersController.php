@@ -7,13 +7,14 @@ use App\SaleOrder;
 use App\SaleOrderLine;
 use Illuminate\Http\Request;
 use  Illuminate\Support\Facades\Input;
-
+use Illuminate\Support\Facades\Session;
 
 class SaleOrdersController extends Controller {
 
     protected  $request;
 
     public function __construct(Request $request){
+        $this->middleware('auth');
         $this->request = $request;
     }
 
@@ -22,9 +23,10 @@ class SaleOrdersController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
-		//
+	public function index(Request $request)
+    {
+        $sale_orders = SaleOrder::filterAndPaginate($request->get('name'));
+        return view('sales.index', compact('sale_orders'));
 	}
 
 	/**
@@ -87,9 +89,14 @@ class SaleOrdersController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($request, $id)
 	{
-		//
+        $sale_order = SaleOrder::findOrFail($id);
+        if($request->ajax()){
+            return SaleOrder::findOrFail($id)->toJson();
+        }
+        return view('sales.profile', compact('sale_order'));
+
 	}
 
 	/**
@@ -100,7 +107,8 @@ class SaleOrdersController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+        $sale_order = SaleOrder::findOrFail($id);
+        return view('sales.edit', compact('sale_order'));
 	}
 
 	/**
@@ -111,7 +119,10 @@ class SaleOrdersController extends Controller {
 	 */
 	public function update($id)
 	{
-		//
+        $sale_order = SaleOrder::findOrFail($id);
+//        $sale_order->fill($request->all());
+        $sale_order->save();
+        return \Redirect::route('sales.index');
 	}
 
 	/**
@@ -124,5 +135,6 @@ class SaleOrdersController extends Controller {
 	{
 		//
 	}
+
 
 }
