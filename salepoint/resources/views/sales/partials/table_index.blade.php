@@ -1,15 +1,25 @@
 <table class="table table-striped table-hover">
- @include('sales.partials.fields_table')
-    @foreach ($sale_orders as $sale_order)
-        <tr onclick="window.document.location='{{ route('sales.show', $sale_order->id) }}';">
-                <td>{{ $sale_order->id }}</td>
-                <td>{{ $sale_order->name }}</td>
-                <td>{{ $sale_order->partner->name}}</td>
-                <td>{{ $sale_order->subTotal }}</td>
-                <td>{{ $sale_order->discount }}</td>
-                <td>{{ $sale_order->total }}</td>
-                <td>{{ $sale_order->status }}</td>
-                <td>{{ $sale_order->created_at }}</td>
+ {{--@include('sales.partials.fields_table')--}}
+    <tr>
+        <th> {{trans('Name')}}  </th>
+        <th> {{trans('Partner')}} </th>
+        <th> {{trans('Subtotal')}} </th>
+        <th> {{trans('Discount')}} </th>
+        <th> {{trans('Total')}} </th>
+        <th> {{trans('Status')}} </th>
+    </tr>
+    @foreach ($sale_orders as $saleOrder)
+        @if($saleOrder->status === 'cancel')
+        <tr onclick="window.document.location='{{ route('sales.show', $saleOrder->id) }}';" class="danger">
+        @else
+        <tr onclick="window.document.location='{{ route('sales.show', $saleOrder->id) }}';">
+        @endif
+                <td>{{ $saleOrder->name }}</td>
+                <td>{{ $saleOrder->partner_id}}</td>
+                <td>{{ $saleOrder->subTotal }}</td>
+                <td>{{ $saleOrder->discount }}</td>
+                <td>{{ $saleOrder->total }}</td>
+                <td>{{ $saleOrder->status }}</td>
         </tr>
     @endforeach
 </table>

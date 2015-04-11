@@ -41,7 +41,7 @@ class SaleOrder extends Model {
     public static function filterAndPaginate($name)
     {
         return \DB::table('sale_orders')
-            ->where('name','like','%'.$name.'%')
+            ->orderBy('name','ASC')
             ->paginate();
 
     }

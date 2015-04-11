@@ -33,11 +33,12 @@ class CreateSaleOrdersTable extends Migration {
         DB::unprepared("CREATE TRIGGER utrg_UpdateQtyAvalibleMore AFTER UPDATE ON sale_orders
                         FOR EACH ROW
                         BEGIN
+
                             DECLARE idProduct int;
                             DECLARE qty int;
 
                             DECLARE c1 CURSOR FOR
-                                SELECT sol.product_id, sol.qtyAvailable
+                                SELECT sol.product_id, sol.qty
                                 FROM sale_orders so
                                 JOIN sale_order_lines sol ON sol.sale_order_id = so.id
                                 WHERE so.id = NEW.id;
@@ -47,13 +48,13 @@ class CreateSaleOrdersTable extends Migration {
                                 loop1: LOOP
                                 FETCH c1 INTO idProduct,qty;
 
-                                UPDATE  products SET qtyAvailable = qtyAvailable + qty,
-                                virtualAvailable = virtualAvailable + qty
-                                WHERE id = idProduct;
-
                                 IF @hecho THEN
                                     LEAVE loop1;
                                 END IF;
+
+                                UPDATE  products SET qtyAvailable = qtyAvailable + qty,
+                                virtualAvailable = virtualAvailable + qty
+                                WHERE id = idProduct;
 
                                 END LOOP loop1;
                             CLOSE c1;

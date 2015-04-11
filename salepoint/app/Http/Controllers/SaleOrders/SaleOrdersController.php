@@ -5,6 +5,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\SaleOrder;
 use App\SaleOrderLine;
+use App\Partner;
 use Illuminate\Http\Request;
 use  Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -94,7 +95,7 @@ class SaleOrdersController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($request, $id)
+	public function show(Request $request, $id)
 	{
         $sale_order = SaleOrder::findOrFail($id);
         if($request->ajax()){
@@ -125,9 +126,19 @@ class SaleOrdersController extends Controller {
 	public function update($id)
 	{
         $sale_order = SaleOrder::findOrFail($id);
-//        $sale_order->fill($request->all());
-        $sale_order->save();
-        return \Redirect::route('sales.index');
+        //        $sale_order->fill($request->all());
+
+        if ( $sale_order->status != 'cancel')
+        {
+            $sale_order->status = "cancel";
+            $sale_order->save();
+            Session::flash('message', $sale_order->name.' was canceled !');
+            return \Redirect::route('sales.index');
+        }
+        else {
+            Session::flash('message',' dont is possible cancel the sale order it was canceled!');
+            return redirect()->route('sales.index');
+        }
 	}
 
 	/**
@@ -140,6 +151,5 @@ class SaleOrdersController extends Controller {
 	{
 		//
 	}
-
 
 }

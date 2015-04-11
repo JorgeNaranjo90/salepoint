@@ -1,12 +1,6 @@
 <tr>
     <td>
         <b>
-            {{trans('Id')}}
-        </b>
-
-    </td>
-    <td>
-        <b>
             {{trans('Name')}}
         </b>
 
@@ -38,12 +32,6 @@
     <td>
         <b>
             {{trans('Status')}}
-        </b>
-
-    </td>
-    <td>
-        <b>
-            {{trans('Created')}}
         </b>
 
     </td>
