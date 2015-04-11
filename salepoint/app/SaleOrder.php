@@ -22,7 +22,7 @@ class SaleOrder extends Model {
      *
      * @var array
      */
-    protected $fillable = ['name', 'sale_order_time', 'subTotal', 'total' ,'discount', 'type', 'partner_id', 'paymentMethod_id'];
+    protected $fillable = ['name', 'sale_order_time', 'subTotal', 'total' ,'discount', 'type', 'status' ,'partner_id', 'paymentMethod_id'];
 
     public function sale_order_lines(){
         return $this->hasMany('App\SaleOrderLine','sale_order_id');

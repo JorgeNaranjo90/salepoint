@@ -26,7 +26,7 @@
                         <li><a href="{{ route('sales') }}"><i class="fa fa-shopping-cart"></i>{{trans('general.sales')}}</a></li>
                         @endif
                     @if(Auth::user()->type === 'admin' || Auth::user()->type === 'user' || Auth::user()->type === 'purchase')
-                    <li><a href="{{ route('purchases') }}"><i class="fa fa-truck"></i> {{trans('general.purchases')}}</a></li>
+                    <li><a href="{{ route('purchases.index') }}"><i class="fa fa-truck"></i> {{trans('general.purchases')}}</a></li>
                         @endif
                     @if(Auth::user()->type === 'admin' )
                         <li><a href="{{ route('settings') }}"><i class="fa fa-cog"></i>{{trans('general.settings')}}</a></li>
