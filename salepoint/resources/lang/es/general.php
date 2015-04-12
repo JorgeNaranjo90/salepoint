@@ -12,5 +12,6 @@ return[
     'customer_report' => 'Reporte de clientes',
     'supplier_report' => 'Reporte de proveedores',
     'reports' => 'Reportes',
-    'warehouse' => 'Alamacén'
+    'warehouse' => 'Alamacén',
+    'there_are' => 'Hay',
 ];

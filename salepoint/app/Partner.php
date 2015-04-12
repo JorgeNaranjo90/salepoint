@@ -53,6 +53,12 @@ class Partner extends Model {
         }
     }
 
+    public static function countPartners()
+    {
+        return \DB::table('selectPartners')
+            ->count();
+    }
+
     public static function filterAndPaginate($name)
     {
         return \DB::table('selectPartners')

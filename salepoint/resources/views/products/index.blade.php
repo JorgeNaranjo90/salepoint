@@ -4,13 +4,16 @@
 <!-- Esta linea va de cajon -->
 @extends('generalPartials.general_view')
 
-
 @section('title')
    {{trans('products.products')}}
 @endsection
 
 @section('buttons')
     <a class="btn btn-success btn-sm" href="{{route('products.create')}}"><i class="fa fa-user-plus"></i> {{trans('botones.create')}}</a>
+@endsection
+
+@section('head')
+    {{trans('general.there_are').' '.$total_products.' '.trans('products.products')}}
 @endsection
 
 @section('filters')
