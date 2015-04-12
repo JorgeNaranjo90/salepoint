@@ -26,7 +26,7 @@ class PurchaseOrder extends Model {
 
 	//
     public function purchase_order_lines(){
-        return $this->hasMany('App\PurhcaseOrderLine','purchase_order_id');
+        return $this->hasMany('App\PurchaseOrderLine','purchase_order_id');
     }
 
     public function partner(){

@@ -7,6 +7,7 @@ use App\Partner;
 use App\PurchaseOrder;
 use App\PurchaseOrderLine;
 use Illuminate\Http\Request;
+use  Illuminate\Support\Facades\Input;
 
 class PurchaseOrdersController extends Controller {
 
@@ -63,15 +64,15 @@ class PurchaseOrdersController extends Controller {
 
 
         for($i=0 ; $i<$lines ; $i++){
-            $sale_line = [
+            $purchase_line = [
                 'name' => $products_name_ids[$i],
                 'qty' => $products_qty_ids[$i],
                 'unitPrice' => $products_unitPrice_ids[$i],
                 'subTotal' => $products_subTotal_ids[$i],
-                'sale_order_id' => $purchase_order_id->id,
+                'purchase_order_id' => $purchase_order_id->id,
                 'product_id' => $products_ids[$i]
             ];
-            PurchaseOrderLine::create($sale_line);
+            PurchaseOrderLine::create($purchase_line);
         }
 
         return redirect()->route('purchases.index');
@@ -84,9 +85,13 @@ class PurchaseOrdersController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(Request $request, $id)
 	{
-		//
+        $purchase_order = PurchaseOrder::findOrFail($id);
+        if($request->ajax()){
+            return PurchaseOrder::findOrFail($id)->toJson();
+        }
+        return view('purchases.profile', compact('purchase_order'));
 	}
 
 	/**

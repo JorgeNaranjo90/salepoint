@@ -23,6 +23,7 @@ class PurchaseOrderLine extends Model {
      * @var array
      */
 
+    protected $fillable = ['name', 'qty', 'unitPrice', 'subTotal', 'purchase_order_id', 'product_id'];
 
     public function purchase_order(){
         return $this->belongsTo('App\PurchaseOrder');
