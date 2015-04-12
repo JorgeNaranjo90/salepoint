@@ -94,7 +94,6 @@ Route::group(['namespace'=>'POS', 'middleware' => 'auth'], function() {
 });
 //Menu Top Base
 Route::get('settings', ['as' => 'settings', 'middleware' => ['auth','is_admin'], 'uses' => 'GeneralController@settings']);
-Route::get('sales', ['as' => 'sales', 'middleware' => 'auth', 'uses' => 'GeneralController@sales']);
 Route::get('reports', ['as' => 'reports', 'middleware' => 'auth', 'uses' => 'GeneralController@reports']);
 //Language
 Route::get('languageEn', ['as' => 'languageen', 'uses' => 'GeneralController@setLangEn']);
