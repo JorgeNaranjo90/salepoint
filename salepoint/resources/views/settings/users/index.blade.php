@@ -18,5 +18,5 @@
 
 @section('body_page')
     @include('settings.users.partials.table_index')
-    {!! $users->appends(Request::only(['name']))->render()!!}
+    {!! $users->appends(Request::only(['name']))->render() !!}
 @endsection

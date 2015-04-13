@@ -60,8 +60,6 @@ class UsersController extends Controller {
             * purchase = insert,select and update.
             * report = select.
         */
-        //dd($password_role);
-        //*0D22657BD7E16A953E5DEF4EC9E5933C4931755C
         if($user->type == 'admin'){
             \DB::statement("CREATE USER '".$username_rol."'@'localhost' IDENTIFIED BY PASSWORD'".$password_role."'");
             \DB::statement("grant all privileges on $database.* to '".$username_rol."'@'localhost'");
