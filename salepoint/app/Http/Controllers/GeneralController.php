@@ -19,14 +19,14 @@ class GeneralController extends Controller {
         $database = \Config::get('database.connections.mysql.database');
         $username = \Config::get('database.connections.mysql.username');
         $password = \Config::get('database.connections.mysql.password');
-        $backupPath = '/tmp/';
+        $backupPath = '/home/vagrant/backup/';
         $backupFileName = $database . "-" . date("Y-m-d-H-i-s") . '.sql';
         //for linux replace the path with /usr/local/bin/mysqldump (The path might varies).
         $path = "mysqldump";
         $command = $path . " -u" . $username . " -p" . $password . " " . $database . " > " . $backupPath . $backupFileName;
         //
         system($command);
-        return "<a href='$backupPath . $backupFileName'></a>";
+        return view('home');;
     }
 
     public function sales(){
