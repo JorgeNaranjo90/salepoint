@@ -8,7 +8,6 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\PdfLibrary;
-use App\Partner;
 
 class ProductsController extends Controller
 {
@@ -64,6 +63,20 @@ class ProductsController extends Controller
         return $this->dompdf->stream("products_min.pdf");
     }
 
+    public function reportp(PdfLibrary $library)
+    {
+        $library->load();
+        $this->dompdf = new \DOMPDF();
+        $products = Product::filterAndPaginateMin();
+        $title= trans('products.report_min');
+        $route = route('products.index');
+        return $html = view('products.report', compact('products','title','route'));
+        $this->dompdf->load_html($html);
+        $this->dompdf->get_css();
+        $this->dompdf->render();
+        return $this->dompdf->stream("products_min.pdf");
+    }
+
     /*
 	 * Display a listing of the resource.
 	 *
@@ -72,7 +85,8 @@ class ProductsController extends Controller
     public function index(Request $request)
     {
         $products = Product::filterAndPaginate($request->get('name'));
-        return view('products.index', compact('products'));
+        $total_products = Product::countProducts();
+        return view('products.index', compact('products','total_products'));
     }
 
     /**

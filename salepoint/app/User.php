@@ -94,7 +94,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public static function typeUser(){
 
-    return ['admin' => trans('users.admin') ,
+    return [
+            'admin' => trans('users.admin') ,
             'user' => trans('users.user'),
             'sale' => trans('users.sale'),
             'purchase' => trans('users.purchase'),

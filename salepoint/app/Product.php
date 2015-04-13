@@ -70,6 +70,12 @@ class Product extends Model implements AuthenticatableContract
             ->paginate();
     }
 
+    public static function countProducts()
+    {
+        return \DB::table('selectProducts')
+            ->count();
+    }
+
     public static function filterAndPaginateGeneral()
     {
         return \DB::table('selectProductsReport')

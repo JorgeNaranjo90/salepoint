@@ -12,5 +12,6 @@ return [
     'customer_report' => 'Report of customers',
     'supplier_report' => 'Report of suppliers',
     'reports' => 'Reports',
-    'warehouse' => 'Warehouse'
+    'warehouse' => 'Warehouse',
+    'there_are' => 'There are',
 ];
