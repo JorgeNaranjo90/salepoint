@@ -18,11 +18,11 @@
 <div class="row">
     <div class="form-group col-lg-4">
         {!! Form::label('purchasePrice', trans('products.purchase_price')) !!}
-        {!! Form::text('purchasePrice', null, ['class' => 'form-control','placeholder' => trans('products.purchase_price')]) !!}
+        {!! Form::number('purchasePrice', null, ['step' => '0.05','class' => 'form-control','placeholder' => trans('products.purchase_price')]) !!}
     </div>
     <div class="form-group col-lg-4">
         {!! Form::label('salePrice', trans('products.sale_price')) !!}
-        {!! Form::text('salePrice', null, ['class' => 'form-control','placeholder' => trans('products.sale_price')]) !!}
+        {!! Form::number('salePrice', null, ['step' => '0.05','class' => 'form-control','placeholder' => trans('products.sale_price')]) !!}
     </div>
     <div class="form-group col-lg-4">
         {!! Form::label('name', trans('products.uom')) !!}
@@ -32,15 +32,15 @@
 <div class="row">
     <div class="form-group col-lg-4">
         {!! Form::label('qtyAvailable', trans('products.qty_available')) !!}
-        {!! Form::text('qtyAvailable', null, ['class' => 'form-control','placeholder'=> trans('products.qty_available')]) !!}
+        {!! Form::number('qtyAvailable', null, ['step' => '0.05','class' => 'form-control','placeholder'=> trans('products.qty_available')]) !!}
     </div>
     <div class="form-group col-lg-4">
         {!! Form::label('incomingQty', trans('products.incoming_qty')) !!}
-        {!! Form::text('incomingQty', null, ['class' => 'form-control','placeholder' => trans('products.incoming_qty')]) !!}
+        {!! Form::number('incomingQty', null, ['step' => '0.05','class' => 'form-control','placeholder' => trans('products.incoming_qty')]) !!}
     </div>
     <div class="form-group col-lg-4">
         {!! Form::label('Virtual available', trans('products.virtual_available')) !!}
-        {!! Form::text('virtualAvailable', null, ['class' => 'form-control','placeholder'=> trans('products.product_virtual_available')]) !!}
+        {!! Form::number('virtualAvailable',null, ['step' => '0.05','class' => 'form-control' ,'placeholder'=> trans('products.product_virtual_available')]) !!}
     </div>
 </div>
 <div class="row">

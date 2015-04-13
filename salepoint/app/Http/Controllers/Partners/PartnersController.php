@@ -65,7 +65,8 @@ class PartnersController extends Controller {
     public function index(Request $request)
     {
         $partners = Partner::filterAndPaginate($request->get('name'));
-        return view('partners.index',compact('partners'));
+        $total_partners = Partner::countPartners();
+        return view('partners.index',compact('partners','total_partners'));
     }
 
     public function customer(Request $request)
