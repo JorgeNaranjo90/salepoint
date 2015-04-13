@@ -12,7 +12,8 @@
         @endif
         @if($purchase->status === 'validate')
                 <tr onclick="window.document.location='{{ route('purchases.show', $purchase->id) }}';" class="warning">
-            @else
+        @endif
+        @if($purchase->status === 'done')
                 <tr onclick="window.document.location='{{ route('purchases.show', $purchase->id) }}';">
         @endif
             <td>PO{{ $purchase->id }}</td>
