@@ -9,7 +9,7 @@
                 <h3 class="text-primary">www.abarrotestauro.com</h3>
                 <div class="col-lg-4 col-lg-offset-4">
                     <div class="progress progress-striped active">
-                        <div class="progress-bar" style="width: 10%"></div>
+                        <div class="progress-bar" style="width: 95%"></div>
                     </div>
                 </div>
             </div>
