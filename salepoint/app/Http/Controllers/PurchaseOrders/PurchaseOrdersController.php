@@ -8,6 +8,8 @@ use App\PurchaseOrder;
 use App\PurchaseOrderLine;
 use Illuminate\Http\Request;
 use  Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
+
 
 class PurchaseOrdersController extends Controller {
 
@@ -111,9 +113,14 @@ class PurchaseOrdersController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request, $id)
 	{
-		//
+        $purchaseOrder = PurchaseOrder::findOrFail($id);
+        $purchaseOrder->fill($request->all());
+        $purchaseOrder->save();
+        Session::flash('message', $purchaseOrder->name .' was updated !');
+        return \Redirect::back();
+
 	}
 
 	/**

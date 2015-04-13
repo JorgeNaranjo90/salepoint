@@ -7,9 +7,6 @@
 
 @section('buttons')
 
-    {{--@section('button_delete')--}}
-            {{--@include('products.partials.delete')--}}
-    {{--@endsection--}}
     {!! Form::model($sale_order, ['route'=>['sales.update',$sale_order->id],'method'=>'PUT','files'=>true]) !!}
         <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i> {{trans('botones.save')}}</button>
         <a class="btn btn-danger btn-sm" href="{{route('products.index')}}"><i class="fa fa-times"></i>{{trans('botones.cancel')}}</a>
