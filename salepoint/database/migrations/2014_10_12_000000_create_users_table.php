@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration {
              * report = see the reports.
              * */
             $table->enum('type',['admin','user','sale','purchase','report']);
+            $table->string('password_hidden')->nullable();
             $table->softDeletes();
 			$table->rememberToken();
 			$table->timestamps();
