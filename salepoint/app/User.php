@@ -37,7 +37,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $hidden = ['password', 'remember_token'];
+	protected $hidden = ['password', 'remember_token','password_hidden'];
 
     public function partner(){
         return $this->hasOne('App\Partner');
@@ -51,6 +51,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function setPasswordAttribute($value){
         if ( !empty($value)){
             $this->attributes['password'] = bcrypt($value);
+            $this->attributes['password_hidden'] = $value;
         }
     }
 
@@ -63,27 +64,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
     }
 
-
     public static function filterAndPaginate($name)
     {
         return User::name($name)
             ->orderBy('name','ASC')
             ->paginate();
-
-    }
-
-    /*Function for loader the select on the screen create users */
-    public static function getTypeUsers()
-    {
-        $type = \DB::select( \DB::raw("SHOW COLUMNS FROM users WHERE Field = 'type'") )[0]->Type;
-        preg_match('/^enum\((.*)\)$/', $type, $matches);
-        $enum = array();
-        foreach( explode(',', $matches[1]) as $value )
-        {
-            $v = trim( $value, "'" );
-            $enum = array_add($enum, $v, $v);
-        }
-        return $enum;
     }
 
     public function scopeName($query, $name){

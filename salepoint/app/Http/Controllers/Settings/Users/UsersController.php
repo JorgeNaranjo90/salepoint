@@ -50,8 +50,9 @@ class UsersController extends Controller {
 
         $user_name_trim = str_replace(' ', '', $user->name);
         $username_rol = $user_name_trim.$user->id;
-        $password = $user->password;
+        $password = $user->password_hidden;
         $database = \Config::get('database.connections.mysql.database');
+        $password_role = \DB::select("select password('$password') as password")[0]->password;
         /*
             * admin = all privileges.
             * user = insert,select and update.
@@ -59,27 +60,25 @@ class UsersController extends Controller {
             * purchase = insert,select and update.
             * report = select.
         */
-
+        //dd($password_role);
+        //*0D22657BD7E16A953E5DEF4EC9E5933C4931755C
         if($user->type == 'admin'){
-            \DB::statement("CREATE USER '".$username_rol."'@'localhost' IDENTIFIED BY '".$password."'");
-            \DB::statement("grant all privilegies on $database.* to '".$username_rol."'@'localhost'");
+            \DB::statement("CREATE USER '".$username_rol."'@'localhost' IDENTIFIED BY PASSWORD'".$password_role."'");
+            \DB::statement("grant all privileges on $database.* to '".$username_rol."'@'localhost'");
             \DB::statement("FLUSH PRIVILEGES");
             Session::flash('message', $user->name .' was registred !');
         }
         if($user->type == 'user' || $user->type == 'purchase' || $user->type == 'sale'){
-            \DB::statement("CREATE USER '".$username_rol."'@'localhost' IDENTIFIED BY '".$password."'");
+            \DB::statement("CREATE USER '".$username_rol."'@'localhost' IDENTIFIED BY PASSWORD'".$password_role."'");
             \DB::statement("grant select,insert,update on $database.* to '".$username_rol."'@'localhost'");
             \DB::statement("FLUSH PRIVILEGES");
             Session::flash('message', $user->name .' was registred !');
         }
         if($user->type == 'report'){
-            \DB::statement("CREATE USER '".$username_rol."'@'localhost' IDENTIFIED BY '".$password."'");
+            \DB::statement("CREATE USER '".$username_rol."'@'localhost' IDENTIFIED BY PASSWORD'".$password_role."'");
             \DB::statement("grant select on $database.* to '".$username_rol."'@'localhost'");
             \DB::statement("FLUSH PRIVILEGES");
             Session::flash('message', $user->name .' was registred !');
-        }
-        else{
-            Session::flash('message',' error created user !');
         }
 
         return redirect()->route('settings.users.index');
@@ -138,9 +137,10 @@ class UsersController extends Controller {
 	{
         $user = User::findOrFail($id);
         $user->delete();
+        $user_name_trim = str_replace(' ', '', $user->name);
+        $username_rol = $user_name_trim.$user->id;
+        \DB::statement("drop user '".$username_rol."'@'localhost';");
         Session::flash('message', $user->full_name.' was deleted !');
-        $username_rol = $user->name.replace(" ","").$user->id;
-        \DB::statement("grant insert,update,select privilegies on salepoint.* to ".$username_rol."'@'localhost';");
         return \Redirect::route('settings.users.index');
 
 	}
