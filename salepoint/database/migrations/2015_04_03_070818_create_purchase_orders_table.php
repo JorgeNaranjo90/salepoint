@@ -52,9 +52,12 @@ class CreatePurchaseOrdersTable extends Migration {
                                     UPDATE  products SET incomingQty = incomingQty - qty,
                                     virtualAvailable = virtualAvailable - qty
                                     WHERE id = idProduct;
-                                ELSE
-                                    UPDATE  products SET qtyAvailable = qtyAvailable + qty,
-                                    virtualAvailable = incomingQty + qty
+                                END IF;
+
+                                IF New.status = 'done' THEN
+                                    UPDATE  products SET incomingQty = incomingQty - qty,
+                                    virtualAvailable = (incomingQty - qty) + (qtyAvailable + qty),
+                                    qtyAvailable = qtyAvailable + qty
                                     WHERE id = idProduct;
                                 END IF;
 
