@@ -26,7 +26,7 @@ class PartnersController extends Controller {
         $this->dompdf = new \DOMPDF();
         $partners = Partner::report();
         $title = trans('general.partner_report');
-        $route = route('partners.index');
+        $route = route('reports');
         return $html = view('partners.report',compact('partners','title','route'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
@@ -40,7 +40,7 @@ class PartnersController extends Controller {
         $this->dompdf = new \DOMPDF();
         $partners = Partner::reportCustomer();
         $title = trans('general.customer_report');
-        $route = route('partners.index');
+        $route = route('reports');
         return $html = view('partners.report',compact('partners','title','route'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
@@ -54,7 +54,7 @@ class PartnersController extends Controller {
         $this->dompdf = new \DOMPDF();
         $partners = Partner::reportSupplier();
         $title = trans('general.supplier_report');
-        $route = route('partners.index');
+        $route = route('reports');
         return $html = view('partners.report',compact('partners','title','route'));
         $this->dompdf->load_html($html);
         $this->dompdf->get_css();
@@ -65,8 +65,7 @@ class PartnersController extends Controller {
     public function index(Request $request)
     {
         $partners = Partner::filterAndPaginate($request->get('name'));
-        $total_partners = Partner::countPartners();
-        return view('partners.index',compact('partners','total_partners'));
+        return view('partners.index',compact('partners'));
     }
 
     public function customer(Request $request)

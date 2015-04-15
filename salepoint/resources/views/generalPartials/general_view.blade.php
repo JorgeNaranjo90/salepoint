@@ -6,9 +6,6 @@
                 <h3>
                     @yield('title')
                 </h3>
-                <h5>
-                    @yield('head')
-                </h5>
                 <div class="row" style="margin-left: 3px">
                     <div class="col-lg-6 pull-left">
                         <div class="row">

@@ -15,3 +15,4 @@
         <a href="{{ route('settings.city.index') }}">{{trans('city.city')}}</a>
     </li>
 @endsection
+
