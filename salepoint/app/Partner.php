@@ -53,12 +53,6 @@ class Partner extends Model {
         }
     }
 
-    public static function countPartners()
-    {
-        return \DB::table('selectPartners')
-            ->count();
-    }
-
     public static function filterAndPaginate($name)
     {
         return \DB::table('selectPartners')
@@ -72,28 +66,30 @@ class Partner extends Model {
         return \DB::table('selectPartners')
             ->where('customer','=',1)
             ->where('name','like','%'.$name.'%')
-            ->orderBy('selectPartners.name','ASC')->get();
+            ->orderBy('selectPartners.name','ASC')
+            ->paginate();
     }
 
     public static function getSupplier($name){
         return \DB::table('selectPartners')
             ->where('supplier','=',1)
             ->where('name','like','%'.$name.'%')
-            ->orderBy('selectPartners.name','ASC')->get();
+            ->orderBy('selectPartners.name','ASC')
+            ->paginate();
 
     }
 
     public static function filterAndPaginateCustomer($name)
     {
 
-            return Partner::getCustomer($name)->paginate();
+            return Partner::getCustomer($name);
 
     }
 
     public static function filterAndPaginateSupplier($name)
     {
 
-            return Partner::getSupplier($name)->paginate();
+            return Partner::getSupplier($name);
     }
 
     public static function report()

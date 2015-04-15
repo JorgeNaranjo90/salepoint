@@ -9,10 +9,6 @@
     <a class="btn btn-success btn-sm" href="{{route('partners.create')}}"><i class="fa fa-user-plus"></i>Create</a>
 @endsection
 
-@section('head')
-    {{trans('general.there_are').' '.$total_partners.' '.trans('partners.partners')}}
-@endsection
-
 @section('filters')
     @include('partners.partials.filters')
 @endsection

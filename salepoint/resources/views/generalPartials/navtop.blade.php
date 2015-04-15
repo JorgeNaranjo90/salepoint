@@ -29,7 +29,7 @@
                     <li><a href="{{ route('purchases.index') }}"><i class="fa fa-truck"></i> {{trans('general.purchases')}}</a></li>
                         @endif
                     @if(Auth::user()->type === 'admin' )
-                        <li><a href="{{ route('settings') }}"><i class="fa fa-cog"></i>{{trans('general.settings')}}</a></li>
+                        <li><a href="{{ route('settings.users.index') }}"><i class="fa fa-cog"></i>{{trans('general.settings')}}</a></li>
                     @endif
                         <li><a href="{{route('reports')}}"><i class="fa fa-truck"></i> {{trans('general.reports')}}</a></li>
 
