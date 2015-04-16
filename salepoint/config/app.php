@@ -148,6 +148,9 @@ return [
 
         'Collective\Html\HtmlServiceProvider',
 
+        /*Lenguages providers */
+        'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider'
+
 	],
 
 	/*
@@ -197,6 +200,8 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
+        /*Lenguages alias*/
+        'LaravelLocalization'   => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization'
     	],
 
 ];

@@ -10,9 +10,9 @@
     @include('paymentMethods.partials.delete')
 @endsection
 {!! Form::model($payment, ['route'=>['paymentMethods.update',$payment->id],'method'=>'PUT','files'=>true]) !!}
-<button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o">{{ trans('botones.save') }}</i></button>
-<a class="btn btn-danger btn-sm" href="{{route('paymentMethods.index')}}"><i class="fa fa-times">{{ trans('botones.cancel') }}</i></a>
-<a class="btn btn-success btn-sm" href="{{route('paymentMethods.create')}}"><i class="fa fa-user-plus">{{ trans('botones.create') }}</i></a>
+<button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o">{{ trans('general.save') }}</i></button>
+<a class="btn btn-danger btn-sm" href="{{route('paymentMethods.index')}}"><i class="fa fa-times">{{trans('general.cancel')}}</i></a>
+<a class="btn btn-success btn-sm" href="{{route('paymentMethods.create')}}"><i class="fa fa-user-plus">{{trans('general.create')}}</i></a>
 @endsection
 @section('filters')
 @endsection

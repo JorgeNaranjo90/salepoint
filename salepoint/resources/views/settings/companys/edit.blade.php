@@ -13,13 +13,13 @@
 @endsection
 {!! Form::model($company, ['route'=>['settings.company.update',$company->id],'method'=>'PUT','files'=>true]) !!}
 <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i>
-   {{trans('botones.save')}}
+   {{trans('general.save')}}
 </button>
 <a class="btn btn-danger btn-sm" href="{{route('settings.company.index')}}"><i class="fa fa-times"></i>
-    {{trans('botones.cancel')}}
+    {{trans('general.cancel')}}
 </a>
 <a class="btn btn-success btn-sm" href="{{route('settings.company.create')}}"><i class="fa fa-user-plus"></i>
-    {{trans('botones.create')}}
+    {{trans('general.create')}}
 </a>
 @endsection
 

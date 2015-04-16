@@ -12,11 +12,11 @@
 @endsection
 {!! Form::model($country, ['route'=>['settings.state.update',$country->id],'method'=>'PUT','files'=>true]) !!}
 <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i>
-    {{trans('botones.save')}}
+    {{trans('general.save')}}
 </button>
-<a class="btn btn-danger btn-sm" href="{{route('settings.country.index')}}"><i class="fa fa-times"></i>Cancel</a>
+<a class="btn btn-danger btn-sm" href="{{route('settings.country.index')}}"><i class="fa fa-times"></i>{{trans('general.cancel')}}</a>
 <a class="btn btn-success btn-sm" href="{{route('settings.country.create')}}"><i class="fa fa-user-plus"></i>
-    {{trans('botones.create')}}
+    {{trans('general.create')}}
 </a>
 @endsection
 

@@ -12,11 +12,9 @@ return [
     | you want to customize your views to better match your application.
     |
     */
-'search' => 'Search',
-    'edit'=> 'Edit',
-    'create' => 'Create',
-    'delete'=> 'Delete',
-    'cancel'=> 'Cancel',
-    'save'=> 'Save',
-    'back' => 'Back'
-  ];
+
+    'previous' => '&laquo; zurück',
+
+    'next'     => 'weiter &raquo;',
+
+];

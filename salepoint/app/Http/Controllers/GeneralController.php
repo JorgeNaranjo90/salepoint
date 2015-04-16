@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 
+
 class GeneralController extends Controller {
 
     public function setLangEn(){
@@ -11,6 +12,16 @@ class GeneralController extends Controller {
 
     public function setLangEs(){
         \Config::set('app.locale', 'es');
+        return view('/auth/login');
+    }
+
+    public function setLangFr(){
+        \Config::set('app.locale', 'fr');
+        return view('/auth/login');
+    }
+
+    public function setLangDe(){
+        \Config::set('app.locale', 'de');
         return view('/auth/login');
     }
 

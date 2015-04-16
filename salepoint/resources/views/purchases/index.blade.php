@@ -7,7 +7,7 @@
 @endsection
 
 @section('buttons')
-    <a class="btn btn-success btn-sm" href="{{route('purchases.create')}}"><i class="fa fa-user-plus"></i> {{trans('botones.create')}}</a>
+    <a class="btn btn-success btn-sm" href="{{route('purchases.create')}}"><i class="fa fa-user-plus"></i> {{trans('general.create')}}</a>
 @endsection
 
 @section('filters')

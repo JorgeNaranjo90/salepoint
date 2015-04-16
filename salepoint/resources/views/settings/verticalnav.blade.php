@@ -5,9 +5,9 @@
         <h5>{{trans('users.general_settings')}}</h5>
         <a href="{{ route('settings.fiscalRegimen.index') }}">{{trans('fiscalRegimen.fiscalRegimen')}}s</a>
         <a href="{{ route('settings.currency.index') }}">{{trans('currency.currency')}}</a>
-        <a href="{{ route('taxs.index') }}">Taxs</a>
+        <a href="{{ route('taxs.index') }}">{{trans('tax.tax')}}</a>
 
-        <a href="{{ route('settings.uoms.index') }}"> Uom</a>
+        <a href="{{ route('settings.uoms.index') }}">{{trans('uoms.uom')}}</a>
         <a href="{{ route('paymentMethods.index') }}">{{trans('paymentMethods.typePayment')}}</a>
         <a href="{{ route('settings.certificatesats.index') }}">{{trans('certificate_sats.certificate_sat')}}</a>
         <a href="{{ route('settings.country.index') }}">{{trans('country.country')}}</a>

@@ -14,4 +14,12 @@ return[
     'reports' => 'Reportes',
     'warehouse' => 'Alamacén',
     'there_are' => 'Hay',
+    /*Buttons*/
+    'search' => 'Buscar',
+    'edit'=> 'Editar',
+    'create' => 'Crear',
+    'delete'=> 'Eliminar',
+    'cancel'=> 'Cancelar',
+    'save'=> 'Guardar',
+    'back' => 'Regresar'
 ];

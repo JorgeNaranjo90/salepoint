@@ -12,7 +12,7 @@
 <a class="btn btn-info btn-sm" href="{{ route('settings.city.edit', $city->id) }}"><i class="fa fa-pencil"></i>
     {{trans('city.edit')}}
 </a>
-<a class="btn btn-success btn-sm" href="{{ route('settings.city.create') }}"><i class="fa fa-user-plus"></i>  {{trans('city.create')}}</a>
+<a class="btn btn-success btn-sm" href="{{ route('settings.city.create') }}"><i class="fa fa-user-plus"></i>{{trans('city.create')}}</a>
 @endsection
 @section('filters')
 @endsection

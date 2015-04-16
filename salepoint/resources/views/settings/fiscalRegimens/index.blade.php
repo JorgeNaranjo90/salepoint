@@ -11,7 +11,7 @@
 
 @section('buttons')
     <a class="btn btn-success btn-sm" href="{{route('settings.fiscalRegimen.create')}}"><i class="fa fa-user-plus"></i>
-        {{trans('botones.create')}}
+        {{trans('general.create')}}
     </a>
 @endsection
 @section('filters')
