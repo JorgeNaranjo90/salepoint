@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Pagination Language Lines
@@ -11,11 +12,9 @@ return [
     | you want to customize your views to better match your application.
     |
     */
-    'search' => 'Buscar',
-    'edit'=> 'Editar',
-    'create' => 'Crear',
-    'delete'=> 'Eliminar',
-    'cancel'=> 'Cancel',
-    'save'=> 'Guardar',
-    'back' => 'Regresar'
-    ];
+
+    'previous' => '&laquo; Précédent',
+
+    'next'     => 'Suivant &raquo;',
+
+];

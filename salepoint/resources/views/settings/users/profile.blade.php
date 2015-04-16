@@ -9,8 +9,8 @@
     @section('button_delete')
         @include('settings.users.partials.delete')
     @endsection
-    <a class="btn btn-info btn-sm" href="{{ route('settings.users.edit', $user->id) }}"><i class="fa fa-pencil"></i> {{trans('botones.edit')}}</a>
-    <a class="btn btn-success btn-sm" href="{{ route('settings.users.create') }}"><i class="fa fa-user-plus"></i> {{trans('botones.create')}}</a>
+    <a class="btn btn-info btn-sm" href="{{ route('settings.users.edit', $user->id) }}"><i class="fa fa-pencil"></i> {{trans('general.edit')}}</a>
+    <a class="btn btn-success btn-sm" href="{{ route('settings.users.create') }}"><i class="fa fa-user-plus"></i> {{trans('general.create')}}</a>
 @endsection
 
 @section('filters')

@@ -8,10 +8,10 @@
 @section('buttons')
     {!! Form::open(['route'=>'settings.fiscalRegimen.store','method'=>'POST','files'=>true]) !!}
     <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i>
-        {{trans('botones.save')}}
+        {{trans('general.save')}}
     </button>
     <a class="btn btn-danger btn-sm" href="{{route('settings.fiscalRegimen.index')}}">
-        {{trans('botones.cancel')}}
+        {{trans('general.cancel')}}
     </a>
 @endsection
 @section('filters')

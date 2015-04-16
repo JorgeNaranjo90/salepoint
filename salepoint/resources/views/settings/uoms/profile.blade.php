@@ -9,8 +9,8 @@
     @section('button_delete')
         @include('settings.uoms.partials.delete')
     @endsection
-    <a class="btn btn-info btn-sm" href="{{ route('settings.uoms.edit', $uom->id) }}"><i class="fa fa-pencil"></i>  {{trans('botones.edit')}}</a>
-    <a class="btn btn-success btn-sm" href="{{ route('settings.uoms.create') }}"><i class="fa fa-user-plus"></i>  {{trans('botones.create')}}</a>
+    <a class="btn btn-info btn-sm" href="{{ route('settings.uoms.edit', $uom->id) }}"><i class="fa fa-pencil"></i>  {{trans('general.edit')}}</a>
+    <a class="btn btn-success btn-sm" href="{{ route('settings.uoms.create') }}"><i class="fa fa-user-plus"></i>  {{trans('general.create')}}</a>
 @endsection
 
 @section('filters')

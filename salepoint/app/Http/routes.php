@@ -97,8 +97,41 @@ Route::get('settings', ['as' => 'settings', 'middleware' => ['auth','is_admin'],
 Route::get('reports', ['as' => 'reports', 'middleware' => 'auth', 'uses' => 'GeneralController@reports']);
 //Language
 Route::get('languageEn', ['as' => 'languageen', 'uses' => 'GeneralController@setLangEn']);
+Route::get('languageFr', ['as' => 'languagefr', 'uses' => 'GeneralController@setLangFr']);
+Route::get('languageDe', ['as' => 'languagede', 'uses' => 'GeneralController@setLangDe']);
 Route::get('languageEs', ['as' => 'languagees', 'uses' => 'GeneralController@setLangEs']);
 Route::get('backup', ['as' => 'backup', 'uses' => 'GeneralController@backup']);
+
+/*Lenguages Library*/
+
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localizationRedirect', 'localeSessionRedirect' ]
+    ],
+    function()
+    {
+        /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+        Route::get('/', function()
+        {
+            return view('/auth/login');
+        });
+    }
+);
+
+/*Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+{
+    /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+    /*Route::get('/', function()
+    {
+        return view('/auth/login');
+    });*/
+
+//});
+
+
+
+
 
 
 

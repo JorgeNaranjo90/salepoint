@@ -2,7 +2,7 @@
 @section('title')
     {{$title}}
 @endsection
-<a class="btn btn-info" href="{{$route}}"><i class="fa fa-backward"></i>{{trans('botones.back')}}</a>
+<a class="btn btn-info" href="{{$route}}"><i class="fa fa-backward"></i>{{trans('general.back')}}</a>
 @section('content')
 <table class="table_column_border table_alter_color_row table_title_bg_color" width="100%">
     @include('partners.partials.fields_table')

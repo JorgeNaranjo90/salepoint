@@ -32,20 +32,35 @@
                         <li><a href="{{ route('settings.users.index') }}"><i class="fa fa-cog"></i>{{trans('general.settings')}}</a></li>
                     @endif
                         <li><a href="{{route('reports')}}"><i class="fa fa-truck"></i> {{trans('general.reports')}}</a></li>
-
+                    {{--Ménu de los idiomas desde la línea 36-44--}}
+                       <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-language"></i> {{ trans('validation.attributes.language') }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                <li><a href="{{LaravelLocalization::getLocalizedURL($localeCode)}}"><img src="/icons/usa.png">EN
+                                    </a></li>
+                                <li><a href="{{ route('languagefr')}}"><img src="/icons/france.png">FR</a></li>
+                                <li><a href="{{ route('languagede')}}"><img src="/icons/germany.png">GE</a></li>
+                                <li><a href="{{LaravelLocalization::getLocalizedURL($localeCode)}}"><img src="/icons/mexico.png">ES
+                                    </a></li>
+                                @endforeach
+                            </ul>
+                        </li>
                 @endif
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
                     <li><a href="/auth/login">{{ trans('validation.attributes.login') }}</a></li>
-                    <li class="dropdown">
+                    {{--<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-language"></i> {{ trans('validation.attributes.language') }} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ route('languageen')}}"><img src="/icons/usa.png">EN</a></li>
+                            <li><a href="{{ route('languagefr')}}"><img src="/icons/france.png">FR</a></li>
+                            <li><a href="{{ route('languagede')}}"><img src="/icons/germany.png">GE</a></li>
                             <li><a href="{{ route('languagees')}}"><img src="/icons/mexico.png">ES</a></li>
                         </ul>
-                    </li>
+                    </li>--}}
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

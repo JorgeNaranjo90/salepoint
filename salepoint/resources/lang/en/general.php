@@ -14,4 +14,12 @@ return [
     'reports' => 'Reports',
     'warehouse' => 'Warehouse',
     'there_are' => 'There are',
+    /*Buttons*/
+    'search' => 'Search',
+    'edit'=> 'Edit',
+    'create' => 'Create',
+    'delete'=> 'Delete',
+    'cancel'=> 'Cancel',
+    'save'=> 'Save',
+    'back' => 'Back'
 ];

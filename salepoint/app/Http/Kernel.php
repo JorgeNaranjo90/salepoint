@@ -32,7 +32,11 @@ class Kernel extends HttpKernel {
         'is_user' => 'App\Http\Middleware\IsUser',
         'is_sale' => 'App\Http\Middleware\IsSale',
         'is_purchase' => 'App\Http\Middleware\IsPurchase',
-        'is_report' => 'App\Http\Middleware\IsReport'
+        'is_report' => 'App\Http\Middleware\IsReport',
+        /*Middlewares of lenguages*/
+        'localize' => 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes',
+        'localizationRedirect' => 'Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter',
+        'localeSessionRedirect' => 'Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect'
 	];
 
 }

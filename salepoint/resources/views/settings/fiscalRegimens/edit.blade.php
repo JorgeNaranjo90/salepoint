@@ -11,13 +11,13 @@
 @endsection
 {!! Form::model($fiscal, ['route'=>['settings.fiscalRegimen.update',$fiscal->id],'method'=>'PUT','files'=>true]) !!}
 <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i>
-    {{trans('botones.save')}}
+    {{trans('general.save')}}
 </button>
 <a class="btn btn-danger btn-sm" href="{{route('settings.fiscalRegimen.index')}}"><i class="fa fa-times"></i>
-    {{trans('botones.cancel')}}
+    {{trans('general.cancel')}}
 </a>
 <a class="btn btn-success btn-sm" href="{{route('settings.fiscalRegimen.create')}}"><i class="fa fa-user-plus"></i>
-    {{trans('botones.create')}}
+    {{trans('general.create')}}
 </a>
 @endsection
 @section('filters')
